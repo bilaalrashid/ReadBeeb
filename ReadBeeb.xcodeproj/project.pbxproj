@@ -22,6 +22,7 @@
 		3A44C5DC2A9A9F87001AB40F /* ReadBeeb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadBeeb.entitlements; sourceTree = "<group>"; };
 		3A44C5DE2A9A9F87001AB40F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A44C5E52A9AA076001AB40F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3A44C5F02A9AB230001AB40F /* API.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = API.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +41,7 @@
 			isa = PBXGroup;
 			children = (
 				3A44C5E52A9AA076001AB40F /* README.md */,
+				3A44C5EF2A9AB212001AB40F /* Docs */,
 				3A44C5D52A9A9F86001AB40F /* ReadBeeb */,
 				3A44C5D42A9A9F86001AB40F /* Products */,
 			);
@@ -119,6 +121,14 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3A44C5EF2A9AB212001AB40F /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				3A44C5F02A9AB230001AB40F /* API.md */,
+			);
+			path = Docs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
