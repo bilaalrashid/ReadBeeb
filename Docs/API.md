@@ -32,31 +32,31 @@ This endpoint fetches the data for the "Home" tab in the app.
 
 ### Response
 
-```json
+```javascript
 {
   "data": {
     "metadata": {
-      "name": string, # The name of the tab
+      "name": string, // The name of the tab
       "allowAdvertising": boolean,
-      "lastUpdated": integer, # Unix timestamp of response
-      "shareUrl": string, # BBC News website URL to share for this
+      "lastUpdated": integer, // Unix timestamp of response
+      "shareUrl": string, // BBC News website URL to share for this
     },
     "items": [
       {
-        "type": "HierarchicalCollection" # A collection of articles to display, currently seems to be the same as "SimpleCollection"
-                | "CollectionHeader" # A title heading for a collection, which has a corresponding link to a detail page
-                | "SimpleCollection" # A collection of articles to display, currently seems to be the same as "HierarchicalCollection"
-                | "WeatherPromoSummary" # The weather details showed in the home tab
-                | "Carousel" # A swipable carousel of cards for articles or videos
-                | "ChipList" # A section of chip buttons that link to detail pages
-                | "CallToActionBanner" # A special message and button
-                | "Copyright" # Copyright details
-        ... # Depends based on value of `type`
+        "type": "HierarchicalCollection" // A collection of articles to display, currently seems to be the same as "SimpleCollection"
+                | "CollectionHeader" // A title heading for a collection, which has a corresponding link to a detail page
+                | "SimpleCollection" // A collection of articles to display, currently seems to be the same as "HierarchicalCollection"
+                | "WeatherPromoSummary" // The weather details showed in the home tab
+                | "Carousel" // A swipable carousel of cards for articles or videos
+                | "ChipList" // A section of chip buttons that link to detail pages
+                | "CallToActionBanner" // A special message and button
+                | "Copyright" // Copyright details
+        ... // Depends based on value of `type`
       },
     ],
-    "trackers": array # Items likely used for analytics tracking
+    "trackers": array // Items likely used for analytics tracking
   },
-  "contentType": string # The content type of the response
+  "contentType": string // The content type of the response
 }
 ```
 
