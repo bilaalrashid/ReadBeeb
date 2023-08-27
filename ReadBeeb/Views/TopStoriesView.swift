@@ -16,7 +16,30 @@ struct TopStoriesView: View {
 
     var body: some View {
         List {
-
+            if let data = self.data {
+                ForEach(Array(data.data.items.enumerated()), id: \.offset) { index, item in
+                    switch item.type {
+                    case "HierarchicalCollection":
+                        HierarchicalCollectionItem(item: item)
+                    case "CollectionHeader":
+                        CollectionHeaderItem(item: item)
+                    case "SimpleCollection":
+                        SimpleCollectionItem(item: item)
+                    case "WeatherPromoSummary":
+                        EmptyView()
+                    case "Carousel":
+                        EmptyView()
+                    case "ChipList":
+                        EmptyView()
+                    case "CallToActionBanner":
+                        EmptyView()
+                    case "Copyright":
+                        EmptyView()
+                    default:
+                        EmptyView()
+                    }
+                }
+            }
         }
         .alert(
             "Unable To Load Data",
