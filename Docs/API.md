@@ -14,15 +14,15 @@ User-Agent: BBCNews/25339 (iPhone15,2; iOS 16.6) BBCHTTPClient/9.0.0
 
 ## GET `/fd/abl`
 
-This endpoint fetches the data for the "Home" tab in the app.
+This endpoint fetches data for a page that displays a list of articles and other data. Examples include the "Home" tab, and pages for specific topic categories. 
 
 ### Parameters
 
-| Parameter | Required | Example | Description |
+| Parameter | Required | Examples | Description |
 |-----------|----------|---------|-------------|
-| `page` | Required | `chrysalis_discovery` | Unknown |
+| `page` | Required | `chrysalis_discovery`, `cgmxjppkwl7t` | The page to fetch the data for |
 | `service` | Required | `news` | Unknown |
-| `type` | Required | `index` | Unknown |
+| `type` | Required | `index`, `topic` | The type of page that is being requested |
 | `clientName` | Required | `Chrysalis` | "Chrysalis" seems to be an internal codename of the app |
 | `clientVersion` | Optional | `pre-5` | Unknown |
 | `release` | Optional | `public-alpha` | Unknown |
@@ -62,6 +62,14 @@ This endpoint fetches the data for the "Home" tab in the app.
 
 ### Example
 
+This example fetches the home tab for a user with a "W1A" postcode.
+
 ```
 https://news-app.api.bbc.co.uk/fd/abl?page=chrysalis_discovery&service=news&type=index&clientName=Chrysalis&clientVersion=pre-5&release=public-alpha&clientLoc=W1A&mvtOption=&clientNeedsUpdate=false
+```
+
+This example fetches a page for the "News for London" topic.
+
+```
+https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=cgmxjppkwl7t&service=news&type=topic
 ```
