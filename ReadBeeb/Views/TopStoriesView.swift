@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct TopStoriesView: View {
+
+    @State private var data: BBCNewsAPIHomeTabResult? = nil
+
     var body: some View {
         List {
 
         }
+        .onAppear {
+            Task {
+                do {
+                    let result = try await BBCNewsAPINetworkController.fetchHomeTabData()
+                    self.data = result
+                } catch let error {
+                    // Noop
+                }
+            }
+        }
     }
+
 }
 
 struct TopStoriesView_Previews: PreviewProvider {
