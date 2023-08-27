@@ -19,6 +19,7 @@
 		3A44C5FE2A9B5BE2001AB40F /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C5FD2A9B5BE2001AB40F /* PopularView.swift */; };
 		3A44C6002A9B5BF2001AB40F /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C5FF2A9B5BF2001AB40F /* VideoView.swift */; };
 		3A44C6022A9B5C00001AB40F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C6012A9B5C00001AB40F /* SearchView.swift */; };
+		3A44C6042A9B63D8001AB40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C6032A9B63D8001AB40F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		3A44C5FD2A9B5BE2001AB40F /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
 		3A44C5FF2A9B5BF2001AB40F /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		3A44C6012A9B5C00001AB40F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		3A44C6032A9B63D8001AB40F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				3A44C5EB2A9AA213001AB40F /* Extensions */,
 				3A44C5D62A9A9F86001AB40F /* ReadBeebApp.swift */,
 				3A44C5D82A9A9F86001AB40F /* ContentView.swift */,
+				3A44C6032A9B63D8001AB40F /* Constants.swift */,
 				3A44C5DA2A9A9F87001AB40F /* Assets.xcassets */,
 				3A44C5DC2A9A9F87001AB40F /* ReadBeeb.entitlements */,
 				3A44C5DD2A9A9F87001AB40F /* Preview Content */,
@@ -241,6 +244,7 @@
 				3A44C5F62A9B5671001AB40F /* BBCNewsAPIHomeTabResult.swift in Sources */,
 				3A44C5D92A9A9F86001AB40F /* ContentView.swift in Sources */,
 				3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */,
+				3A44C6042A9B63D8001AB40F /* Constants.swift in Sources */,
 				3A44C6002A9B5BF2001AB40F /* VideoView.swift in Sources */,
 				3A44C5FA2A9B5AA7001AB40F /* TopStoriesView.swift in Sources */,
 				3A44C5FE2A9B5BE2001AB40F /* PopularView.swift in Sources */,
