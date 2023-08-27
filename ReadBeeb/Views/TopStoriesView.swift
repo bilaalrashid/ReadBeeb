@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OSLog
 
 struct TopStoriesView: View {
 
@@ -30,6 +31,7 @@ struct TopStoriesView: View {
                     self.data = result
                 } catch let error {
                     self.shouldDisplayNetworkError = true
+                    Logger.network.error("Unable to fetch BBC News API Home tab - \(error.localizedDescription)")
                 }
             }
         }
