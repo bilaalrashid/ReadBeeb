@@ -44,7 +44,7 @@ This endpoint fetches data for a page that displays a list of articles and other
     "items": [
       {
         "type": "HierarchicalCollection" // A collection of articles to display, currently seems to be the same as "SimpleCollection"
-                | "CollectionHeader" // A title heading for a collection, which has a corresponding link to a detail page
+                | "CollectionHeader" // A title heading for a collection, which can have a corresponding link to a detail page
                 | "SimpleCollection" // A collection of articles to display, currently seems to be the same as "HierarchicalCollection"
                 | "WeatherPromoSummary" // The weather details showed in the home tab
                 | "Carousel" // A swipable carousel of cards for articles or videos
@@ -59,6 +59,43 @@ This endpoint fetches data for a page that displays a list of articles and other
   "contentType": string // The content type of the response
 }
 ```
+
+#### `HierarchicalCollection`
+
+#### `CollectionHeader`
+
+```javascript
+{
+    "type": "CollectionHeader",
+    "text": string, // The title of the collection
+    "link": { // Optional, a link(s?) to a detail page 
+        "trackers": array, // Items likely used for analytics tracking
+        "destinations": [
+            {
+                "sourceFormat": "ABL", // Can be "ABL" or "HTML"
+                "url": "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=cgmxjppkwl7t&service=news&type=topic", // The API URL to query to get data for that detail page
+                "id": "cgmxjppkwl7t", // The ID of the detail page
+                "presentation": {
+                    "type": "SINGLE_RENDERER",
+                    "canShare": false // If there is a corresponding website link that can be used for sharing
+                }
+            }
+        ]
+    }
+}
+```
+
+#### `SimpleCollection`
+
+#### `WeatherPromoSummary`
+
+#### `Carousel`
+
+#### `ChipList`
+
+#### `CallToActionBanner`
+
+#### `Copyright`
 
 ### Example
 
