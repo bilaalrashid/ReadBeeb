@@ -11,7 +11,9 @@ struct CollectionHeaderItem: View {
     let item: BBCNewsAPIHomeTabDataItem
 
     var body: some View {
-        Text("Hello, World!")
+        if let text = self.item.text {
+            Text(text)
+        }
     }
 }
 
@@ -21,7 +23,7 @@ struct CollectionHeaderItem_Previews: PreviewProvider {
                                 BBCNewsAPIHomeTabDataItem(
                                     type: "CollectionHeader",
                                     items: nil,
-                                    text: nil,
+                                    text: "News from London",
                                     link: nil,
                                     period: nil,
                                     location: nil,
