@@ -13,11 +13,11 @@ struct FederatedDiscoveryItem: View {
     var body: some View {
         switch item.type {
         case "HierarchicalCollection":
-            HierarchicalCollectionItem(item: item)
+            HierarchicalCollection(item: item)
         case "CollectionHeader":
-            CollectionHeaderItem(item: item)
+            CollectionHeader(item: item)
         case "SimpleCollection":
-            SimpleCollectionItem(item: item)
+            SimpleCollection(item: item)
         case "WeatherPromoSummary":
             EmptyView()
         case "Carousel":

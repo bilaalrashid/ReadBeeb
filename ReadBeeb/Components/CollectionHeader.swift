@@ -1,5 +1,5 @@
 //
-//  CollectionHeaderItem.swift
+//  CollectionHeader.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 27/08/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CollectionHeaderItem: View {
+struct CollectionHeader: View {
     let item: BBCNewsAPIFederatedDiscoveryDataItem
 
     var body: some View {
@@ -19,7 +19,7 @@ struct CollectionHeaderItem: View {
 
 struct CollectionHeaderItem_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionHeaderItem(item:
+        CollectionHeader(item:
                                 BBCNewsAPIFederatedDiscoveryDataItem(
                                     type: "CollectionHeader",
                                     items: nil,

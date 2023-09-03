@@ -1,5 +1,5 @@
 //
-//  HierarchicalCollectionItem.swift
+//  HierarchicalCollection.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 27/08/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HierarchicalCollectionItem: View {
+struct HierarchicalCollection: View {
     let item: BBCNewsAPIFederatedDiscoveryDataItem
 
     var body: some View {
@@ -17,7 +17,7 @@ struct HierarchicalCollectionItem: View {
 
 struct HierarchicalCollectionItem_Previews: PreviewProvider {
     static var previews: some View {
-        HierarchicalCollectionItem(item:
+        HierarchicalCollection(item:
                                     BBCNewsAPIFederatedDiscoveryDataItem(
                                         type: "HierarchicalCollection",
                                         items: nil,
