@@ -13,6 +13,7 @@ struct CollectionHeader: View {
     var body: some View {
         if let text = self.item.text {
             Text(text)
+                .font(.headline)
         }
     }
 }
