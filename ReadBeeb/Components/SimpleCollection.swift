@@ -11,7 +11,11 @@ struct SimpleCollection: View {
     let item: BBCNewsAPIFederatedDiscoveryDataItem
 
     var body: some View {
-        Text("Hello, World!")
+        if let items = self.item.items {
+            ForEach(Array(items.enumerated()), id: \.offset) { index, item in
+                NewsStoryRow(story: item)
+            }
+        }
     }
 }
 
