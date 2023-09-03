@@ -49,14 +49,18 @@ struct TopStoriesView: View {
         )
         .onAppear {
             Task {
-                do {
-                    let result = try await BBCNewsAPINetworkController.fetchHomeTabData()
-                    self.data = result
-                } catch let error {
-                    self.shouldDisplayNetworkError = true
-                    Logger.network.error("Unable to fetch BBC News API Home tab - \(error.localizedDescription)")
-                }
+                await self.fetchData()
             }
+        }
+    }
+
+    private func fetchData() async {
+        do {
+            let result = try await BBCNewsAPINetworkController.fetchHomeTabData()
+            self.data = result
+        } catch let error {
+            self.shouldDisplayNetworkError = true
+            Logger.network.error("Unable to fetch BBC News API Home tab - \(error.localizedDescription)")
         }
     }
 
