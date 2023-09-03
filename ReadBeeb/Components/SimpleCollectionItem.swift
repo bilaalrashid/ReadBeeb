@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SimpleCollectionItem: View {
-    let item: BBCNewsAPIHomeTabDataItem
+    let item: BBCNewsAPIFederatedDiscoveryDataItem
 
     var body: some View {
         Text("Hello, World!")
@@ -18,7 +18,7 @@ struct SimpleCollectionItem: View {
 struct SimpleCollectionItem_Previews: PreviewProvider {
     static var previews: some View {
         SimpleCollectionItem(item:
-                                BBCNewsAPIHomeTabDataItem(
+                                BBCNewsAPIFederatedDiscoveryDataItem(
                                     type: "SimpleCollection",
                                     items: nil,
                                     text: nil,

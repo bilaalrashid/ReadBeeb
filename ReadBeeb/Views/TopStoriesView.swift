@@ -10,7 +10,7 @@ import OSLog
 
 struct TopStoriesView: View {
 
-    @State private var data: BBCNewsAPIHomeTabResult? = nil
+    @State private var data: BBCNewsAPIFederatedDiscoveryResult? = nil
 
     @State private var shouldDisplayNetworkError = false
 

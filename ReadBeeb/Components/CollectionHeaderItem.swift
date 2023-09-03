@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CollectionHeaderItem: View {
-    let item: BBCNewsAPIHomeTabDataItem
+    let item: BBCNewsAPIFederatedDiscoveryDataItem
 
     var body: some View {
         if let text = self.item.text {
@@ -20,7 +20,7 @@ struct CollectionHeaderItem: View {
 struct CollectionHeaderItem_Previews: PreviewProvider {
     static var previews: some View {
         CollectionHeaderItem(item:
-                                BBCNewsAPIHomeTabDataItem(
+                                BBCNewsAPIFederatedDiscoveryDataItem(
                                     type: "CollectionHeader",
                                     items: nil,
                                     text: "News from London",
