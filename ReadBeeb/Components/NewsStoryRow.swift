@@ -14,14 +14,14 @@ struct NewsStoryRow: View {
     var body: some View {
         HStack {
             if let url = getImageUrl() {
-                AsyncImage(url: URL(string: url)){ image in
+                AsyncImage(url: URL(string: url)) { image in
                     image
                         .resizable()
                         .scaledToFit()
                 } placeholder: {
                     Color.gray.opacity(0.1)
                 }
-                .frame(width: 100)
+                .frame(width: 75 * 1.77777, height: 75)
             }
             VStack {
                 if let title = self.story.text {
@@ -31,11 +31,14 @@ struct NewsStoryRow: View {
                         .minimumScaleFactor(0.95)
                         .truncationMode(.tail)
                 }
+                Spacer(minLength: 1)
                 HStack {
                     if let topic = self.story.topic {
                         Text(topic.text)
                             .font(.caption)
                             .foregroundColor(.accentColor)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
                     }
                     Spacer()
                     if let lastUpdated = self.story.updated {
@@ -44,6 +47,7 @@ struct NewsStoryRow: View {
                     }
                 }
             }
+            .padding(.all, 4)
         }
     }
 
