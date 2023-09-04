@@ -33,6 +33,11 @@ struct TopStoriesView: View {
             actions: { Button("OK", role: .cancel) { } },
             message: { Text("Please try again later and contact support if the problem persists") }
         )
+        .refreshable {
+            Task {
+                await self.fetchData()
+            }
+        }
         .onAppear {
             Task {
                 await self.fetchData()
