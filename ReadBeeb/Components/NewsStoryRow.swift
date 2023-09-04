@@ -45,7 +45,7 @@ struct NewsStoryRow: View {
                         ForEach(Array(badges.enumerated()), id: \.offset) { index, badge in
                             Text(badge.text ?? "")
                                 .font(.caption.weight(.heavy))
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(badge.brand == .sport ? .primary : .accentColor)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
                         }
