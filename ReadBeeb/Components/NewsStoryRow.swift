@@ -27,14 +27,20 @@ struct NewsStoryRow: View {
                 if let title = self.story.text {
                     Text(title)
                         .font(.headline)
+                        .lineLimit(3)
+                        .minimumScaleFactor(0.95)
+                        .truncationMode(.tail)
                 }
                 HStack {
                     if let topic = self.story.topic {
                         Text(topic.text)
+                            .font(.caption)
+                            .foregroundColor(.accentColor)
                     }
                     Spacer()
                     if let lastUpdated = self.story.updated {
                         Text(self.formatTimestamp(timestamp: lastUpdated))
+                            .font(.caption)
                     }
                 }
             }
