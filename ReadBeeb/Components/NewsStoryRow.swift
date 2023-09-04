@@ -30,6 +30,8 @@ struct NewsStoryRow: View {
                         .lineLimit(3)
                         .minimumScaleFactor(0.95)
                         .truncationMode(.tail)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
                 }
                 Spacer(minLength: 1)
                 HStack(alignment: .center) {
