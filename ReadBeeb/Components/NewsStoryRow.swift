@@ -40,7 +40,7 @@ struct NewsStoryRow: View {
                             .font(.caption)
                             .foregroundColor(.accentColor)
                             .lineLimit(1)
-                            .minimumScaleFactor(0.5)
+                            .truncationMode(.tail)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     if let badges = self.story.badges {
