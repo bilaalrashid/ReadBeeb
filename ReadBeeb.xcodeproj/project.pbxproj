@@ -27,6 +27,7 @@
 		3A44C60E2AA4F6B6001AB40F /* BBCNewsAPIFederatedDiscoveryData+StructuredItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C60D2AA4F6B6001AB40F /* BBCNewsAPIFederatedDiscoveryData+StructuredItems.swift */; };
 		3A44C6102AA4F740001AB40F /* FederatedDiscoveryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C60F2AA4F740001AB40F /* FederatedDiscoveryItem.swift */; };
 		3A44C6122AA53D8A001AB40F /* NewsStoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C6112AA53D8A001AB40F /* NewsStoryRow.swift */; };
+		3A9124C92AA6872F00EC0DCF /* NewsStoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124C82AA6872F00EC0DCF /* NewsStoryDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		3A44C60D2AA4F6B6001AB40F /* BBCNewsAPIFederatedDiscoveryData+StructuredItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BBCNewsAPIFederatedDiscoveryData+StructuredItems.swift"; sourceTree = "<group>"; };
 		3A44C60F2AA4F740001AB40F /* FederatedDiscoveryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FederatedDiscoveryItem.swift; sourceTree = "<group>"; };
 		3A44C6112AA53D8A001AB40F /* NewsStoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStoryRow.swift; sourceTree = "<group>"; };
+		3A9124C82AA6872F00EC0DCF /* NewsStoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStoryDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				3A44C5FD2A9B5BE2001AB40F /* PopularView.swift */,
 				3A44C5FF2A9B5BF2001AB40F /* VideoView.swift */,
 				3A44C6012A9B5C00001AB40F /* SearchView.swift */,
+				3A9124C82AA6872F00EC0DCF /* NewsStoryDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				3A44C5F62A9B5671001AB40F /* BBCNewsAPIFederatedDiscoveryResult.swift in Sources */,
 				3A44C5D92A9A9F86001AB40F /* ContentView.swift in Sources */,
 				3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */,
+				3A9124C92AA6872F00EC0DCF /* NewsStoryDetailView.swift in Sources */,
 				3A44C60E2AA4F6B6001AB40F /* BBCNewsAPIFederatedDiscoveryData+StructuredItems.swift in Sources */,
 				3A44C6042A9B63D8001AB40F /* Constants.swift in Sources */,
 				3A44C6002A9B5BF2001AB40F /* VideoView.swift in Sources */,

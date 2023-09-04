@@ -13,7 +13,13 @@ struct HierarchicalCollection: View {
     var body: some View {
         if let items = self.item.items {
             ForEach(Array(items.enumerated()), id: \.offset) { index, item in
-                NewsStoryRow(story: item)
+                if let destination = item.link.destinations.first {
+                    // Workaround to hide detail disclosure
+                    ZStack {
+                        NavigationLink(destination: NewsStoryDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
+                        NewsStoryRow(story: item)
+                    }
+                }
             }
         }
     }
