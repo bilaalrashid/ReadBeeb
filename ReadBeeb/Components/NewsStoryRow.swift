@@ -32,18 +32,30 @@ struct NewsStoryRow: View {
                         .truncationMode(.tail)
                 }
                 Spacer(minLength: 1)
-                HStack {
+                HStack(alignment: .center) {
                     if let topic = self.story.topic {
                         Text(topic.text)
                             .font(.caption)
                             .foregroundColor(.accentColor)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    Spacer()
+                    if let badges = self.story.badges {
+                        ForEach(Array(badges.enumerated()), id: \.offset) { index, badge in
+                            Text(badge.text ?? "")
+                                .font(.caption.weight(.heavy))
+                                .foregroundColor(.accentColor)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                        }
+                    }
                     if let lastUpdated = self.story.updated {
                         Text(self.formatTimestamp(timestamp: lastUpdated))
                             .font(.caption)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
             }
