@@ -26,6 +26,7 @@ struct TopStoriesView: View {
                 }
             }
         }
+        .listStyle(.plain)
         .alert(
             "Unable To Load Data",
             isPresented: self.$shouldDisplayNetworkError,
