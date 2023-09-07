@@ -54,6 +54,7 @@ struct NewsStoryDetailView: View {
             }
         }
         .listStyle(.plain)
+        .toolbar(.hidden, for: .tabBar)
         .alert(
             "Unable To Load Data",
             isPresented: self.$shouldDisplayNetworkError,
