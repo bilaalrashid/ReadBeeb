@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SimpleCollection: View {
-    let item: BBCNewsAPIFederatedDiscoveryDataItem
+    let item: BBCNewsAPIFDDataItem
 
     var body: some View {
         if let items = self.item.items {
@@ -22,7 +22,7 @@ struct SimpleCollection: View {
 struct SimpleCollectionItem_Previews: PreviewProvider {
     static var previews: some View {
         SimpleCollection(item:
-                                BBCNewsAPIFederatedDiscoveryDataItem(
+                                BBCNewsAPIFDDataItem(
                                     type: "SimpleCollection",
                                     items: nil,
                                     text: nil,

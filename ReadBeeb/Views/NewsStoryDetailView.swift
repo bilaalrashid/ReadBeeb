@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewsStoryDetailView: View {
 
-    let destination: BBCNewsAPIFederatedDiscoveryFluffyDestination
+    let destination: BBCNewsAPIFDFluffyDestination
 
     var body: some View {
         Text("Hello, World!")
@@ -20,11 +20,11 @@ struct NewsStoryDetailView: View {
 struct NewsStoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NewsStoryDetailView(destination:
-                                BBCNewsAPIFederatedDiscoveryFluffyDestination(
+                                BBCNewsAPIFDFluffyDestination(
                                     sourceFormat: .abl,
                                     url: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset",
                                     id: "/news/world-europe-66631182",
-                                    presentation: BBCNewsAPIFederatedDiscoveryFluffyPresentation(
+                                    presentation: BBCNewsAPIFDFluffyPresentation(
                                         type: .singleRenderer,
                                         canShare: true,
                                         focusedItemIndex: nil,

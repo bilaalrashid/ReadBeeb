@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewsStoryRow: View {
 
-    let story: BBCNewsAPIFederatedDiscoveryItemItem
+    let story: BBCNewsAPIFDItemItem
 
     var body: some View {
         HStack {
@@ -97,12 +97,12 @@ struct NewsStoryRow: View {
 struct NewsStoryRow_Previews: PreviewProvider {
     static var previews: some View {
         NewsStoryRow(story:
-                        BBCNewsAPIFederatedDiscoveryItemItem(
+                        BBCNewsAPIFDItemItem(
                             type: nil,
                             style: nil,
                             languageCode: nil,
                             text: nil,
-                            link: BBCNewsAPIFederatedDiscoveryItemLink(trackers: [], destinations: []),
+                            link: BBCNewsAPIFDItemLink(trackers: [], destinations: []),
                             subtext: nil,
                             updated: nil,
                             topic: nil,

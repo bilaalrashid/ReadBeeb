@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HierarchicalCollection: View {
-    let item: BBCNewsAPIFederatedDiscoveryDataItem
+    let item: BBCNewsAPIFDDataItem
 
     var body: some View {
         if let items = self.item.items {
@@ -28,7 +28,7 @@ struct HierarchicalCollection: View {
 struct HierarchicalCollectionItem_Previews: PreviewProvider {
     static var previews: some View {
         HierarchicalCollection(item:
-                                    BBCNewsAPIFederatedDiscoveryDataItem(
+                                    BBCNewsAPIFDDataItem(
                                         type: "HierarchicalCollection",
                                         items: nil,
                                         text: nil,

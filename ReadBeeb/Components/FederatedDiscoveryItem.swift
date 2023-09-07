@@ -1,5 +1,5 @@
 //
-//  FederatedDiscoveryItem.swift
+//  FDItem.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 03/09/2023.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct FederatedDiscoveryItem: View {
-    let item: BBCNewsAPIFederatedDiscoveryDataItem
+struct FDItem: View {
+    let item: BBCNewsAPIFDDataItem
 
     var body: some View {
         switch item.type {
@@ -34,10 +34,10 @@ struct FederatedDiscoveryItem: View {
     }
 }
 
-struct FederatedDiscoveryItem_Previews: PreviewProvider {
+struct FDItem_Previews: PreviewProvider {
     static var previews: some View {
-        FederatedDiscoveryItem(item:
-                                BBCNewsAPIFederatedDiscoveryDataItem(
+        FDItem(item:
+                                BBCNewsAPIFDDataItem(
                                     type: "CollectionHeader",
                                     items: nil,
                                     text: "News from London",

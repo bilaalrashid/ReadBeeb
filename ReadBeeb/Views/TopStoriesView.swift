@@ -10,7 +10,7 @@ import OSLog
 
 struct TopStoriesView: View {
 
-    @State private var data: BBCNewsAPIFederatedDiscoveryResult? = nil
+    @State private var data: BBCNewsAPIFDResult? = nil
 
     @State private var shouldDisplayNetworkError = false
 
@@ -19,10 +19,10 @@ struct TopStoriesView: View {
             if let data = self.data {
                 ForEach(Array(data.data.structuredItems.enumerated()), id: \.offset) { index, item in
                     if let header = item.header {
-                        FederatedDiscoveryItem(item: header)
+                        FDItem(item: header)
                     }
 
-                    FederatedDiscoveryItem(item: item.body)
+                    FDItem(item: item.body)
                 }
             }
         }
