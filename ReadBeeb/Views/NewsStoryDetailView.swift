@@ -16,13 +16,6 @@ struct NewsStoryDetailView: View {
 
     @State private var shouldDisplayNetworkError = false
 
-    private func a(a: BBCNewsAPIFDText?) -> String? {
-        if let text = a, case .bbcNewsAPIFDListItem(let safeText) = text {
-            return safeText.text
-        }
-        return nil
-    }
-
     var body: some View {
         List {
             if let data = self.data {
@@ -33,7 +26,7 @@ struct NewsStoryDetailView: View {
                     case "Headline":
                         EmptyView()
                     case "textContainer":
-                        if let text = item.text, case .bbcNewsAPIFDListItem(let safeText) = text {
+                        if let text = item.text, case .bbcNewsAPIFDTextClass(let safeText) = text {
                             Text(safeText.text)
                         }
                     case "Image":
