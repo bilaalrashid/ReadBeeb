@@ -12,6 +12,9 @@ struct MyNewsView: View {
         List {
 
         }
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 

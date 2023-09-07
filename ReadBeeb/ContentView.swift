@@ -13,9 +13,6 @@ struct ContentView: View {
             NavigationStack {
                 TopStoriesView()
                     .navigationTitle("Top Stories")
-                    .toolbarColorScheme(.dark, for: .navigationBar)
-                    .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -25,9 +22,6 @@ struct ContentView: View {
             NavigationStack {
                 MyNewsView()
                     .navigationTitle("My News")
-                    .toolbarColorScheme(.dark, for: .navigationBar)
-                    .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -37,9 +31,6 @@ struct ContentView: View {
             NavigationStack {
                 PopularView()
                     .navigationTitle("Popular")
-                    .toolbarColorScheme(.dark, for: .navigationBar)
-                    .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -49,9 +40,6 @@ struct ContentView: View {
             NavigationStack {
                 VideoView()
                     .navigationTitle("Video")
-                    .toolbarColorScheme(.dark, for: .navigationBar)
-                    .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -61,9 +49,6 @@ struct ContentView: View {
             NavigationStack {
                 SearchView()
                     .navigationTitle("Search")
-                    .toolbarColorScheme(.dark, for: .navigationBar)
-                    .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
             }
             .navigationViewStyle(.stack)
             .tabItem {

@@ -27,6 +27,9 @@ struct TopStoriesView: View {
             }
         }
         .listStyle(.plain)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .alert(
             "Unable To Load Data",
             isPresented: self.$shouldDisplayNetworkError,
