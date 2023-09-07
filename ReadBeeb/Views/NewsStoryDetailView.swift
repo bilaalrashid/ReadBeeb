@@ -54,6 +54,10 @@ struct NewsStoryDetailView: View {
             }
         }
         .listStyle(.plain)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
         .alert(
             "Unable To Load Data",
