@@ -11,8 +11,8 @@ struct CollectionHeader: View {
     let item: BBCNewsAPIFDDataItem
 
     var body: some View {
-        if let text = self.item.text {
-            Text(text)
+        if let text = self.item.text, case .string(let safeText) = text {
+            Text(safeText)
                 .font(.title3.bold())
         }
     }
@@ -24,7 +24,7 @@ struct CollectionHeaderItem_Previews: PreviewProvider {
                                 BBCNewsAPIFDDataItem(
                                     type: "CollectionHeader",
                                     items: nil,
-                                    text: "News from London",
+                                    text: .string("News from London"),
                                     link: nil,
                                     period: nil,
                                     location: nil,
@@ -36,7 +36,20 @@ struct CollectionHeaderItem_Previews: PreviewProvider {
                                     title: nil,
                                     subtitle: nil,
                                     buttons: nil,
-                                    lastUpdated: nil
+                                    lastUpdated: nil,
+                                    source: nil,
+                                    image: nil,
+                                    metadata: nil,
+                                    byline: nil,
+                                    topic: nil,
+                                    languageCode: nil,
+                                    readTimeMinutes: nil,
+                                    containerType: nil,
+                                    ordering: nil,
+                                    listItems: nil,
+                                    style: nil,
+                                    subtext: nil,
+                                    updated: nil
                                 )
         )
     }

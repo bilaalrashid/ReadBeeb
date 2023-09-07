@@ -43,7 +43,20 @@ struct HierarchicalCollectionItem_Previews: PreviewProvider {
                                         title: nil,
                                         subtitle: nil,
                                         buttons: nil,
-                                        lastUpdated: nil
+                                        lastUpdated: nil,
+                                        source: nil,
+                                        image: nil,
+                                        metadata: nil,
+                                        byline: nil,
+                                        topic: nil,
+                                        languageCode: nil,
+                                        readTimeMinutes: nil,
+                                        containerType: nil,
+                                        ordering: nil,
+                                        listItems: nil,
+                                        style: nil,
+                                        subtext: nil,
+                                        updated: nil
                                     )
         )
     }
