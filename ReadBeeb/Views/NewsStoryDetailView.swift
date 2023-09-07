@@ -16,25 +16,60 @@ struct NewsStoryDetailView: View {
 
     @State private var shouldDisplayNetworkError = false
 
+    private func a(a: BBCNewsAPIFDText?) -> String? {
+        if let text = a, case .bbcNewsAPIFDListItem(let safeText) = text {
+            return safeText.text
+        }
+        return nil
+    }
+
     var body: some View {
-        Text("Hello, World!")
-            .listStyle(.plain)
-            .alert(
-                "Unable To Load Data",
-                isPresented: self.$shouldDisplayNetworkError,
-                actions: { Button("OK", role: .cancel) { } },
-                message: { Text("Please try again later and contact support if the problem persists") }
-            )
-            .refreshable {
-                Task {
-                    await self.fetchData()
+        List {
+            if let data = self.data {
+                ForEach(Array(data.data.items.enumerated()), id: \.offset) { index, item in
+                    switch item.type {
+                    case "Media":
+                        EmptyView()
+                    case "Headline":
+                        EmptyView()
+                    case "textContainer":
+                        if let text = item.text, case .bbcNewsAPIFDListItem(let safeText) = text {
+                            Text(safeText.text)
+                        }
+                    case "Image":
+                        EmptyView()
+                    case "ContentList":
+                        EmptyView()
+                    case "SectionHeader":
+                        EmptyView()
+                    case "StoryPromo":
+                        EmptyView()
+                    case "Copyright":
+                        EmptyView()
+                    default:
+                        EmptyView()
+                    }
                 }
+                .listRowSeparator(.hidden)
             }
-            .onAppear {
-                Task {
-                    await self.fetchData()
-                }
+        }
+        .listStyle(.plain)
+        .alert(
+            "Unable To Load Data",
+            isPresented: self.$shouldDisplayNetworkError,
+            actions: { Button("OK", role: .cancel) { } },
+            message: { Text("Please try again later and contact support if the problem persists") }
+        )
+        .refreshable {
+            Task {
+                await self.fetchData()
             }
+        }
+        .onAppear {
+            Task {
+                await self.fetchData()
+            }
+        }
     }
 
     private func fetchData() async {
