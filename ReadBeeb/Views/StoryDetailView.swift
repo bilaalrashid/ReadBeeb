@@ -17,34 +17,42 @@ struct StoryDetailView: View {
     @State private var shouldDisplayNetworkError = false
 
     var body: some View {
-        List {
-            if let data = self.data {
-                ForEach(Array(data.data.items.enumerated()), id: \.offset) { index, item in
-                    switch item {
-                    case .media(let item):
-                        EmptyView()
-                    case .image(let item):
-                        ImageView(image: item)
-                    case .headline(let item):
-                        EmptyView()
-                    case .textContainer(let item):
-                        TextContainer(container: item)
-                    case .sectionHeader(let item):
-                        SectionHeader(header: item)
-                    case .carousel(let item):
-                        EmptyView()
-                    case .contentList(let item):
-                        EmptyView()
-                    case .storyPromo(let item):
-                        EmptyView()
-                    default:
-                        EmptyView()
+        VStack {
+            if BBCNewsAPINetworkController.isAPIUrl(url: self.destination.url) {
+                List {
+                    if let data = self.data {
+                        ForEach(Array(data.data.items.enumerated()), id: \.offset) { index, item in
+                            switch item {
+                            case .media(let item):
+                                EmptyView()
+                            case .image(let item):
+                                ImageView(image: item)
+                            case .headline(let item):
+                                EmptyView()
+                            case .textContainer(let item):
+                                TextContainer(container: item)
+                            case .sectionHeader(let item):
+                                SectionHeader(header: item)
+                            case .carousel(let item):
+                                EmptyView()
+                            case .contentList(let item):
+                                EmptyView()
+                            case .storyPromo(let item):
+                                EmptyView()
+                            default:
+                                EmptyView()
+                            }
+                        }
+                        .listRowSeparator(.hidden)
                     }
                 }
-                .listRowSeparator(.hidden)
+                .listStyle(.plain)
+            } else {
+                if let url = URL(string: self.destination.url) {
+                    StoryWebView(url: url)
+                }
             }
         }
-        .listStyle(.plain)
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -91,8 +99,10 @@ struct StoryDetailView: View {
 
     private func fetchData() async {
         do {
-            let result = try await BBCNewsAPINetworkController.fetchFDUrl(url: self.destination.url)
-            self.data = result
+            if BBCNewsAPINetworkController.isAPIUrl(url: self.destination.url) {
+                let result = try await BBCNewsAPINetworkController.fetchFDUrl(url: self.destination.url)
+                self.data = result
+            }
         } catch let error {
             self.shouldDisplayNetworkError = true
             Logger.network.error("Unable to fetch news article \(self.destination.url) - \(error.localizedDescription)")
