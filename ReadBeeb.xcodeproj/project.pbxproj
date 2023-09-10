@@ -49,6 +49,7 @@
 		3A9124F52AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */; };
 		3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */; };
 		3A9124F92AAE20CD00EC0DCF /* TextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */; };
+		3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+FormattedTimestamp.swift"; sourceTree = "<group>"; };
 		3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDImage+ImageUrl.swift"; sourceTree = "<group>"; };
 		3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainer.swift; sourceTree = "<group>"; };
+		3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				3A44C60B2A9B73D5001AB40F /* SimpleCollection.swift */,
 				3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */,
 				3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */,
+				3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				3A44C5D92A9A9F86001AB40F /* ContentView.swift in Sources */,
 				3A9124D52AAE0F9500EC0DCF /* FDHierarchicalCollection.swift in Sources */,
 				3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */,
+				3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */,
 				3A9124C92AA6872F00EC0DCF /* StoryDetailView.swift in Sources */,
 				3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */,
 				3A9124D72AAE0FAE00EC0DCF /* FDCollectionHeader.swift in Sources */,

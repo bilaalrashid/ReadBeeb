@@ -30,7 +30,7 @@ struct StoryDetailView: View {
                     case .textContainer(let item):
                         TextContainer(container: item)
                     case .sectionHeader(let item):
-                        EmptyView()
+                        SectionHeader(header: item)
                     case .carousel(let item):
                         EmptyView()
                     case .contentList(let item):
