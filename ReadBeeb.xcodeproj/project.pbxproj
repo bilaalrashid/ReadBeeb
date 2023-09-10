@@ -48,6 +48,7 @@
 		3A9124F32AAE112000EC0DCF /* FDChipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F22AAE112000EC0DCF /* FDChipList.swift */; };
 		3A9124F52AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */; };
 		3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */; };
+		3A9124F92AAE20CD00EC0DCF /* TextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		3A9124F22AAE112000EC0DCF /* FDChipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDChipList.swift; sourceTree = "<group>"; };
 		3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+FormattedTimestamp.swift"; sourceTree = "<group>"; };
 		3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDImage+ImageUrl.swift"; sourceTree = "<group>"; };
+		3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				3A44C6092A9B73BA001AB40F /* CollectionHeader.swift */,
 				3A44C60B2A9B73D5001AB40F /* SimpleCollection.swift */,
 				3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */,
+				3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				3A9124F12AAE110900EC0DCF /* FDWeatherPromoSummary.swift in Sources */,
 				3A44C5FA2A9B5AA7001AB40F /* TopStoriesView.swift in Sources */,
 				3A9124F32AAE112000EC0DCF /* FDChipList.swift in Sources */,
+				3A9124F92AAE20CD00EC0DCF /* TextContainer.swift in Sources */,
 				3A44C5FE2A9B5BE2001AB40F /* PopularView.swift in Sources */,
 				3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */,
 				3A9124D92AAE0FC500EC0DCF /* FDSimpleCollection.swift in Sources */,

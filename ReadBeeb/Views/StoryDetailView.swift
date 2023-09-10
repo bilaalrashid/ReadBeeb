@@ -28,7 +28,7 @@ struct StoryDetailView: View {
                     case .headline(let item):
                         EmptyView()
                     case .textContainer(let item):
-                        Text(item.text.text)
+                        TextContainer(container: item)
                     case .sectionHeader(let item):
                         EmptyView()
                     case .carousel(let item):
