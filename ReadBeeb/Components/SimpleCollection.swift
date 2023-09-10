@@ -12,7 +12,13 @@ struct SimpleCollection: View {
 
     var body: some View {
         ForEach(Array(self.item.items.enumerated()), id: \.offset) { index, item in
-            StoryPromoRow(story: item)
+            if let destination = item.link.destinations.first {
+                // Workaround to hide detail disclosure
+                ZStack {
+                    NavigationLink(destination: StoryDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
+                    StoryPromoRow(story: item)
+                }
+            }
         }
     }
 }

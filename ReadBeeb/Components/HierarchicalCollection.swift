@@ -19,7 +19,7 @@ struct HierarchicalCollection: View {
                     StoryPromoRow(story: item)
                 }
             }
-            }
+        }
     }
 }
 
