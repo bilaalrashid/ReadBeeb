@@ -28,6 +28,25 @@
 		3A9124C92AA6872F00EC0DCF /* NewsStoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124C82AA6872F00EC0DCF /* NewsStoryDetailView.swift */; };
 		3A9124CB2AAD2CCD00EC0DCF /* FDResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CA2AAD2CCD00EC0DCF /* FDResult.swift */; };
 		3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */; };
+		3A9124CF2AAE0F2400EC0DCF /* FDData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CE2AAE0F2400EC0DCF /* FDData.swift */; };
+		3A9124D12AAE0F3E00EC0DCF /* FDItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124D02AAE0F3E00EC0DCF /* FDItem.swift */; };
+		3A9124D32AAE0F7D00EC0DCF /* FDBillboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124D22AAE0F7D00EC0DCF /* FDBillboard.swift */; };
+		3A9124D52AAE0F9500EC0DCF /* FDHierarchicalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124D42AAE0F9500EC0DCF /* FDHierarchicalCollection.swift */; };
+		3A9124D72AAE0FAE00EC0DCF /* FDCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124D62AAE0FAE00EC0DCF /* FDCollectionHeader.swift */; };
+		3A9124D92AAE0FC500EC0DCF /* FDSimpleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124D82AAE0FC500EC0DCF /* FDSimpleCollection.swift */; };
+		3A9124DB2AAE0FF500EC0DCF /* FDCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124DA2AAE0FF500EC0DCF /* FDCarousel.swift */; };
+		3A9124DD2AAE100700EC0DCF /* FDStoryPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124DC2AAE100700EC0DCF /* FDStoryPromo.swift */; };
+		3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124DE2AAE102000EC0DCF /* FDLink.swift */; };
+		3A9124E12AAE103000EC0DCF /* FDPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124E02AAE103000EC0DCF /* FDPresentation.swift */; };
+		3A9124E32AAE104100EC0DCF /* FDTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124E22AAE104100EC0DCF /* FDTopic.swift */; };
+		3A9124E52AAE106000EC0DCF /* FDImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124E42AAE106000EC0DCF /* FDImage.swift */; };
+		3A9124E72AAE106F00EC0DCF /* FDMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124E62AAE106F00EC0DCF /* FDMedia.swift */; };
+		3A9124E92AAE10B200EC0DCF /* FDHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124E82AAE10B200EC0DCF /* FDHeadline.swift */; };
+		3A9124EB2AAE10CD00EC0DCF /* FDTextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124EA2AAE10CD00EC0DCF /* FDTextContainer.swift */; };
+		3A9124ED2AAE10E500EC0DCF /* FDContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124EC2AAE10E500EC0DCF /* FDContentList.swift */; };
+		3A9124EF2AAE10F300EC0DCF /* FDSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124EE2AAE10F300EC0DCF /* FDSectionHeader.swift */; };
+		3A9124F12AAE110900EC0DCF /* FDWeatherPromoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F02AAE110900EC0DCF /* FDWeatherPromoSummary.swift */; };
+		3A9124F32AAE112000EC0DCF /* FDChipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F22AAE112000EC0DCF /* FDChipList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +74,25 @@
 		3A9124C82AA6872F00EC0DCF /* NewsStoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStoryDetailView.swift; sourceTree = "<group>"; };
 		3A9124CA2AAD2CCD00EC0DCF /* FDResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDResult.swift; sourceTree = "<group>"; };
 		3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDData+StructuredItems.swift"; sourceTree = "<group>"; };
+		3A9124CE2AAE0F2400EC0DCF /* FDData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDData.swift; sourceTree = "<group>"; };
+		3A9124D02AAE0F3E00EC0DCF /* FDItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDItem.swift; sourceTree = "<group>"; };
+		3A9124D22AAE0F7D00EC0DCF /* FDBillboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDBillboard.swift; sourceTree = "<group>"; };
+		3A9124D42AAE0F9500EC0DCF /* FDHierarchicalCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDHierarchicalCollection.swift; sourceTree = "<group>"; };
+		3A9124D62AAE0FAE00EC0DCF /* FDCollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDCollectionHeader.swift; sourceTree = "<group>"; };
+		3A9124D82AAE0FC500EC0DCF /* FDSimpleCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSimpleCollection.swift; sourceTree = "<group>"; };
+		3A9124DA2AAE0FF500EC0DCF /* FDCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDCarousel.swift; sourceTree = "<group>"; };
+		3A9124DC2AAE100700EC0DCF /* FDStoryPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDStoryPromo.swift; sourceTree = "<group>"; };
+		3A9124DE2AAE102000EC0DCF /* FDLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDLink.swift; sourceTree = "<group>"; };
+		3A9124E02AAE103000EC0DCF /* FDPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDPresentation.swift; sourceTree = "<group>"; };
+		3A9124E22AAE104100EC0DCF /* FDTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDTopic.swift; sourceTree = "<group>"; };
+		3A9124E42AAE106000EC0DCF /* FDImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDImage.swift; sourceTree = "<group>"; };
+		3A9124E62AAE106F00EC0DCF /* FDMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDMedia.swift; sourceTree = "<group>"; };
+		3A9124E82AAE10B200EC0DCF /* FDHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDHeadline.swift; sourceTree = "<group>"; };
+		3A9124EA2AAE10CD00EC0DCF /* FDTextContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDTextContainer.swift; sourceTree = "<group>"; };
+		3A9124EC2AAE10E500EC0DCF /* FDContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDContentList.swift; sourceTree = "<group>"; };
+		3A9124EE2AAE10F300EC0DCF /* FDSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSectionHeader.swift; sourceTree = "<group>"; };
+		3A9124F02AAE110900EC0DCF /* FDWeatherPromoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDWeatherPromoSummary.swift; sourceTree = "<group>"; };
+		3A9124F22AAE112000EC0DCF /* FDChipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDChipList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +221,25 @@
 			isa = PBXGroup;
 			children = (
 				3A9124CA2AAD2CCD00EC0DCF /* FDResult.swift */,
+				3A9124CE2AAE0F2400EC0DCF /* FDData.swift */,
+				3A9124D02AAE0F3E00EC0DCF /* FDItem.swift */,
+				3A9124D22AAE0F7D00EC0DCF /* FDBillboard.swift */,
+				3A9124D42AAE0F9500EC0DCF /* FDHierarchicalCollection.swift */,
+				3A9124D62AAE0FAE00EC0DCF /* FDCollectionHeader.swift */,
+				3A9124D82AAE0FC500EC0DCF /* FDSimpleCollection.swift */,
+				3A9124DA2AAE0FF500EC0DCF /* FDCarousel.swift */,
+				3A9124DC2AAE100700EC0DCF /* FDStoryPromo.swift */,
+				3A9124F02AAE110900EC0DCF /* FDWeatherPromoSummary.swift */,
+				3A9124F22AAE112000EC0DCF /* FDChipList.swift */,
+				3A9124DE2AAE102000EC0DCF /* FDLink.swift */,
+				3A9124E02AAE103000EC0DCF /* FDPresentation.swift */,
+				3A9124E22AAE104100EC0DCF /* FDTopic.swift */,
+				3A9124E42AAE106000EC0DCF /* FDImage.swift */,
+				3A9124E62AAE106F00EC0DCF /* FDMedia.swift */,
+				3A9124E82AAE10B200EC0DCF /* FDHeadline.swift */,
+				3A9124EA2AAE10CD00EC0DCF /* FDTextContainer.swift */,
+				3A9124EC2AAE10E500EC0DCF /* FDContentList.swift */,
+				3A9124EE2AAE10F300EC0DCF /* FDSectionHeader.swift */,
 			);
 			path = BBCNewsAPI;
 			sourceTree = "<group>";
@@ -264,23 +321,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A44C5F22A9B536A001AB40F /* BBCNewsAPINetworkController.swift in Sources */,
+				3A9124EB2AAE10CD00EC0DCF /* FDTextContainer.swift in Sources */,
 				3A44C6062A9B6449001AB40F /* Logger.swift in Sources */,
 				3A44C6102AA4F740001AB40F /* FDItemView.swift in Sources */,
+				3A9124E52AAE106000EC0DCF /* FDImage.swift in Sources */,
+				3A9124D32AAE0F7D00EC0DCF /* FDBillboard.swift in Sources */,
 				3A44C6022A9B5C00001AB40F /* SearchView.swift in Sources */,
+				3A9124E12AAE103000EC0DCF /* FDPresentation.swift in Sources */,
+				3A9124D12AAE0F3E00EC0DCF /* FDItem.swift in Sources */,
 				3A44C6122AA53D8A001AB40F /* StoryPromoRow.swift in Sources */,
 				3A44C5D92A9A9F86001AB40F /* ContentView.swift in Sources */,
+				3A9124D52AAE0F9500EC0DCF /* FDHierarchicalCollection.swift in Sources */,
 				3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */,
 				3A9124C92AA6872F00EC0DCF /* NewsStoryDetailView.swift in Sources */,
 				3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */,
+				3A9124D72AAE0FAE00EC0DCF /* FDCollectionHeader.swift in Sources */,
+				3A9124E92AAE10B200EC0DCF /* FDHeadline.swift in Sources */,
+				3A9124E72AAE106F00EC0DCF /* FDMedia.swift in Sources */,
 				3A44C6042A9B63D8001AB40F /* Constants.swift in Sources */,
+				3A9124CF2AAE0F2400EC0DCF /* FDData.swift in Sources */,
 				3A44C6002A9B5BF2001AB40F /* VideoView.swift in Sources */,
+				3A9124E32AAE104100EC0DCF /* FDTopic.swift in Sources */,
 				3A44C60A2A9B73BA001AB40F /* CollectionHeader.swift in Sources */,
+				3A9124F12AAE110900EC0DCF /* FDWeatherPromoSummary.swift in Sources */,
 				3A44C5FA2A9B5AA7001AB40F /* TopStoriesView.swift in Sources */,
+				3A9124F32AAE112000EC0DCF /* FDChipList.swift in Sources */,
 				3A44C5FE2A9B5BE2001AB40F /* PopularView.swift in Sources */,
+				3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */,
+				3A9124D92AAE0FC500EC0DCF /* FDSimpleCollection.swift in Sources */,
+				3A9124ED2AAE10E500EC0DCF /* FDContentList.swift in Sources */,
 				3A44C6082A9B739E001AB40F /* HierarchicalCollection.swift in Sources */,
+				3A9124DD2AAE100700EC0DCF /* FDStoryPromo.swift in Sources */,
 				3A44C60C2A9B73D5001AB40F /* SimpleCollection.swift in Sources */,
 				3A9124CB2AAD2CCD00EC0DCF /* FDResult.swift in Sources */,
 				3A44C5FC2A9B5BD0001AB40F /* MyNewsView.swift in Sources */,
+				3A9124DB2AAE0FF500EC0DCF /* FDCarousel.swift in Sources */,
+				3A9124EF2AAE10F300EC0DCF /* FDSectionHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
