@@ -19,10 +19,10 @@ struct TopStoriesView: View {
             if let data = self.data {
                 ForEach(Array(data.data.structuredItems.enumerated()), id: \.offset) { index, item in
                     if let header = item.header {
-                        FDItemView(item: header)
+                        self.getFDItemView(item: header)
                     }
 
-                    FDItemView(item: item.body)
+                    self.getFDItemView(item: item.body)
                 }
             }
         }
@@ -45,6 +45,19 @@ struct TopStoriesView: View {
             Task {
                 await self.fetchData()
             }
+        }
+    }
+
+    @ViewBuilder private func getFDItemView(item: FDItem) -> some View {
+        switch item {
+        case .hierarchicalCollection(let item):
+            HierarchicalCollection(item: item)
+        case .collectionHeader(let item):
+            CollectionHeader(item: item)
+        case .simpleCollection(let item):
+            SimpleCollection(item: item)
+        default:
+            EmptyView()
         }
     }
 
