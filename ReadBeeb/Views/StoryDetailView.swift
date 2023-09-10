@@ -1,5 +1,5 @@
 //
-//  NewsStoryDetailView.swift
+//  StoryDetailView.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 04/09/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import OSLog
 
-struct NewsStoryDetailView: View {
+struct StoryDetailView: View {
 
     let destination: FDLinkDestination
 
@@ -82,7 +82,7 @@ struct NewsStoryDetailView: View {
 
 struct NewsStoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NewsStoryDetailView(destination:
+        StoryDetailView(destination:
                                 FDLinkDestination(
                                     sourceFormat: "ABL",
                                     url: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset",
