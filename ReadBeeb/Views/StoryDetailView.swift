@@ -49,7 +49,28 @@ struct StoryDetailView: View {
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar(.hidden, for: .tabBar)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if let canShare = self.destination.presentation.canShare, canShare {
+                    switch self.destination.sourceFormat {
+                    case "ABL":
+                        if let url = URL(string: "https://bbc.co.uk/" + self.destination.id) {
+                            ShareLink(item: url) {
+                                Label("Share", systemImage: "square.and.arrow.up")
+                            }
+                        }
+                    case "HTML":
+                        if let url = URL(string: self.destination.url) {
+                            ShareLink(item: url) {
+                                Label("Share", systemImage: "square.and.arrow.up")
+                            }
+                        }
+                    default:
+                        EmptyView()
+                    }
+                }
+            }
+        }
         .alert(
             "Unable To Load Data",
             isPresented: self.$shouldDisplayNetworkError,
