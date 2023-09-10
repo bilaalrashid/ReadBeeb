@@ -50,7 +50,7 @@ struct TopStoriesView: View {
 
     private func fetchData() async {
         do {
-            let result = try await BBCNewsAPINetworkController.fetchHomeTabData()
+            let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage()
             self.data = result
         } catch let error {
             self.shouldDisplayNetworkError = true
