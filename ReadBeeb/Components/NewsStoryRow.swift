@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewsStoryRow: View {
 
-    let story: BBCNewsAPIFDItemItem
+    let story: FDCollectionItem
 
     var body: some View {
         HStack {
@@ -47,7 +47,7 @@ struct NewsStoryRow: View {
                         ForEach(Array(badges.enumerated()), id: \.offset) { index, badge in
                             Text(badge.text ?? "")
                                 .font(.caption.weight(.heavy))
-                                .foregroundColor(badge.brand == .sport ? .primary : .accentColor)
+                                .foregroundColor(badge.brand == "SPORT" ? .primary : .accentColor)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
                         }
@@ -67,10 +67,10 @@ struct NewsStoryRow: View {
 
     private func getImageUrl() -> String? {
         if let image = self.story.image {
-            if image.source.sizingMethod.type == .specificWidths {
+            if image.source.sizingMethod.type == "SPECIFIC_WIDTHS" {
                 // This attempts to load the largest image possible, this may not be favourable in production
                 if let maxSize = image.source.sizingMethod.widths.last {
-                    let formattedUrl = image.source.url.replacingOccurrences(of: image.source.sizingMethod.widthToken.rawValue, with: String(maxSize))
+                    let formattedUrl = image.source.url.replacingOccurrences(of: image.source.sizingMethod.widthToken, with: String(maxSize))
                     return formattedUrl
                 }
             } else {
@@ -97,20 +97,7 @@ struct NewsStoryRow: View {
 struct NewsStoryRow_Previews: PreviewProvider {
     static var previews: some View {
         NewsStoryRow(story:
-                        BBCNewsAPIFDItemItem(
-                            type: nil,
-                            style: nil,
-                            languageCode: nil,
-                            text: nil,
-                            link: BBCNewsAPIFDItemLink(trackers: [], destinations: []),
-                            subtext: nil,
-                            updated: nil,
-                            topic: nil,
-                            image: nil,
-                            badges: nil,
-                            uasToken: nil,
-                            title: nil
-                        )
+                        FDCollectionItem(type: "StoryPromo", style: "SMALL_HORIZONTAL_PROMO_CARD", languageCode: "en-gb", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil)
         )
     }
 }

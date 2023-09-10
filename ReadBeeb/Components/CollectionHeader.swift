@@ -8,49 +8,16 @@
 import SwiftUI
 
 struct CollectionHeader: View {
-    let item: BBCNewsAPIFDDataItem
+    let item: FDCollectionHeader
 
     var body: some View {
-        if let text = self.item.text, case .string(let safeText) = text {
-            Text(safeText)
-                .font(.title3.bold())
-        }
+        Text(self.item.text)
+            .font(.title3.bold())
     }
 }
 
 struct CollectionHeaderItem_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionHeader(item:
-                                BBCNewsAPIFDDataItem(
-                                    type: "CollectionHeader",
-                                    items: nil,
-                                    text: .string("News from London"),
-                                    link: nil,
-                                    period: nil,
-                                    location: nil,
-                                    forecast: nil,
-                                    aspectRatio: nil,
-                                    presentation: nil,
-                                    hasPageIndicator: nil,
-                                    trackedEvents: nil,
-                                    title: nil,
-                                    subtitle: nil,
-                                    buttons: nil,
-                                    lastUpdated: nil,
-                                    source: nil,
-                                    image: nil,
-                                    metadata: nil,
-                                    byline: nil,
-                                    topic: nil,
-                                    languageCode: nil,
-                                    readTimeMinutes: nil,
-                                    containerType: nil,
-                                    ordering: nil,
-                                    listItems: nil,
-                                    style: nil,
-                                    subtext: nil,
-                                    updated: nil
-                                )
-        )
+        CollectionHeader(item: FDCollectionHeader(type: "CollectionHeader", text: "News from London", link: FDLink(destinations: [])))
     }
 }

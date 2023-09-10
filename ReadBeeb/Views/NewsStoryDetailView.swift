@@ -10,41 +10,41 @@ import OSLog
 
 struct NewsStoryDetailView: View {
 
-    let destination: BBCNewsAPIFDFluffyDestination
+    let destination: FDLinkDestination
 
-    @State private var data: BBCNewsAPIFDResult? = nil
+    @State private var data: FDResult? = nil
 
     @State private var shouldDisplayNetworkError = false
 
     var body: some View {
         List {
-            if let data = self.data {
-                ForEach(Array(data.data.items.enumerated()), id: \.offset) { index, item in
-                    switch item.type {
-                    case "Media":
-                        EmptyView()
-                    case "Headline":
-                        EmptyView()
-                    case "textContainer":
-                        if let text = item.text, case .bbcNewsAPIFDTextClass(let safeText) = text {
-                            Text(safeText.text)
-                        }
-                    case "Image":
-                        EmptyView()
-                    case "ContentList":
-                        EmptyView()
-                    case "SectionHeader":
-                        EmptyView()
-                    case "StoryPromo":
-                        EmptyView()
-                    case "Copyright":
-                        EmptyView()
-                    default:
-                        EmptyView()
-                    }
-                }
-                .listRowSeparator(.hidden)
-            }
+//            if let data = self.data {
+//                ForEach(Array(data.data.items.enumerated()), id: \.offset) { index, item in
+//                    switch item.type {
+//                    case "Media":
+//                        EmptyView()
+//                    case "Headline":
+//                        EmptyView()
+//                    case "textContainer":
+//                        if let text = item.text, case .bbcNewsAPIFDTextClass(let safeText) = text {
+//                            Text(safeText.text)
+//                        }
+//                    case "Image":
+//                        EmptyView()
+//                    case "ContentList":
+//                        EmptyView()
+//                    case "SectionHeader":
+//                        EmptyView()
+//                    case "StoryPromo":
+//                        EmptyView()
+//                    case "Copyright":
+//                        EmptyView()
+//                    default:
+//                        EmptyView()
+//                    }
+//                }
+//                .listRowSeparator(.hidden)
+//            }
         }
         .listStyle(.plain)
         .toolbarColorScheme(.dark, for: .navigationBar)
@@ -85,17 +85,11 @@ struct NewsStoryDetailView: View {
 struct NewsStoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NewsStoryDetailView(destination:
-                                BBCNewsAPIFDFluffyDestination(
-                                    sourceFormat: .abl,
+                                FDLinkDestination(
+                                    sourceFormat: "ABL",
                                     url: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset",
                                     id: "/news/world-europe-66631182",
-                                    presentation: BBCNewsAPIFDFluffyPresentation(
-                                        type: .singleRenderer,
-                                        canShare: true,
-                                        focusedItemIndex: nil,
-                                        contentSource: nil,
-                                        title: nil
-                                    )
+                                    presentation: FDLinkDestinationPresentation(type: "", title: nil, canShare: true) 
                                 )
         )
     }
