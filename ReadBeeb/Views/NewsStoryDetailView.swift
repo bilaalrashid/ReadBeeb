@@ -18,33 +18,31 @@ struct NewsStoryDetailView: View {
 
     var body: some View {
         List {
-//            if let data = self.data {
-//                ForEach(Array(data.data.items.enumerated()), id: \.offset) { index, item in
-//                    switch item.type {
-//                    case "Media":
-//                        EmptyView()
-//                    case "Headline":
-//                        EmptyView()
-//                    case "textContainer":
-//                        if let text = item.text, case .bbcNewsAPIFDTextClass(let safeText) = text {
-//                            Text(safeText.text)
-//                        }
-//                    case "Image":
-//                        EmptyView()
-//                    case "ContentList":
-//                        EmptyView()
-//                    case "SectionHeader":
-//                        EmptyView()
-//                    case "StoryPromo":
-//                        EmptyView()
-//                    case "Copyright":
-//                        EmptyView()
-//                    default:
-//                        EmptyView()
-//                    }
-//                }
-//                .listRowSeparator(.hidden)
-//            }
+            if let data = self.data {
+                ForEach(Array(data.data.items.enumerated()), id: \.offset) { index, item in
+                    switch item {
+                    case .media(let item):
+                        EmptyView()
+                    case .image(let item):
+                        EmptyView()
+                    case .headline(let item):
+                        EmptyView()
+                    case .textContainer(let item):
+                        Text(item.text.text)
+                    case .sectionHeader(let item):
+                        EmptyView()
+                    case .carousel(let item):
+                        EmptyView()
+                    case .contentList(let item):
+                        EmptyView()
+                    case .storyPromo(let item):
+                        EmptyView()
+                    default:
+                        EmptyView()
+                    }
+                }
+                .listRowSeparator(.hidden)
+            }
         }
         .listStyle(.plain)
         .toolbarColorScheme(.dark, for: .navigationBar)
@@ -89,7 +87,7 @@ struct NewsStoryDetailView_Previews: PreviewProvider {
                                     sourceFormat: "ABL",
                                     url: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset",
                                     id: "/news/world-europe-66631182",
-                                    presentation: FDLinkDestinationPresentation(type: "", title: nil, canShare: true) 
+                                    presentation: FDPresentation(type: "", title: nil, canShare: true)
                                 )
         )
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewsStoryRow: View {
 
-    let story: FDCollectionItem
+    let story: FDStoryPromo
 
     var body: some View {
         HStack {
@@ -97,7 +97,7 @@ struct NewsStoryRow: View {
 struct NewsStoryRow_Previews: PreviewProvider {
     static var previews: some View {
         NewsStoryRow(story:
-                        FDCollectionItem(type: "StoryPromo", style: "SMALL_HORIZONTAL_PROMO_CARD", languageCode: "en-gb", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil)
+                        FDStoryPromo(type: "StoryPromo", style: "SMALL_HORIZONTAL_PROMO_CARD", languageCode: "en-gb", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil)
         )
     }
 }
