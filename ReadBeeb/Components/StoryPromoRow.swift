@@ -13,7 +13,7 @@ struct StoryPromoRow: View {
 
     var body: some View {
         HStack {
-            if let url = getImageUrl() {
+            if let image = self.story.image, let url = image.largestImageUrl(upTo: 400) {
                 AsyncImage(url: URL(string: url)) { image in
                     image
                         .resizable()
@@ -63,22 +63,6 @@ struct StoryPromoRow: View {
             }
             .padding(.all, 4)
         }
-    }
-
-    private func getImageUrl() -> String? {
-        if let image = self.story.image {
-            if image.source.sizingMethod.type == "SPECIFIC_WIDTHS" {
-                // This attempts to load the largest image possible, this may not be favourable in production
-                if let maxSize = image.source.sizingMethod.widths.last {
-                    let formattedUrl = image.source.url.replacingOccurrences(of: image.source.sizingMethod.widthToken, with: String(maxSize))
-                    return formattedUrl
-                }
-            } else {
-                return image.source.url
-            }
-        }
-
-        return nil
     }
 
 }

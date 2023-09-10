@@ -48,6 +48,7 @@
 		3A9124F12AAE110900EC0DCF /* FDWeatherPromoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F02AAE110900EC0DCF /* FDWeatherPromoSummary.swift */; };
 		3A9124F32AAE112000EC0DCF /* FDChipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F22AAE112000EC0DCF /* FDChipList.swift */; };
 		3A9124F52AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */; };
+		3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		3A9124F02AAE110900EC0DCF /* FDWeatherPromoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDWeatherPromoSummary.swift; sourceTree = "<group>"; };
 		3A9124F22AAE112000EC0DCF /* FDChipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDChipList.swift; sourceTree = "<group>"; };
 		3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+FormattedTimestamp.swift"; sourceTree = "<group>"; };
+		3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDImage+ImageUrl.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				3A44C6052A9B6449001AB40F /* Logger.swift */,
 				3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */,
 				3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */,
+				3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				3A44C6042A9B63D8001AB40F /* Constants.swift in Sources */,
 				3A9124CF2AAE0F2400EC0DCF /* FDData.swift in Sources */,
 				3A44C6002A9B5BF2001AB40F /* VideoView.swift in Sources */,
+				3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */,
 				3A9124E32AAE104100EC0DCF /* FDTopic.swift in Sources */,
 				3A44C60A2A9B73BA001AB40F /* CollectionHeader.swift in Sources */,
 				3A9124F12AAE110900EC0DCF /* FDWeatherPromoSummary.swift in Sources */,
