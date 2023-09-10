@@ -16,7 +16,7 @@ struct HierarchicalCollection: View {
                 // Workaround to hide detail disclosure
                 ZStack {
                     NavigationLink(destination: NewsStoryDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
-                    NewsStoryRow(story: item)
+                    StoryPromoRow(story: item)
                 }
             }
             }

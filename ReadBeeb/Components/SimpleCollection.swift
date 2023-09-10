@@ -12,7 +12,7 @@ struct SimpleCollection: View {
 
     var body: some View {
         ForEach(Array(self.item.items.enumerated()), id: \.offset) { index, item in
-            NewsStoryRow(story: item)
+            StoryPromoRow(story: item)
         }
     }
 }

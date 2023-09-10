@@ -1,5 +1,5 @@
 //
-//  NewsStoryRow.swift
+//  StoryPromoRow.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 03/09/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewsStoryRow: View {
+struct StoryPromoRow: View {
 
     let story: FDStoryPromo
 
@@ -96,7 +96,7 @@ struct NewsStoryRow: View {
 
 struct NewsStoryRow_Previews: PreviewProvider {
     static var previews: some View {
-        NewsStoryRow(story:
+        StoryPromoRow(story:
                         FDStoryPromo(type: "StoryPromo", style: "SMALL_HORIZONTAL_PROMO_CARD", languageCode: "en-gb", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil)
         )
     }
