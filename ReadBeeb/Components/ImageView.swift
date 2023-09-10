@@ -48,6 +48,8 @@ struct ImageView: View {
                         .font(.caption)
                         .padding(.horizontal, 16)
                         .padding(.top, 8)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
                 }
             }
         }
