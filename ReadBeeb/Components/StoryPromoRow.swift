@@ -47,7 +47,7 @@ struct StoryPromoRow: View {
                         ForEach(Array(badges.enumerated()), id: \.offset) { index, badge in
                             Text(badge.text ?? "")
                                 .font(.caption.weight(.heavy))
-                                .foregroundColor(badge.brand == "SPORT" ? .primary : .accentColor)
+                                .foregroundColor(.accentColor)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
                         }
