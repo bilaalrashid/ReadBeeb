@@ -24,7 +24,7 @@ struct StoryDetailView: View {
                     case .media(let item):
                         EmptyView()
                     case .image(let item):
-                        EmptyView()
+                        ImageView(image: item)
                     case .headline(let item):
                         EmptyView()
                     case .textContainer(let item):

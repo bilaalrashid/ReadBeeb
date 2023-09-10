@@ -51,6 +51,7 @@
 		3A9124F92AAE20CD00EC0DCF /* TextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */; };
 		3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */; };
 		3A9124FD2AAE237B00EC0DCF /* View+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */; };
+		3A9124FF2AAE289700EC0DCF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FE2AAE289700EC0DCF /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainer.swift; sourceTree = "<group>"; };
 		3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
+		3A9124FE2AAE289700EC0DCF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */,
 				3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */,
 				3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */,
+				3A9124FE2AAE289700EC0DCF /* ImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				3A44C5D92A9A9F86001AB40F /* ContentView.swift in Sources */,
 				3A9124D52AAE0F9500EC0DCF /* FDHierarchicalCollection.swift in Sources */,
 				3A9124FD2AAE237B00EC0DCF /* View+Modify.swift in Sources */,
+				3A9124FF2AAE289700EC0DCF /* ImageView.swift in Sources */,
 				3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */,
 				3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */,
 				3A9124C92AA6872F00EC0DCF /* StoryDetailView.swift in Sources */,
