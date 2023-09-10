@@ -11,8 +11,8 @@ struct SectionHeader: View {
     let header: FDSectionHeader
 
     var body: some View {
-        Text(header.text)
-            .font(.headline.bold())
+        Text(self.header.text)
+            .font(.title3.bold())
     }
 }
 

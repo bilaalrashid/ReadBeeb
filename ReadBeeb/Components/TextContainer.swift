@@ -12,7 +12,17 @@ struct TextContainer: View {
     let container: FDTextContainer
 
     var body: some View {
-        Text(container.text.text)
+        Text(self.container.text.text)
+            .modify {
+                switch self.container.containerType {
+                case "body":
+                    $0.font(.body)
+                case "crosshead":
+                    $0.font(.title3.bold())
+                default:
+                    $0.font(.body)
+                }
+            }
     }
 
 }

@@ -50,6 +50,7 @@
 		3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */; };
 		3A9124F92AAE20CD00EC0DCF /* TextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */; };
 		3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */; };
+		3A9124FD2AAE237B00EC0DCF /* View+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDImage+ImageUrl.swift"; sourceTree = "<group>"; };
 		3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainer.swift; sourceTree = "<group>"; };
 		3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */,
 				3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */,
 				3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */,
+				3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				3A44C6122AA53D8A001AB40F /* StoryPromoRow.swift in Sources */,
 				3A44C5D92A9A9F86001AB40F /* ContentView.swift in Sources */,
 				3A9124D52AAE0F9500EC0DCF /* FDHierarchicalCollection.swift in Sources */,
+				3A9124FD2AAE237B00EC0DCF /* View+Modify.swift in Sources */,
 				3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */,
 				3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */,
 				3A9124C92AA6872F00EC0DCF /* StoryDetailView.swift in Sources */,
