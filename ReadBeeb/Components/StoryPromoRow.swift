@@ -53,7 +53,7 @@ struct StoryPromoRow: View {
                         }
                     }
                     if let lastUpdated = self.story.updated {
-                        Text(self.formatTimestamp(timestamp: lastUpdated))
+                        Text(lastUpdated.formattedTimestamp)
                             .font(.caption)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
@@ -79,17 +79,6 @@ struct StoryPromoRow: View {
         }
 
         return nil
-    }
-
-    private func formatTimestamp(timestamp: Int) -> String {
-        let date = Date(timeIntervalSince1970: Double(timestamp) / 1000)
-        let lastWeek = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
-
-        if date < lastWeek {
-            return date.formatted(date: .abbreviated, time: .omitted)
-        } else {
-            return date.formatted(.relative(presentation: .numeric, unitsStyle: .narrow))
-        }
     }
 
 }

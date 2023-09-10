@@ -47,6 +47,7 @@
 		3A9124EF2AAE10F300EC0DCF /* FDSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124EE2AAE10F300EC0DCF /* FDSectionHeader.swift */; };
 		3A9124F12AAE110900EC0DCF /* FDWeatherPromoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F02AAE110900EC0DCF /* FDWeatherPromoSummary.swift */; };
 		3A9124F32AAE112000EC0DCF /* FDChipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F22AAE112000EC0DCF /* FDChipList.swift */; };
+		3A9124F52AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,7 @@
 		3A9124EE2AAE10F300EC0DCF /* FDSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSectionHeader.swift; sourceTree = "<group>"; };
 		3A9124F02AAE110900EC0DCF /* FDWeatherPromoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDWeatherPromoSummary.swift; sourceTree = "<group>"; };
 		3A9124F22AAE112000EC0DCF /* FDChipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDChipList.swift; sourceTree = "<group>"; };
+		3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+FormattedTimestamp.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			children = (
 				3A44C6052A9B6449001AB40F /* Logger.swift */,
 				3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */,
+				3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */,
 				3A9124D72AAE0FAE00EC0DCF /* FDCollectionHeader.swift in Sources */,
 				3A9124E92AAE10B200EC0DCF /* FDHeadline.swift in Sources */,
+				3A9124F52AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift in Sources */,
 				3A9124E72AAE106F00EC0DCF /* FDMedia.swift in Sources */,
 				3A44C6042A9B63D8001AB40F /* Constants.swift in Sources */,
 				3A9124CF2AAE0F2400EC0DCF /* FDData.swift in Sources */,
