@@ -30,6 +30,8 @@ struct TextContainer: View {
                     switch self.container.containerType {
                     case "body":
                         $0.font(.body)
+                    case "introduction":
+                        $0.font(.headline)
                     case "crosshead":
                         $0.font(.title3.bold())
                     default:
