@@ -46,7 +46,7 @@ struct StoryDetailView: View {
                             case .carousel(let item):
                                 EmptyView()
                             case .contentList(let item):
-                                EmptyView()
+                                ContentList(list: item)
                             case .storyPromo(let item):
                                 if let destination = item.link.destinations.first {
                                     // Workaround to hide detail disclosure

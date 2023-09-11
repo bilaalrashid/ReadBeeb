@@ -54,6 +54,7 @@
 		3A9124FF2AAE289700EC0DCF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FE2AAE289700EC0DCF /* ImageView.swift */; };
 		3A9125012AAE82C800EC0DCF /* StoryWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125002AAE82C800EC0DCF /* StoryWebView.swift */; };
 		3A9125032AAFAE6500EC0DCF /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125022AAFAE6400EC0DCF /* String+Substring.swift */; };
+		3A9125052AAFB9A700EC0DCF /* ContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125042AAFB9A700EC0DCF /* ContentList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		3A9124FE2AAE289700EC0DCF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		3A9125002AAE82C800EC0DCF /* StoryWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryWebView.swift; sourceTree = "<group>"; };
 		3A9125022AAFAE6400EC0DCF /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
+		3A9125042AAFB9A700EC0DCF /* ContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */,
 				3A9124FE2AAE289700EC0DCF /* ImageView.swift */,
 				3A9125002AAE82C800EC0DCF /* StoryWebView.swift */,
+				3A9125042AAFB9A700EC0DCF /* ContentList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */,
 				3A9125012AAE82C800EC0DCF /* StoryWebView.swift in Sources */,
 				3A9124D92AAE0FC500EC0DCF /* FDSimpleCollection.swift in Sources */,
+				3A9125052AAFB9A700EC0DCF /* ContentList.swift in Sources */,
 				3A9124ED2AAE10E500EC0DCF /* FDContentList.swift in Sources */,
 				3A44C6082A9B739E001AB40F /* HierarchicalCollection.swift in Sources */,
 				3A9124DD2AAE100700EC0DCF /* FDStoryPromo.swift in Sources */,

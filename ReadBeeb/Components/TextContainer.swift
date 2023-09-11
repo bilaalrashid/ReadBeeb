@@ -10,6 +10,8 @@ import SwiftUI
 struct TextContainer: View {
 
     let container: FDTextContainer
+    var list: FDContentList? = nil
+    var index: Int? = nil
 
     @State private var isLinkActive = false
     @State private var destination: FDLinkDestination? = nil {
@@ -55,6 +57,16 @@ struct TextContainer: View {
 
         var formatted = AttributedString()
         var lastIndex = 0
+
+        if let list = self.list {
+            if list.ordering == "ORDERED", let index = self.index {
+                formatted += AttributedString("\(index + 1).  ")
+            } else {
+                var styledBullet = AttributedString("•  ")
+                styledBullet.font = .system(size: 22, weight: .bold)
+                formatted += styledBullet
+            }
+        }
 
         for span in spans {
             let nextPlainSection = text.substring(from: lastIndex, to: span.startIndex)
