@@ -90,16 +90,6 @@ struct TextContainer: View {
 
 }
 
-extension String {
-
-    func substring(from startIndex: Int, to endIndex: Int) -> String {
-        let start = self.index(self.startIndex, offsetBy: startIndex)
-        let end = self.index(self.startIndex, offsetBy: endIndex)
-        return String(self[start..<end])
-    }
-
-}
-
 struct TextContainer_Previews: PreviewProvider {
     static var previews: some View {
         TextContainer(container: FDTextContainer(type: "textContainer", containerType: "body", text: FDTextContainerText(text: "Test", spans: [])))

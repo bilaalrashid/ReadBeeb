@@ -53,6 +53,7 @@
 		3A9124FD2AAE237B00EC0DCF /* View+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */; };
 		3A9124FF2AAE289700EC0DCF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FE2AAE289700EC0DCF /* ImageView.swift */; };
 		3A9125012AAE82C800EC0DCF /* StoryWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125002AAE82C800EC0DCF /* StoryWebView.swift */; };
+		3A9125032AAFAE6500EC0DCF /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125022AAFAE6400EC0DCF /* String+Substring.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
 		3A9124FE2AAE289700EC0DCF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		3A9125002AAE82C800EC0DCF /* StoryWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryWebView.swift; sourceTree = "<group>"; };
+		3A9125022AAFAE6400EC0DCF /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */,
 				3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */,
 				3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */,
+				3A9125022AAFAE6400EC0DCF /* String+Substring.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				3A9124F32AAE112000EC0DCF /* FDChipList.swift in Sources */,
 				3A9124F92AAE20CD00EC0DCF /* TextContainer.swift in Sources */,
 				3A44C5FE2A9B5BE2001AB40F /* PopularView.swift in Sources */,
+				3A9125032AAFAE6500EC0DCF /* String+Substring.swift in Sources */,
 				3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */,
 				3A9125012AAE82C800EC0DCF /* StoryWebView.swift in Sources */,
 				3A9124D92AAE0FC500EC0DCF /* FDSimpleCollection.swift in Sources */,
