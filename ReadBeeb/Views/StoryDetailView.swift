@@ -28,6 +28,8 @@ struct StoryDetailView: View {
                                     .modify {
                                         if index == 0 {
                                             $0.listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                                        } else {
+                                            $0
                                         }
                                     }
                             case .image(let item):
@@ -35,6 +37,8 @@ struct StoryDetailView: View {
                                     .modify {
                                         if index == 0 {
                                             $0.listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                                        } else {
+                                            $0
                                         }
                                     }
                             case .headline(let item):
