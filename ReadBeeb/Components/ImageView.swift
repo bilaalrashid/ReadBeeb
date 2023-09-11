@@ -46,7 +46,7 @@ struct ImageView: View {
                 if let caption = self.image.metadata?.caption {
                     Text(caption)
                         .font(.caption)
-                        .padding(.horizontal, 16)
+                        .padding(.horizontal, 20)
                         .padding(.top, 8)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
