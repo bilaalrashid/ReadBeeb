@@ -17,7 +17,7 @@ struct StoryDetailView: View {
     @State private var shouldDisplayNetworkError = false
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             if BBCNewsAPINetworkController.isAPIUrl(url: self.destination.url) {
                 List {
                     if let data = self.data {
@@ -25,8 +25,18 @@ struct StoryDetailView: View {
                             switch item {
                             case .media(let item):
                                 EmptyView()
+                                    .modify {
+                                        if index == 0 {
+                                            $0.listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                                        }
+                                    }
                             case .image(let item):
                                 ImageView(image: item)
+                                    .modify {
+                                        if index == 0 {
+                                            $0.listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                                        }
+                                    }
                             case .headline(let item):
                                 EmptyView()
                             case .textContainer(let item):
