@@ -38,7 +38,7 @@ struct StoryDetailView: View {
                                         }
                                     }
                             case .headline(let item):
-                                EmptyView()
+                                Headline(headline: item)
                             case .textContainer(let item):
                                 TextContainer(container: item)
                             case .sectionHeader(let item):

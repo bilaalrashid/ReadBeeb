@@ -55,6 +55,7 @@
 		3A9125012AAE82C800EC0DCF /* StoryWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125002AAE82C800EC0DCF /* StoryWebView.swift */; };
 		3A9125032AAFAE6500EC0DCF /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125022AAFAE6400EC0DCF /* String+Substring.swift */; };
 		3A9125052AAFB9A700EC0DCF /* ContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125042AAFB9A700EC0DCF /* ContentList.swift */; };
+		3A9125072AAFC39200EC0DCF /* Headline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125062AAFC39200EC0DCF /* Headline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		3A9125002AAE82C800EC0DCF /* StoryWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryWebView.swift; sourceTree = "<group>"; };
 		3A9125022AAFAE6400EC0DCF /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
 		3A9125042AAFB9A700EC0DCF /* ContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentList.swift; sourceTree = "<group>"; };
+		3A9125062AAFC39200EC0DCF /* Headline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				3A9124FE2AAE289700EC0DCF /* ImageView.swift */,
 				3A9125002AAE82C800EC0DCF /* StoryWebView.swift */,
 				3A9125042AAFB9A700EC0DCF /* ContentList.swift */,
+				3A9125062AAFC39200EC0DCF /* Headline.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				3A44C5FA2A9B5AA7001AB40F /* TopStoriesView.swift in Sources */,
 				3A9124F32AAE112000EC0DCF /* FDChipList.swift in Sources */,
 				3A9124F92AAE20CD00EC0DCF /* TextContainer.swift in Sources */,
+				3A9125072AAFC39200EC0DCF /* Headline.swift in Sources */,
 				3A44C5FE2A9B5BE2001AB40F /* PopularView.swift in Sources */,
 				3A9125032AAFAE6500EC0DCF /* String+Substring.swift in Sources */,
 				3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */,
