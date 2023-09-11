@@ -23,6 +23,7 @@ struct TextContainer: View {
             Text(self.textFormattedSpans())
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
+                .lineSpacing(4)
                 .modify {
                     switch self.container.containerType {
                     case "body":
