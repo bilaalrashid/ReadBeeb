@@ -20,7 +20,7 @@ struct TextContainer: View {
 
     var body: some View {
         ZStack {
-            Text(.init(self.textFormattedSpans()))
+            Text(self.textFormattedSpans())
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
                 .modify {
@@ -48,33 +48,34 @@ struct TextContainer: View {
         }
     }
 
-    private func textFormattedSpans() -> String {
+    private func textFormattedSpans() -> AttributedString {
         let spans = self.container.text.spans.sorted { $0.startIndex < $1.startIndex }
-        let remainingText = self.container.text.text
+        let text = self.container.text.text
 
-        var formattedMarkdown = [String]()
+        var formatted = AttributedString()
         var lastIndex = 0
 
         for span in spans {
-            let nextPlainSection = remainingText.substring(from: lastIndex, to: span.startIndex)
-            formattedMarkdown.append(nextPlainSection)
+            let nextPlainSection = text.substring(from: lastIndex, to: span.startIndex)
+            formatted += AttributedString(nextPlainSection)
 
-            let extracted = remainingText.substring(from: span.startIndex, to: span.startIndex + span.length)
+            let extracted = text.substring(from: span.startIndex, to: span.startIndex + span.length)
 
             if let url = span.link.destinations.first?.url {
-                let markdown = "[\(extracted)](\(url))"
-                formattedMarkdown.append(markdown)
+                var link = AttributedString(extracted)
+                link.link = URL(string: url)
+                formatted += link
             } else {
-                formattedMarkdown.append(extracted)
+                formatted += AttributedString(extracted)
             }
 
             lastIndex = span.startIndex + span.length
         }
 
-        let lastPlainSection = remainingText.substring(from: lastIndex, to: remainingText.count)
-        formattedMarkdown.append(lastPlainSection)
+        let lastPlainSection = text.substring(from: lastIndex, to: text.count)
+        formatted += AttributedString(lastPlainSection)
 
-        return formattedMarkdown.joined()
+        return formatted
     }
 
     private func destination(for url: URL) -> FDLinkDestination? {
