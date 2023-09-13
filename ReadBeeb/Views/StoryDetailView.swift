@@ -24,7 +24,7 @@ struct StoryDetailView: View {
                         ForEach(Array(data.data.items.enumerated()), id: \.offset) { index, item in
                             switch item {
                             case .media(let item):
-                                EmptyView()
+                                MediaView(media: item)
                                     .modify {
                                         if index == 0 {
                                             $0.listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))

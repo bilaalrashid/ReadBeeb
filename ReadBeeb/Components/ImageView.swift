@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ImageView: View {
     let image: FDImage
+    var imageOnly = false
 
     var body: some View {
         if let url = self.image.largestImageUrl {
@@ -29,7 +30,7 @@ struct ImageView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            if let copyrightText = self.image.metadata?.copyrightText {
+                            if let copyrightText = self.image.metadata?.copyrightText, !self.imageOnly {
                                 Text(copyrightText)
                                     .font(.caption.bold())
                                     .foregroundColor(.white)
@@ -43,7 +44,7 @@ struct ImageView: View {
                     width: UIScreen.main.bounds.size.width,
                     height: UIScreen.main.bounds.size.width / (self.image.source.aspectRatio ?? 1.77777777)
                 )
-                if let caption = self.image.metadata?.caption {
+                if let caption = self.image.metadata?.caption, !self.imageOnly {
                     Text(caption)
                         .font(.caption)
                         .padding(.horizontal, 20)
