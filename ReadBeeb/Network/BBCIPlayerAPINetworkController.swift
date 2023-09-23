@@ -10,7 +10,7 @@ import Alamofire
 
 struct BBCIPlayerAPINetworkController {
 
-    static let baseUri = "http://open.live.bbc.co.uk"
+    static let baseUri = "https://open.live.bbc.co.uk"
 
     static let session: Session = {
         let configuration = URLSessionConfiguration.af.default
