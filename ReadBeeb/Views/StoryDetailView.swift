@@ -59,6 +59,8 @@ struct StoryDetailView: View {
                                         StoryPromoRow(story: item)
                                     }
                                 }
+                            case .copyright(let item):
+                                Copyright(item: item)
                             default:
                                 EmptyView()
                             }
