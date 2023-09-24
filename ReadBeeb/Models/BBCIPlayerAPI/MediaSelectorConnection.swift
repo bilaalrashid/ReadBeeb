@@ -16,4 +16,12 @@ struct MediaSelectorConnection: Codable, Equatable, Hashable {
     let authExpires: String
     let href: String
     let transferFormat: String
+
+    /// A source link that uses a secure transmission protocol e.g. HTTPS instead of HTTP
+    /// If the protocol is not supported, the insecure version is returned
+    ///
+    /// - Note: Currently only supports upgrading to HTTP to HTTPS
+    var hrefSecure: String {
+        return self.href.replacingOccurrences(of: "http://", with: "https://")
+    }
 }

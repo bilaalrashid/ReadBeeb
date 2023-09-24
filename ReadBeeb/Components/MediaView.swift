@@ -39,7 +39,9 @@ struct MediaView: View {
                     .background(Color(UIColor.systemGray6))
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.77777)
                 case .success(let result):
-                    EmptyView()
+                    // It is safe to access [0] on both properties, as their size is checked elsewhere
+                    BBCIPlayerVideoPlayer(url: result.validMedia[0].validConnection[0].hrefSecure, shouldPlay: self.$shouldPlay)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.77777)
                 }
             } else {
                 ZStack {
