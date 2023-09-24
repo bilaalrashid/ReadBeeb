@@ -78,7 +78,12 @@ struct MediaView: View {
     private func fetchMediaSelectorItems() async {
         do {
             let result = try await BBCIPlayerAPINetworkController.fetchMediaConnections(for: self.media.source.id)
-            self.networkResult = .success(result)
+            if !result.validMedia.isEmpty {
+                self.networkResult = .success(result)
+            } else {
+                self.networkResult = .error
+                Logger.network.error("No valid media streams form BBC iPlayer API")
+            }
         } catch let error {
             self.networkResult = .error
             Logger.network.error("Unable to fetch BBC iPlayer media options - \(error.localizedDescription)")
