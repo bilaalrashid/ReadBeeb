@@ -6,34 +6,85 @@
 //
 
 import SwiftUI
+import OSLog
 
 struct MediaView: View {
+
     let media: FDMedia
 
+    @State private var shouldPlay = false
+    @State private var networkResult = NetworkRequestStatus<MediaSelectorResult>.loading
+
     var body: some View {
-        ZStack {
-            ImageView(image: self.media.image, imageOnly: true)
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
-                VStack {
-                    Spacer()
-                    HStack {
-                        Button(action: {}) {
-                            Image(systemName: "play.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundStyle(.white)
-                                .frame(width: 32, height: 32)
-                                .padding(24)
-                        }
+        VStack {
+            if self.shouldPlay {
+                switch self.networkResult {
+                case .error:
+                    VStack {
                         Spacer()
+                        Text("There was an error loading the video")
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity)
+                        Spacer()
+                    }
+                    .background(Color(UIColor.systemGray6))
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.77777)
+                case .loading:
+                    VStack {
+                        Spacer()
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                        Spacer()
+                    }
+                    .background(Color(UIColor.systemGray6))
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.77777)
+                case .success(let result):
+                    EmptyView()
+                }
+            } else {
+                ZStack {
+                    ImageView(image: self.media.image, imageOnly: true)
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Button(action: {
+                                    self.shouldPlay = true
+                                }) {
+                                    Image(systemName: "play.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundStyle(.white)
+                                        .frame(width: 32, height: 32)
+                                        .padding(24)
+                                }
+                                Spacer()
+                            }
+                        }
                     }
                 }
             }
         }
+        .onAppear {
+            Task {
+                await self.fetchMediaSelectorItems()
+            }
+        }
     }
+
+    private func fetchMediaSelectorItems() async {
+        do {
+            let result = try await BBCIPlayerAPINetworkController.fetchMediaConnections(for: self.media.source.id)
+            self.networkResult = .success(result)
+        } catch let error {
+            self.networkResult = .error
+            Logger.network.error("Unable to fetch BBC iPlayer media options - \(error.localizedDescription)")
+        }
+    }
+
 }
 
 #Preview {
