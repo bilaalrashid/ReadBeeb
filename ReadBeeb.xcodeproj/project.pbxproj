@@ -36,6 +36,8 @@
 		3A516D7D2AC0CF5200AF0BC9 /* FDCopyright.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D7C2AC0CF5200AF0BC9 /* FDCopyright.swift */; };
 		3A516D7F2AC0CFB300AF0BC9 /* Copyright.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D7E2AC0CFB300AF0BC9 /* Copyright.swift */; };
 		3A75FA332AC87C0F00393014 /* Topics.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FA322AC87C0F00393014 /* Topics.json */; };
+		3A75FA382AC87D6A00393014 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FA372AC87D6A00393014 /* Topic.swift */; };
+		3A75FA3A2AC87DCF00393014 /* TopicResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FA392AC87DCF00393014 /* TopicResult.swift */; };
 		3A9124C92AA6872F00EC0DCF /* StoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124C82AA6872F00EC0DCF /* StoryDetailView.swift */; };
 		3A9124CB2AAD2CCD00EC0DCF /* FDResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CA2AAD2CCD00EC0DCF /* FDResult.swift */; };
 		3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */; };
@@ -103,6 +105,8 @@
 		3A516D7C2AC0CF5200AF0BC9 /* FDCopyright.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDCopyright.swift; sourceTree = "<group>"; };
 		3A516D7E2AC0CFB300AF0BC9 /* Copyright.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copyright.swift; sourceTree = "<group>"; };
 		3A75FA322AC87C0F00393014 /* Topics.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Topics.json; sourceTree = "<group>"; };
+		3A75FA372AC87D6A00393014 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		3A75FA392AC87DCF00393014 /* TopicResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicResult.swift; sourceTree = "<group>"; };
 		3A9124C82AA6872F00EC0DCF /* StoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailView.swift; sourceTree = "<group>"; };
 		3A9124CA2AAD2CCD00EC0DCF /* FDResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDResult.swift; sourceTree = "<group>"; };
 		3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDData+StructuredItems.swift"; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 		3A44C5E82A9AA1F8001AB40F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3A75FA342AC87D1600393014 /* Topics */,
 				3A516D692AB2695700AF0BC9 /* BBCIPlayerAPI */,
 				3A44C5F32A9B5651001AB40F /* BBCNewsAPI */,
 				3A516D722ABF1AA200AF0BC9 /* NetworkRequestStatus.swift */,
@@ -321,6 +326,15 @@
 				3A75FA322AC87C0F00393014 /* Topics.json */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		3A75FA342AC87D1600393014 /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				3A75FA372AC87D6A00393014 /* Topic.swift */,
+				3A75FA392AC87DCF00393014 /* TopicResult.swift */,
+			);
+			path = Topics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +441,7 @@
 				3A516D7D2AC0CF5200AF0BC9 /* FDCopyright.swift in Sources */,
 				3A44C6042A9B63D8001AB40F /* Constants.swift in Sources */,
 				3A9124CF2AAE0F2400EC0DCF /* FDData.swift in Sources */,
+				3A75FA3A2AC87DCF00393014 /* TopicResult.swift in Sources */,
 				3A44C6002A9B5BF2001AB40F /* VideoView.swift in Sources */,
 				3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */,
 				3A9124E32AAE104100EC0DCF /* FDTopic.swift in Sources */,
@@ -443,6 +458,7 @@
 				3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */,
 				3A9125012AAE82C800EC0DCF /* StoryWebView.swift in Sources */,
 				3A9124D92AAE0FC500EC0DCF /* FDSimpleCollection.swift in Sources */,
+				3A75FA382AC87D6A00393014 /* Topic.swift in Sources */,
 				3A516D6D2AB26AA000AF0BC9 /* MediaSelectorResult.swift in Sources */,
 				3A516D682AB25D1400AF0BC9 /* MediaView.swift in Sources */,
 				3A9125052AAFB9A700EC0DCF /* ContentList.swift in Sources */,
