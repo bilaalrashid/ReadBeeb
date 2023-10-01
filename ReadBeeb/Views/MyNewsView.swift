@@ -6,14 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
+import OSLog
 
 struct MyNewsView: View {
 
+    @Query var selectedTopics: [Topic]
+
     @State private var isEditingTopics = false
+    @State private var networkRequest = NetworkRequestStatus<[FDStoryPromo]>.loading
 
     var body: some View {
         List {
-
+            if case .success(let storyPromos) = self.networkRequest {
+                ForEach(Array(storyPromos.enumerated()), id: \.offset) { index, story in
+                    StoryPromoRow(story: story)
+                }
+            }
         }
         .navigationTitle("My News")
         .toolbarColorScheme(.dark, for: .navigationBar)
@@ -31,6 +40,32 @@ struct MyNewsView: View {
                 TopicSelectionView()
                     .navigationBarTitleDisplayMode(.inline)
             }
+        }
+        .refreshable {
+            Task {
+                await self.fetchData()
+            }
+        }
+        .onChange(of: self.selectedTopics) {
+            Task {
+                await self.fetchData()
+            }
+        }
+        .onAppear {
+            Task {
+                await self.fetchData()
+            }
+        }
+    }
+
+    private func fetchData() async {
+        do {
+            let ids = self.selectedTopics.map { $0.id }
+            let result = try await BBCNewsAPINetworkController.fetchStoryPromos(for: ids)
+            self.networkRequest = .success(result)
+        } catch let error {
+            self.networkRequest = .error
+            Logger.network.error("Unable to fetch topics for My News tab - \(error.localizedDescription)")
         }
     }
 
