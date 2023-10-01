@@ -20,7 +20,13 @@ struct MyNewsView: View {
         List {
             if case .success(let storyPromos) = self.networkRequest {
                 ForEach(Array(storyPromos.enumerated()), id: \.offset) { index, story in
-                    StoryPromoRow(story: story)
+                    if let destination = story.link.destinations.first {
+                        // Workaround to hide detail disclosure
+                        ZStack {
+                            NavigationLink(destination: StoryDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
+                            StoryPromoRow(story: story)
+                        }
+                    }
                 }
             }
         }
