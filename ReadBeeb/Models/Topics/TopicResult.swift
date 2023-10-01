@@ -7,6 +7,6 @@
 
 import Foundation
 
-final class TopicResult {
-    let topics: [Topic] = []
+final class TopicResult: Codable {
+    var topics: [Topic] = []
 }

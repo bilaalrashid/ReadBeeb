@@ -28,8 +28,8 @@ final class Topic: Codable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
-        self.headline = try container.decode(String.self, forKey: .id)
-        self.subhead = try container.decode(String?.self, forKey: .id)
+        self.headline = try container.decode(String.self, forKey: .headline)
+        self.subhead = try container.decode(String?.self, forKey: .subhead)
     }
 
     func encode(to encoder: Encoder) throws {
