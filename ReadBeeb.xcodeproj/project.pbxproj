@@ -70,6 +70,7 @@
 		3A9125032AAFAE6500EC0DCF /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125022AAFAE6400EC0DCF /* String+Substring.swift */; };
 		3A9125052AAFB9A700EC0DCF /* ContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125042AAFB9A700EC0DCF /* ContentList.swift */; };
 		3A9125072AAFC39200EC0DCF /* Headline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125062AAFC39200EC0DCF /* Headline.swift */; };
+		3AC017BE2AC9B8510010EBBE /* TopicSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BD2AC9B8510010EBBE /* TopicSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +140,7 @@
 		3A9125022AAFAE6400EC0DCF /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
 		3A9125042AAFB9A700EC0DCF /* ContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentList.swift; sourceTree = "<group>"; };
 		3A9125062AAFC39200EC0DCF /* Headline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headline.swift; sourceTree = "<group>"; };
+		3AC017BD2AC9B8510010EBBE /* TopicSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				3A44C5FF2A9B5BF2001AB40F /* VideoView.swift */,
 				3A44C6012A9B5C00001AB40F /* SearchView.swift */,
 				3A9124C82AA6872F00EC0DCF /* StoryDetailView.swift */,
+				3AC017BD2AC9B8510010EBBE /* TopicSelectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				3A9124E52AAE106000EC0DCF /* FDImage.swift in Sources */,
 				3A516D6B2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift in Sources */,
 				3A9124D32AAE0F7D00EC0DCF /* FDBillboard.swift in Sources */,
+				3AC017BE2AC9B8510010EBBE /* TopicSelectionView.swift in Sources */,
 				3A44C6022A9B5C00001AB40F /* SearchView.swift in Sources */,
 				3A9124E12AAE103000EC0DCF /* FDPresentation.swift in Sources */,
 				3A516D772AC0A27C00AF0BC9 /* VideoPlayer.swift in Sources */,

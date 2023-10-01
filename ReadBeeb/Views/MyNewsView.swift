@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MyNewsView: View {
+
+    @State private var isEditingTopics = false
+
     var body: some View {
         List {
 
@@ -15,7 +18,24 @@ struct MyNewsView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: self.editTopics) {
+                    Label("Edit", systemImage: "ellipsis.circle")
+                }
+            }
+        }
+        .sheet(isPresented: self.$isEditingTopics) {
+            NavigationStack {
+                TopicSelectionView()
+            }
+        }
     }
+
+    private func editTopics() {
+        self.isEditingTopics = true
+    }
+
 }
 
 struct MyNewsView_Previews: PreviewProvider {
