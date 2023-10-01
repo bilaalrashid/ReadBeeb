@@ -29,6 +29,7 @@ struct MyNewsView: View {
         .sheet(isPresented: self.$isEditingTopics) {
             NavigationStack {
                 TopicSelectionView()
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

@@ -15,46 +15,65 @@ struct TopicSelectionView: View {
 
     @Query var selectedTopics: [Topic]
 
+    @State private var searchText = ""
+    @State private var isSearchActive = false
+
     let allTopics: [Topic] = {
         let result = Bundle.main.decode(TopicResult.self, from: "Topics.json")
         return result.topics
     }()
 
+    var filteredTopics: [Topic] {
+        if self.searchText.isEmpty {
+            return self.allTopics
+        } else {
+            return self.allTopics.filter {
+                return $0.headline.localizedCaseInsensitiveContains(self.searchText)
+                || $0.subhead?.localizedCaseInsensitiveContains(self.searchText) ?? false
+                || $0.id.localizedCaseInsensitiveContains(self.searchText)
+            }
+        }
+    }
+
     var body: some View {
         List {
-            ForEach(self.allTopics, id: \.id) { topic in
-                HStack {
-                    if self.isTopicSelected(topic: topic) {
-                        Image(systemName: "checkmark.square.fill")
+            Section(header: Text("")) {
+                ForEach(self.isSearchActive ? self.filteredTopics : self.selectedTopics, id: \.id) { topic in
+                    HStack {
+                        if self.isTopicSelected(topic: topic) {
+                            Image(systemName: "checkmark.square.fill")
                             // Color.accentColor is not working here
-                            .foregroundStyle(Constants.primaryColor)
-                    } else {
-                        Image(systemName: "square")
+                                .foregroundStyle(Constants.primaryColor)
+                        } else {
+                            Image(systemName: "square")
                             // Color.accentColor is not working here
-                            .foregroundStyle(Constants.primaryColor)
-                    }
+                                .foregroundStyle(Constants.primaryColor)
+                        }
 
-                    VStack {
-                        Text(topic.headline)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-
-                        if let subhead = topic.subhead {
-                            Text(subhead)
-                                .font(.caption)
+                        VStack {
+                            Text(topic.headline)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
+
+                            if let subhead = topic.subhead {
+                                Text(subhead)
+                                    .font(.caption)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
                         }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
-                }
-                .onTapGesture {
-                    withAnimation {
-                        self.toggleTopicSelection(topic: topic)
+                    .onTapGesture {
+                        withAnimation {
+                            self.toggleTopicSelection(topic: topic)
+                        }
                     }
                 }
             }
         }
+        .searchable(text: self.$searchText, isPresented: self.$isSearchActive)
+        .listStyle(.insetGrouped)
         .navigationTitle("My Topics")
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
