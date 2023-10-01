@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct ReadBeebApp: App {
@@ -14,5 +15,6 @@ struct ReadBeebApp: App {
             ContentView()
                 .accentColor(Constants.primaryColor)
         }
+        .modelContainer(for: Topic.self)
     }
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct TopicResult {
-    let topics: [Topic]
+final class TopicResult {
+    let topics: [Topic] = []
 }
