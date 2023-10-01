@@ -75,8 +75,8 @@ struct StoryDetailView: View {
                 }
             }
         }
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
+        .toolbarColorScheme(self.isBBCSportUrl(url: self.destination.url) ? .light : .dark, for: .navigationBar)
+        .toolbarBackground(self.isBBCSportUrl(url: self.destination.url) ? Constants.sportColor : Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -130,7 +130,11 @@ struct StoryDetailView: View {
             Logger.network.error("Unable to fetch news article \(self.destination.url) - \(error.localizedDescription)")
         }
     }
-    
+
+    private func isBBCSportUrl(url: String) -> Bool {
+        return url.contains("https://www.bbc.co.uk/sport/")
+    }
+
 }
 
 struct NewsStoryDetailView_Previews: PreviewProvider {
