@@ -12,6 +12,7 @@ struct VideoView: View {
         List {
             
         }
+        .navigationTitle("Video")
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)

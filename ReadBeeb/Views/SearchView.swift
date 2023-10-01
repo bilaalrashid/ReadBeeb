@@ -12,6 +12,7 @@ struct SearchView: View {
         List {
 
         }
+        .navigationTitle("Search")
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)

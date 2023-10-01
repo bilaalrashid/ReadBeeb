@@ -12,6 +12,7 @@ struct PopularView: View {
         List {
             
         }
+        .navigationTitle("Popular")
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)

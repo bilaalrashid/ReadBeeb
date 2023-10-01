@@ -12,7 +12,6 @@ struct ContentView: View {
         TabView {
             NavigationStack {
                 TopStoriesView()
-                    .navigationTitle("Top Stories")
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -21,7 +20,6 @@ struct ContentView: View {
 
             NavigationStack {
                 MyNewsView()
-                    .navigationTitle("My News")
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -30,7 +28,6 @@ struct ContentView: View {
 
             NavigationStack {
                 PopularView()
-                    .navigationTitle("Popular")
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -39,7 +36,6 @@ struct ContentView: View {
 
             NavigationStack {
                 VideoView()
-                    .navigationTitle("Video")
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -48,7 +44,6 @@ struct ContentView: View {
 
             NavigationStack {
                 SearchView()
-                    .navigationTitle("Search")
             }
             .navigationViewStyle(.stack)
             .tabItem {
