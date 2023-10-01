@@ -16,20 +16,24 @@ struct Headline: View {
                 .font(.title2.weight(.semibold))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
-            VStack(spacing: 4) {
-                Text(self.headline.byline.name)
-                    .font(.callout.bold())
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .multilineTextAlignment(.leading)
-                Text(self.headline.byline.purpose)
-                    .font(.callout)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .multilineTextAlignment(.leading)
+            if let byline = headline.byline {
+                VStack(spacing: 4) {
+                    Text(byline.name)
+                        .font(.callout.bold())
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
+                    Text(byline.purpose)
+                        .font(.callout)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
+                }
             }
             HStack {
-                Text(self.headline.topic.text)
-                    .font(.callout)
-                    .foregroundColor(.accentColor)
+                if let topic = headline.topic {
+                    Text(topic.text)
+                        .font(.callout)
+                        .foregroundColor(.accentColor)
+                }
                 Text(self.headline.lastUpdated.formattedTimestamp)
                     .font(.callout)
                 Text("\(self.headline.readTimeMinutes) min read")
