@@ -57,6 +57,8 @@ struct TopStoriesView: View {
             CollectionHeader(item: item)
         case .simpleCollection(let item):
             SimpleCollection(item: item)
+        case .simplePromoGrid(let item):
+            SimplePromoGrid(item: item)
         case .copyright(let item):
             Copyright(item: item)
         default:

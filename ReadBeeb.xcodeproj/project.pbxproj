@@ -72,6 +72,8 @@
 		3A9125072AAFC39200EC0DCF /* Headline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125062AAFC39200EC0DCF /* Headline.swift */; };
 		3AC017BE2AC9B8510010EBBE /* TopicSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BD2AC9B8510010EBBE /* TopicSelectionView.swift */; };
 		3AC017C02AC9BDB30010EBBE /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */; };
+		3AC017C22AC9E4690010EBBE /* FDSimplePromoGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */; };
+		3AC017C42AC9E8620010EBBE /* SimplePromoGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017C32AC9E8620010EBBE /* SimplePromoGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +145,8 @@
 		3A9125062AAFC39200EC0DCF /* Headline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headline.swift; sourceTree = "<group>"; };
 		3AC017BD2AC9B8510010EBBE /* TopicSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSelectionView.swift; sourceTree = "<group>"; };
 		3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
+		3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSimplePromoGrid.swift; sourceTree = "<group>"; };
+		3AC017C32AC9E8620010EBBE /* SimplePromoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePromoGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +213,7 @@
 				3A44C6072A9B739E001AB40F /* HierarchicalCollection.swift */,
 				3A44C6092A9B73BA001AB40F /* CollectionHeader.swift */,
 				3A44C60B2A9B73D5001AB40F /* SimpleCollection.swift */,
+				3AC017C32AC9E8620010EBBE /* SimplePromoGrid.swift */,
 				3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */,
 				3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */,
 				3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */,
@@ -298,6 +303,7 @@
 				3A9124D42AAE0F9500EC0DCF /* FDHierarchicalCollection.swift */,
 				3A9124D62AAE0FAE00EC0DCF /* FDCollectionHeader.swift */,
 				3A9124D82AAE0FC500EC0DCF /* FDSimpleCollection.swift */,
+				3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */,
 				3A9124DA2AAE0FF500EC0DCF /* FDCarousel.swift */,
 				3A9124DC2AAE100700EC0DCF /* FDStoryPromo.swift */,
 				3A9124F02AAE110900EC0DCF /* FDWeatherPromoSummary.swift */,
@@ -439,6 +445,7 @@
 				3A9124FF2AAE289700EC0DCF /* ImageView.swift in Sources */,
 				3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */,
 				3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */,
+				3AC017C22AC9E4690010EBBE /* FDSimplePromoGrid.swift in Sources */,
 				3A9124C92AA6872F00EC0DCF /* StoryDetailView.swift in Sources */,
 				3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */,
 				3A9124D72AAE0FAE00EC0DCF /* FDCollectionHeader.swift in Sources */,
@@ -463,6 +470,7 @@
 				3A44C5FE2A9B5BE2001AB40F /* PopularView.swift in Sources */,
 				3A9125032AAFAE6500EC0DCF /* String+Substring.swift in Sources */,
 				3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */,
+				3AC017C42AC9E8620010EBBE /* SimplePromoGrid.swift in Sources */,
 				3A9125012AAE82C800EC0DCF /* StoryWebView.swift in Sources */,
 				3A9124D92AAE0FC500EC0DCF /* FDSimpleCollection.swift in Sources */,
 				3A75FA382AC87D6A00393014 /* Topic.swift in Sources */,
