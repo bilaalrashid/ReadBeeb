@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import OSLog
 
 struct BBCIPlayerAPINetworkController {
 
@@ -23,9 +24,9 @@ struct BBCIPlayerAPINetworkController {
 
     static func fetchMediaConnections(for pid: String) async throws -> MediaSelectorResult {
         let url = self.baseUri + "/mediaselector/6/select/version/2.0/format/json/mediaset/mobile-phone-main/vpid/\(pid)/"
+        Logger.network.debug("Requesting: \(url, privacy: .public)")
         let request = self.session.request(url).validate().serializingDecodable(MediaSelectorResult.self)
         return try await request.value
     }
 
 }
-
