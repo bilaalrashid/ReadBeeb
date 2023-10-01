@@ -24,6 +24,7 @@ struct MyNewsView: View {
                 }
             }
         }
+        .listStyle(.plain)
         .navigationTitle("My News")
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
