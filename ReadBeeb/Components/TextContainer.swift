@@ -76,10 +76,14 @@ struct TextContainer: View {
 
             let extracted = text.substring(from: span.startIndex, to: span.startIndex + span.length)
 
-            if let url = span.link.destinations.first?.url {
+            if let url = span.link?.destinations.first?.url {
                 var link = AttributedString(extracted)
                 link.link = URL(string: url)
                 formatted += link
+            } else if let attribute = span.attribute {
+                var container = AttributeContainer()
+                container[AttributeScopes.SwiftUIAttributes.FontAttribute.self] = attribute == "bold" ? .body.bold() : .body.italic()
+                formatted += AttributedString(extracted, attributes: container)
             } else {
                 formatted += AttributedString(extracted)
             }
@@ -96,7 +100,9 @@ struct TextContainer: View {
     private func destination(for url: URL) -> FDLinkDestination? {
         var destinations = [FDLinkDestination]()
         self.container.text.spans.forEach {
-            destinations.append(contentsOf: $0.link.destinations)
+            if let link = $0.link {
+                destinations.append(contentsOf: link.destinations)
+            }
         }
 
         return destinations.first {
