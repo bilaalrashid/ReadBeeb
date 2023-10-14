@@ -51,9 +51,7 @@ struct TopStoriesView: View {
             }
         })
         .refreshable {
-            Task {
-                await self.fetchData()
-            }
+            await self.fetchData()
         }
         .onAppear {
             Task {
