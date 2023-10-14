@@ -11,8 +11,7 @@ import OSLog
 struct TopStoriesView: View {
 
     @State private var data: FDResult? = nil
-
-    @State private var shouldDisplayNetworkError = false
+    @State private var networkRequest = NetworkRequestStatus<Void>.notStarted
 
     var body: some View {
         List {
@@ -31,12 +30,26 @@ struct TopStoriesView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        .alert(
-            "Unable To Load Data",
-            isPresented: self.$shouldDisplayNetworkError,
-            actions: { Button("OK", role: .cancel) { } },
-            message: { Text("Please try again later and contact support if the problem persists") }
-        )
+        .overlay(Group {
+            switch self.networkRequest {
+            case .loading, .notStarted:
+                if self.data?.data.structuredItems.isEmpty ?? true {
+                    VStack {
+                        Spacer()
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                        Spacer()
+                    }
+                }
+            case .error:
+                Text("Unable to load data. Please try again later and contact support if the problem persists.")
+                    .padding()
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+            case .success(_):
+                EmptyView()
+            }
+        })
         .refreshable {
             Task {
                 await self.fetchData()
@@ -44,7 +57,7 @@ struct TopStoriesView: View {
         }
         .onAppear {
             Task {
-                await self.fetchData()
+                await self.fetchDataIfNotExists()
             }
         }
     }
@@ -66,12 +79,29 @@ struct TopStoriesView: View {
         }
     }
 
+    private func fetchDataIfNotExists() async {
+        switch self.networkRequest {
+        case .notStarted, .error:
+            break
+        case .loading:
+            return
+        case .success(_):
+            if self.data?.data.structuredItems.isEmpty ?? true {
+                return
+            }
+        }
+
+        await self.fetchData()
+    }
+
     private func fetchData() async {
         do {
+            self.networkRequest = .loading
             let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage()
             self.data = result
+            self.networkRequest = .success(())
         } catch let error {
-            self.shouldDisplayNetworkError = true
+            self.networkRequest = .error
             Logger.network.error("Unable to fetch BBC News API Home tab - \(error.localizedDescription)")
         }
     }
