@@ -13,7 +13,7 @@ struct MediaView: View {
     let media: FDMedia
 
     @State private var shouldPlay = false
-    @State private var networkResult = NetworkRequestStatus<MediaSelectorResult>.loading
+    @State private var networkResult = NetworkRequestStatus<MediaSelectorResult>.notStarted
 
     var body: some View {
         VStack {
@@ -29,7 +29,7 @@ struct MediaView: View {
                     }
                     .background(Color(UIColor.systemGray6))
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.77777)
-                case .loading:
+                case .loading, .notStarted:
                     VStack {
                         Spacer()
                         ProgressView()
@@ -79,6 +79,7 @@ struct MediaView: View {
 
     private func fetchMediaSelectorItems() async {
         do {
+            self.networkResult = .loading
             let result = try await BBCIPlayerAPINetworkController.fetchMediaConnections(for: self.media.source.id)
             if !result.validMedia.isEmpty {
                 self.networkResult = .success(result)

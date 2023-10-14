@@ -14,7 +14,7 @@ struct MyNewsView: View {
     @Query var selectedTopics: [Topic]
 
     @State private var isEditingTopics = false
-    @State private var networkRequest = NetworkRequestStatus<[FDStoryPromo]>.loading
+    @State private var networkRequest = NetworkRequestStatus<[FDStoryPromo]>.notStarted
 
     var body: some View {
         List {
@@ -49,24 +49,38 @@ struct MyNewsView: View {
             }
         }
         .refreshable {
-            Task {
-                await self.fetchData()
-            }
+            await self.fetchData()
         }
         .onChange(of: self.selectedTopics) {
             Task {
-                await self.fetchData()
+                await self.fetchDataIfNotExists()
             }
         }
         .onAppear {
             Task {
-                await self.fetchData()
+                await self.fetchDataIfNotExists()
             }
         }
     }
 
+    private func fetchDataIfNotExists() async {
+        switch self.networkRequest {
+        case .notStarted, .error:
+            break
+        case .loading:
+            return
+        case .success(let storyPromos):
+            if !storyPromos.isEmpty {
+                return
+            }
+        }
+
+        await self.fetchData()
+    }
+
     private func fetchData() async {
         do {
+            self.networkRequest = .loading
             let ids = self.selectedTopics.map { $0.id }
             let result = try await BBCNewsAPINetworkController.fetchStoryPromos(for: ids)
             self.networkRequest = .success(result)
