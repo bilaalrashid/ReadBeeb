@@ -13,19 +13,19 @@ struct MyNewsView: View {
 
     @Query var selectedTopics: [Topic]
 
+    @State private var storyPromos = [FDStoryPromo]()
+    @State private var networkRequest = NetworkRequestStatus<Void>.notStarted
+
     @State private var isEditingTopics = false
-    @State private var networkRequest = NetworkRequestStatus<[FDStoryPromo]>.notStarted
 
     var body: some View {
         List {
-            if case .success(let storyPromos) = self.networkRequest {
-                ForEach(Array(storyPromos.enumerated()), id: \.offset) { index, story in
-                    if let destination = story.link.destinations.first {
-                        // Workaround to hide detail disclosure
-                        ZStack {
-                            NavigationLink(destination: StoryDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
-                            StoryPromoRow(story: story)
-                        }
+            ForEach(Array(self.storyPromos.enumerated()), id: \.offset) { index, story in
+                if let destination = story.link.destinations.first {
+                    // Workaround to hide detail disclosure
+                    ZStack {
+                        NavigationLink(destination: StoryDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
+                        StoryPromoRow(story: story)
                     }
                 }
             }
@@ -42,6 +42,26 @@ struct MyNewsView: View {
                 }
             }
         }
+        .overlay(Group {
+            switch self.networkRequest {
+            case .loading, .notStarted:
+                if self.storyPromos.isEmpty {
+                    VStack {
+                        Spacer()
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                        Spacer()
+                    }
+                }
+            case .error:
+                Text("Unable to load data. Please try again later and contact support if the problem persists.")
+                    .padding()
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+            case .success(_):
+                EmptyView()
+            }
+        })
         .sheet(isPresented: self.$isEditingTopics) {
             NavigationStack {
                 TopicSelectionView()
@@ -69,8 +89,8 @@ struct MyNewsView: View {
             break
         case .loading:
             return
-        case .success(let storyPromos):
-            if !storyPromos.isEmpty {
+        case .success(_):
+            if !self.storyPromos.isEmpty {
                 return
             }
         }
@@ -83,7 +103,8 @@ struct MyNewsView: View {
             self.networkRequest = .loading
             let ids = self.selectedTopics.map { $0.id }
             let result = try await BBCNewsAPINetworkController.fetchStoryPromos(for: ids)
-            self.networkRequest = .success(result)
+            self.storyPromos = result
+            self.networkRequest = .success(())
         } catch let error {
             self.networkRequest = .error
             Logger.network.error("Unable to fetch topics for My News tab - \(error.localizedDescription)")
