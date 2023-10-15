@@ -29,7 +29,14 @@ struct NetworkRequestStatusOverlay: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
             case .success:
-                EmptyView()
+                if self.isEmpty {
+                    Text("Unable to load data. Please try again later and get in contact if the problem persists.")
+                        .padding()
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.secondary)
+                } else {
+                    EmptyView()
+                }
             }
         }
     }

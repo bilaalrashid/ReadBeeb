@@ -24,6 +24,8 @@ struct StoryDetailView: View {
             } else {
                 if let url = URL(string: self.destination.url) {
                     StoryWebView(url: url) {
+                        // Assign an empty value for `self.data` to prevent the empty data overlay being displayed
+                        self.data = FDResult(data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []), contentType: "")
                         self.networkRequest = .success
                     }
                 }

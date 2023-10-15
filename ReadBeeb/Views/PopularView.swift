@@ -77,14 +77,8 @@ struct PopularView: View {
         do {
             self.networkRequest = .loading
             let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage()
-
-            if let mostRead = result.data.structuredItems.including(headers: ["Most Read"]).first {
-                self.mostRead = mostRead
-                self.networkRequest = .success
-            } else {
-                self.networkRequest = .error
-                Logger.network.error("Most Read section not included in the BBC News API Home tab")
-            }
+            self.mostRead = result.data.structuredItems.including(headers: ["Most Read"]).first
+            self.networkRequest = .success
         } catch let error {
             self.networkRequest = .error
             Logger.network.error("Unable to fetch BBC News API Home tab - \(error.localizedDescription)")
