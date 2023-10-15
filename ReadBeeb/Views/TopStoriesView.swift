@@ -79,8 +79,14 @@ struct TopStoriesView: View {
         do {
             self.networkRequest = .loading
             let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage()
-            self.structuredItems = result.data.structuredItems.excluding(headers: self.sectionsToExclude)
-            self.networkRequest = .success
+            let structuredItems = result.data.structuredItems.excluding(headers: self.sectionsToExclude)
+            if !structuredItems.isEmpty {
+                self.structuredItems = structuredItems
+                self.networkRequest = .success
+            } else {
+                self.networkRequest = .error
+                Logger.network.error("BBC News API Home tab is empty")
+            }
         } catch let error {
             self.networkRequest = .error
             Logger.network.error("Unable to fetch BBC News API Home tab - \(error.localizedDescription)")
