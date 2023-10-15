@@ -10,19 +10,19 @@ import OSLog
 
 struct TopStoriesView: View {
 
-    @State private var data: FDResult? = nil
+    private let sectionsToExclude = ["Watch & Listen", "Most Read"]
+
+    @State private var structuredItems = [FDStructuredDataItem]()
     @State private var networkRequest = NetworkRequestStatus.notStarted
 
     var body: some View {
         List {
-            if let data = self.data {
-                ForEach(Array(data.data.structuredItems.enumerated()), id: \.offset) { index, item in
-                    if let header = item.header {
-                        self.getFDItemView(item: header)
-                    }
-
-                    self.getFDItemView(item: item.body)
+            ForEach(Array(self.structuredItems.enumerated()), id: \.offset) { index, item in
+                if let header = item.header {
+                    self.getFDItemView(item: header)
                 }
+
+                self.getFDItemView(item: item.body)
             }
         }
         .listStyle(.plain)
@@ -30,7 +30,7 @@ struct TopStoriesView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.data?.data.structuredItems.isEmpty ?? true))
+        .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.structuredItems.isEmpty))
         .refreshable {
             await self.fetchData()
         }
@@ -67,7 +67,7 @@ struct TopStoriesView: View {
         case .loading:
             return
         case .success:
-            if self.data?.data.structuredItems.isEmpty ?? true {
+            if self.structuredItems.isEmpty {
                 return
             }
         }
@@ -79,7 +79,7 @@ struct TopStoriesView: View {
         do {
             self.networkRequest = .loading
             let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage()
-            self.data = result
+            self.structuredItems = result.data.structuredItems.excluding(headers: self.sectionsToExclude)
             self.networkRequest = .success
         } catch let error {
             self.networkRequest = .error
