@@ -16,19 +16,6 @@ struct StoryDetailView: View {
 
     @State private var shouldDisplayNetworkError = false
 
-    private var shareUrl: URL? {
-        guard let canShare = self.destination.presentation.canShare, canShare else { return nil }
-
-        switch self.destination.sourceFormat {
-        case "ABL":
-            return URL(string: "https://bbc.co.uk/" + self.destination.id)
-        case "HTML":
-            return URL(string: self.destination.url)
-        default:
-            return nil
-        }
-    }
-
     var body: some View {
         VStack(spacing: 0) {
             if BBCNewsAPINetworkController.isAPIUrl(url: self.destination.url) {
@@ -94,7 +81,7 @@ struct StoryDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                if let shareUrl = self.shareUrl {
+                if let shareUrl = self.destination.shareUrl {
                     ShareLink(item: shareUrl) {
                         Label("Share", systemImage: "square.and.arrow.up")
                     }
