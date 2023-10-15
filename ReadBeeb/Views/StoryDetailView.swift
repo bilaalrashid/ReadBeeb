@@ -13,8 +13,7 @@ struct StoryDetailView: View {
     let destination: FDLinkDestination
 
     @State private var data: FDResult? = nil
-
-    @State private var shouldDisplayNetworkError = false
+    @State private var networkRequest = NetworkRequestStatus<Void>.notStarted
 
     var body: some View {
         VStack(spacing: 0) {
@@ -88,12 +87,26 @@ struct StoryDetailView: View {
                 }
             }
         }
-        .alert(
-            "Unable To Load Data",
-            isPresented: self.$shouldDisplayNetworkError,
-            actions: { Button("OK", role: .cancel) { } },
-            message: { Text("Please try again later and contact support if the problem persists") }
-        )
+        .overlay(Group {
+            switch self.networkRequest {
+            case .loading, .notStarted:
+                if self.data == nil {
+                    VStack {
+                        Spacer()
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                        Spacer()
+                    }
+                }
+            case .error:
+                Text("Unable to load data. Please try again later and contact support if the problem persists.")
+                    .padding()
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+            case .success(_):
+                EmptyView()
+            }
+        })
         .refreshable {
             await self.fetchData()
         }
@@ -107,11 +120,13 @@ struct StoryDetailView: View {
     private func fetchData() async {
         do {
             if BBCNewsAPINetworkController.isAPIUrl(url: self.destination.url) {
+                self.networkRequest = .loading
                 let result = try await BBCNewsAPINetworkController.fetchFDUrl(url: self.destination.url)
                 self.data = result
+                self.networkRequest = .success(())
             }
         } catch let error {
-            self.shouldDisplayNetworkError = true
+            self.networkRequest = .error
             Logger.network.error("Unable to fetch news article \(self.destination.url) - \(error.localizedDescription)")
         }
     }
