@@ -23,7 +23,9 @@ struct StoryDetailView: View {
                 }
             } else {
                 if let url = URL(string: self.destination.url) {
-                    StoryWebView(url: url)
+                    StoryWebView(url: url) {
+                        self.networkRequest = .success(())
+                    }
                 }
             }
         }

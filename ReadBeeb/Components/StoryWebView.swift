@@ -11,6 +11,7 @@ import WebKit
 struct StoryWebView: UIViewRepresentable {
 
     let url: URL
+    let didFinishLoading: () -> Void
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -38,6 +39,7 @@ struct StoryWebView: UIViewRepresentable {
             let css = "#cookiePrompt, .bbccookies-banner, #orbit-header, .orbit-header-container, header, #top-navigation, #u47640082145343365, .nav-top, #core-navigation, #services-bar, #orb-footer, .orb-footer { display: none; }"
             let js = "const style = document.createElement('style'); style.innerHTML = '\(css)'; document.head.appendChild(style);"
 
+            self.parent.didFinishLoading()
             webView.evaluateJavaScript(js)
         }
     }
