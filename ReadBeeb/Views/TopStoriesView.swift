@@ -62,6 +62,8 @@ struct TopStoriesView: View {
 
     @ViewBuilder private func getFDItemView(item: FDItem) -> some View {
         switch item {
+        case .billboard(let item):
+            Billboard(item: item)
         case .hierarchicalCollection(let item):
             HierarchicalCollection(item: item)
         case .collectionHeader(let item):

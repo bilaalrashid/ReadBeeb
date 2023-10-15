@@ -26,6 +26,7 @@
 		3A44C6122AA53D8A001AB40F /* StoryPromoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */; };
 		3A4F65C72ADC7E72003673BF /* FDDestination+ShareUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */; };
 		3A4F65C92ADC822B003673BF /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65C82ADC822B003673BF /* StoryView.swift */; };
+		3A4F65CB2ADC8AB9003673BF /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65CA2ADC8AB9003673BF /* Billboard.swift */; };
 		3A516D682AB25D1400AF0BC9 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D672AB25D1400AF0BC9 /* MediaView.swift */; };
 		3A516D6B2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */; };
 		3A516D6D2AB26AA000AF0BC9 /* MediaSelectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */; };
@@ -101,6 +102,7 @@
 		3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPromoRow.swift; sourceTree = "<group>"; };
 		3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDDestination+ShareUrl.swift"; sourceTree = "<group>"; };
 		3A4F65C82ADC822B003673BF /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
+		3A4F65CA2ADC8AB9003673BF /* Billboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billboard.swift; sourceTree = "<group>"; };
 		3A516D672AB25D1400AF0BC9 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBCIPlayerAPINetworkController.swift; sourceTree = "<group>"; };
 		3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectorResult.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				3A44C6072A9B739E001AB40F /* HierarchicalCollection.swift */,
 				3A44C6092A9B73BA001AB40F /* CollectionHeader.swift */,
 				3A44C60B2A9B73D5001AB40F /* SimpleCollection.swift */,
+				3A4F65CA2ADC8AB9003673BF /* Billboard.swift */,
 				3AC017C32AC9E8620010EBBE /* SimplePromoGrid.swift */,
 				3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */,
 				3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */,
@@ -469,6 +472,7 @@
 				3A516D752AC09B5A00AF0BC9 /* MediaSelectorResult+ValidMedia.swift in Sources */,
 				3A4F65C92ADC822B003673BF /* StoryView.swift in Sources */,
 				3A44C60A2A9B73BA001AB40F /* CollectionHeader.swift in Sources */,
+				3A4F65CB2ADC8AB9003673BF /* Billboard.swift in Sources */,
 				3A9124F12AAE110900EC0DCF /* FDWeatherPromoSummary.swift in Sources */,
 				3A44C5FA2A9B5AA7001AB40F /* TopStoriesView.swift in Sources */,
 				3A516D712AB26BE000AF0BC9 /* MediaSelectorConnection.swift in Sources */,
