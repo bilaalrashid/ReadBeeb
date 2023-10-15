@@ -108,9 +108,7 @@ struct StoryDetailView: View {
             message: { Text("Please try again later and contact support if the problem persists") }
         )
         .refreshable {
-            Task {
-                await self.fetchData()
-            }
+            await self.fetchData()
         }
         .onAppear {
             Task {
