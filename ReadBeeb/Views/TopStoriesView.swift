@@ -19,10 +19,10 @@ struct TopStoriesView: View {
         List {
             ForEach(Array(self.structuredItems.enumerated()), id: \.offset) { index, item in
                 if let header = item.header {
-                    self.getFDItemView(item: header)
+                    DiscoveryView(item: header)
                 }
 
-                self.getFDItemView(item: item.body)
+                DiscoveryView(item: item.body)
             }
         }
         .listStyle(.plain)
@@ -38,25 +38,6 @@ struct TopStoriesView: View {
             Task {
                 await self.fetchDataIfNotExists()
             }
-        }
-    }
-
-    @ViewBuilder private func getFDItemView(item: FDItem) -> some View {
-        switch item {
-        case .billboard(let item):
-            Billboard(item: item)
-        case .hierarchicalCollection(let item):
-            HierarchicalCollection(item: item)
-        case .collectionHeader(let item):
-            CollectionHeader(item: item)
-        case .simpleCollection(let item):
-            SimpleCollection(item: item)
-        case .simplePromoGrid(let item):
-            SimplePromoGrid(item: item)
-        case .copyright(let item):
-            Copyright(item: item)
-        default:
-            EmptyView()
         }
     }
 
