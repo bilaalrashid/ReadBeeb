@@ -11,7 +11,7 @@ import OSLog
 struct TopStoriesView: View {
 
     @State private var data: FDResult? = nil
-    @State private var networkRequest = NetworkRequestStatus<Void>.notStarted
+    @State private var networkRequest = NetworkRequestStatus.notStarted
 
     var body: some View {
         List {
@@ -46,7 +46,7 @@ struct TopStoriesView: View {
                     .padding()
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
-            case .success(_):
+            case .success:
                 EmptyView()
             }
         })
@@ -83,7 +83,7 @@ struct TopStoriesView: View {
             break
         case .loading:
             return
-        case .success(_):
+        case .success:
             if self.data?.data.structuredItems.isEmpty ?? true {
                 return
             }
@@ -97,7 +97,7 @@ struct TopStoriesView: View {
             self.networkRequest = .loading
             let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage()
             self.data = result
-            self.networkRequest = .success(())
+            self.networkRequest = .success
         } catch let error {
             self.networkRequest = .error
             Logger.network.error("Unable to fetch BBC News API Home tab - \(error.localizedDescription)")

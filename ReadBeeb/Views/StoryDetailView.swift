@@ -13,7 +13,7 @@ struct StoryDetailView: View {
     let destination: FDLinkDestination
 
     @State private var data: FDResult? = nil
-    @State private var networkRequest = NetworkRequestStatus<Void>.notStarted
+    @State private var networkRequest = NetworkRequestStatus.notStarted
 
     var body: some View {
         VStack(spacing: 0) {
@@ -24,7 +24,7 @@ struct StoryDetailView: View {
             } else {
                 if let url = URL(string: self.destination.url) {
                     StoryWebView(url: url) {
-                        self.networkRequest = .success(())
+                        self.networkRequest = .success
                     }
                 }
             }
@@ -58,7 +58,7 @@ struct StoryDetailView: View {
                     .padding()
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
-            case .success(_):
+            case .success:
                 EmptyView()
             }
         })
@@ -78,7 +78,7 @@ struct StoryDetailView: View {
                 self.networkRequest = .loading
                 let result = try await BBCNewsAPINetworkController.fetchFDUrl(url: self.destination.url)
                 self.data = result
-                self.networkRequest = .success(())
+                self.networkRequest = .success
             }
         } catch let error {
             self.networkRequest = .error

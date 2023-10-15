@@ -8,7 +8,7 @@
 import Foundation
 
 /// A data structure representing the status of an ongoing network request
-enum NetworkRequestStatus<T> {
+enum NetworkRequestStatus {
     /// The network request has not been started yet
     case notStarted
     /// An error occurred during the network request
@@ -16,5 +16,5 @@ enum NetworkRequestStatus<T> {
     /// The network request is currently loading
     case loading
     /// The network request was a result
-    case success(T)
+    case success
 }

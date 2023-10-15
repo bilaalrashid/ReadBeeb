@@ -14,7 +14,7 @@ struct MyNewsView: View {
     @Query var selectedTopics: [Topic]
 
     @State private var storyPromos = [FDStoryPromo]()
-    @State private var networkRequest = NetworkRequestStatus<Void>.notStarted
+    @State private var networkRequest = NetworkRequestStatus.notStarted
 
     @State private var isEditingTopics = false
 
@@ -58,7 +58,7 @@ struct MyNewsView: View {
                     .padding()
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
-            case .success(_):
+            case .success:
                 EmptyView()
             }
         })
@@ -89,7 +89,7 @@ struct MyNewsView: View {
             break
         case .loading:
             return
-        case .success(_):
+        case .success:
             if !self.storyPromos.isEmpty {
                 return
             }
@@ -104,7 +104,7 @@ struct MyNewsView: View {
             let ids = self.selectedTopics.map { $0.id }
             let result = try await BBCNewsAPINetworkController.fetchStoryPromos(for: ids)
             self.storyPromos = result
-            self.networkRequest = .success(())
+            self.networkRequest = .success
         } catch let error {
             self.networkRequest = .error
             Logger.network.error("Unable to fetch topics for My News tab - \(error.localizedDescription)")
