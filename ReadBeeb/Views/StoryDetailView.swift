@@ -42,26 +42,7 @@ struct StoryDetailView: View {
                 }
             }
         }
-        .overlay(Group {
-            switch self.networkRequest {
-            case .loading, .notStarted:
-                if self.data == nil {
-                    VStack {
-                        Spacer()
-                        ProgressView()
-                            .frame(maxWidth: .infinity)
-                        Spacer()
-                    }
-                }
-            case .error:
-                Text("Unable to load data. Please try again later and contact support if the problem persists.")
-                    .padding()
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.secondary)
-            case .success:
-                EmptyView()
-            }
-        })
+        .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.data == nil))
         .refreshable {
             await self.fetchData()
         }
