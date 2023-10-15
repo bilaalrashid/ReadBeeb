@@ -25,6 +25,7 @@
 		3A44C60C2A9B73D5001AB40F /* SimpleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C60B2A9B73D5001AB40F /* SimpleCollection.swift */; };
 		3A44C6122AA53D8A001AB40F /* StoryPromoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */; };
 		3A4F65C72ADC7E72003673BF /* FDDestination+ShareUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */; };
+		3A4F65C92ADC822B003673BF /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65C82ADC822B003673BF /* StoryView.swift */; };
 		3A516D682AB25D1400AF0BC9 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D672AB25D1400AF0BC9 /* MediaView.swift */; };
 		3A516D6B2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */; };
 		3A516D6D2AB26AA000AF0BC9 /* MediaSelectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */; };
@@ -99,6 +100,7 @@
 		3A44C60B2A9B73D5001AB40F /* SimpleCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollection.swift; sourceTree = "<group>"; };
 		3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPromoRow.swift; sourceTree = "<group>"; };
 		3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDDestination+ShareUrl.swift"; sourceTree = "<group>"; };
+		3A4F65C82ADC822B003673BF /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		3A516D672AB25D1400AF0BC9 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBCIPlayerAPINetworkController.swift; sourceTree = "<group>"; };
 		3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectorResult.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				3A9125062AAFC39200EC0DCF /* Headline.swift */,
 				3A516D7A2AC0A2F500AF0BC9 /* BBCIPlayerVideoPlayer.swift */,
 				3A516D762AC0A27C00AF0BC9 /* VideoPlayer.swift */,
+				3A4F65C82ADC822B003673BF /* StoryView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */,
 				3A9124E32AAE104100EC0DCF /* FDTopic.swift in Sources */,
 				3A516D752AC09B5A00AF0BC9 /* MediaSelectorResult+ValidMedia.swift in Sources */,
+				3A4F65C92ADC822B003673BF /* StoryView.swift in Sources */,
 				3A44C60A2A9B73BA001AB40F /* CollectionHeader.swift in Sources */,
 				3A9124F12AAE110900EC0DCF /* FDWeatherPromoSummary.swift in Sources */,
 				3A44C5FA2A9B5AA7001AB40F /* TopStoriesView.swift in Sources */,
