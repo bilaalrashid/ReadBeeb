@@ -22,6 +22,8 @@ struct DiscoveryView: View {
             SimpleCollection(item: item)
         case .simplePromoGrid(let item):
             SimplePromoGrid(item: item)
+        case .chipList(let item):
+            ChipList(item: item)
         case .copyright(let item):
             Copyright(item: item)
         default:
