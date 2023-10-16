@@ -21,7 +21,7 @@ struct DestinationDetailView: View {
                 if let data = self.data {
                     switch URL(string: self.destination.url)?.valueOf("type") ?? "" {
                     case "index", "topic":
-                        DiscoveryView(data: data)
+                        DiscoveryView(data: data, sectionsToInclude: nil, sectionsToExclude: nil)
                     case "asset":
                         StoryView(data: data)
                     default:

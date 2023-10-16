@@ -12,25 +12,20 @@ struct TopStoriesView: View {
 
     private let sectionsToExclude = ["Watch & Listen", "Most Read", "Topics in the news"]
 
-    @State private var structuredItems = [FDStructuredDataItem]()
+    @State private var data: FDResult? = nil
     @State private var networkRequest = NetworkRequestStatus.notStarted
 
     var body: some View {
-        List {
-            ForEach(Array(self.structuredItems.enumerated()), id: \.offset) { index, item in
-                if let header = item.header {
-                    DiscoveryItemView(item: header)
-                }
-
-                DiscoveryItemView(item: item.body)
+        VStack {
+            if let data = data {
+                DiscoveryView(data: data, sectionsToInclude: nil, sectionsToExclude: self.sectionsToExclude)
             }
         }
-        .listStyle(.plain)
         .navigationTitle("Top Stories")
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.structuredItems.isEmpty))
+        .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.data?.data.structuredItems.isEmpty ?? true))
         .refreshable {
             await self.fetchData()
         }
@@ -48,7 +43,7 @@ struct TopStoriesView: View {
         case .loading:
             return
         case .success:
-            if self.structuredItems.isEmpty {
+            if self.data?.data.structuredItems.isEmpty ?? true {
                 return
             }
         }
@@ -60,7 +55,7 @@ struct TopStoriesView: View {
         do {
             self.networkRequest = .loading
             let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage()
-            self.structuredItems = result.data.structuredItems.excluding(headers: self.sectionsToExclude)
+            self.data = result
             self.networkRequest = .success
         } catch let error {
             self.networkRequest = .error

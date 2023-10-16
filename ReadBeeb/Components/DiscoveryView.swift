@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct DiscoveryView: View {
+
     let data: FDResult
+    let sectionsToInclude: [String]?
+    let sectionsToExclude: [String]?
+
+    var filteredStructuredItems: [FDStructuredDataItem] {
+        if let sectionsToInclude = self.sectionsToInclude {
+            return self.data.data.structuredItems.including(headers: sectionsToInclude)
+        }
+
+        if let sectionsToExclude = self.sectionsToExclude {
+            return self.data.data.structuredItems.excluding(headers: sectionsToExclude)
+        }
+
+        return self.data.data.structuredItems
+    }
 
     var body: some View {
         List {
-            ForEach(Array(data.data.structuredItems.enumerated()), id: \.offset) { index, item in
+            ForEach(Array(self.filteredStructuredItems.enumerated()), id: \.offset) { index, item in
                 if let header = item.header {
                     DiscoveryItemView(item: header)
                 }
@@ -22,8 +37,9 @@ struct DiscoveryView: View {
         }
         .listStyle(.plain)
     }
+
 }
 
 #Preview {
-    DiscoveryView(data: FDResult(data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []), contentType: ""))
+    DiscoveryView(data: FDResult(data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []), contentType: ""), sectionsToInclude: nil, sectionsToExclude: nil)
 }
