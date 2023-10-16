@@ -10,7 +10,7 @@ import OSLog
 
 struct TopStoriesView: View {
 
-    private let sectionsToExclude = ["Watch & Listen", "Most Read"]
+    private let sectionsToExclude = ["Watch & Listen", "Most Read", "Topics in the news"]
 
     @State private var structuredItems = [FDStructuredDataItem]()
     @State private var networkRequest = NetworkRequestStatus.notStarted
