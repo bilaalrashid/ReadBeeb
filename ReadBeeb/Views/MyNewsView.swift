@@ -24,7 +24,7 @@ struct MyNewsView: View {
                 if let destination = story.link.destinations.first {
                     // Workaround to hide detail disclosure
                     ZStack {
-                        NavigationLink(destination: StoryDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
+                        NavigationLink(destination: DestinationDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
                         StoryPromoRow(story: story)
                     }
                 }

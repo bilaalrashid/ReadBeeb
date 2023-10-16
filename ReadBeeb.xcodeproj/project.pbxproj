@@ -28,9 +28,10 @@
 		3A4F65C92ADC822B003673BF /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65C82ADC822B003673BF /* StoryView.swift */; };
 		3A4F65CB2ADC8AB9003673BF /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65CA2ADC8AB9003673BF /* Billboard.swift */; };
 		3A4F65CD2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65CC2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift */; };
-		3A4F65CF2ADC9C8D003673BF /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65CE2ADC9C8D003673BF /* DiscoveryView.swift */; };
+		3A4F65CF2ADC9C8D003673BF /* DiscoveryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65CE2ADC9C8D003673BF /* DiscoveryItemView.swift */; };
 		3A4F65D32ADDCAF7003673BF /* ChipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65D22ADDCAF7003673BF /* ChipList.swift */; };
-		3A4F65D82ADDDF86003673BF /* TopicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65D72ADDDF86003673BF /* TopicDetailView.swift */; };
+		3A4F65DA2ADDE51F003673BF /* URL+ValueOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65D92ADDE51F003673BF /* URL+ValueOf.swift */; };
+		3A4F65DC2ADDE715003673BF /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65DB2ADDE715003673BF /* DiscoveryView.swift */; };
 		3A516D682AB25D1400AF0BC9 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D672AB25D1400AF0BC9 /* MediaView.swift */; };
 		3A516D6B2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */; };
 		3A516D6D2AB26AA000AF0BC9 /* MediaSelectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */; };
@@ -45,7 +46,7 @@
 		3A75FA332AC87C0F00393014 /* Topics.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FA322AC87C0F00393014 /* Topics.json */; };
 		3A75FA382AC87D6A00393014 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FA372AC87D6A00393014 /* Topic.swift */; };
 		3A75FA3A2AC87DCF00393014 /* TopicResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FA392AC87DCF00393014 /* TopicResult.swift */; };
-		3A9124C92AA6872F00EC0DCF /* StoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124C82AA6872F00EC0DCF /* StoryDetailView.swift */; };
+		3A9124C92AA6872F00EC0DCF /* DestinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124C82AA6872F00EC0DCF /* DestinationDetailView.swift */; };
 		3A9124CB2AAD2CCD00EC0DCF /* FDResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CA2AAD2CCD00EC0DCF /* FDResult.swift */; };
 		3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */; };
 		3A9124CF2AAE0F2400EC0DCF /* FDData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CE2AAE0F2400EC0DCF /* FDData.swift */; };
@@ -108,9 +109,10 @@
 		3A4F65C82ADC822B003673BF /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		3A4F65CA2ADC8AB9003673BF /* Billboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billboard.swift; sourceTree = "<group>"; };
 		3A4F65CC2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestStatusOverlay.swift; sourceTree = "<group>"; };
-		3A4F65CE2ADC9C8D003673BF /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
+		3A4F65CE2ADC9C8D003673BF /* DiscoveryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryItemView.swift; sourceTree = "<group>"; };
 		3A4F65D22ADDCAF7003673BF /* ChipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipList.swift; sourceTree = "<group>"; };
-		3A4F65D72ADDDF86003673BF /* TopicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailView.swift; sourceTree = "<group>"; };
+		3A4F65D92ADDE51F003673BF /* URL+ValueOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+ValueOf.swift"; sourceTree = "<group>"; };
+		3A4F65DB2ADDE715003673BF /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		3A516D672AB25D1400AF0BC9 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBCIPlayerAPINetworkController.swift; sourceTree = "<group>"; };
 		3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectorResult.swift; sourceTree = "<group>"; };
@@ -125,7 +127,7 @@
 		3A75FA322AC87C0F00393014 /* Topics.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Topics.json; sourceTree = "<group>"; };
 		3A75FA372AC87D6A00393014 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		3A75FA392AC87DCF00393014 /* TopicResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicResult.swift; sourceTree = "<group>"; };
-		3A9124C82AA6872F00EC0DCF /* StoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailView.swift; sourceTree = "<group>"; };
+		3A9124C82AA6872F00EC0DCF /* DestinationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailView.swift; sourceTree = "<group>"; };
 		3A9124CA2AAD2CCD00EC0DCF /* FDResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDResult.swift; sourceTree = "<group>"; };
 		3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDData+StructuredItems.swift"; sourceTree = "<group>"; };
 		3A9124CE2AAE0F2400EC0DCF /* FDData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDData.swift; sourceTree = "<group>"; };
@@ -241,7 +243,8 @@
 				3A9125062AAFC39200EC0DCF /* Headline.swift */,
 				3A516D7A2AC0A2F500AF0BC9 /* BBCIPlayerVideoPlayer.swift */,
 				3A516D762AC0A27C00AF0BC9 /* VideoPlayer.swift */,
-				3A4F65CE2ADC9C8D003673BF /* DiscoveryView.swift */,
+				3A4F65CE2ADC9C8D003673BF /* DiscoveryItemView.swift */,
+				3A4F65DB2ADDE715003673BF /* DiscoveryView.swift */,
 				3A4F65C82ADC822B003673BF /* StoryView.swift */,
 				3A4F65CC2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift */,
 			);
@@ -256,8 +259,7 @@
 				3A44C5FD2A9B5BE2001AB40F /* PopularView.swift */,
 				3A44C5FF2A9B5BF2001AB40F /* VideoView.swift */,
 				3A44C6012A9B5C00001AB40F /* SearchView.swift */,
-				3A9124C82AA6872F00EC0DCF /* StoryDetailView.swift */,
-				3A4F65D72ADDDF86003673BF /* TopicDetailView.swift */,
+				3A9124C82AA6872F00EC0DCF /* DestinationDetailView.swift */,
 				3AC017BD2AC9B8510010EBBE /* TopicSelectionView.swift */,
 			);
 			path = Views;
@@ -302,6 +304,7 @@
 				3A516D742AC09B5A00AF0BC9 /* MediaSelectorResult+ValidMedia.swift */,
 				3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */,
 				3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */,
+				3A4F65D92ADDE51F003673BF /* URL+ValueOf.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -458,7 +461,6 @@
 				3A4F65CD2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift in Sources */,
 				3A44C6022A9B5C00001AB40F /* SearchView.swift in Sources */,
 				3A9124E12AAE103000EC0DCF /* FDPresentation.swift in Sources */,
-				3A4F65D82ADDDF86003673BF /* TopicDetailView.swift in Sources */,
 				3A516D772AC0A27C00AF0BC9 /* VideoPlayer.swift in Sources */,
 				3A9124D12AAE0F3E00EC0DCF /* FDItem.swift in Sources */,
 				3A44C6122AA53D8A001AB40F /* StoryPromoRow.swift in Sources */,
@@ -470,8 +472,9 @@
 				3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */,
 				3AC017C22AC9E4690010EBBE /* FDSimplePromoGrid.swift in Sources */,
 				3A4F65C72ADC7E72003673BF /* FDDestination+ShareUrl.swift in Sources */,
-				3A9124C92AA6872F00EC0DCF /* StoryDetailView.swift in Sources */,
+				3A9124C92AA6872F00EC0DCF /* DestinationDetailView.swift in Sources */,
 				3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */,
+				3A4F65DC2ADDE715003673BF /* DiscoveryView.swift in Sources */,
 				3A9124D72AAE0FAE00EC0DCF /* FDCollectionHeader.swift in Sources */,
 				3A9124E92AAE10B200EC0DCF /* FDHeadline.swift in Sources */,
 				3A9124F52AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift in Sources */,
@@ -481,7 +484,7 @@
 				3A9124CF2AAE0F2400EC0DCF /* FDData.swift in Sources */,
 				3A75FA3A2AC87DCF00393014 /* TopicResult.swift in Sources */,
 				3A44C6002A9B5BF2001AB40F /* VideoView.swift in Sources */,
-				3A4F65CF2ADC9C8D003673BF /* DiscoveryView.swift in Sources */,
+				3A4F65CF2ADC9C8D003673BF /* DiscoveryItemView.swift in Sources */,
 				3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */,
 				3A9124E32AAE104100EC0DCF /* FDTopic.swift in Sources */,
 				3A516D752AC09B5A00AF0BC9 /* MediaSelectorResult+ValidMedia.swift in Sources */,
@@ -511,6 +514,7 @@
 				3A9124DD2AAE100700EC0DCF /* FDStoryPromo.swift in Sources */,
 				3A44C60C2A9B73D5001AB40F /* SimpleCollection.swift in Sources */,
 				3AC017C02AC9BDB30010EBBE /* Bundle+Decode.swift in Sources */,
+				3A4F65DA2ADDE51F003673BF /* URL+ValueOf.swift in Sources */,
 				3A516D7B2AC0A2F500AF0BC9 /* BBCIPlayerVideoPlayer.swift in Sources */,
 				3A9124CB2AAD2CCD00EC0DCF /* FDResult.swift in Sources */,
 				3A516D6F2AB26BCC00AF0BC9 /* MediaSelectorItem.swift in Sources */,

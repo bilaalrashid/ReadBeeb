@@ -16,7 +16,7 @@ struct SearchView: View {
     var body: some View {
         List {
             if let body = self.topics?.body {
-                DiscoveryView(item: body)
+                DiscoveryItemView(item: body)
             }
         }
         .listStyle(.plain)

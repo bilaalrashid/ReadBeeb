@@ -47,7 +47,7 @@ struct TextContainer: View {
                 })
                 .navigationDestination(isPresented: self.$isLinkActive) {
                     if let destination = self.destination {
-                        StoryDetailView(destination: destination)
+                        DestinationDetailView(destination: destination)
                     }
                 }
         }

@@ -19,10 +19,10 @@ struct TopStoriesView: View {
         List {
             ForEach(Array(self.structuredItems.enumerated()), id: \.offset) { index, item in
                 if let header = item.header {
-                    DiscoveryView(item: header)
+                    DiscoveryItemView(item: header)
                 }
 
-                DiscoveryView(item: item.body)
+                DiscoveryItemView(item: item.body)
             }
         }
         .listStyle(.plain)

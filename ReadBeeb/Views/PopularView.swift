@@ -16,11 +16,11 @@ struct PopularView: View {
     var body: some View {
         List {
             if let header = self.mostRead?.header {
-                DiscoveryView(item: header)
+                DiscoveryItemView(item: header)
             }
 
             if let body = self.mostRead?.body {
-                DiscoveryView(item: body)
+                DiscoveryItemView(item: body)
             }
         }
         .listStyle(.plain)

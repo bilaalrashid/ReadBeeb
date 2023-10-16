@@ -1,5 +1,5 @@
 //
-//  StoryDetailView.swift
+//  DestinationDetailView.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 04/09/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import OSLog
 
-struct StoryDetailView: View {
+struct DestinationDetailView: View {
 
     let destination: FDLinkDestination
 
@@ -19,7 +19,14 @@ struct StoryDetailView: View {
         VStack(spacing: 0) {
             if BBCNewsAPINetworkController.isAPIUrl(url: self.destination.url) {
                 if let data = self.data {
-                    StoryView(data: data)
+                    switch URL(string: self.destination.url)?.valueOf("type") ?? "" {
+                    case "index", "topic":
+                        DiscoveryView(data: data)
+                    case "asset":
+                        StoryView(data: data)
+                    default:
+                        StoryView(data: data)
+                    }
                 }
             } else {
                 if let url = URL(string: self.destination.url) {
@@ -77,7 +84,7 @@ struct StoryDetailView: View {
 
 struct NewsStoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        StoryDetailView(destination:
+        DestinationDetailView(destination:
                                 FDLinkDestination(
                                     sourceFormat: "ABL",
                                     url: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset",

@@ -2,36 +2,28 @@
 //  DiscoveryView.swift
 //  ReadBeeb
 //
-//  Created by Bilaal Rashid on 15/10/2023.
+//  Created by Bilaal Rashid on 16/10/2023.
 //
 
 import SwiftUI
 
 struct DiscoveryView: View {
-    let item: FDItem
+    let data: FDResult
 
     var body: some View {
-        switch item {
-        case .billboard(let item):
-            Billboard(item: item)
-        case .hierarchicalCollection(let item):
-            HierarchicalCollection(item: item)
-        case .collectionHeader(let item):
-            CollectionHeader(item: item)
-        case .simpleCollection(let item):
-            SimpleCollection(item: item)
-        case .simplePromoGrid(let item):
-            SimplePromoGrid(item: item)
-        case .chipList(let item):
-            ChipList(item: item)
-        case .copyright(let item):
-            Copyright(item: item)
-        default:
-            EmptyView()
+        List {
+            ForEach(Array(data.data.structuredItems.enumerated()), id: \.offset) { index, item in
+                if let header = item.header {
+                    DiscoveryItemView(item: header)
+                }
+
+                DiscoveryItemView(item: item.body)
+            }
         }
+        .listStyle(.plain)
     }
 }
 
 #Preview {
-    DiscoveryView(item: .copyright(FDCopyright(type: "Copyright", lastUpdated: 0)))
+    DiscoveryView(data: FDResult(data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []), contentType: ""))
 }
