@@ -35,8 +35,8 @@ struct StoryPromoRow: View {
                 }
                 Spacer(minLength: 1)
                 HStack(alignment: .center) {
-                    if let topic = self.story.topic {
-                        Text(topic.text)
+                    if let topic = self.story.topic?.text {
+                        Text(topic)
                             .font(.caption)
                             .foregroundColor(.accentColor)
                             .lineLimit(1)

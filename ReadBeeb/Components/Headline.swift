@@ -29,8 +29,8 @@ struct Headline: View {
                 }
             }
             HStack {
-                if let topic = headline.topic {
-                    Text(topic.text)
+                if let topic = headline.topic?.text {
+                    Text(topic)
                         .font(.callout)
                         .foregroundColor(.accentColor)
                 }
@@ -52,7 +52,7 @@ struct Headline_Previews: PreviewProvider {
                         text: "Headline",
                         lastUpdated: 0,
                         byline: FDHeadlineByline(name: "Chris Mason", purpose: "BBC News"),
-                        topic: FDTopic(text: "Politics", link: nil),
+                        topic: FDTopic(text: "Politics", title: nil, link: nil),
                         languageCode: "en-GB",
                         readTimeMinutes: 2
                     )
