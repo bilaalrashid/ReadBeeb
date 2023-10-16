@@ -36,7 +36,7 @@ struct StoryWebView: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-            let css = "#cookiePrompt, .bbccookies-banner, #orbit-header, .orbit-header-container, header, #top-navigation, #u47640082145343365, .nav-top, #core-navigation, #services-bar, #orb-footer, .orb-footer { display: none; }"
+            let css = "#cookiePrompt, .bbccookies-banner, #orbit-header, .orbit-header-container, header, #top-navigation, #u47640082145343365, .nav-top, #core-navigation, #services-bar, #orb-footer, .orb-footer, nav, [class$=\"GlobalNavigation\"], [class$=\"ConsentBanner\"], #features-label-aside-content, #elsewhere-label-aside-content, #footer-content, [data-testid=\"testoverlay\"], #header-content { display: none; }"
             let js = "const style = document.createElement('style'); style.innerHTML = '\(css)'; document.head.appendChild(style);"
 
             self.parent.didFinishLoading()
