@@ -32,6 +32,7 @@
 		3A4F65D32ADDCAF7003673BF /* ChipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65D22ADDCAF7003673BF /* ChipList.swift */; };
 		3A4F65DA2ADDE51F003673BF /* URL+ValueOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65D92ADDE51F003673BF /* URL+ValueOf.swift */; };
 		3A4F65DC2ADDE715003673BF /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65DB2ADDE715003673BF /* DiscoveryView.swift */; };
+		3A4F65DE2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65DD2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift */; };
 		3A516D682AB25D1400AF0BC9 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D672AB25D1400AF0BC9 /* MediaView.swift */; };
 		3A516D6B2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */; };
 		3A516D6D2AB26AA000AF0BC9 /* MediaSelectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */; };
@@ -112,6 +113,7 @@
 		3A4F65D22ADDCAF7003673BF /* ChipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipList.swift; sourceTree = "<group>"; };
 		3A4F65D92ADDE51F003673BF /* URL+ValueOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+ValueOf.swift"; sourceTree = "<group>"; };
 		3A4F65DB2ADDE715003673BF /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
+		3A4F65DD2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDTextContainerText+AttributedString.swift"; sourceTree = "<group>"; };
 		3A516D672AB25D1400AF0BC9 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBCIPlayerAPINetworkController.swift; sourceTree = "<group>"; };
 		3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectorResult.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */,
 				3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */,
 				3A4F65D92ADDE51F003673BF /* URL+ValueOf.swift */,
+				3A4F65DD2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				3A44C5FC2A9B5BD0001AB40F /* MyNewsView.swift in Sources */,
 				3A9124DB2AAE0FF500EC0DCF /* FDCarousel.swift in Sources */,
 				3A9124EF2AAE10F300EC0DCF /* FDSectionHeader.swift in Sources */,
+				3A4F65DE2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

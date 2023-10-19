@@ -33,7 +33,7 @@ struct TextContainer: View {
                 }
             }
 
-            Text(self.textFormattedSpans())
+            Text(self.container.text.attributedString)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
         }
@@ -62,50 +62,6 @@ struct TextContainer: View {
                 DestinationDetailView(destination: destination)
             }
         }
-    }
-
-    private func textFormattedSpans() -> AttributedString {
-        let attributedString = NSMutableAttributedString(string: self.container.text.text)
-
-        for span in self.container.text.spans {
-            let range = NSRange(location: span.startIndex, length: span.length)
-
-            switch span.type {
-            case "link":
-                if let url = span.link?.destinations.first?.url {
-                    let linkAttributes: [NSAttributedString.Key: Any] = [
-                        .link: url,
-                        .underlineStyle: NSUnderlineStyle.single.rawValue
-                    ]
-                    attributedString.addAttributes(linkAttributes, range: range)
-                }
-            case "emphasis":
-                let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
-                let italicFont = UIFont.italicSystemFont(ofSize: UIFont.labelFontSize)
-                let combinedFont = UIFont(descriptor: UIFont.preferredFont(forTextStyle: .body).fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic])!, size: UIFont.labelFontSize)
-
-                // BUG: If there are multiple attributes defined for the .font key over the same range, we have to show
-                //      both otherwise one will overwrite the other. This has a side-effect of overwriting all of the
-                //      ranges to be the same. This is likely to be an extremely rare edge case in production, likely only
-                //      occurring due to formatting mistake (which this would fix), so this edge-case is permissible
-                if (attributedString.attribute(.font, at: range.location, effectiveRange: nil) != nil) {
-                    attributedString.addAttribute(.font, value: combinedFont, range: range)
-                } else {
-                    switch span.attribute {
-                    case "bold":
-                        attributedString.addAttribute(.font, value: boldFont, range: range)
-                    case "italic":
-                        attributedString.addAttribute(.font, value: italicFont, range: range)
-                    default:
-                        break
-                    }
-                }
-            default:
-                break
-            }
-        }
-
-        return AttributedString(attributedString)
     }
 
     private func destination(for url: URL) -> FDLinkDestination? {
