@@ -65,37 +65,47 @@ struct TextContainer: View {
     }
 
     private func textFormattedSpans() -> AttributedString {
-        let spans = self.container.text.spans.sorted { $0.startIndex < $1.startIndex }
-        let text = self.container.text.text
+        let attributedString = NSMutableAttributedString(string: self.container.text.text)
 
-        var formatted = AttributedString()
-        var lastIndex = 0
+        for span in self.container.text.spans {
+            let range = NSRange(location: span.startIndex, length: span.length)
 
-        for span in spans {
-            let nextPlainSection = text.substring(from: lastIndex, to: span.startIndex)
-            formatted += AttributedString(nextPlainSection)
+            switch span.type {
+            case "link":
+                if let url = span.link?.destinations.first?.url {
+                    let linkAttributes: [NSAttributedString.Key: Any] = [
+                        .link: url,
+                        .underlineStyle: NSUnderlineStyle.single.rawValue
+                    ]
+                    attributedString.addAttributes(linkAttributes, range: range)
+                }
+            case "emphasis":
+                let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+                let italicFont = UIFont.italicSystemFont(ofSize: UIFont.labelFontSize)
+                let combinedFont = UIFont(descriptor: UIFont.preferredFont(forTextStyle: .body).fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic])!, size: UIFont.labelFontSize)
 
-            let extracted = text.substring(from: span.startIndex, to: span.startIndex + span.length)
-
-            if let url = span.link?.destinations.first?.url {
-                var link = AttributedString(extracted)
-                link.link = URL(string: url)
-                formatted += link
-            } else if let attribute = span.attribute {
-                var container = AttributeContainer()
-                container[AttributeScopes.SwiftUIAttributes.FontAttribute.self] = attribute == "bold" ? .body.bold() : .body.italic()
-                formatted += AttributedString(extracted, attributes: container)
-            } else {
-                formatted += AttributedString(extracted)
+                // BUG: If there are multiple attributes defined for the .font key over the same range, we have to show
+                //      both otherwise one will overwrite the other. This has a side-effect of overwriting all of the
+                //      ranges to be the same. This is likely to be an extremely rare edge case in production, likely only
+                //      occurring due to formatting mistake (which this would fix), so this edge-case is permissible
+                if (attributedString.attribute(.font, at: range.location, effectiveRange: nil) != nil) {
+                    attributedString.addAttribute(.font, value: combinedFont, range: range)
+                } else {
+                    switch span.attribute {
+                    case "bold":
+                        attributedString.addAttribute(.font, value: boldFont, range: range)
+                    case "italic":
+                        attributedString.addAttribute(.font, value: italicFont, range: range)
+                    default:
+                        break
+                    }
+                }
+            default:
+                break
             }
-
-            lastIndex = span.startIndex + span.length
         }
 
-        let lastPlainSection = text.substring(from: lastIndex, to: text.count)
-        formatted += AttributedString(lastPlainSection)
-
-        return formatted
+        return AttributedString(attributedString)
     }
 
     private func destination(for url: URL) -> FDLinkDestination? {
@@ -119,7 +129,13 @@ struct TextContainer: View {
             container: FDTextContainer(
                 type: "textContainer",
                 containerType: "body",
-                text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
+                text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [
+                    FDTextContainerSpan(type: "emphasis", startIndex: 5, length: 10, attribute: "bold", link: nil),
+                    FDTextContainerSpan(type: "emphasis", startIndex: 5, length: 15, attribute: "italic", link: nil),
+                    FDTextContainerSpan(type: "link", startIndex: 5, length: 20, attribute: nil, link: FDLink(destinations: [
+                        FDLinkDestination(sourceFormat: "abl", url: "http://bilaal.co.uk", id: "", presentation: FDPresentation(type: "", title: nil, canShare: nil))
+                    ]))
+                ])
             )
         )
         TextContainer(
