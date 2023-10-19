@@ -21,35 +21,46 @@ struct TextContainer: View {
     }
 
     var body: some View {
-        ZStack {
+        HStack(alignment: .top) {
+            if let list = self.list {
+                if let index = self.index, list.ordering == "ORDERED" {
+                    Text("\(index).")
+                } else {
+                    Circle()
+                        .frame(width: 6, height: 6)
+                        .foregroundStyle(Color.primary)
+                        .padding(.top, 8)
+                }
+            }
+
             Text(self.textFormattedSpans())
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
-                .lineSpacing(4)
-                .modify {
-                    switch self.container.containerType {
-                    case "body":
-                        $0.font(.body)
-                    case "introduction":
-                        $0.font(.headline)
-                    case "crosshead":
-                        $0.font(.title3.bold())
-                    default:
-                        $0.font(.body)
-                    }
-                }
-                .environment(\.openURL, OpenURLAction { url in
-                    if let destination = self.destination(for: url) {
-                        self.destination = destination
-                    }
+        }
+        .lineSpacing(4)
+        .modify {
+            switch self.container.containerType {
+            case "body":
+                $0.font(.body)
+            case "introduction":
+                $0.font(.headline)
+            case "crosshead":
+                $0.font(.title3.bold())
+            default:
+                $0.font(.body)
+            }
+        }
+        .environment(\.openURL, OpenURLAction { url in
+            if let destination = self.destination(for: url) {
+                self.destination = destination
+            }
 
-                    return .handled
-                })
-                .navigationDestination(isPresented: self.$isLinkActive) {
-                    if let destination = self.destination {
-                        DestinationDetailView(destination: destination)
-                    }
-                }
+            return .handled
+        })
+        .navigationDestination(isPresented: self.$isLinkActive) {
+            if let destination = self.destination {
+                DestinationDetailView(destination: destination)
+            }
         }
     }
 
@@ -59,16 +70,6 @@ struct TextContainer: View {
 
         var formatted = AttributedString()
         var lastIndex = 0
-
-        if let list = self.list {
-            if list.ordering == "ORDERED", let index = self.index {
-                formatted += AttributedString("\(index + 1).  ")
-            } else {
-                var styledBullet = AttributedString("•  ")
-                styledBullet.font = .system(size: 22, weight: .bold)
-                formatted += styledBullet
-            }
-        }
 
         for span in spans {
             let nextPlainSection = text.substring(from: lastIndex, to: span.startIndex)
@@ -112,8 +113,37 @@ struct TextContainer: View {
 
 }
 
-struct TextContainer_Previews: PreviewProvider {
-    static var previews: some View {
-        TextContainer(container: FDTextContainer(type: "textContainer", containerType: "body", text: FDTextContainerText(text: "Test", spans: [])))
+#Preview {
+    VStack {
+        TextContainer(
+            container: FDTextContainer(
+                type: "textContainer",
+                containerType: "body",
+                text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
+            )
+        )
+        TextContainer(
+            container: FDTextContainer(
+                type: "textContainer",
+                containerType: "body",
+                text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
+            ),
+            list: FDContentList(type: "", ordering: "UNORDERED", listItems: [])
+        )
+        TextContainer(
+            container: FDTextContainer(
+                type: "textContainer",
+                containerType: "introduction",
+                text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
+            ),
+            list: FDContentList(type: "", ordering: "ORDERED", listItems: []),
+            index: 1
+        )
+        TextContainer(
+            container: FDTextContainer(
+                type: "textContainer",
+                containerType: "crosshead", text: FDTextContainerText(text: "A Title Here", spans: [])
+            )
+        )
     }
 }
