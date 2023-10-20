@@ -48,6 +48,8 @@
 		3A75FA382AC87D6A00393014 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FA372AC87D6A00393014 /* Topic.swift */; };
 		3A75FA3A2AC87DCF00393014 /* TopicResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FA392AC87DCF00393014 /* TopicResult.swift */; };
 		3A7C63822AE33D0200BB114A /* Int+FormattedTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C63812AE33D0200BB114A /* Int+FormattedTimeInterval.swift */; };
+		3A7C63842AE3410300BB114A /* URL+IsBBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C63832AE3410300BB114A /* URL+IsBBC.swift */; };
+		3A7C63872AE3427700BB114A /* TLDExtract in Frameworks */ = {isa = PBXBuildFile; productRef = 3A7C63862AE3427700BB114A /* TLDExtract */; };
 		3A9124C92AA6872F00EC0DCF /* DestinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124C82AA6872F00EC0DCF /* DestinationDetailView.swift */; };
 		3A9124CB2AAD2CCD00EC0DCF /* FDResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CA2AAD2CCD00EC0DCF /* FDResult.swift */; };
 		3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */; };
@@ -130,6 +132,7 @@
 		3A75FA372AC87D6A00393014 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		3A75FA392AC87DCF00393014 /* TopicResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicResult.swift; sourceTree = "<group>"; };
 		3A7C63812AE33D0200BB114A /* Int+FormattedTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+FormattedTimeInterval.swift"; sourceTree = "<group>"; };
+		3A7C63832AE3410300BB114A /* URL+IsBBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+IsBBC.swift"; sourceTree = "<group>"; };
 		3A9124C82AA6872F00EC0DCF /* DestinationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailView.swift; sourceTree = "<group>"; };
 		3A9124CA2AAD2CCD00EC0DCF /* FDResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDResult.swift; sourceTree = "<group>"; };
 		3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDData+StructuredItems.swift"; sourceTree = "<group>"; };
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A44C5EE2A9AAD03001AB40F /* Alamofire in Frameworks */,
+				3A7C63872AE3427700BB114A /* TLDExtract in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +312,7 @@
 				3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */,
 				3A4F65D92ADDE51F003673BF /* URL+ValueOf.swift */,
 				3A4F65DD2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift */,
+				3A7C63832AE3410300BB114A /* URL+IsBBC.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 			name = ReadBeeb;
 			packageProductDependencies = (
 				3A44C5ED2A9AAD03001AB40F /* Alamofire */,
+				3A7C63862AE3427700BB114A /* TLDExtract */,
 			);
 			productName = ReadBeeb;
 			productReference = 3A44C5D32A9A9F86001AB40F /* ReadBeeb.app */;
@@ -425,6 +431,7 @@
 			mainGroup = 3A44C5CA2A9A9F86001AB40F;
 			packageReferences = (
 				3A44C5EC2A9AAD03001AB40F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3A7C63852AE3427700BB114A /* XCRemoteSwiftPackageReference "TLDExtractSwift" */,
 			);
 			productRefGroup = 3A44C5D42A9A9F86001AB40F /* Products */;
 			projectDirPath = "";
@@ -504,6 +511,7 @@
 				3A44C5FE2A9B5BE2001AB40F /* PopularView.swift in Sources */,
 				3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */,
 				3AC017C42AC9E8620010EBBE /* SimplePromoGrid.swift in Sources */,
+				3A7C63842AE3410300BB114A /* URL+IsBBC.swift in Sources */,
 				3A9125012AAE82C800EC0DCF /* StoryWebView.swift in Sources */,
 				3A9124D92AAE0FC500EC0DCF /* FDSimpleCollection.swift in Sources */,
 				3A75FA382AC87D6A00393014 /* Topic.swift in Sources */,
@@ -758,6 +766,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		3A7C63852AE3427700BB114A /* XCRemoteSwiftPackageReference "TLDExtractSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MarcoEidinger/TLDExtractSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.7;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -765,6 +781,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3A44C5EC2A9AAD03001AB40F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		3A7C63862AE3427700BB114A /* TLDExtract */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A7C63852AE3427700BB114A /* XCRemoteSwiftPackageReference "TLDExtractSwift" */;
+			productName = TLDExtract;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

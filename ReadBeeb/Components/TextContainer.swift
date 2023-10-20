@@ -51,11 +51,12 @@ struct TextContainer: View {
             }
         }
         .environment(\.openURL, OpenURLAction { url in
-            if let destination = self.destination(for: url) {
+            if url.isBBC, let destination = self.destination(for: url) {
                 self.destination = destination
+                return .handled
             }
 
-            return .handled
+            return .systemAction
         })
         .navigationDestination(isPresented: self.$isLinkActive) {
             if let destination = self.destination {
