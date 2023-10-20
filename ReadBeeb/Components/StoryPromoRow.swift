@@ -14,12 +14,39 @@ struct StoryPromoRow: View {
     var body: some View {
         HStack {
             if let image = self.story.image, let url = image.largestImageUrl(upTo: 400) {
-                AsyncImage(url: URL(string: url)) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                } placeholder: {
-                    Color.gray.opacity(0.1)
+                ZStack {
+                    AsyncImage(url: URL(string: url)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } placeholder: {
+                        Color.gray.opacity(0.1)
+                    }
+                    
+                    if let badge = self.story.badges?.first, badge.type == "VIDEO" {
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(.clear)
+                                .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    Image(systemName: "play.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 14, height: 14)
+                                    if let duration = badge.duration?.formattedTimeInterval {
+                                        Text(duration)
+                                            .font(.callout)
+                                    }
+                                    Spacer()
+                                }
+                                .foregroundStyle(.white)
+                                .padding(10)
+                            }
+                        }
+
+                    }
                 }
                 .frame(width: 75 * 1.77777, height: 75)
             }
