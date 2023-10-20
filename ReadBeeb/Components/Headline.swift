@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct Headline: View {
+
     let headline: FDHeadline
+
+    @State private var isLinkActive = false
 
     var body: some View {
         VStack(spacing: 16) {
@@ -31,10 +34,14 @@ struct Headline: View {
             }
 
             HStack {
-                if let topic = self.headline.topic?.text {
-                    Text(topic)
-                        .font(.callout)
-                        .foregroundColor(.accentColor)
+                if let text = self.headline.topic?.text {
+                    Button(action: {
+                        self.isLinkActive = true
+                    }) {
+                        Text(text)
+                            .font(.callout)
+                            .foregroundColor(.accentColor)
+                    }
                 }
 
                 Text(self.headline.lastUpdated.formattedTimestamp)
@@ -46,7 +53,13 @@ struct Headline: View {
                 Spacer()
             }
         }
+        .navigationDestination(isPresented: self.$isLinkActive) {
+            if let destination = self.headline.topic?.link?.destinations.first {
+                DestinationDetailView(destination: destination)
+            }
+        }
     }
+
 }
 
 struct Headline_Previews: PreviewProvider {
