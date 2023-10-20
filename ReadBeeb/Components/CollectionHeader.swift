@@ -11,8 +11,14 @@ struct CollectionHeader: View {
     let item: FDCollectionHeader
 
     var body: some View {
-        Text(self.item.text)
-            .font(.title3.bold())
+        HStack {
+            if let destination = self.item.link?.destinations.first {
+                NavigationLink(self.item.text, destination: DestinationDetailView(destination: destination))
+            } else {
+                Text(self.item.text)
+            }
+        }
+        .font(.title3.bold())
     }
 }
 
