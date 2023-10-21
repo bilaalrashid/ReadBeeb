@@ -47,13 +47,21 @@ struct TextContainer: View {
             }
         }
         .environment(\.openURL, OpenURLAction { url in
-            if url.isBBC, let destination = self.destination(for: url) {
-                self.internalDestination = destination
-            } else {
-                self.externalUrl = url
-            }
+            let schemesToHandle = ["http", "https"]
+            guard let scheme = url.scheme else { return .systemAction }
 
-            return .handled
+            if schemesToHandle.contains(scheme) {
+                if url.isBBC, let destination = self.destination(for: url) {
+                    self.internalDestination = destination
+                } else {
+                    self.externalUrl = url
+                }
+
+                return .handled
+            } else {
+                // Let the system handle non-web schemes e.g. mailto: or tel:
+                return .systemAction
+            }
         })
         .navigationDestination(item: self.$internalDestination) { destination in
             DestinationDetailView(destination: destination)
