@@ -13,12 +13,14 @@ struct TextContainer: View {
     var list: FDContentList? = nil
     var index: Int? = nil
 
-    @State private var isLinkActive = false
-    @State private var destination: FDLinkDestination? = nil {
+    @State private var isInternalLinkActive = false
+    @State private var internalDestination: FDLinkDestination? = nil {
         didSet {
-            self.isLinkActive = true
+            self.isInternalLinkActive = true
         }
     }
+
+    @State private var externalUrl: URL? = nil
 
     var body: some View {
         HStack(alignment: .top) {
@@ -52,16 +54,21 @@ struct TextContainer: View {
         }
         .environment(\.openURL, OpenURLAction { url in
             if url.isBBC, let destination = self.destination(for: url) {
-                self.destination = destination
-                return .handled
+                self.internalDestination = destination
+            } else {
+                self.externalUrl = url
             }
 
-            return .systemAction
+            return .handled
         })
-        .navigationDestination(isPresented: self.$isLinkActive) {
-            if let destination = self.destination {
+        .navigationDestination(isPresented: self.$isInternalLinkActive) {
+            if let destination = self.internalDestination {
                 DestinationDetailView(destination: destination)
             }
+        }
+        .fullScreenCover(item: self.$externalUrl) { url in
+            SafariView(url: url)
+                .ignoresSafeArea()
         }
     }
 
