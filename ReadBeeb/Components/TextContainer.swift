@@ -13,13 +13,7 @@ struct TextContainer: View {
     var list: FDContentList? = nil
     var index: Int? = nil
 
-    @State private var isInternalLinkActive = false
-    @State private var internalDestination: FDLinkDestination? = nil {
-        didSet {
-            self.isInternalLinkActive = true
-        }
-    }
-
+    @State private var internalDestination: FDLinkDestination? = nil
     @State private var externalUrl: URL? = nil
 
     var body: some View {
@@ -61,10 +55,8 @@ struct TextContainer: View {
 
             return .handled
         })
-        .navigationDestination(isPresented: self.$isInternalLinkActive) {
-            if let destination = self.internalDestination {
-                DestinationDetailView(destination: destination)
-            }
+        .navigationDestination(item: self.$internalDestination) { destination in
+            DestinationDetailView(destination: destination)
         }
         .fullScreenCover(item: self.$externalUrl) { url in
             SafariView(url: url)
