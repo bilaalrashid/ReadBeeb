@@ -41,14 +41,6 @@ struct ContentView: View {
             .tabItem {
                 Label("Video", systemImage: "play.rectangle")
             }
-
-            NavigationStack {
-                SearchView()
-            }
-            .navigationViewStyle(.stack)
-            .tabItem {
-                Label("Search", systemImage: "magnifyingglass")
-            }
         }
     }
 }
