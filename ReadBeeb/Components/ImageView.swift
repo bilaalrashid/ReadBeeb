@@ -6,52 +6,53 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ImageView: View {
     let image: FDImage
     var imageOnly = false
 
     var body: some View {
-        if let url = self.image.largestImageUrl {
-            VStack {
-                ZStack {
-                    AsyncImage(url: URL(string: url)) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    } placeholder: {
-                        Color.gray.opacity(0.1)
+        VStack {
+            ZStack {
+                KFImage(URL(string: self.image.largestImageUrl))
+                    .placeholder {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.1))
                     }
+                    .resizable()
+                    .scaledToFit()
                     .frame(
                         width: UIScreen.main.bounds.size.width,
                         height: UIScreen.main.bounds.size.width / (self.image.source.aspectRatio ?? 1.77777777)
                     )
-                    VStack {
+
+                VStack {
+                    Spacer()
+                    HStack {
                         Spacer()
-                        HStack {
-                            Spacer()
-                            if let copyrightText = self.image.metadata?.copyrightText, !self.imageOnly {
-                                Text(copyrightText)
-                                    .font(.caption.bold())
-                                    .foregroundColor(.white)
-                                    .padding(6)
-                                    .background(.black.opacity(0.7))
-                            }
+                        if let copyrightText = self.image.metadata?.copyrightText, !self.imageOnly {
+                            Text(copyrightText)
+                                .font(.caption.bold())
+                                .foregroundColor(.white)
+                                .padding(6)
+                                .background(.black.opacity(0.7))
                         }
                     }
                 }
-                .frame(
-                    width: UIScreen.main.bounds.size.width,
-                    height: UIScreen.main.bounds.size.width / (self.image.source.aspectRatio ?? 1.77777777)
-                )
-                if let caption = self.image.metadata?.caption, !self.imageOnly {
-                    Text(caption)
-                        .font(.caption)
-                        .padding(.horizontal, 20)
-                        .padding(.top, 8)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                }
+            }
+            .frame(
+                width: UIScreen.main.bounds.size.width,
+                height: UIScreen.main.bounds.size.width / (self.image.source.aspectRatio ?? 1.77777777)
+            )
+
+            if let caption = self.image.metadata?.caption, !self.imageOnly {
+                Text(caption)
+                    .font(.caption)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 8)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .multilineTextAlignment(.leading)
             }
         }
     }
