@@ -10,7 +10,7 @@ import OSLog
 
 struct PopularView: View {
     
-    private let sectionsToInclude = ["Most Read", "Topics in the news"]
+    private let sectionsToInclude = ["Most Read", "Topics in the news", "Copyright"]
 
     @State private var data: FDResult? = nil
     @State private var networkRequest = NetworkRequestStatus.notStarted
