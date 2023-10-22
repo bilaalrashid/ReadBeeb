@@ -22,7 +22,7 @@ struct ThumbnailImageView: View {
                     Color.gray.opacity(0.1)
                 }
 
-                if let badge = self.badges?.first, badge.type == "VIDEO" {
+                if let badge = self.badges?.first(where: { $0.type == "VIDEO" }) {
                     ZStack {
                         Rectangle()
                             .foregroundColor(.clear)
