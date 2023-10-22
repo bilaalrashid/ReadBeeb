@@ -19,6 +19,13 @@ struct VideoPortraitPromo: View {
                         .fill(Color.gray.opacity(0.1))
                 }
                 .resizable()
+                .modify {
+                    if let url = URL(string: self.storyPromo.image?.largestImageUrl(upTo: 1024)) {
+                        $0.lowDataModeSource(.network(url))
+                    } else {
+                        $0
+                    }
+                }
                 .scaledToFit()
                 .frame(height: 450)
 

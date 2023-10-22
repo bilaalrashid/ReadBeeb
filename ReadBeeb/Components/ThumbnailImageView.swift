@@ -13,7 +13,10 @@ struct ThumbnailImageView: View {
 
     var body: some View {
         ZStack {
-            RemoteImage(url: URL(string: self.image.largestImageUrl(upTo: 400)))
+            RemoteImage(
+                url: URL(string: self.image.largestImageUrl(upTo: 400)),
+                lowDataUrl: URL(string: self.image.largestImageUrl(upTo: 200))
+            )
 
             if let badge = self.badges?.first(where: { $0.type == "VIDEO" }) {
                 ZStack {

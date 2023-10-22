@@ -10,6 +10,7 @@ import Kingfisher
 
 struct RemoteImage: View {
     let url: URL?
+    let lowDataUrl: URL?
 
     var body: some View {
         GeometryReader { geo in
@@ -20,11 +21,18 @@ struct RemoteImage: View {
                         .frame(width: geo.size.width, height: geo.size.height)
                 }
                 .resizable()
+                .modify {
+                    if let url = self.lowDataUrl {
+                        $0.lowDataModeSource(.network(url))
+                    } else {
+                        $0
+                    }
+                }
                 .scaledToFit()
         }
     }
 }
 
 #Preview {
-    RemoteImage(url: nil)
+    RemoteImage(url: nil, lowDataUrl: nil)
 }

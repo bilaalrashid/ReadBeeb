@@ -14,7 +14,10 @@ struct ImageView: View {
     var body: some View {
         VStack {
             ZStack {
-                RemoteImage(url: URL(string: self.image.largestImageUrl))
+                RemoteImage(
+                    url: URL(string: self.image.largestImageUrl),
+                    lowDataUrl: URL(string: self.image.largestImageUrl(upTo: 1024))
+                )
                     .frame(
                         width: UIScreen.main.bounds.size.width,
                         height: UIScreen.main.bounds.size.width / (self.image.source.aspectRatio ?? 1.77777777)
