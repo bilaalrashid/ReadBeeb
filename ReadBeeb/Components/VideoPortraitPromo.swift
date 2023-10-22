@@ -1,5 +1,5 @@
 //
-//  VideoPromoCard.swift
+//  VideoPortraitPromo.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 22/10/2023.
@@ -8,12 +8,12 @@
 import SwiftUI
 import Kingfisher
 
-struct VideoPromoCard: View {
-    let item: FDStoryPromo
+struct VideoPortraitPromo: View {
+    let storyPromo: FDStoryPromo
 
     var body: some View {
         ZStack {
-            KFImage(URL(string: self.item.image?.largestImageUrl))
+            KFImage(URL(string: self.storyPromo.image?.largestImageUrl))
                 .placeholder {
                     Rectangle()
                         .fill(Color.gray.opacity(0.1))
@@ -31,7 +31,7 @@ struct VideoPromoCard: View {
                     VStack {
                         Spacer()
 
-                        if let badge = self.item.badges?.first(where: { $0.type == "VIDEO" }) {
+                        if let badge = self.storyPromo.badges?.first(where: { $0.type == "VIDEO" }) {
                             HStack {
                                 Image(systemName: "play.fill")
                                     .resizable()
@@ -47,7 +47,7 @@ struct VideoPromoCard: View {
                             .padding(.horizontal, 16)
                         }
 
-                        if let text = self.item.text {
+                        if let text = self.storyPromo.text {
                             Text(text)
                                 .font(.headline.weight(.heavy))
                                 .foregroundStyle(.white)
@@ -63,5 +63,5 @@ struct VideoPromoCard: View {
 }
 
 #Preview {
-    VideoPromoCard(item: FDStoryPromo(type: "StoryPromo", style: "", languageCode: "", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil))
+    VideoPortraitPromo(storyPromo: FDStoryPromo(type: "StoryPromo", style: "", languageCode: "", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil))
 }

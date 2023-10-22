@@ -15,7 +15,7 @@ struct Carousel: View {
         ScrollView(.horizontal) {
             HStack(spacing: 16) {
                 ForEach(Array(self.item.items.enumerated()), id: \.offset) { index, storyPromo in
-                    VideoPromoCard(item: storyPromo)
+                    VideoPortraitStory(storyPromo: storyPromo)
                 }
             }
             .scrollTargetLayout()

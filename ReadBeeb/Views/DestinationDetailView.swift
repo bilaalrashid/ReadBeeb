@@ -24,6 +24,8 @@ struct DestinationDetailView: View {
                         DiscoveryView(data: data, sectionsToInclude: nil, sectionsToExclude: nil)
                     case "asset":
                         StoryView(data: data)
+                    case "verticalvideo":
+                        EmptyView()
                     default:
                         StoryView(data: data)
                     }
