@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct ImageView: View {
     let image: FDImage
@@ -15,13 +14,7 @@ struct ImageView: View {
     var body: some View {
         VStack {
             ZStack {
-                KFImage(URL(string: self.image.largestImageUrl))
-                    .placeholder {
-                        Rectangle()
-                            .fill(Color.gray.opacity(0.1))
-                    }
-                    .resizable()
-                    .scaledToFit()
+                RemoteImage(url: URL(string: self.image.largestImageUrl))
                     .frame(
                         width: UIScreen.main.bounds.size.width,
                         height: UIScreen.main.bounds.size.width / (self.image.source.aspectRatio ?? 1.77777777)

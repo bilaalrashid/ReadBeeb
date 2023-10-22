@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct ThumbnailImageView: View {
     let image: FDImage
@@ -14,13 +13,7 @@ struct ThumbnailImageView: View {
 
     var body: some View {
         ZStack {
-            KFImage(URL(string: self.image.largestImageUrl(upTo: 400)))
-                .placeholder {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.1))
-                }
-                .resizable()
-                .scaledToFit()
+            RemoteImage(url: URL(string: self.image.largestImageUrl(upTo: 400)))
 
             if let badge = self.badges?.first(where: { $0.type == "VIDEO" }) {
                 ZStack {

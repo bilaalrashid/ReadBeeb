@@ -13,6 +13,7 @@
 		3A2274B62AE5A5180041F77B /* VideoPortraitStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274B52AE5A5180041F77B /* VideoPortraitStory.swift */; };
 		3A2274B82AE5C7A30041F77B /* FDVideoPortraitStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274B72AE5C7A30041F77B /* FDVideoPortraitStory.swift */; };
 		3A2274BA2AE5CCCC0041F77B /* VideoPortraitPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274B92AE5CCCC0041F77B /* VideoPortraitPromo.swift */; };
+		3A2274BC2AE5D9A30041F77B /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274BB2AE5D9A30041F77B /* RemoteImage.swift */; };
 		3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C5D62A9A9F86001AB40F /* ReadBeebApp.swift */; };
 		3A44C5D92A9A9F86001AB40F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C5D82A9A9F86001AB40F /* ContentView.swift */; };
 		3A44C5DB2A9A9F87001AB40F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A44C5DA2A9A9F87001AB40F /* Assets.xcassets */; };
@@ -101,6 +102,7 @@
 		3A2274B52AE5A5180041F77B /* VideoPortraitStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPortraitStory.swift; sourceTree = "<group>"; };
 		3A2274B72AE5C7A30041F77B /* FDVideoPortraitStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDVideoPortraitStory.swift; sourceTree = "<group>"; };
 		3A2274B92AE5CCCC0041F77B /* VideoPortraitPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPortraitPromo.swift; sourceTree = "<group>"; };
+		3A2274BB2AE5D9A30041F77B /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		3A44C5D32A9A9F86001AB40F /* ReadBeeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadBeeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A44C5D62A9A9F86001AB40F /* ReadBeebApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBeebApp.swift; sourceTree = "<group>"; };
 		3A44C5D82A9A9F86001AB40F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				3A2274AE2AE5769E0041F77B /* Carousel.swift */,
 				3A2274B52AE5A5180041F77B /* VideoPortraitStory.swift */,
 				3A2274B92AE5CCCC0041F77B /* VideoPortraitPromo.swift */,
+				3A2274BB2AE5D9A30041F77B /* RemoteImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				3A9124D32AAE0F7D00EC0DCF /* FDBillboard.swift in Sources */,
 				3AC017BE2AC9B8510010EBBE /* TopicSelectionView.swift in Sources */,
 				3A4F65CD2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift in Sources */,
+				3A2274BC2AE5D9A30041F77B /* RemoteImage.swift in Sources */,
 				3A9124E12AAE103000EC0DCF /* FDPresentation.swift in Sources */,
 				3A516D772AC0A27C00AF0BC9 /* VideoPlayer.swift in Sources */,
 				3A9124D12AAE0F3E00EC0DCF /* FDItem.swift in Sources */,
