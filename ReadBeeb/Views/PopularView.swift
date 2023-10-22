@@ -10,25 +10,22 @@ import OSLog
 
 struct PopularView: View {
     
-    @State private var mostRead: FDStructuredDataItem?
+    private let sectionsToInclude = ["Most Read", "Topics in the news"]
+
+    @State private var data: FDResult? = nil
     @State private var networkRequest = NetworkRequestStatus.notStarted
 
     var body: some View {
-        List {
-            if let header = self.mostRead?.header {
-                DiscoveryItemView(item: header)
-            }
-
-            if let body = self.mostRead?.body {
-                DiscoveryItemView(item: body)
+        VStack {
+            if let data = data {
+                DiscoveryView(data: data, sectionsToInclude: self.sectionsToInclude, sectionsToExclude: nil)
             }
         }
-        .listStyle(.plain)
         .navigationTitle("Popular")
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.mostRead == nil))
+        .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.data?.data.structuredItems.isEmpty ?? true))
         .refreshable {
             await self.fetchData()
         }
@@ -46,7 +43,7 @@ struct PopularView: View {
         case .loading:
             return
         case .success:
-            if self.mostRead == nil {
+            if self.data?.data.structuredItems.isEmpty ?? true {
                 return
             }
         }
@@ -58,7 +55,7 @@ struct PopularView: View {
         do {
             self.networkRequest = .loading
             let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage()
-            self.mostRead = result.data.structuredItems.including(headers: ["Most Read"]).first
+            self.data = result
             self.networkRequest = .success
         } catch let error {
             self.networkRequest = .error
