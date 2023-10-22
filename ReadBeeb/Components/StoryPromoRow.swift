@@ -13,43 +13,10 @@ struct StoryPromoRow: View {
 
     var body: some View {
         HStack {
-            if let image = self.story.image, let url = image.largestImageUrl(upTo: 400) {
-                ZStack {
-                    AsyncImage(url: URL(string: url)) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    } placeholder: {
-                        Color.gray.opacity(0.1)
-                    }
-                    
-                    if let badge = self.story.badges?.first, badge.type == "VIDEO" {
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(.clear)
-                                .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
-                            VStack {
-                                Spacer()
-                                HStack {
-                                    Image(systemName: "play.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 14, height: 14)
-                                    if let duration = badge.duration?.formattedTimeInterval {
-                                        Text(duration)
-                                            .font(.callout)
-                                    }
-                                    Spacer()
-                                }
-                                .foregroundStyle(.white)
-                                .padding(10)
-                            }
-                        }
-
-                    }
-                }
-                .frame(width: 75 * 1.77777, height: 75)
+            if let image = self.story.image {
+                ThumbnailImageView(image: image, badges: self.story.badges)
             }
+
             VStack {
                 if let title = self.story.text {
                     Text(title)
@@ -60,7 +27,9 @@ struct StoryPromoRow: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
                 }
+
                 Spacer(minLength: 1)
+
                 HStack(alignment: .center) {
                     if let topic = self.story.topic?.text {
                         Text(topic)
@@ -70,6 +39,7 @@ struct StoryPromoRow: View {
                             .truncationMode(.tail)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
+
                     if let badges = self.story.badges {
                         ForEach(Array(badges.enumerated()), id: \.offset) { index, badge in
                             Text(badge.text ?? "")
@@ -79,6 +49,7 @@ struct StoryPromoRow: View {
                                 .minimumScaleFactor(0.5)
                         }
                     }
+
                     if let lastUpdated = self.story.updated {
                         Text(lastUpdated.formattedTimestamp)
                             .font(.caption)

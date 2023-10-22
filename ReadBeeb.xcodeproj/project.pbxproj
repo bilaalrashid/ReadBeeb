@@ -24,6 +24,7 @@
 		3A44C60A2A9B73BA001AB40F /* CollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C6092A9B73BA001AB40F /* CollectionHeader.swift */; };
 		3A44C60C2A9B73D5001AB40F /* SimpleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C60B2A9B73D5001AB40F /* SimpleCollection.swift */; };
 		3A44C6122AA53D8A001AB40F /* StoryPromoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */; };
+		3A4D56A62AE5663700AD9555 /* ThumbnailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D56A52AE5663700AD9555 /* ThumbnailImageView.swift */; };
 		3A4F65C72ADC7E72003673BF /* FDDestination+ShareUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */; };
 		3A4F65C92ADC822B003673BF /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65C82ADC822B003673BF /* StoryView.swift */; };
 		3A4F65CB2ADC8AB9003673BF /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65CA2ADC8AB9003673BF /* Billboard.swift */; };
@@ -110,6 +111,7 @@
 		3A44C6092A9B73BA001AB40F /* CollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeader.swift; sourceTree = "<group>"; };
 		3A44C60B2A9B73D5001AB40F /* SimpleCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollection.swift; sourceTree = "<group>"; };
 		3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPromoRow.swift; sourceTree = "<group>"; };
+		3A4D56A52AE5663700AD9555 /* ThumbnailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageView.swift; sourceTree = "<group>"; };
 		3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDDestination+ShareUrl.swift"; sourceTree = "<group>"; };
 		3A4F65C82ADC822B003673BF /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		3A4F65CA2ADC8AB9003673BF /* Billboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billboard.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */,
 				3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */,
 				3A516D7E2AC0CFB300AF0BC9 /* Copyright.swift */,
+				3A4D56A52AE5663700AD9555 /* ThumbnailImageView.swift */,
 				3A9124FE2AAE289700EC0DCF /* ImageView.swift */,
 				3A516D672AB25D1400AF0BC9 /* MediaView.swift */,
 				3A9125002AAE82C800EC0DCF /* StoryWebView.swift */,
@@ -519,6 +522,7 @@
 				3A44C5FE2A9B5BE2001AB40F /* PopularView.swift in Sources */,
 				3A9124DF2AAE102000EC0DCF /* FDLink.swift in Sources */,
 				3AC017C42AC9E8620010EBBE /* SimplePromoGrid.swift in Sources */,
+				3A4D56A62AE5663700AD9555 /* ThumbnailImageView.swift in Sources */,
 				3A7C63842AE3410300BB114A /* URL+IsBBC.swift in Sources */,
 				3A9125012AAE82C800EC0DCF /* StoryWebView.swift in Sources */,
 				3A9124D92AAE0FC500EC0DCF /* FDSimpleCollection.swift in Sources */,
