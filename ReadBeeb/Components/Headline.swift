@@ -42,6 +42,7 @@ struct Headline: View {
                             .font(.callout)
                             .foregroundColor(.accentColor)
                     }
+                    .buttonStyle(.plain)
                 }
 
                 Text(self.headline.lastUpdated.formattedTimestamp)
