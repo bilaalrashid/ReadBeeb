@@ -10,7 +10,7 @@ import OSLog
 
 struct TopStoriesView: View {
 
-    private let sectionsToExclude = ["Watch & Listen", "Most Read", "Topics in the news"]
+    private let sectionsToExclude = ["Watch & Listen", "Most Read", "Topics in the news", "Today's videos"]
 
     @State private var data: FDResult? = nil
     @State private var networkRequest = NetworkRequestStatus.notStarted
