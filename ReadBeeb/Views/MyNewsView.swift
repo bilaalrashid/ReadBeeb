@@ -29,6 +29,10 @@ struct MyNewsView: View {
                     }
                 }
             }
+
+            if self.storyPromos.count > 0 {
+                Copyright(item: FDCopyright(type: "Copyright", lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
+            }
         }
         .listStyle(.plain)
         .navigationTitle("My News")
