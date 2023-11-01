@@ -39,7 +39,7 @@ struct StoryView: View {
                 case .sectionHeader(let item):
                     SectionHeader(header: item)
                 case .carousel(let item):
-                    EmptyView()
+                    TextCarousel(carousel: item)
                 case .contentList(let item):
                     ContentList(list: item)
                 case .storyPromo(let item):
