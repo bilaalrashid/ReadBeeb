@@ -12,16 +12,16 @@ struct DiscoveryItemView: View {
 
     var body: some View {
         switch item {
-        case .billboard(let item):
-            Billboard(item: item)
-        case .hierarchicalCollection(let item):
-            HierarchicalCollection(item: item)
         case .collectionHeader(let item):
             CollectionHeader(item: item)
-        case .simpleCollection(let item):
-            SimpleCollection(item: item)
-        case .simplePromoGrid(let item):
-            SimplePromoGrid(item: item)
+        case .billboard(let collection):
+            StoryPromoCollection(collection: collection)
+        case .hierarchicalCollection(let collection):
+            StoryPromoCollection(collection: collection)
+        case .simpleCollection(let collection):
+            StoryPromoCollection(collection: collection)
+        case .simplePromoGrid(let collection):
+            StoryPromoCollection(collection: collection)
         case .carousel(let item):
             Carousel(item: item)
         case .chipList(let item):
