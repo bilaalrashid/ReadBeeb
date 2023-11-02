@@ -68,7 +68,7 @@ struct ProminentStoryPromoRow: View {
                 }
             }
         }
-        .padding(.top, 10)
-        .padding(.horizontal, 18)
+        .padding(.top, 16)
+        .padding(.horizontal, 16)
     }
 }
