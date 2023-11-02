@@ -29,10 +29,10 @@ struct DiscoveryView: View {
         List {
             ForEach(Array(self.filteredStructuredItems.enumerated()), id: \.offset) { index, item in
                 if let header = item.header {
-                    DiscoveryItemView(item: header)
+                    DiscoveryItemView(item: header, index: index)
                 }
 
-                DiscoveryItemView(item: item.body)
+                DiscoveryItemView(item: item.body, index: index)
             }
         }
         .listStyle(.plain)

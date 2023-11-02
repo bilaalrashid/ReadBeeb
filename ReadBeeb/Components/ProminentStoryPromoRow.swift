@@ -1,27 +1,26 @@
 //
-//  StoryPromoRow.swift
+//  ProminentStoryPromoRow.swift
 //  ReadBeeb
 //
-//  Created by Bilaal Rashid on 03/09/2023.
+//  Created by Bilaal Rashid on 01/11/2023.
 //
 
 import SwiftUI
 
-struct StoryPromoRow: View {
-
+struct ProminentStoryPromoRow: View {
     let story: FDStoryPromo
-
+    
     var body: some View {
-        HStack {
+        VStack(spacing: 12) {
             if let image = self.story.image {
-                ThumbnailImageView(image: image, badges: self.story.badges, prominent: false)
-                    .frame(width: 75 * 1.77777, height: 75)
+                ThumbnailImageView(image: image, badges: self.story.badges, prominent: true)
+                    .frame(width: UIScreen.main.bounds.width - 36, height: (UIScreen.main.bounds.width - 36) / 1.7777)
             }
 
-            VStack {
+            VStack(spacing: 12) {
                 if let title = self.story.text {
                     Text(title)
-                        .font(.headline)
+                        .font(.title3.bold())
                         .lineLimit(3)
                         .minimumScaleFactor(0.95)
                         .truncationMode(.tail)
@@ -29,7 +28,15 @@ struct StoryPromoRow: View {
                         .multilineTextAlignment(.leading)
                 }
 
-                Spacer(minLength: 1)
+                if let subtext = self.story.subtext {
+                    Text(subtext)
+                        .font(.callout)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.9)
+                        .truncationMode(.tail)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
+                }
 
                 HStack(alignment: .center) {
                     if let topic = self.story.topic?.text {
@@ -60,16 +67,8 @@ struct StoryPromoRow: View {
                     }
                 }
             }
-            .padding(.all, 4)
         }
-    }
-
-}
-
-struct NewsStoryRow_Previews: PreviewProvider {
-    static var previews: some View {
-        StoryPromoRow(story:
-                        FDStoryPromo(type: "StoryPromo", style: "SMALL_HORIZONTAL_PROMO_CARD", languageCode: "en-gb", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil)
-        )
+        .padding(.top, 10)
+        .padding(.horizontal, 18)
     }
 }

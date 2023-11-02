@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StoryPromoCollection: View {
     let collection: FDCollection
+    let collectionIndex: Int
 
     var body: some View {
         ForEach(Array(self.collection.items.enumerated()), id: \.offset) { index, storyPromo in
@@ -16,7 +17,11 @@ struct StoryPromoCollection: View {
                 // Workaround to hide detail disclosure
                 ZStack {
                     NavigationLink(destination: DestinationDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
-                    StoryPromoRow(story: storyPromo)
+                    if self.collectionIndex == 0 && index == 0 {
+                        ProminentStoryPromoRow(story: storyPromo)
+                    } else {
+                        StoryPromoRow(story: storyPromo)
+                    }
                 }
             }
         }

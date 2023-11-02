@@ -9,19 +9,20 @@ import SwiftUI
 
 struct DiscoveryItemView: View {
     let item: FDItem
+    let index: Int
 
     var body: some View {
         switch item {
         case .collectionHeader(let item):
             CollectionHeader(item: item)
         case .billboard(let collection):
-            StoryPromoCollection(collection: collection)
+            StoryPromoCollection(collection: collection, collectionIndex: self.index)
         case .hierarchicalCollection(let collection):
-            StoryPromoCollection(collection: collection)
+            StoryPromoCollection(collection: collection, collectionIndex: self.index)
         case .simpleCollection(let collection):
-            StoryPromoCollection(collection: collection)
+            StoryPromoCollection(collection: collection, collectionIndex: self.index)
         case .simplePromoGrid(let collection):
-            StoryPromoCollection(collection: collection)
+            StoryPromoCollection(collection: collection, collectionIndex: self.index)
         case .carousel(let item):
             Carousel(item: item)
         case .chipList(let item):
@@ -35,5 +36,5 @@ struct DiscoveryItemView: View {
 }
 
 #Preview {
-    DiscoveryItemView(item: .copyright(FDCopyright(type: "Copyright", lastUpdated: 0)))
+    DiscoveryItemView(item: .copyright(FDCopyright(type: "Copyright", lastUpdated: 0)), index: 0)
 }
