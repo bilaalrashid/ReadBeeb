@@ -60,6 +60,8 @@ struct StoryView: View {
 
         }
         .listStyle(.plain)
+        .toolbar(.hidden, for: .tabBar)
+        .navigationBarsHideOnSwipe(true, color: .accentColor)
     }
 }
 
