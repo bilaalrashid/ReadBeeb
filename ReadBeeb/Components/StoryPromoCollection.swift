@@ -16,7 +16,7 @@ struct StoryPromoCollection: View {
             if let destination = storyPromo.link.destinations.first {
                 // Workaround to hide detail disclosure
                 ZStack {
-                    NavigationLink(destination: DestinationDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
+                    NavigationLink(destination: DestinationDetailScreen(destination: destination)) { EmptyView() }.opacity(0.0)
                     if self.collectionIndex == 0 && index == 0 {
                         ProminentStoryPromoRow(story: storyPromo)
                     } else {

@@ -15,7 +15,7 @@ struct ChipList: View {
             if let title = topic.title, let destination = topic.link?.destinations.first  {
                 // Workaround to hide detail disclosure
                 ZStack {
-                    NavigationLink(destination: DestinationDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
+                    NavigationLink(destination: DestinationDetailScreen(destination: destination)) { EmptyView() }.opacity(0.0)
                     Text(title)
                         .foregroundStyle(Constants.primaryColor)
                         .frame(maxWidth: .infinity, alignment: .leading)

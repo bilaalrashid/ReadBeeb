@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             NavigationStack {
-                TopStoriesView()
+                TopStoriesScreen()
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -19,7 +19,7 @@ struct ContentView: View {
             }
 
             NavigationStack {
-                MyNewsView()
+                MyNewsScreen()
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -27,7 +27,7 @@ struct ContentView: View {
             }
 
             NavigationStack {
-                PopularView()
+                PopularScreen()
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -35,7 +35,7 @@ struct ContentView: View {
             }
 
             NavigationStack {
-                VideoView()
+                VideoScreen()
             }
             .navigationViewStyle(.stack)
             .tabItem {

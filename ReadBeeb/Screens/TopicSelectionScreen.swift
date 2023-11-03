@@ -1,5 +1,5 @@
 //
-//  TopicSelectionView.swift
+//  TopicSelectionScreen.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 01/10/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct TopicSelectionView: View {
+struct TopicSelectionScreen: View {
 
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
@@ -109,5 +109,5 @@ struct TopicSelectionView: View {
 }
 
 #Preview {
-    TopicSelectionView()
+    TopicSelectionScreen()
 }

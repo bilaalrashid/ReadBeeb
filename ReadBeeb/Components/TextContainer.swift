@@ -64,7 +64,7 @@ struct TextContainer: View {
             }
         })
         .navigationDestination(item: self.$internalDestination) { destination in
-            DestinationDetailView(destination: destination)
+            DestinationDetailScreen(destination: destination)
         }
         .fullScreenCover(item: self.$externalUrl) { url in
             SafariView(url: url)

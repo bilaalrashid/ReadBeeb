@@ -56,7 +56,7 @@ struct Headline: View {
         }
         .navigationDestination(isPresented: self.$isLinkActive) {
             if let destination = self.headline.topic?.link?.destinations.first {
-                DestinationDetailView(destination: destination)
+                DestinationDetailScreen(destination: destination)
             }
         }
     }

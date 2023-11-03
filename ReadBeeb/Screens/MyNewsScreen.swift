@@ -1,5 +1,5 @@
 //
-//  MyNewsView.swift
+//  MyNewsScreen.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 27/08/2023.
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 import OSLog
 
-struct MyNewsView: View {
+struct MyNewsScreen: View {
 
     @Query var selectedTopics: [Topic]
 
@@ -24,7 +24,7 @@ struct MyNewsView: View {
                 if let destination = story.link.destinations.first {
                     // Workaround to hide detail disclosure
                     ZStack {
-                        NavigationLink(destination: DestinationDetailView(destination: destination)) { EmptyView() }.opacity(0.0)
+                        NavigationLink(destination: DestinationDetailScreen(destination: destination)) { EmptyView() }.opacity(0.0)
                         StoryPromoRow(story: story)
                     }
                 }
@@ -49,7 +49,7 @@ struct MyNewsView: View {
         .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.storyPromos.isEmpty))
         .sheet(isPresented: self.$isEditingTopics) {
             NavigationStack {
-                TopicSelectionView()
+                TopicSelectionScreen()
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
@@ -104,6 +104,6 @@ struct MyNewsView: View {
 
 struct MyNewsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyNewsView()
+        MyNewsScreen()
     }
 }

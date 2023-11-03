@@ -13,7 +13,7 @@ struct CollectionHeader: View {
     var body: some View {
         HStack {
             if let destination = self.item.link?.destinations.first {
-                NavigationLink(self.item.text, destination: DestinationDetailView(destination: destination))
+                NavigationLink(self.item.text, destination: DestinationDetailScreen(destination: destination))
             } else {
                 Text(self.item.text)
             }

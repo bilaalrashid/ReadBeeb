@@ -1,5 +1,5 @@
 //
-//  PopularView.swift
+//  VideoScreen.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 27/08/2023.
@@ -8,9 +8,8 @@
 import SwiftUI
 import OSLog
 
-struct PopularView: View {
-    
-    private let sectionsToInclude = ["Most Read", "Topics in the news", "Copyright"]
+struct VideoScreen: View {
+    private let sectionsToInclude = ["Today's videos"]
 
     @State private var data: FDResult? = nil
     @State private var networkRequest = NetworkRequestStatus.notStarted
@@ -21,7 +20,7 @@ struct PopularView: View {
                 DiscoveryView(data: data, sectionsToInclude: self.sectionsToInclude, sectionsToExclude: nil)
             }
         }
-        .navigationTitle("Popular")
+        .navigationTitle("Video")
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -62,11 +61,11 @@ struct PopularView: View {
             Logger.network.error("Unable to fetch BBC News API Home tab - \(error.localizedDescription)")
         }
     }
-
+    
 }
 
-struct PopularView_Previews: PreviewProvider {
+struct VideoView_Previews: PreviewProvider {
     static var previews: some View {
-        PopularView()
+        VideoScreen()
     }
 }
