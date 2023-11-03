@@ -11,6 +11,8 @@ struct StoryPromoRow: View {
 
     let story: FDStoryPromo
 
+    @State private var topicDestination: FDLinkDestination? = nil
+
     var body: some View {
         HStack {
             if let image = self.story.image {
@@ -32,13 +34,18 @@ struct StoryPromoRow: View {
                 Spacer(minLength: 1)
 
                 HStack(alignment: .center) {
-                    if let topic = self.story.topic?.text {
-                        Text(topic)
-                            .font(.caption)
-                            .foregroundColor(.accentColor)
-                            .lineLimit(1)
-                            .truncationMode(.tail)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                    if let topic = self.story.topic, let text = topic.text {
+                        Button(action: {
+                            self.topicDestination = topic.link?.destinations.first
+                        }) {
+                            Text(text)
+                                .font(.caption)
+                                .foregroundColor(.accentColor)
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .buttonStyle(.plain)
                     }
 
                     if let badges = self.story.badges {
@@ -61,6 +68,9 @@ struct StoryPromoRow: View {
                 }
             }
             .padding(.all, 4)
+        }
+        .navigationDestination(item: self.$topicDestination) { destination in 
+            DestinationDetailScreen(destination: destination)
         }
     }
 
