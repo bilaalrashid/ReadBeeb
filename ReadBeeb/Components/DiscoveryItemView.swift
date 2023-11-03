@@ -15,6 +15,7 @@ struct DiscoveryItemView: View {
         switch item {
         case .collectionHeader(let item):
             CollectionHeader(item: item)
+                .listRowSeparator(.hidden)
         case .billboard(let collection):
             StoryPromoCollection(collection: collection, collectionIndex: self.index)
         case .hierarchicalCollection(let collection):
@@ -29,6 +30,7 @@ struct DiscoveryItemView: View {
             ChipList(item: item)
         case .copyright(let item):
             Copyright(item: item)
+                .listRowSeparator(.hidden)
         default:
             EmptyView()
         }
