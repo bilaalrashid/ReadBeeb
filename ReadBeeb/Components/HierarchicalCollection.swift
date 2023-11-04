@@ -11,12 +11,10 @@ struct HierarchicalCollection: View {
     let item: FDHierarchicalCollection
 
     var body: some View {
-        ForEach(Array(self.item.items.enumerated()), id: \.offset) { index, item in
-            if let destination = item.link.destinations.first {
-                // Workaround to hide detail disclosure
-                ZStack {
-                    NavigationLink(destination: DestinationDetailScreen(destination: destination)) { EmptyView() }.opacity(0.0)
-                    StoryPromoRow(story: item)
+        ForEach(Array(self.item.items.enumerated()), id: \.offset) { index, storyPromo in
+            if let destination = storyPromo.link.destinations.first {
+                PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
+                    StoryPromoRow(story: storyPromo)
                 }
             }
         }

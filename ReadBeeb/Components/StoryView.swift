@@ -44,12 +44,10 @@ struct StoryView: View {
                     TextCarousel(carousel: item)
                 case .contentList(let item):
                     ContentList(list: item)
-                case .storyPromo(let item):
-                    if let destination = item.link.destinations.first {
-                        // Workaround to hide detail disclosure
-                        ZStack {
-                            NavigationLink(destination: DestinationDetailScreen(destination: destination)) { EmptyView() }.opacity(0.0)
-                            StoryPromoRow(story: item)
+                case .storyPromo(let storyPromo):
+                    if let destination = storyPromo.link.destinations.first {
+                        PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
+                            StoryPromoRow(story: storyPromo)
                         }
                     }
                 case .copyright(let item):

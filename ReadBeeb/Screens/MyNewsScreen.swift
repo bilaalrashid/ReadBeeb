@@ -18,12 +18,10 @@ struct MyNewsScreen: View {
 
     var body: some View {
         List {
-            ForEach(Array(self.viewModel.storyPromos.enumerated()), id: \.offset) { index, story in
-                if let destination = story.link.destinations.first {
-                    // Workaround to hide detail disclosure
-                    ZStack {
-                        NavigationLink(destination: DestinationDetailScreen(destination: destination)) { EmptyView() }.opacity(0.0)
-                        StoryPromoRow(story: story)
+            ForEach(Array(self.viewModel.storyPromos.enumerated()), id: \.offset) { index, storyPromo in
+                if let destination = storyPromo.link.destinations.first {
+                    PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
+                        StoryPromoRow(story: storyPromo)
                     }
                 }
             }
