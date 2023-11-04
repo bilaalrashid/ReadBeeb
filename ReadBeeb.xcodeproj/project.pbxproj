@@ -196,6 +196,7 @@
 		3A9125002AAE82C800EC0DCF /* StoryWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryWebView.swift; sourceTree = "<group>"; };
 		3A9125042AAFB9A700EC0DCF /* ContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentList.swift; sourceTree = "<group>"; };
 		3A9125062AAFC39200EC0DCF /* Headline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headline.swift; sourceTree = "<group>"; };
+		3AA49AA32AF7065800451FCC /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSelectionScreen.swift; sourceTree = "<group>"; };
 		3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSimplePromoGrid.swift; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 		3A44C5CA2A9A9F86001AB40F = {
 			isa = PBXGroup;
 			children = (
+				3AA49AA32AF7065800451FCC /* .swiftlint.yml */,
 				3A44C5E52A9AA076001AB40F /* README.md */,
 				3A44C5EF2A9AB212001AB40F /* Docs */,
 				3A44C5D52A9A9F86001AB40F /* ReadBeeb */,
