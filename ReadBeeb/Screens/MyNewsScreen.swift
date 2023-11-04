@@ -39,7 +39,9 @@ struct MyNewsScreen: View {
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button(action: self.editTopics) {
+                Button(action: {
+                    self.isEditingTopics = true
+                }) {
                     Label("Edit", systemImage: "ellipsis.circle")
                 }
             }
@@ -64,10 +66,6 @@ struct MyNewsScreen: View {
                 await self.viewModel.fetchDataIfNotExists(selectedTopics: self.selectedTopics)
             }
         }
-    }
-
-    private func editTopics() {
-        self.isEditingTopics = true
     }
 
 }
