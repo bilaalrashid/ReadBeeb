@@ -12,11 +12,18 @@ struct DestinationDetailScreen: View {
 
     let destination: FDLinkDestination
 
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel: ViewModel
+
+    init(destination: FDLinkDestination) {
+        self.destination = destination
+        // Initialising a StateObject like this is officially supported and endorsed by the SwiftUI team at Apple
+        // See https://stackoverflow.com/a/62636048/10370537
+        self._viewModel = StateObject(wrappedValue: ViewModel(destination: destination))
+    }
 
     var body: some View {
         VStack(spacing: 0) {
-            if self.viewModel.isApiUrl(url: self.destination.url) {
+            if self.viewModel.isApiUrl {
                 if let data = self.viewModel.data {
                     switch URL(string: self.destination.url)?.valueOf("type") ?? "" {
                     case "index", "topic":
@@ -39,8 +46,8 @@ struct DestinationDetailScreen: View {
             }
         }
         .navigationTitle(self.destination.presentation.title ?? "")
-        .toolbarColorScheme(self.viewModel.isBBCSportUrl(url: self.destination.url) ? .light : .dark, for: .navigationBar)
-        .toolbarBackground(self.viewModel.isBBCSportUrl(url: self.destination.url) ? Constants.sportColor : Constants.primaryColor, for: .navigationBar)
+        .toolbarColorScheme(self.viewModel.isBBCSportUrl ? .light : .dark, for: .navigationBar)
+        .toolbarBackground(self.viewModel.isBBCSportUrl ? Constants.sportColor : Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -54,11 +61,11 @@ struct DestinationDetailScreen: View {
         }
         .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
         .refreshable {
-            await self.viewModel.fetchData(destination: self.destination)
+            await self.viewModel.fetchData()
         }
         .onAppear {
             Task {
-                await self.viewModel.fetchDataIfNotExists(destination: self.destination)
+                await self.viewModel.fetchDataIfNotExists()
             }
         }
     }
