@@ -40,6 +40,7 @@ struct DestinationDetailScreen: View {
                 }
             }
         }
+        .navigationTitle(self.destination.presentation.title ?? "")
         .toolbarColorScheme(self.isBBCSportUrl(url: self.destination.url) ? .light : .dark, for: .navigationBar)
         .toolbarBackground(self.isBBCSportUrl(url: self.destination.url) ? Constants.sportColor : Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
