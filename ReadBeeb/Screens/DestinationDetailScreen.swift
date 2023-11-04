@@ -58,7 +58,7 @@ struct DestinationDetailScreen: View {
         }
         .onAppear {
             Task {
-                await self.viewModel.fetchData(destination: self.destination)
+                await self.viewModel.fetchDataIfNotExists(destination: self.destination)
             }
         }
     }

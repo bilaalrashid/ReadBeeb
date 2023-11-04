@@ -18,6 +18,13 @@ extension DestinationDetailScreen {
             return self.data == nil
         }
 
+        func fetchDataIfNotExists(destination: FDLinkDestination) async {
+            // We don't want to start another network request if there is already one ongoing
+            if self.networkRequest != .loading && self.isEmpty {
+                await self.fetchData(destination: destination)
+            }
+        }
+
         func fetchData(destination: FDLinkDestination) async {
             do {
                 if self.isApiUrl(url: destination.url) {
