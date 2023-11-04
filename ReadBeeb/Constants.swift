@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
 struct Constants {
 
@@ -17,5 +18,7 @@ struct Constants {
     static let newsColor = Color(red: 184 / 255, green: 0, blue: 0)
 
     static let sportColor = Color(red: 255 / 255, green: 210 / 255, blue: 48 / 255)
+
+    static let maximumImageCacheAge: StorageExpiration = .days(1)
 
 }

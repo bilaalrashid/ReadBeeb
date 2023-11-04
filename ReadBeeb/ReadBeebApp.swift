@@ -10,6 +10,10 @@ import SwiftData
 
 @main
 struct ReadBeebApp: App {
+    init() {
+        ImageCacheController().setMaximumCacheSize()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
