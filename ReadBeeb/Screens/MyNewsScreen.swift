@@ -30,6 +30,7 @@ struct MyNewsScreen: View {
 
             if self.viewModel.storyPromos.count > 0 {
                 Copyright(item: FDCopyright(type: "Copyright", lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
+                    .listRowSeparator(.hidden)
             }
         }
         .listStyle(.plain)
