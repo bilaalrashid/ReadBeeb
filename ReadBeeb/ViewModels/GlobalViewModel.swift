@@ -17,18 +17,10 @@ import OSLog
     }
 
     func fetchDataIfNotExists() async {
-        switch self.networkRequest {
-        case .notStarted, .error:
-            break
-        case .loading:
-            return
-        case .success:
-            if self.isEmpty {
-                return
-            }
+        // We don't want to start another network request if there is already one ongoing
+        if self.networkRequest != .loading && self.isEmpty {
+            await self.fetchData()
         }
-
-        await self.fetchData()
     }
 
     func fetchData() async {
