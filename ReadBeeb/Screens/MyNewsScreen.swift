@@ -12,15 +12,13 @@ import OSLog
 struct MyNewsScreen: View {
 
     @Query var selectedTopics: [Topic]
-
-    @State private var storyPromos = [FDStoryPromo]()
-    @State private var networkRequest = NetworkRequestStatus.notStarted
+    @StateObject private var viewModel = ViewModel()
 
     @State private var isEditingTopics = false
 
     var body: some View {
         List {
-            ForEach(Array(self.storyPromos.enumerated()), id: \.offset) { index, story in
+            ForEach(Array(self.viewModel.storyPromos.enumerated()), id: \.offset) { index, story in
                 if let destination = story.link.destinations.first {
                     // Workaround to hide detail disclosure
                     ZStack {
@@ -30,7 +28,7 @@ struct MyNewsScreen: View {
                 }
             }
 
-            if self.storyPromos.count > 0 {
+            if self.viewModel.storyPromos.count > 0 {
                 Copyright(item: FDCopyright(type: "Copyright", lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
             }
         }
@@ -46,7 +44,7 @@ struct MyNewsScreen: View {
                 }
             }
         }
-        .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.storyPromos.isEmpty))
+        .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
         .sheet(isPresented: self.$isEditingTopics) {
             NavigationStack {
                 TopicSelectionScreen()
@@ -54,37 +52,17 @@ struct MyNewsScreen: View {
             }
         }
         .refreshable {
-            await self.fetchData()
+            await self.viewModel.fetchData(selectedTopics: self.selectedTopics)
         }
         .onChange(of: self.selectedTopics) {
             Task {
-                await self.fetchDataIfNotExists()
+                await self.viewModel.fetchDataIfNotExists(selectedTopics: self.selectedTopics)
             }
         }
         .onAppear {
             Task {
-                await self.fetchDataIfNotExists()
+                await self.viewModel.fetchDataIfNotExists(selectedTopics: self.selectedTopics)
             }
-        }
-    }
-
-    func fetchDataIfNotExists() async {
-        // We don't want to start another network request if there is already one ongoing
-        if self.networkRequest != .loading && self.storyPromos.isEmpty {
-            await self.fetchData()
-        }
-    }
-
-    private func fetchData() async {
-        do {
-            self.networkRequest = .loading
-            let ids = self.selectedTopics.map { $0.id }
-            let result = try await BBCNewsAPINetworkController.fetchStoryPromos(for: ids)
-            self.storyPromos = result
-            self.networkRequest = .success
-        } catch let error {
-            self.networkRequest = .error
-            Logger.network.error("Unable to fetch topics for My News tab - \(error.localizedDescription)")
         }
     }
 
