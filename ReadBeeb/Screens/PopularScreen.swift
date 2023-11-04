@@ -12,8 +12,8 @@ struct PopularScreen: View {
     
     private let sectionsToInclude = ["Most Read", "Topics in the news", "Copyright"]
 
-    @State private var data: FDResult? = nil
-    @State private var networkRequest = NetworkRequestStatus.notStarted
+    @Binding var data: FDResult?
+    @Binding var networkRequest: NetworkRequestStatus
 
     var body: some View {
         VStack {
@@ -63,10 +63,4 @@ struct PopularScreen: View {
         }
     }
 
-}
-
-struct PopularView_Previews: PreviewProvider {
-    static var previews: some View {
-        PopularScreen()
-    }
 }

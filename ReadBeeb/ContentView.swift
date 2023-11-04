@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var data: FDResult? = nil
+    @State private var networkRequest = NetworkRequestStatus.notStarted
+
     var body: some View {
         TabView {
             NavigationStack {
-                TopStoriesScreen()
+                TopStoriesScreen(data: self.$data, networkRequest: self.$networkRequest)
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -27,7 +30,7 @@ struct ContentView: View {
             }
 
             NavigationStack {
-                PopularScreen()
+                PopularScreen(data: self.$data, networkRequest: self.$networkRequest)
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -35,7 +38,7 @@ struct ContentView: View {
             }
 
             NavigationStack {
-                VideoScreen()
+                VideoScreen(data: self.$data, networkRequest: self.$networkRequest)
             }
             .navigationViewStyle(.stack)
             .tabItem {

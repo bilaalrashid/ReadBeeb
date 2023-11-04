@@ -12,8 +12,8 @@ struct TopStoriesScreen: View {
 
     private let sectionsToExclude = ["Watch & Listen", "Most Read", "Topics in the news", "Today's videos"]
 
-    @State private var data: FDResult? = nil
-    @State private var networkRequest = NetworkRequestStatus.notStarted
+    @Binding var data: FDResult?
+    @Binding var networkRequest: NetworkRequestStatus
 
     var body: some View {
         VStack {
@@ -63,10 +63,4 @@ struct TopStoriesScreen: View {
         }
     }
 
-}
-
-struct TopStoriesView_Previews: PreviewProvider {
-    static var previews: some View {
-        TopStoriesScreen()
-    }
 }

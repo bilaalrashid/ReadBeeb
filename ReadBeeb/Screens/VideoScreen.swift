@@ -11,8 +11,8 @@ import OSLog
 struct VideoScreen: View {
     private let sectionsToInclude = ["Today's videos"]
 
-    @State private var data: FDResult? = nil
-    @State private var networkRequest = NetworkRequestStatus.notStarted
+    @Binding var data: FDResult?
+    @Binding var networkRequest: NetworkRequestStatus
 
     var body: some View {
         VStack {
@@ -62,10 +62,4 @@ struct VideoScreen: View {
         }
     }
     
-}
-
-struct VideoView_Previews: PreviewProvider {
-    static var previews: some View {
-        VideoScreen()
-    }
 }
