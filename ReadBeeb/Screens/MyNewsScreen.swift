@@ -68,19 +68,11 @@ struct MyNewsScreen: View {
         }
     }
 
-    private func fetchDataIfNotExists() async {
-        switch self.networkRequest {
-        case .notStarted, .error:
-            break
-        case .loading:
-            return
-        case .success:
-            if !self.storyPromos.isEmpty {
-                return
-            }
+    func fetchDataIfNotExists() async {
+        // We don't want to start another network request if there is already one ongoing
+        if self.networkRequest != .loading && self.storyPromos.isEmpty {
+            await self.fetchData()
         }
-
-        await self.fetchData()
     }
 
     private func fetchData() async {
