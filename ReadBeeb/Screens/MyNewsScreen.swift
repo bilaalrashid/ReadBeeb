@@ -56,7 +56,7 @@ struct MyNewsScreen: View {
         }
         .onChange(of: self.selectedTopics) {
             Task {
-                await self.viewModel.fetchDataIfNotExists(selectedTopics: self.selectedTopics)
+                await self.viewModel.fetchData(selectedTopics: self.selectedTopics)
             }
         }
         .onAppear {
