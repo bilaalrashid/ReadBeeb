@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Kingfisher
+import Network
 
 struct StoryView: View {
     let data: FDResult
@@ -60,6 +62,33 @@ struct StoryView: View {
 
         }
         .listStyle(.plain)
+        .onAppear {
+            self.prefetchImages()
+        }
+    }
+
+    private func prefetchImages() {
+        let urls = self.imageUrls(from: self.data)
+        let prefetcher = ImagePrefetcher(urls: urls)
+        prefetcher.start()
+    }
+
+    private func imageUrls(from data: FDResult) -> [URL] {
+        let monitor = NWPathMonitor()
+
+        let images: [FDImage] = data.data.items.map {
+            switch $0 {
+            case .media(let media):
+                return media.image
+            case .image(let image):
+                return image
+            default:
+                return nil
+            }
+        }.compactMap { $0 }
+
+        let urls = images.map { monitor.currentPath.isConstrained ? $0.largestImageUrl(upTo: 400) : $0.largestImageUrl }
+        return urls.map { URL(string: $0) }.compactMap { $0 }
     }
 }
 
