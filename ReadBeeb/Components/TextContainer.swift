@@ -10,11 +10,11 @@ import SwiftUI
 struct TextContainer: View {
 
     let container: FDTextContainer
-    var list: FDContentList? = nil
-    var index: Int? = nil
+    var list: FDContentList?
+    var index: Int?
 
-    @State private var internalDestination: FDLinkDestination? = nil
-    @State private var externalUrl: URL? = nil
+    @State private var internalDestination: FDLinkDestination?
+    @State private var externalUrl: URL?
 
     var body: some View {
         HStack(alignment: .top) {

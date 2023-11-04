@@ -9,7 +9,7 @@ import SwiftUI
 import OSLog
 
 struct PopularScreen: View {
-    
+
     private let sectionsToInclude = ["Most Read", "Topics in the news", "Copyright"]
 
     @ObservedObject var viewModel: GlobalViewModel

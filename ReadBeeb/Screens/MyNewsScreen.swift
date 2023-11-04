@@ -18,7 +18,7 @@ struct MyNewsScreen: View {
 
     var body: some View {
         List {
-            ForEach(Array(self.viewModel.storyPromos.enumerated()), id: \.offset) { index, storyPromo in
+            ForEach(Array(self.viewModel.storyPromos.enumerated()), id: \.offset) { _, storyPromo in
                 if let destination = storyPromo.link.destinations.first {
                     PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
                         StoryPromoRow(story: storyPromo)

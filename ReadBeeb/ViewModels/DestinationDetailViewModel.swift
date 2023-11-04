@@ -13,7 +13,7 @@ extension DestinationDetailScreen {
     @MainActor class ViewModel: ObservableObject {
         let destination: FDLinkDestination
 
-        @Published private(set) var data: FDResult? = nil
+        @Published private(set) var data: FDResult?
         @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
 
         init(destination: FDLinkDestination) {

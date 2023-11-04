@@ -11,7 +11,7 @@ struct HierarchicalCollection: View {
     let item: FDHierarchicalCollection
 
     var body: some View {
-        ForEach(Array(self.item.items.enumerated()), id: \.offset) { index, storyPromo in
+        ForEach(Array(self.item.items.enumerated()), id: \.offset) { _, storyPromo in
             if let destination = storyPromo.link.destinations.first {
                 PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
                     StoryPromoRow(story: storyPromo)

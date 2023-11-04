@@ -10,7 +10,7 @@ import SwiftUI
 struct ProminentStoryPromoRow: View {
     let story: FDStoryPromo
 
-    @State private var topicDestination: FDLinkDestination? = nil
+    @State private var topicDestination: FDLinkDestination?
 
     var body: some View {
         VStack(spacing: 12) {
@@ -56,7 +56,7 @@ struct ProminentStoryPromoRow: View {
                     }
 
                     if let badges = self.story.badges {
-                        ForEach(Array(badges.enumerated()), id: \.offset) { index, badge in
+                        ForEach(Array(badges.enumerated()), id: \.offset) { _, badge in
                             Text(badge.text ?? "")
                                 .font(.caption.weight(.heavy))
                                 .foregroundColor(.accentColor)

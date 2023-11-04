@@ -11,7 +11,7 @@ struct StoryPromoRow: View {
 
     let story: FDStoryPromo
 
-    @State private var topicDestination: FDLinkDestination? = nil
+    @State private var topicDestination: FDLinkDestination?
 
     var body: some View {
         HStack {
@@ -49,7 +49,7 @@ struct StoryPromoRow: View {
                     }
 
                     if let badges = self.story.badges {
-                        ForEach(Array(badges.enumerated()), id: \.offset) { index, badge in
+                        ForEach(Array(badges.enumerated()), id: \.offset) { _, badge in
                             Text(badge.text ?? "")
                                 .font(.caption.weight(.heavy))
                                 .foregroundColor(.accentColor)
@@ -69,7 +69,7 @@ struct StoryPromoRow: View {
             }
             .padding(.all, 4)
         }
-        .navigationDestination(item: self.$topicDestination) { destination in 
+        .navigationDestination(item: self.$topicDestination) { destination in
             DestinationDetailScreen(destination: destination)
         }
     }

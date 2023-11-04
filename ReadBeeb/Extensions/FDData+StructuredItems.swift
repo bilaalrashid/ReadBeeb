@@ -15,7 +15,7 @@ extension FDData {
         for item in self.items {
             // This will discard any header without a body that follows it, as we're not interested in them
             switch item {
-            case .collectionHeader(_):
+            case .collectionHeader:
                 currentHeader = item
             default:
                 structuredItems.append(FDStructuredDataItem(header: currentHeader, body: item))

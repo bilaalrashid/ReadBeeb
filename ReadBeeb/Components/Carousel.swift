@@ -15,7 +15,7 @@ struct Carousel: View {
         ScrollView(.horizontal) {
             // Don't use LazyHStack, the layout doesn't render properly if lazy loaded
             HStack(spacing: 16) {
-                ForEach(Array(self.item.items.enumerated()), id: \.offset) { index, storyPromo in
+                ForEach(Array(self.item.items.enumerated()), id: \.offset) { _, storyPromo in
                     VideoPortraitStory(storyPromo: storyPromo)
                 }
             }

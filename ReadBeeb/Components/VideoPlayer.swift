@@ -24,7 +24,7 @@ struct VideoPlayer: UIViewControllerRepresentable {
         vc.canStartPictureInPictureAutomaticallyFromInline = true
         vc.beginAppearanceTransition(true, animated: false)
 
-        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { notification in
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in
             self.onFinish?()
         }
 
@@ -34,7 +34,7 @@ struct VideoPlayer: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
         uiViewController.player = self.player
 
-        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { notification in
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in
             self.onFinish?()
         }
     }

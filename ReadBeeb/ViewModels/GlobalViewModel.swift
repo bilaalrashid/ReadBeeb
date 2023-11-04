@@ -9,7 +9,7 @@ import Foundation
 import OSLog
 
 @MainActor class GlobalViewModel: ObservableObject {
-    @Published private(set) var data: FDResult? = nil
+    @Published private(set) var data: FDResult?
     @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
 
     var isEmpty: Bool {

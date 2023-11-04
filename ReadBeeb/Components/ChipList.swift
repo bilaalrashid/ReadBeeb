@@ -11,8 +11,8 @@ struct ChipList: View {
     let item: FDChipList
 
     var body: some View {
-        ForEach(Array(self.item.items.enumerated()), id: \.offset) { index, topic in
-            if let title = topic.title, let destination = topic.link?.destinations.first  {
+        ForEach(Array(self.item.items.enumerated()), id: \.offset) { _, topic in
+            if let title = topic.title, let destination = topic.link?.destinations.first {
                 PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
                     Text(title)
                         .foregroundStyle(Constants.primaryColor)

@@ -12,7 +12,7 @@ struct TextCarousel: View {
     let carousel: FDCarousel
 
     var body: some View {
-        ForEach(Array(self.carousel.items.enumerated()), id: \.offset) { index, storyPromo in
+        ForEach(Array(self.carousel.items.enumerated()), id: \.offset) { _, storyPromo in
             if let textContainer = self.textContainer(for: storyPromo) {
                 TextContainer(
                     container: textContainer,

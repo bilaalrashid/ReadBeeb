@@ -49,7 +49,7 @@ extension FDTextContainerText {
         //      both, otherwise one will overwrite the other. This has a side-effect of overwriting all of the
         //      ranges to be the same. This is likely to be an extremely rare edge case in production, likely only
         //      occurring due to a formatting mistake (which this would fix), so this edge-case is permissible
-        if (attributedString.attribute(.font, at: range.location, effectiveRange: nil) != nil) {
+        if attributedString.attribute(.font, at: range.location, effectiveRange: nil) != nil {
             attributedString.addAttribute(.font, value: combinedFont, range: range)
         } else {
             switch span.attribute {

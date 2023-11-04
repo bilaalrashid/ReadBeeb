@@ -11,7 +11,7 @@ extension Int {
 
     var formattedTimeInterval: String? {
         let interval = TimeInterval(self) / 1000
-        
+
         if interval < 60 {
             return "\(Int(interval))s"
         } else {
