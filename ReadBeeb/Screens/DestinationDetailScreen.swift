@@ -12,13 +12,12 @@ struct DestinationDetailScreen: View {
 
     let destination: FDLinkDestination
 
-    @State private var data: FDResult? = nil
-    @State private var networkRequest = NetworkRequestStatus.notStarted
+    @StateObject private var viewModel = ViewModel()
 
     var body: some View {
         VStack(spacing: 0) {
-            if BBCNewsAPINetworkController.isAPIUrl(url: self.destination.url) {
-                if let data = self.data {
+            if self.viewModel.isApiUrl(url: self.destination.url) {
+                if let data = self.viewModel.data {
                     switch URL(string: self.destination.url)?.valueOf("type") ?? "" {
                     case "index", "topic":
                         DiscoveryView(data: data, sectionsToInclude: nil, sectionsToExclude: nil)
@@ -33,16 +32,15 @@ struct DestinationDetailScreen: View {
             } else {
                 if let url = URL(string: self.destination.url) {
                     StoryWebView(url: url) {
-                        // Assign an empty value for `self.data` to prevent the empty data overlay being displayed
-                        self.data = FDResult(data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []), contentType: "")
-                        self.networkRequest = .success
+                        // Assign any non-empty value to prevent the empty data overlay being displayed
+                        self.viewModel.mockSuccessfulApiRequest()
                     }
                 }
             }
         }
         .navigationTitle(self.destination.presentation.title ?? "")
-        .toolbarColorScheme(self.isBBCSportUrl(url: self.destination.url) ? .light : .dark, for: .navigationBar)
-        .toolbarBackground(self.isBBCSportUrl(url: self.destination.url) ? Constants.sportColor : Constants.primaryColor, for: .navigationBar)
+        .toolbarColorScheme(self.viewModel.isBBCSportUrl(url: self.destination.url) ? .light : .dark, for: .navigationBar)
+        .toolbarBackground(self.viewModel.isBBCSportUrl(url: self.destination.url) ? Constants.sportColor : Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -54,33 +52,15 @@ struct DestinationDetailScreen: View {
                 }
             }
         }
-        .overlay(NetworkRequestStatusOverlay(networkRequest: self.networkRequest, isEmpty: self.data == nil))
+        .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
         .refreshable {
-            await self.fetchData()
+            await self.viewModel.fetchData(destination: self.destination)
         }
         .onAppear {
             Task {
-                await self.fetchData()
+                await self.viewModel.fetchData(destination: self.destination)
             }
         }
-    }
-
-    private func fetchData() async {
-        do {
-            if BBCNewsAPINetworkController.isAPIUrl(url: self.destination.url) {
-                self.networkRequest = .loading
-                let result = try await BBCNewsAPINetworkController.fetchFDUrl(url: self.destination.url)
-                self.data = result
-                self.networkRequest = .success
-            }
-        } catch let error {
-            self.networkRequest = .error
-            Logger.network.error("Unable to fetch news article \(self.destination.url) - \(error.localizedDescription)")
-        }
-    }
-
-    private func isBBCSportUrl(url: String) -> Bool {
-        return url.contains("https://www.bbc.co.uk/sport/")
     }
 
 }
