@@ -26,7 +26,8 @@ import OSLog
     func fetchData() async {
         do {
             self.networkRequest = .loading
-            let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage()
+            let postcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
+            let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage(postcode: postcode)
             self.data = result
             self.networkRequest = .success
         } catch let error {
