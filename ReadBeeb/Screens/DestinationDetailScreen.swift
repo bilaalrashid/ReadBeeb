@@ -9,7 +9,6 @@ import SwiftUI
 import OSLog
 
 struct DestinationDetailScreen: View {
-
     let destination: FDLinkDestination
 
     @StateObject private var viewModel: ViewModel
@@ -69,18 +68,17 @@ struct DestinationDetailScreen: View {
             }
         }
     }
-
 }
 
 struct NewsStoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DestinationDetailScreen(destination:
-                                FDLinkDestination(
-                                    sourceFormat: "ABL",
-                                    url: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset",
-                                    id: "/news/world-europe-66631182",
-                                    presentation: FDPresentation(type: "", title: nil, canShare: true)
-                                )
+        DestinationDetailScreen(
+            destination: FDLinkDestination(
+                sourceFormat: "ABL",
+                url: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset",
+                id: "/news/world-europe-66631182",
+                presentation: FDPresentation(type: "", title: nil, canShare: true)
+            )
         )
     }
 }

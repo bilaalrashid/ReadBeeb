@@ -8,9 +8,7 @@
 import Foundation
 
 extension URL: Identifiable {
-
     public var id: String {
         return self.absoluteString
     }
-
 }

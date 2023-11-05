@@ -9,7 +9,6 @@ import SwiftUI
 import OSLog
 
 struct VideoPortraitStory: View {
-
     let storyPromo: FDStoryPromo
 
     @State private var shouldPlay = false
@@ -93,9 +92,4 @@ struct VideoPortraitStory: View {
             Logger.network.error("Unable to fetch BBC iPlayer media options - \(error.localizedDescription)")
         }
     }
-
-}
-
-#Preview {
-    VideoPortraitStory(storyPromo: FDStoryPromo(type: "StoryPromo", style: "", languageCode: "", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil))
 }

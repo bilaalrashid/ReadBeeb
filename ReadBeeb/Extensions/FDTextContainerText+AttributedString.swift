@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 extension FDTextContainerText {
-
     /// Returns an `AttributedString` representing the `FDTextContainerText` instance
     var attributedString: AttributedString {
         let attributedString = NSMutableAttributedString(string: self.text)
@@ -43,7 +42,8 @@ extension FDTextContainerText {
     private func applyEmphasisAttributes(for attributedString: NSMutableAttributedString, span: FDTextContainerSpan, range: NSRange) {
         let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
         let italicFont = UIFont.italicSystemFont(ofSize: UIFont.labelFontSize)
-        let combinedFont = UIFont(descriptor: UIFont.preferredFont(forTextStyle: .body).fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic])!, size: UIFont.labelFontSize)
+        let combinedFontDescriptor = UIFont.preferredFont(forTextStyle: .body).fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic])
+        let combinedFont = UIFont(descriptor: combinedFontDescriptor!, size: UIFont.labelFontSize)
 
         // BUG: If there are multiple attributes defined for the .font key over the same range, we have to show
         //      both, otherwise one will overwrite the other. This has a side-effect of overwriting all of the
@@ -62,5 +62,4 @@ extension FDTextContainerText {
             }
         }
     }
-
 }

@@ -10,8 +10,7 @@ import AVKit
 import OSLog
 
 struct BBCIPlayerVideoPlayer: View {
-
-    private let player: AVPlayer!
+    private let player: AVPlayer
 
     @Binding var shouldPlay: Bool
 
@@ -28,7 +27,6 @@ struct BBCIPlayerVideoPlayer: View {
             self.shouldPlay = false
         }
     }
-
 }
 
 #Preview {

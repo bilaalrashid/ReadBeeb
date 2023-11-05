@@ -8,7 +8,6 @@
 import Foundation
 
 extension FDImage {
-
     var largestImageUrl: String? {
         if self.source.sizingMethod.type == "SPECIFIC_WIDTHS" {
             if let maxSize = self.source.sizingMethod.widths.last {
@@ -26,8 +25,8 @@ extension FDImage {
         if self.source.sizingMethod.type == "SPECIFIC_WIDTHS" {
             let allowedWidths = self.source.sizingMethod.widths.filter { $0 < maxWidth }
             if let maxAllowedWith = allowedWidths.last {
-                let formattedUrl = self.source.url.replacingOccurrences(of: self.source.sizingMethod.widthToken, with: String(maxAllowedWith))
-                return formattedUrl
+                let url = self.source.url.replacingOccurrences(of: self.source.sizingMethod.widthToken, with: String(maxAllowedWith))
+                return url
             }
         } else {
             return self.source.url
@@ -35,5 +34,4 @@ extension FDImage {
 
         return nil
     }
-
 }

@@ -9,7 +9,6 @@ import SwiftUI
 import WebKit
 
 struct StoryWebView: UIViewRepresentable {
-
     let url: URL
     let didFinishLoading: () -> Void
 
@@ -35,13 +34,14 @@ struct StoryWebView: UIViewRepresentable {
             self.parent = parent
         }
 
+        // swiftlint:disable:next implicitly_unwrapped_optional
         func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+            // swiftlint:disable:next line_length
             let css = "#cookiePrompt, .bbccookies-banner, #orbit-header, .orbit-header-container, header, #top-navigation, #u47640082145343365, .nav-top, #core-navigation, #services-bar, #orb-footer, .orb-footer, nav, [class$=\"GlobalNavigation\"], [class$=\"ConsentBanner\"], #features-label-aside-content, #elsewhere-label-aside-content, #footer-content, [data-testid=\"testoverlay\"], #header-content, .lx-commentary__top-link, .qa-bottom-navigation { display: none; }"
-            let js = "const style = document.createElement('style'); style.innerHTML = '\(css)'; document.head.appendChild(style);"
+            let javascript = "const style = document.createElement('style'); style.innerHTML = '\(css)'; document.head.appendChild(style);"
 
             self.parent.didFinishLoading()
-            webView.evaluateJavaScript(js)
+            webView.evaluateJavaScript(javascript)
         }
     }
-
 }

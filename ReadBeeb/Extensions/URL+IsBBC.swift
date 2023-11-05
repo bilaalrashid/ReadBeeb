@@ -9,7 +9,6 @@ import Foundation
 import TLDExtract
 
 extension URL {
-
     var isBBC: Bool {
         let bbcDomains = ["bbc.co.uk", "bbci.co.uk", "bbc.com"]
 
@@ -19,5 +18,4 @@ extension URL {
 
         return bbcDomains.contains(domain)
     }
-
 }

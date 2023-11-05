@@ -10,7 +10,6 @@ import SwiftData
 import OSLog
 
 struct MyNewsScreen: View {
-
     @Query var selectedTopics: [Topic]
     @StateObject private var viewModel = ViewModel()
 
@@ -26,7 +25,7 @@ struct MyNewsScreen: View {
                 }
             }
 
-            if self.viewModel.storyPromos.count > 0 {
+            if !self.viewModel.storyPromos.isEmpty {
                 Copyright(item: FDCopyright(type: "Copyright", lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
                     .listRowSeparator(.hidden)
             }
@@ -66,7 +65,6 @@ struct MyNewsScreen: View {
             }
         }
     }
-
 }
 
 struct MyNewsView_Previews: PreviewProvider {

@@ -9,9 +9,7 @@ import Foundation
 import Kingfisher
 
 struct ImageCacheController {
-
     func setMaximumCacheSize() {
         ImageCache.default.diskStorage.config.expiration = Constants.maximumImageCacheAge
     }
-
 }

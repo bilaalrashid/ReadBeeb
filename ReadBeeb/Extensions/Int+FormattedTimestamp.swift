@@ -8,7 +8,6 @@
 import Foundation
 
 extension Int {
-
     var formattedTimestamp: String {
         let date = Date(timeIntervalSince1970: Double(self) / 1000)
         let lastWeek = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
@@ -19,5 +18,4 @@ extension Int {
             return date.formatted(.relative(presentation: .numeric, unitsStyle: .narrow))
         }
     }
-
 }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Headline: View {
-
     let headline: FDHeadline
 
     @State private var isLinkActive = false
@@ -60,21 +59,20 @@ struct Headline: View {
             }
         }
     }
-
 }
 
 struct Headline_Previews: PreviewProvider {
     static var previews: some View {
-        Headline(headline:
-                    FDHeadline(
-                        type: "Headline",
-                        text: "Headline",
-                        lastUpdated: 0,
-                        byline: FDHeadlineByline(name: "Chris Mason", purpose: "BBC News"),
-                        topic: FDTopic(text: "Politics", title: nil, link: nil),
-                        languageCode: "en-GB",
-                        readTimeMinutes: 2
-                    )
+        Headline(
+            headline: FDHeadline(
+                type: "Headline",
+                text: "Headline",
+                lastUpdated: 0,
+                byline: FDHeadlineByline(name: "Chris Mason", purpose: "BBC News"),
+                topic: FDTopic(text: "Politics", title: nil, link: nil),
+                languageCode: "en-GB",
+                readTimeMinutes: 2
+            )
         )
     }
 }

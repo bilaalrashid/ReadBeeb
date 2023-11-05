@@ -9,7 +9,6 @@ import Foundation
 import OSLog
 
 extension MyNewsScreen {
-
     @MainActor class ViewModel: ObservableObject {
         @Published private(set) var storyPromos = [FDStoryPromo]()
         @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
@@ -38,5 +37,4 @@ extension MyNewsScreen {
             }
         }
     }
-
 }

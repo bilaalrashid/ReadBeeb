@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Carousel: View {
-
     let item: FDCarousel
 
     var body: some View {
@@ -24,9 +23,4 @@ struct Carousel: View {
         .scrollTargetBehavior(.viewAligned)
         .scrollIndicators(.never)
     }
-
-}
-
-#Preview {
-    Carousel(item: FDCarousel(type: "Carousel", items: [], aspectRatio: 1.3, presentation: FDPresentation(type: "", title: nil, canShare: nil), hasPageIndicator: false))
 }

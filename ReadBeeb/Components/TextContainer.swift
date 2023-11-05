@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TextContainer: View {
-
     let container: FDTextContainer
     var list: FDContentList?
     var index: Int?
@@ -47,6 +46,7 @@ struct TextContainer: View {
             }
         }
         .environment(\.openURL, OpenURLAction { url in
+            // swiftlint:disable:next force_https
             let schemesToHandle = ["http", "https"]
             guard let scheme = url.scheme else { return .systemAction }
 
@@ -84,9 +84,9 @@ struct TextContainer: View {
             $0.url == url.absoluteString
         }
     }
-
 }
 
+// swiftlint:disable line_length
 #Preview {
     VStack {
         TextContainer(
@@ -97,7 +97,7 @@ struct TextContainer: View {
                     FDTextContainerSpan(type: "emphasis", startIndex: 5, length: 10, attribute: "bold", link: nil),
                     FDTextContainerSpan(type: "emphasis", startIndex: 5, length: 15, attribute: "italic", link: nil),
                     FDTextContainerSpan(type: "link", startIndex: 5, length: 20, attribute: nil, link: FDLink(destinations: [
-                        FDLinkDestination(sourceFormat: "abl", url: "http://bilaal.co.uk", id: "", presentation: FDPresentation(type: "", title: nil, canShare: nil))
+                        FDLinkDestination(sourceFormat: "abl", url: "https://bilaal.co.uk", id: "", presentation: FDPresentation(type: "", title: nil, canShare: nil))
                     ]))
                 ])
             )
@@ -122,8 +122,10 @@ struct TextContainer: View {
         TextContainer(
             container: FDTextContainer(
                 type: "textContainer",
-                containerType: "crosshead", text: FDTextContainerText(text: "A Title Here", spans: [])
+                containerType: "crosshead",
+                text: FDTextContainerText(text: "A Title Here", spans: [])
             )
         )
     }
 }
+// swiftlint:enable line_length

@@ -8,7 +8,6 @@
 import Foundation
 
 extension Int {
-
     var formattedTimeInterval: String? {
         let interval = TimeInterval(self) / 1000
 
@@ -22,5 +21,4 @@ extension Int {
             return formatter.string(from: interval)
         }
     }
-
 }

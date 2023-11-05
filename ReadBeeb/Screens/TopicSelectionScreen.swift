@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct TopicSelectionScreen: View {
-
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
 
@@ -105,7 +104,6 @@ struct TopicSelectionScreen: View {
             self.modelContext.insert(topic)
         }
     }
-
 }
 
 #Preview {

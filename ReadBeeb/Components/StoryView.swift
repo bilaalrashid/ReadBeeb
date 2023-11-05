@@ -57,7 +57,6 @@ struct StoryView: View {
                 }
             }
             .listRowSeparator(.hidden)
-
         }
         .listStyle(.plain)
         .onAppear {
@@ -74,22 +73,20 @@ struct StoryView: View {
     private func imageUrls(from data: FDResult) -> [URL] {
         let monitor = NWPathMonitor()
 
-        let images: [FDImage] = data.data.items.map {
-            switch $0 {
-            case .media(let media):
-                return media.image
-            case .image(let image):
-                return image
-            default:
-                return nil
+        let images: [FDImage] = data.data.items
+            .map {
+                switch $0 {
+                case .media(let media):
+                    return media.image
+                case .image(let image):
+                    return image
+                default:
+                    return nil
+                }
             }
-        }.compactMap { $0 }
+            .compactMap { $0 }
 
         let urls = images.map { monitor.currentPath.isConstrained ? $0.largestImageUrl(upTo: 400) : $0.largestImageUrl }
         return urls.map { URL(string: $0) }.compactMap { $0 }
     }
-}
-
-#Preview {
-    StoryView(data: FDResult(data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []), contentType: ""))
 }

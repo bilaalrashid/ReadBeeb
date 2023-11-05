@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TextCarousel: View {
-
     let carousel: FDCarousel
 
     var body: some View {
@@ -34,5 +33,4 @@ struct TextCarousel: View {
             ])
         )
     }
-
 }

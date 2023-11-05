@@ -8,7 +8,6 @@
 import SwiftUI
 
 extension View {
-
     /// Allows additional logic to view modifier.
     ///
     /// Example usage:
@@ -29,5 +28,4 @@ extension View {
     func modify<T: View>(@ViewBuilder _ modifier: (Self) -> T) -> some View {
         return modifier(self)
     }
-
 }

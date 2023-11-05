@@ -33,7 +33,6 @@ struct FDStructuredDataItem {
 }
 
 extension Array<FDStructuredDataItem> {
-
     /// Filters out any sections to exclude any that do not match the specified headers
     /// - Parameter includableHeaders: The headers of sections that will not be filtered out
     /// - Returns: The filtered items
@@ -65,5 +64,4 @@ extension Array<FDStructuredDataItem> {
             return !excludableHeaders.contains(collectionHeader.text)
         }
     }
-
 }

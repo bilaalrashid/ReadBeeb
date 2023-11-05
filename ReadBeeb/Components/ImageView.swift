@@ -53,9 +53,3 @@ struct ImageView: View {
         }
     }
 }
-
-struct ImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageView(image: FDImage(type: "Image", source: FDImageSource(url: "", sizingMethod: FDImageSizingMethod(type: "", widthToken: "", widths: []), aspectRatio: nil), metadata: nil))
-    }
-}

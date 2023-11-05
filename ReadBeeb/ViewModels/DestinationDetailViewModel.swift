@@ -9,7 +9,6 @@ import Foundation
 import OSLog
 
 extension DestinationDetailScreen {
-
     @MainActor class ViewModel: ObservableObject {
         let destination: FDLinkDestination
 
@@ -55,7 +54,10 @@ extension DestinationDetailScreen {
 
         /// Mocks a successful API request by storing fake data and a successful result state
         func mockSuccessfulApiRequest() {
-            self.data = FDResult(data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []), contentType: "")
+            self.data = FDResult(
+                data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []),
+                contentType: ""
+            )
             self.networkRequest = .success
         }
 
@@ -63,5 +65,4 @@ extension DestinationDetailScreen {
             return url.contains("https://www.bbc.co.uk/sport/")
         }
     }
-
 }

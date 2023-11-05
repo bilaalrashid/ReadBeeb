@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StoryPromoRow: View {
-
     let story: FDStoryPromo
 
     @State private var topicDestination: FDLinkDestination?
@@ -72,14 +71,5 @@ struct StoryPromoRow: View {
         .navigationDestination(item: self.$topicDestination) { destination in
             DestinationDetailScreen(destination: destination)
         }
-    }
-
-}
-
-struct NewsStoryRow_Previews: PreviewProvider {
-    static var previews: some View {
-        StoryPromoRow(story:
-                        FDStoryPromo(type: "StoryPromo", style: "SMALL_HORIZONTAL_PROMO_CARD", languageCode: "en-gb", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil)
-        )
     }
 }

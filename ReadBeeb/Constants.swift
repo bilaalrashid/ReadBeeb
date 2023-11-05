@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 import Kingfisher
 
-struct Constants {
-
+enum Constants {
     static let bundleIdentifier = Bundle.main.bundleIdentifier ?? "uk.co.bilaal.ReadBeeb"
 
     static let primaryColor = Constants.newsColor
@@ -20,5 +19,4 @@ struct Constants {
     static let sportColor = Color(red: 255 / 255, green: 210 / 255, blue: 48 / 255)
 
     static let maximumImageCacheAge: StorageExpiration = .days(1)
-
 }

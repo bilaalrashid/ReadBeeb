@@ -8,7 +8,6 @@
 import Foundation
 
 extension MediaSelectorResult {
-
     /// A list of media streams that ReadBeeb is able to stream, sorted by largest width first
     var validMedia: [MediaSelectorItem] {
         let valid = self.media.filter {
@@ -19,11 +18,9 @@ extension MediaSelectorResult {
             Int($0.width ?? "") ?? 0 > Int($1.width ?? "") ?? 0
         }
     }
-
 }
 
 extension MediaSelectorItem {
-
     /// A list of connection streams that ReadBeeb is able to stream, sorted by highest priority first
     var validConnection: [MediaSelectorConnection] {
         let valid = self.connection.filter {
@@ -34,5 +31,4 @@ extension MediaSelectorItem {
             Int($0.priority) ?? 0 > Int($1.priority) ?? 0
         }
     }
-
 }

@@ -8,13 +8,12 @@
 import Foundation
 
 extension URL {
-
     /// Returns the value of the query parameter in the URL, if it exists
     /// - Parameter queryParameterName: The query parameter to get the value for
     /// - Returns: The value of the specified query parameter
     func valueOf(_ queryParameterName: String) -> String? {
         guard let url = URLComponents(string: self.absoluteString) else { return nil }
-        return url.queryItems?.first(where: { $0.name == queryParameterName })?.value
+        let queryItem = url.queryItems?.first { $0.name == queryParameterName }
+        return queryItem?.value
     }
-
 }

@@ -10,8 +10,7 @@ import Alamofire
 import OSLog
 import UIKit
 
-struct BBCIPlayerAPINetworkController {
-
+enum BBCIPlayerAPINetworkController {
     static let baseUri = "https://open.live.bbc.co.uk"
 
     static let session: Session = {
@@ -19,6 +18,7 @@ struct BBCIPlayerAPINetworkController {
         configuration.httpAdditionalHeaders = [
             // Pretend to be the BBC News app
             // Example: BBCNews/25339 (iPhone15,2; iOS 16.6) MediaSelectorClient/7.0.0 BBCHTTPClient/9.0.0
+            // swiftlint:disable:next line_length force_https
             "User-Agent": "BBCNews/25339 (\(UIDevice.current.modelIdentifier); \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)) MediaSelectorClient/7.0.0 BBCHTTPClient/9.0.0"
         ]
         return Session(configuration: configuration)
@@ -30,5 +30,4 @@ struct BBCIPlayerAPINetworkController {
         let request = self.session.request(url).validate().serializingDecodable(MediaSelectorResult.self)
         return try await request.value
     }
-
 }

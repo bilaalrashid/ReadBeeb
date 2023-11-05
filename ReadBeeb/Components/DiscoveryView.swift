@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DiscoveryView: View {
-
     let data: FDResult
     let sectionsToInclude: [String]?
     let sectionsToExclude: [String]?
@@ -37,9 +36,15 @@ struct DiscoveryView: View {
         }
         .listStyle(.plain)
     }
-
 }
 
 #Preview {
-    DiscoveryView(data: FDResult(data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []), contentType: ""), sectionsToInclude: nil, sectionsToExclude: nil)
+    DiscoveryView(
+        data: FDResult(
+            data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []),
+            contentType: ""
+        ),
+        sectionsToInclude: nil,
+        sectionsToExclude: nil
+    )
 }

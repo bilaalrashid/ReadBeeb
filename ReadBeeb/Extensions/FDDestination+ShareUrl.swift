@@ -8,7 +8,6 @@
 import Foundation
 
 extension FDLinkDestination {
-
     var shareUrl: URL? {
         guard let canShare = self.presentation.canShare, canShare else { return nil }
 
@@ -21,5 +20,4 @@ extension FDLinkDestination {
             return nil
         }
     }
-
 }

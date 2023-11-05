@@ -10,7 +10,6 @@ import SwiftData
 
 @Model
 final class Topic: Codable {
-
     enum CodingKeys: CodingKey {
         case id, headline, subhead
     }
@@ -38,5 +37,4 @@ final class Topic: Codable {
         try container.encode(self.headline, forKey: .headline)
         try container.encode(self.subhead, forKey: .subhead)
     }
-
 }

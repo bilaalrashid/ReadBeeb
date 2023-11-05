@@ -22,6 +22,7 @@ struct MediaSelectorConnection: Codable, Equatable, Hashable {
     ///
     /// - Note: Currently only supports upgrading to HTTP to HTTPS
     var hrefSecure: String {
+        // swiftlint:disable:next force_https
         return self.href.replacingOccurrences(of: "http://", with: "https://")
     }
 }

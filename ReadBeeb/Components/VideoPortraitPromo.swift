@@ -68,7 +68,3 @@ struct VideoPortraitPromo: View {
         }
     }
 }
-
-#Preview {
-    VideoPortraitPromo(storyPromo: FDStoryPromo(type: "StoryPromo", style: "", languageCode: "", text: nil, link: FDLink(destinations: []), subtext: nil, updated: nil, topic: nil, image: nil, badges: nil, uasToken: nil))
-}

@@ -9,7 +9,6 @@ import SwiftUI
 import OSLog
 
 struct MediaView: View {
-
     let media: FDMedia
 
     @State private var shouldPlay = false
@@ -96,14 +95,4 @@ struct MediaView: View {
             Logger.network.error("Unable to fetch BBC iPlayer media options - \(error.localizedDescription)")
         }
     }
-
-}
-
-#Preview {
-    MediaView(media: FDMedia(
-        type: "Media",
-        source: FDMediaSource(type: "VIDEO", id: "", duration: 100, aspectRatio: 1.77, isLive: false, canAutoPlay: true, episodePid: ""),
-        image: FDImage(type: "Image", source: FDImageSource(url: "", sizingMethod: FDImageSizingMethod(type: "", widthToken: "", widths: []), aspectRatio: nil), metadata: nil),
-        metadata: FDMediaMetadata(title: "Title", summary: "Subtitle", caption: "Caption", timestamp: 0, associatedContentUrl: "https://www.bbc.co.uk/news/world-asia-66783384", allowAdvertising: true))
-    )
 }

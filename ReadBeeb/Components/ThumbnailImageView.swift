@@ -60,12 +60,7 @@ struct ThumbnailImageView: View {
                         .padding(self.prominent ? 16 : 10)
                     }
                 }
-
             }
         }
     }
-}
-
-#Preview {
-    ThumbnailImageView(image: FDImage(type: "Image", source: FDImageSource(url: "", sizingMethod: FDImageSizingMethod(type: "", widthToken: "", widths: []), aspectRatio: nil), metadata: nil), badges: [], prominent: false)
 }
