@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             NavigationStack {
-                TopStoriesScreen(viewModel: self.viewModel)
+                TopStoriesScreen()
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -29,7 +29,7 @@ struct ContentView: View {
             }
 
             NavigationStack {
-                PopularScreen(viewModel: self.viewModel)
+                PopularScreen()
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -37,13 +37,14 @@ struct ContentView: View {
             }
 
             NavigationStack {
-                VideoScreen(viewModel: self.viewModel)
+                VideoScreen()
             }
             .navigationViewStyle(.stack)
             .tabItem {
                 Label("Video", systemImage: "play.rectangle")
             }
         }
+        .environmentObject(self.viewModel)
     }
 }
 

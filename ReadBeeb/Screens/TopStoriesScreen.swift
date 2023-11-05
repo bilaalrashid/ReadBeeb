@@ -11,7 +11,7 @@ import OSLog
 struct TopStoriesScreen: View {
     private let sectionsToExclude = ["Watch & Listen", "Most Read", "Topics in the news", "Today's videos"]
 
-    @ObservedObject var viewModel: GlobalViewModel
+    @EnvironmentObject var viewModel: GlobalViewModel
 
     @State private var isShowingSettings = false
 

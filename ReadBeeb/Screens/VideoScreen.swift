@@ -11,7 +11,7 @@ import OSLog
 struct VideoScreen: View {
     private let sectionsToInclude = ["Today's videos"]
 
-    @ObservedObject var viewModel: GlobalViewModel
+    @EnvironmentObject var viewModel: GlobalViewModel
 
     var body: some View {
         VStack {

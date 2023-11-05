@@ -11,7 +11,7 @@ import OSLog
 struct PopularScreen: View {
     private let sectionsToInclude = ["Most Read", "Topics in the news", "Copyright"]
 
-    @ObservedObject var viewModel: GlobalViewModel
+    @EnvironmentObject var viewModel: GlobalViewModel
 
     var body: some View {
         VStack {
