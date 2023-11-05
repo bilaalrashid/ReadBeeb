@@ -31,6 +31,7 @@ struct SettingsScreen: View {
                     Spacer()
                     TextField("e.g. W1A", text: self.$rawPostcode)
                         .multilineTextAlignment(.trailing)
+                        .autocorrectionDisabled(true)
                 }
             }
 
@@ -83,11 +84,21 @@ struct SettingsScreen: View {
     }
 
     private func savePostcode() {
-        let trimmed = self.rawPostcode.trimmingCharacters(in: .whitespacesAndNewlines)
+        let validated = self.rawPostcode.trimmingCharacters(in: .whitespacesAndNewlines).prefix(7)
+        var toMatch = ""
+        if validated.count == 6 || validated.count == 7 {
+            toMatch = String(validated.prefix(validated.count - 3))
+        } else {
+            toMatch = String(validated)
+        }
 
-        if self.postcodes.contains(trimmed) {
-            UserDefaults.standard.setValue(trimmed, forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
-        } else if trimmed.isEmpty {
+        let match = self.postcodes.first {
+            $0.localizedCaseInsensitiveContains(toMatch)
+        }
+
+        if let match = match {
+            UserDefaults.standard.setValue(match, forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
+        } else if toMatch.isEmpty {
             UserDefaults.standard.setValue(nil, forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
         }
     }
