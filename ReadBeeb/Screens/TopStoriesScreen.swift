@@ -13,6 +13,8 @@ struct TopStoriesScreen: View {
 
     @ObservedObject var viewModel: GlobalViewModel
 
+    @State private var isShowingSettings = false
+
     var body: some View {
         VStack {
             if let data = self.viewModel.data {
@@ -23,7 +25,22 @@ struct TopStoriesScreen: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         .toolbarBackground(Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {
+                    self.isShowingSettings = true
+                }) {
+                    Label("Profile", systemImage: "person.crop.circle")
+                }
+            }
+        }
         .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
+        .sheet(isPresented: self.$isShowingSettings) {
+            NavigationStack {
+                SettingsScreen()
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+        }
         .refreshable {
             await self.viewModel.fetchData()
         }
