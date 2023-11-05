@@ -99,6 +99,9 @@
 		3A9125052AAFB9A700EC0DCF /* ContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125042AAFB9A700EC0DCF /* ContentList.swift */; };
 		3A9125072AAFC39200EC0DCF /* Headline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9125062AAFC39200EC0DCF /* Headline.swift */; };
 		3AA49AA52AF7FA7200451FCC /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AA42AF7FA7200451FCC /* SettingsScreen.swift */; };
+		3AA49AA72AF8291D00451FCC /* Postcodes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA49AA62AF8291D00451FCC /* Postcodes.json */; };
+		3AA49AAA2AF8296600451FCC /* PostcodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AA92AF8296600451FCC /* PostcodeResult.swift */; };
+		3AA49AAC2AF8298500451FCC /* Postcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AAB2AF8298500451FCC /* Postcode.swift */; };
 		3AC017BE2AC9B8510010EBBE /* TopicSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */; };
 		3AC017C02AC9BDB30010EBBE /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */; };
 		3AC017C22AC9E4690010EBBE /* FDSimplePromoGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */; };
@@ -199,6 +202,9 @@
 		3A9125062AAFC39200EC0DCF /* Headline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headline.swift; sourceTree = "<group>"; };
 		3AA49AA32AF7065800451FCC /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3AA49AA42AF7FA7200451FCC /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		3AA49AA62AF8291D00451FCC /* Postcodes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Postcodes.json; sourceTree = "<group>"; };
+		3AA49AA92AF8296600451FCC /* PostcodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcodeResult.swift; sourceTree = "<group>"; };
+		3AA49AAB2AF8298500451FCC /* Postcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Postcode.swift; sourceTree = "<group>"; };
 		3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSelectionScreen.swift; sourceTree = "<group>"; };
 		3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSimplePromoGrid.swift; sourceTree = "<group>"; };
@@ -318,6 +324,7 @@
 		3A44C5E82A9AA1F8001AB40F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3AA49AA82AF8295A00451FCC /* Postcodes */,
 				3A75FA342AC87D1600393014 /* Topics */,
 				3A516D692AB2695700AF0BC9 /* BBCIPlayerAPI */,
 				3A44C5F32A9B5651001AB40F /* BBCNewsAPI */,
@@ -428,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				3A75FA322AC87C0F00393014 /* Topics.json */,
+				3AA49AA62AF8291D00451FCC /* Postcodes.json */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -439,6 +447,15 @@
 				3A75FA392AC87DCF00393014 /* TopicResult.swift */,
 			);
 			path = Topics;
+			sourceTree = "<group>";
+		};
+		3AA49AA82AF8295A00451FCC /* Postcodes */ = {
+			isa = PBXGroup;
+			children = (
+				3AA49AA92AF8296600451FCC /* PostcodeResult.swift */,
+				3AA49AAB2AF8298500451FCC /* Postcode.swift */,
+			);
+			path = Postcodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,6 +529,7 @@
 			files = (
 				3A44C5DF2A9A9F87001AB40F /* Preview Assets.xcassets in Resources */,
 				3A75FA332AC87C0F00393014 /* Topics.json in Resources */,
+				3AA49AA72AF8291D00451FCC /* Postcodes.json in Resources */,
 				3A44C5DB2A9A9F87001AB40F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +587,7 @@
 				3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */,
 				3AC017C22AC9E4690010EBBE /* FDSimplePromoGrid.swift in Sources */,
 				3A4F65C72ADC7E72003673BF /* FDDestination+ShareUrl.swift in Sources */,
+				3AA49AAA2AF8296600451FCC /* PostcodeResult.swift in Sources */,
 				3A9124C92AA6872F00EC0DCF /* DestinationDetailScreen.swift in Sources */,
 				3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */,
 				3A4F65DC2ADDE715003673BF /* DiscoveryView.swift in Sources */,
@@ -594,6 +613,7 @@
 				3A5F8B062AF69C5000E1CF93 /* GlobalViewModel.swift in Sources */,
 				3A4F65C92ADC822B003673BF /* StoryView.swift in Sources */,
 				3A44C60A2A9B73BA001AB40F /* CollectionHeader.swift in Sources */,
+				3AA49AAC2AF8298500451FCC /* Postcode.swift in Sources */,
 				3A2274B42AE580700041F77B /* URL+Init.swift in Sources */,
 				3A2274BA2AE5CCCC0041F77B /* VideoPortraitPromo.swift in Sources */,
 				3A9124F12AAE110900EC0DCF /* FDWeatherPromoSummary.swift in Sources */,

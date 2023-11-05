@@ -10,6 +10,10 @@ import SwiftUI
 import Kingfisher
 
 enum Constants {
+    enum UserDefaultIdentifiers {
+        static let postcodeIdentifier = "uk.co.bilaal.ReadBeeb.storage.postcode"
+    }
+
     static let bundleIdentifier = Bundle.main.bundleIdentifier ?? "uk.co.bilaal.ReadBeeb"
 
     static let primaryColor = Constants.newsColor
