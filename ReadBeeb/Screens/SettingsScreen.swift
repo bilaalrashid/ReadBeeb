@@ -14,6 +14,7 @@ struct SettingsScreen: View {
     }()
 
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: GlobalViewModel
     @State private var rawPostcode = ""
     @State private var cacheSize = 0
 
@@ -92,6 +93,10 @@ struct SettingsScreen: View {
             toMatch = String(validated)
         }
 
+        // Don't write to disk and refresh the view model if there is no change
+        let previousValue = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier) ?? ""
+        guard toMatch != previousValue else { return }
+
         let match = self.postcodes.first {
             $0.localizedCaseInsensitiveContains(toMatch)
         }
@@ -100,6 +105,10 @@ struct SettingsScreen: View {
             UserDefaults.standard.setValue(match, forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
         } else if toMatch.isEmpty {
             UserDefaults.standard.setValue(nil, forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
+        }
+
+        Task {
+            await self.viewModel.fetchData()
         }
     }
 }
