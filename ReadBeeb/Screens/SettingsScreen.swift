@@ -12,6 +12,12 @@ struct SettingsScreen: View {
 
     var body: some View {
         List {
+            Section {
+                Button("Clear Cache") {
+                    self.clearCache()
+                }
+                .foregroundColor(.red)
+            }
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Profile")
@@ -24,10 +30,14 @@ struct SettingsScreen: View {
             }) {
                 Text("Done")
                     .font(.headline)
-                // System tint color overrides the toolbar color scheme, so the color needs explicitly defining
+                    // System tint color overrides the toolbar color scheme, so the color needs explicitly defining
                     .foregroundStyle(.white)
             }
         }
+    }
+
+    private func clearCache() {
+        ImageCacheController().clearCache()
     }
 }
 

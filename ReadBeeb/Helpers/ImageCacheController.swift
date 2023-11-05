@@ -12,4 +12,8 @@ struct ImageCacheController {
     func setMaximumCacheSize() {
         ImageCache.default.diskStorage.config.expiration = Constants.maximumImageCacheAge
     }
+
+    func clearCache() {
+        ImageCache.default.clearDiskCache()
+    }
 }
