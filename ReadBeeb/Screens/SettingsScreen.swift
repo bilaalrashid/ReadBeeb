@@ -9,10 +9,17 @@ import SwiftUI
 
 struct SettingsScreen: View {
     @Environment(\.dismiss) var dismiss
+    @State private var cacheSize = 0
+
+    var formattedCacheSize: String {
+        ByteCountFormatter.string(fromByteCount: Int64(self.cacheSize), countStyle: .file)
+    }
 
     var body: some View {
         List {
-            Section {
+            Section(
+                footer: Text("Currently using \(self.formattedCacheSize).")
+            ) {
                 Button("Clear Cache") {
                     self.clearCache()
                 }
@@ -34,9 +41,15 @@ struct SettingsScreen: View {
                     .foregroundStyle(.white)
             }
         }
+        .onAppear {
+            Task {
+                self.cacheSize = (try? await ImageCacheController().getCacheSize()) ?? 0
+            }
+        }
     }
 
     private func clearCache() {
+        self.cacheSize = 0
         ImageCacheController().clearCache()
     }
 }
