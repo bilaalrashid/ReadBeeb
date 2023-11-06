@@ -8,9 +8,12 @@
 import SwiftUI
 import Kingfisher
 import Network
+import LazyPager
 
 struct StoryView: View {
     let data: FDResult
+
+    @State private var isShowingImageDetail = false
 
     var body: some View {
         List {
@@ -33,6 +36,9 @@ struct StoryView: View {
                             } else {
                                 $0
                             }
+                        }
+                        .onTapGesture {
+                            self.isShowingImageDetail = true
                         }
                 case .headline(let item):
                     Headline(headline: item)
@@ -62,6 +68,9 @@ struct StoryView: View {
         .onAppear {
             self.prefetchImages()
         }
+        .fullScreenCover(isPresented: self.$isShowingImageDetail) {
+            ImageDetailScreen(images: self.mainImages(from: self.data))
+        }
     }
 
     private func prefetchImages() {
@@ -88,5 +97,16 @@ struct StoryView: View {
 
         let urls = images.map { monitor.currentPath.isConstrained ? $0.largestImageUrl(upTo: 400) : $0.largestImageUrl }
         return urls.map { URL(string: $0) }.compactMap { $0 }
+    }
+
+    private func mainImages(from data: FDResult) -> [FDImage] {
+        return data.data.items
+            .map {
+                if case .image(let image) = $0 {
+                    return image
+                }
+                return nil
+            }
+            .compactMap { $0 }
     }
 }

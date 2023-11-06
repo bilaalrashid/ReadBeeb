@@ -104,6 +104,8 @@
 		3AA49AAC2AF8298500451FCC /* Postcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AAB2AF8298500451FCC /* Postcode.swift */; };
 		3AA49AB22AF85E9200451FCC /* LogScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AB12AF85E9200451FCC /* LogScreen.swift */; };
 		3AA49AB42AF8614000451FCC /* LogScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AB32AF8614000451FCC /* LogScreenViewModel.swift */; };
+		3AA49AB72AF997D500451FCC /* LazyPager in Frameworks */ = {isa = PBXBuildFile; productRef = 3AA49AB62AF997D500451FCC /* LazyPager */; };
+		3AA49AB92AF9988A00451FCC /* ImageDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AB82AF9988A00451FCC /* ImageDetailScreen.swift */; };
 		3AC017BE2AC9B8510010EBBE /* TopicSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */; };
 		3AC017C02AC9BDB30010EBBE /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */; };
 		3AC017C22AC9E4690010EBBE /* FDSimplePromoGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */; };
@@ -209,6 +211,7 @@
 		3AA49AAB2AF8298500451FCC /* Postcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Postcode.swift; sourceTree = "<group>"; };
 		3AA49AB12AF85E9200451FCC /* LogScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogScreen.swift; sourceTree = "<group>"; };
 		3AA49AB32AF8614000451FCC /* LogScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogScreenViewModel.swift; sourceTree = "<group>"; };
+		3AA49AB82AF9988A00451FCC /* ImageDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailScreen.swift; sourceTree = "<group>"; };
 		3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSelectionScreen.swift; sourceTree = "<group>"; };
 		3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSimplePromoGrid.swift; sourceTree = "<group>"; };
@@ -219,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA49AB72AF997D500451FCC /* LazyPager in Frameworks */,
 				3A2274B22AE57F440041F77B /* Kingfisher in Frameworks */,
 				3A44C5EE2A9AAD03001AB40F /* Alamofire in Frameworks */,
 				3A7C63872AE3427700BB114A /* TLDExtract in Frameworks */,
@@ -322,6 +326,7 @@
 				3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */,
 				3AA49AA42AF7FA7200451FCC /* SettingsScreen.swift */,
 				3AA49AB12AF85E9200451FCC /* LogScreen.swift */,
+				3AA49AB82AF9988A00451FCC /* ImageDetailScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 				3A44C5ED2A9AAD03001AB40F /* Alamofire */,
 				3A7C63862AE3427700BB114A /* TLDExtract */,
 				3A2274B12AE57F440041F77B /* Kingfisher */,
+				3AA49AB62AF997D500451FCC /* LazyPager */,
 			);
 			productName = ReadBeeb;
 			productReference = 3A44C5D32A9A9F86001AB40F /* ReadBeeb.app */;
@@ -518,6 +524,7 @@
 				3A44C5EC2A9AAD03001AB40F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				3A7C63852AE3427700BB114A /* XCRemoteSwiftPackageReference "TLDExtractSwift" */,
 				3A2274B02AE57F440041F77B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3AA49AB52AF997D500451FCC /* XCRemoteSwiftPackageReference "LazyPager" */,
 			);
 			productRefGroup = 3A44C5D42A9A9F86001AB40F /* Products */;
 			projectDirPath = "";
@@ -590,6 +597,7 @@
 				3A2274B82AE5C7A30041F77B /* FDVideoPortraitStory.swift in Sources */,
 				3A9124FF2AAE289700EC0DCF /* ImageView.swift in Sources */,
 				3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */,
+				3AA49AB92AF9988A00451FCC /* ImageDetailScreen.swift in Sources */,
 				3A72BFDB2AF67A3500AC0E39 /* ImageCacheController.swift in Sources */,
 				3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */,
 				3AC017C22AC9E4690010EBBE /* FDSimplePromoGrid.swift in Sources */,
@@ -912,6 +920,14 @@
 				minimumVersion = 2.3.7;
 			};
 		};
+		3AA49AB52AF997D500451FCC /* XCRemoteSwiftPackageReference "LazyPager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gh123man/LazyPager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -929,6 +945,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3A7C63852AE3427700BB114A /* XCRemoteSwiftPackageReference "TLDExtractSwift" */;
 			productName = TLDExtract;
+		};
+		3AA49AB62AF997D500451FCC /* LazyPager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AA49AB52AF997D500451FCC /* XCRemoteSwiftPackageReference "LazyPager" */;
+			productName = LazyPager;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
