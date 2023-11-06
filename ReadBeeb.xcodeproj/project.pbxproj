@@ -102,6 +102,8 @@
 		3AA49AA72AF8291D00451FCC /* Postcodes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA49AA62AF8291D00451FCC /* Postcodes.json */; };
 		3AA49AAA2AF8296600451FCC /* PostcodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AA92AF8296600451FCC /* PostcodeResult.swift */; };
 		3AA49AAC2AF8298500451FCC /* Postcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AAB2AF8298500451FCC /* Postcode.swift */; };
+		3AA49AB22AF85E9200451FCC /* LogScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AB12AF85E9200451FCC /* LogScreen.swift */; };
+		3AA49AB42AF8614000451FCC /* LogScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AB32AF8614000451FCC /* LogScreenViewModel.swift */; };
 		3AC017BE2AC9B8510010EBBE /* TopicSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */; };
 		3AC017C02AC9BDB30010EBBE /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */; };
 		3AC017C22AC9E4690010EBBE /* FDSimplePromoGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */; };
@@ -205,6 +207,8 @@
 		3AA49AA62AF8291D00451FCC /* Postcodes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Postcodes.json; sourceTree = "<group>"; };
 		3AA49AA92AF8296600451FCC /* PostcodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcodeResult.swift; sourceTree = "<group>"; };
 		3AA49AAB2AF8298500451FCC /* Postcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Postcode.swift; sourceTree = "<group>"; };
+		3AA49AB12AF85E9200451FCC /* LogScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogScreen.swift; sourceTree = "<group>"; };
+		3AA49AB32AF8614000451FCC /* LogScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogScreenViewModel.swift; sourceTree = "<group>"; };
 		3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSelectionScreen.swift; sourceTree = "<group>"; };
 		3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSimplePromoGrid.swift; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 				3A9124C82AA6872F00EC0DCF /* DestinationDetailScreen.swift */,
 				3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */,
 				3AA49AA42AF7FA7200451FCC /* SettingsScreen.swift */,
+				3AA49AB12AF85E9200451FCC /* LogScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 				3A5F8B052AF69C5000E1CF93 /* GlobalViewModel.swift */,
 				3A5F8B072AF6A71200E1CF93 /* MyNewsViewModel.swift */,
 				3A5F8B092AF6ABD200E1CF93 /* DestinationDetailViewModel.swift */,
+				3AA49AB32AF8614000451FCC /* LogScreenViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -563,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A44C5F22A9B536A001AB40F /* BBCNewsAPINetworkController.swift in Sources */,
+				3AA49AB42AF8614000451FCC /* LogScreenViewModel.swift in Sources */,
 				3A516D7F2AC0CFB300AF0BC9 /* Copyright.swift in Sources */,
 				3A9124EB2AAE10CD00EC0DCF /* FDTextContainer.swift in Sources */,
 				3A44C6062A9B6449001AB40F /* Logger.swift in Sources */,
@@ -650,6 +657,7 @@
 				3A7C63822AE33D0200BB114A /* Int+FormattedTimeInterval.swift in Sources */,
 				3A516D6F2AB26BCC00AF0BC9 /* MediaSelectorItem.swift in Sources */,
 				3A44C5FC2A9B5BD0001AB40F /* MyNewsScreen.swift in Sources */,
+				3AA49AB22AF85E9200451FCC /* LogScreen.swift in Sources */,
 				3A9124DB2AAE0FF500EC0DCF /* FDCarousel.swift in Sources */,
 				3A9124EF2AAE10F300EC0DCF /* FDSectionHeader.swift in Sources */,
 				3A4F65DE2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift in Sources */,

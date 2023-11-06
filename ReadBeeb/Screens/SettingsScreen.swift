@@ -44,6 +44,15 @@ struct SettingsScreen: View {
                 }
                 .foregroundColor(.red)
             }
+
+            Section(
+                footer: NavigationLink("A Bilaal Rashid project") {
+                    LogScreen()
+                }
+                    .buttonStyle(.plain)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+            ) {}
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Profile")
