@@ -35,18 +35,18 @@ struct TopStoriesScreen: View {
             }
         }
         .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
-        .sheet(isPresented: self.$isShowingSettings) {
-            NavigationStack {
-                SettingsScreen()
-                    .navigationBarTitleDisplayMode(.inline)
-            }
-        }
         .refreshable {
             await self.viewModel.fetchData()
         }
         .onAppear {
             Task {
                 await self.viewModel.fetchDataIfNotExists()
+            }
+        }
+        .sheet(isPresented: self.$isShowingSettings) {
+            NavigationStack {
+                SettingsScreen()
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

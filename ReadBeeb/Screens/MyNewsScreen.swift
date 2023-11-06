@@ -45,12 +45,6 @@ struct MyNewsScreen: View {
             }
         }
         .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
-        .sheet(isPresented: self.$isEditingTopics) {
-            NavigationStack {
-                TopicSelectionScreen()
-                    .navigationBarTitleDisplayMode(.inline)
-            }
-        }
         .refreshable {
             await self.viewModel.fetchData(selectedTopics: self.selectedTopics)
         }
@@ -62,6 +56,12 @@ struct MyNewsScreen: View {
         .onAppear {
             Task {
                 await self.viewModel.fetchDataIfNotExists(selectedTopics: self.selectedTopics)
+            }
+        }
+        .sheet(isPresented: self.$isEditingTopics) {
+            NavigationStack {
+                TopicSelectionScreen()
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
