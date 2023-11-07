@@ -14,6 +14,7 @@ struct ImageDetailScreen: View {
     @Environment(\.dismiss) var dismiss
     @State var opacity: CGFloat = 1
     @State var index = 0
+    @State var isShowingControls = true
 
     var body: some View {
         LazyPager(data: self.images, page: self.$index) { image in
@@ -23,22 +24,38 @@ struct ImageDetailScreen: View {
         .onDismiss(backgroundOpacity: self.$opacity) {
             self.dismiss()
         }
+        .onTap {
+            print("hi")
+            self.isShowingControls.toggle()
+        }
         .background(.black)
         .background(ClearFullScreenBackground())
         .opacity(self.opacity)
         .ignoresSafeArea()
-        .overlay(VStack {
-            HStack {
-                Spacer()
-                Button("Done") {
-                    self.dismiss()
+        .overlay(
+            VStack {
+                if self.isShowingControls {
+                    HStack {
+                        Spacer()
+                        Button("Done") {
+                            self.dismiss()
+                        }
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                    }
+                    .background(
+                        Rectangle()
+                            .fill(.black)
+                            .opacity(0.4)
+                            .background(Material.thinMaterial)
+                            .environment(\.colorScheme, .dark)
+                            .edgesIgnoringSafeArea(.top)
+                    )
+                    .opacity(self.opacity)
                 }
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
+                Spacer()
             }
-            .opacity(self.opacity)
-            Spacer()
-        })
+        )
     }
 }
