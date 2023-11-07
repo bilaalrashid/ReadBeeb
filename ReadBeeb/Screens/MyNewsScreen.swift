@@ -44,7 +44,22 @@ struct MyNewsScreen: View {
                 }
             }
         }
-        .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
+        .overlay(
+            VStack {
+                if self.selectedTopics.isEmpty {
+                    Text("Select topics to follow in your personalised feed")
+                        .padding()
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.secondary)
+
+                    Button("Select Topics") {
+                        self.isEditingTopics = true
+                    }
+                } else {
+                    NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty)
+                }
+            }
+        )
         .refreshable {
             await self.viewModel.fetchData(selectedTopics: self.selectedTopics)
         }
