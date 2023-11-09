@@ -13,8 +13,13 @@ struct ImageDetailScreen: View {
 
     @Environment(\.dismiss) var dismiss
     @State private var opacity: CGFloat = 1
-    @State private var index = 0
+    @State private var index: Int
     @State private var isShowingControls = true
+
+    init(images: [FDImage], index initialIndex: Int) {
+        self.images = images
+        self._index = State(initialValue: initialIndex)
+    }
 
     var body: some View {
         LazyPager(data: self.images, page: self.$index) { image in

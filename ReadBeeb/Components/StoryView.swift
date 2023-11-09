@@ -13,7 +13,7 @@ import LazyPager
 struct StoryView: View {
     let data: FDResult
 
-    @State private var isShowingImageDetail = false
+    @State private var detailImageToShow: FDImage?
 
     var body: some View {
         List {
@@ -38,7 +38,7 @@ struct StoryView: View {
                             }
                         }
                         .onTapGesture {
-                            self.isShowingImageDetail = true
+                            self.detailImageToShow = item
                         }
                 case .headline(let item):
                     Headline(headline: item)
@@ -68,8 +68,9 @@ struct StoryView: View {
         .onAppear {
             self.prefetchImages()
         }
-        .fullScreenCover(isPresented: self.$isShowingImageDetail) {
-            ImageDetailScreen(images: self.mainImages(from: self.data))
+        .fullScreenCover(item: self.$detailImageToShow) { image in
+            let images = self.mainImages(from: self.data)
+            ImageDetailScreen(images: images, index: images.firstIndex(of: image) ?? 0)
         }
     }
 
