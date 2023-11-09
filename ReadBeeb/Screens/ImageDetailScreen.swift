@@ -30,7 +30,6 @@ struct ImageDetailScreen: View {
             self.dismiss()
         }
         .onTap {
-            print("hi")
             self.isShowingControls.toggle()
         }
         .background(.black)
