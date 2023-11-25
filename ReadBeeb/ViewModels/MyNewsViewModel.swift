@@ -27,14 +27,27 @@ extension MyNewsScreen {
         func fetchData(selectedTopics: [Topic]) async {
             do {
                 self.networkRequest = .loading
+
                 let ids = selectedTopics.map { $0.id }
-                let result = try await BBCNewsAPINetworkController.fetchStoryPromos(for: ids)
-                self.storyPromos = result
+                let topicResults = try await BBCNewsAPINetworkController.fetchTopicPages(for: ids)
+                let storyPromos = self.storyPromos(for: topicResults)
+                self.storyPromos = storyPromos.sorted { ($0.updated ?? 0) > ($1.updated ?? 0) }
+
                 self.networkRequest = .success
             } catch let error {
                 self.networkRequest = .error
                 Logger.network.error("Unable to fetch topics for My News tab - \(error.localizedDescription)")
             }
+        }
+
+        private func storyPromos(for topicResults: [FDResult]) -> [FDStoryPromo] {
+            var storyPromos = Set<FDStoryPromo>()
+
+            for result in topicResults {
+                storyPromos.formUnion(result.data.storyPromos)
+            }
+
+            return Array(storyPromos)
         }
     }
 }
