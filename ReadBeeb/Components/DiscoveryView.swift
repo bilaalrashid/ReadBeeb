@@ -11,6 +11,14 @@ struct DiscoveryView: View {
     let data: FDResult
     let sectionsToInclude: [String]?
     let sectionsToExclude: [String]?
+    @ViewBuilder var content: () -> AnyView?
+
+    init(data: FDResult, sectionsToInclude: [String]?, sectionsToExclude: [String]?, content: @escaping () -> AnyView? = { nil }) {
+        self.data = data
+        self.sectionsToInclude = sectionsToInclude
+        self.sectionsToExclude = sectionsToExclude
+        self.content = content
+    }
 
     var filteredStructuredItems: [FDStructuredDataItem] {
         if let sectionsToInclude = self.sectionsToInclude {
@@ -33,6 +41,11 @@ struct DiscoveryView: View {
 
                 DiscoveryItemView(item: item.body, index: index)
             }
+
+            self.content()
+
+            Copyright(item: FDCopyright(type: "Copyright", lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
+                .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
     }
@@ -46,5 +59,7 @@ struct DiscoveryView: View {
         ),
         sectionsToInclude: nil,
         sectionsToExclude: nil
-    )
+    ) {
+        AnyView(Text("Extra Row"))
+    }
 }

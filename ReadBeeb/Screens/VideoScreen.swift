@@ -16,7 +16,17 @@ struct VideoScreen: View {
     var body: some View {
         VStack {
             if let data = self.viewModel.data {
-                DiscoveryView(data: data, sectionsToInclude: self.sectionsToInclude, sectionsToExclude: nil)
+                DiscoveryView(data: data, sectionsToInclude: self.sectionsToInclude, sectionsToExclude: nil) {
+                    AnyView(
+                        ForEach(Array(self.viewModel.videoPromos.enumerated()), id: \.offset) { _, storyPromo in
+                            if let destination = storyPromo.link.destinations.first {
+                                PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
+                                    StoryPromoRow(story: storyPromo)
+                                }
+                            }
+                        }
+                    )
+                }
             }
         }
         .navigationTitle("Video")
