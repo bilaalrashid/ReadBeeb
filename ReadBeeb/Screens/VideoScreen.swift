@@ -36,10 +36,14 @@ struct VideoScreen: View {
         .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
         .refreshable {
             await self.viewModel.fetchData()
+            // We don't care about the network state when fetching all videos - some will be preloaded and that is enough
+            await self.viewModel.fetchAllVideos()
         }
         .onAppear {
             Task {
                 await self.viewModel.fetchDataIfNotExists()
+                // We don't care about the network state when fetching all videos - some will be preloaded and that is enough
+                await self.viewModel.fetchAllVideosIfNotExists()
             }
         }
     }
