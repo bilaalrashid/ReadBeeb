@@ -16,8 +16,8 @@ struct DiscoveryView: View {
 
     init(
         data: FDResult,
-        sectionsToInclude: [String]?,
-        sectionsToExclude: [String]?,
+        sectionsToInclude: [String]? = nil,
+        sectionsToExclude: [String]? = nil,
         shouldHideSeparators: Bool = false,
         content: @escaping () -> AnyView? = { nil }
     ) {

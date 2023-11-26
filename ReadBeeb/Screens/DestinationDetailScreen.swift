@@ -26,7 +26,7 @@ struct DestinationDetailScreen: View {
                 if let data = self.viewModel.data {
                     switch URL(string: self.destination.url)?.valueOf("type") ?? "" {
                     case "index", "topic":
-                        DiscoveryView(data: data, sectionsToInclude: nil, sectionsToExclude: nil)
+                        DiscoveryView(data: data)
                     case "asset":
                         StoryView(data: data)
                     case "verticalvideo":

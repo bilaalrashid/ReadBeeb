@@ -16,7 +16,7 @@ struct PopularScreen: View {
     var body: some View {
         VStack {
             if let data = self.viewModel.data {
-                DiscoveryView(data: data, sectionsToInclude: self.sectionsToInclude, sectionsToExclude: nil)
+                DiscoveryView(data: data, sectionsToInclude: self.sectionsToInclude)
             }
         }
         .navigationTitle("Popular")

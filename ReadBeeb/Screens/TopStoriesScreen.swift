@@ -18,7 +18,7 @@ struct TopStoriesScreen: View {
     var body: some View {
         VStack {
             if let data = self.viewModel.data {
-                DiscoveryView(data: data, sectionsToInclude: nil, sectionsToExclude: self.sectionsToExclude)
+                DiscoveryView(data: data, sectionsToExclude: self.sectionsToExclude)
             }
         }
         .navigationTitle("Top Stories")
