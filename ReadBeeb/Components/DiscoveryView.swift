@@ -12,20 +12,21 @@ struct DiscoveryView: View {
     let sectionsToInclude: [String]?
     let sectionsToExclude: [String]?
     let shouldHideSeparators: Bool
-    @ViewBuilder var content: () -> AnyView?
+    // Use AnyView to avoid specifying dummy generic type when there is no extra content
+    @ViewBuilder var extraContent: () -> AnyView?
 
     init(
         data: FDResult,
         sectionsToInclude: [String]? = nil,
         sectionsToExclude: [String]? = nil,
         shouldHideSeparators: Bool = false,
-        content: @escaping () -> AnyView? = { nil }
+        extraContent: @escaping () -> AnyView? = { nil }
     ) {
         self.data = data
         self.sectionsToInclude = sectionsToInclude
         self.sectionsToExclude = sectionsToExclude
         self.shouldHideSeparators = shouldHideSeparators
-        self.content = content
+        self.extraContent = extraContent
     }
 
     var filteredStructuredItems: [FDStructuredDataItem] {
@@ -51,7 +52,7 @@ struct DiscoveryView: View {
             }
             .listRowSeparator(self.shouldHideSeparators ? .hidden : .automatic)
 
-            self.content()
+            self.extraContent()
 
             Copyright(item: FDCopyright(type: "Copyright", lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
                 .listRowSeparator(.hidden)
