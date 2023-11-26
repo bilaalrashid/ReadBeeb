@@ -11,12 +11,20 @@ struct DiscoveryView: View {
     let data: FDResult
     let sectionsToInclude: [String]?
     let sectionsToExclude: [String]?
+    let shouldHideSeparators: Bool
     @ViewBuilder var content: () -> AnyView?
 
-    init(data: FDResult, sectionsToInclude: [String]?, sectionsToExclude: [String]?, content: @escaping () -> AnyView? = { nil }) {
+    init(
+        data: FDResult,
+        sectionsToInclude: [String]?,
+        sectionsToExclude: [String]?,
+        shouldHideSeparators: Bool = false,
+        content: @escaping () -> AnyView? = { nil }
+    ) {
         self.data = data
         self.sectionsToInclude = sectionsToInclude
         self.sectionsToExclude = sectionsToExclude
+        self.shouldHideSeparators = shouldHideSeparators
         self.content = content
     }
 
@@ -41,6 +49,7 @@ struct DiscoveryView: View {
 
                 DiscoveryItemView(item: item.body, index: index)
             }
+            .listRowSeparator(self.shouldHideSeparators ? .hidden : .automatic)
 
             self.content()
 

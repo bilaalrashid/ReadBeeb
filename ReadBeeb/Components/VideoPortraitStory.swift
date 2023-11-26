@@ -51,6 +51,7 @@ struct VideoPortraitStory: View {
                 }
             }
         }
+        .padding(.bottom)
         .onAppear {
             Task {
                 await self.fetchDetailView()
