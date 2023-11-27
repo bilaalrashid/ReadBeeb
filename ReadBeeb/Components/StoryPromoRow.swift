@@ -14,10 +14,8 @@ struct StoryPromoRow: View {
 
     var body: some View {
         HStack {
-            if let image = self.story.image {
-                ThumbnailImageView(image: image, badges: self.story.badges, prominent: false)
-                    .frame(width: 75 * 1.77777, height: 75)
-            }
+            ThumbnailImageView(image: self.story.image, badges: self.story.badges, prominent: false)
+                .frame(width: 75 * 1.77777, height: 75)
 
             VStack {
                 if let title = self.story.text {

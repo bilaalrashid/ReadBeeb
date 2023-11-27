@@ -14,10 +14,8 @@ struct ProminentStoryPromoRow: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            if let image = self.story.image {
-                ThumbnailImageView(image: image, badges: self.story.badges, prominent: true)
-                    .frame(width: UIScreen.main.bounds.width - 36, height: (UIScreen.main.bounds.width - 36) / 1.7777)
-            }
+            ThumbnailImageView(image: self.story.image, badges: self.story.badges, prominent: true)
+                .frame(width: UIScreen.main.bounds.width - 36, height: (UIScreen.main.bounds.width - 36) / 1.7777)
 
             VStack(spacing: 12) {
                 if let title = self.story.text {

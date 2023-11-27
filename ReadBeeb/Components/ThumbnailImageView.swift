@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ThumbnailImageView: View {
-    let image: FDImage
+    let image: FDImage?
     let badges: [FDBadge]?
     let prominent: Bool
 
@@ -16,13 +16,13 @@ struct ThumbnailImageView: View {
         ZStack {
             if self.prominent {
                 RemoteImage(
-                    url: URL(string: self.image.largestImageUrl),
-                    lowDataUrl: URL(string: self.image.largestImageUrl(upTo: 400))
+                    url: URL(string: self.image?.largestImageUrl),
+                    lowDataUrl: URL(string: self.image?.largestImageUrl(upTo: 400))
                 )
             } else {
                 RemoteImage(
-                    url: URL(string: self.image.largestImageUrl(upTo: 400)),
-                    lowDataUrl: URL(string: self.image.largestImageUrl(upTo: 200))
+                    url: URL(string: self.image?.largestImageUrl(upTo: 400)),
+                    lowDataUrl: URL(string: self.image?.largestImageUrl(upTo: 200))
                 )
             }
 
