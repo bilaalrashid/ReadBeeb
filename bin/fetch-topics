@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# Generates a JSON list of BBC topics
+#
+# Usage: ./fetch-topics <BBC News API Key>
+
+# Ensure that all arguments are set
+set -u
+: "$1"
+
+api_key="$1"
+
+# Fetch a (non-exhaustive) list of topics from the BBC Topics webpage
+function fetch_from_website {
+  curl "https://www.bbc.co.uk/topics" \
+    | perl -lne 'print $& if /window\.__INITIAL_DATA__="[^\<\>]+";\s*<\/script>/' \
+    | sed 's/;\<\/script\>//' \
+    | sed 's/window\.__INITIAL_DATA__=//' \
+    | jq '
+      fromjson 
+      | .data ."content-index?title=Topics&urn=urn%3Abbc%3Atopic%3AtopicIndex" .data.items[] 
+      | {
+        id: (.urn | split(":")[-1]),
+        headline: (.headline | split(", ")[0]),
+        subhead: (.headline | split(", ")[1])
+      }
+    '
+}
+
+# Iterate through all possible two-letter combinations to perform a brute-force search against the search API
+function brute_force_search {
+  for i in {a..z}; do
+    for j in {a..z}; do
+      query="$i$j"
+      curl "https://search.api.bbci.co.uk/formula/news-app-topics?apikey=$api_key&q=$query" \
+        | jq '
+          .results[] 
+          | {
+            id: (.uri | split(":")[-1]),
+            headline: .title,
+            subhead: .synopsis
+          }
+        '
+    done
+  done
+}
+
+{ fetch_from_website && brute_force_search; } | jq -s 'unique_by([.headline, .subhead])  | { "topics": . }'
+
