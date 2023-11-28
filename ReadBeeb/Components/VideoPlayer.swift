@@ -23,6 +23,9 @@ struct VideoPlayer: UIViewControllerRepresentable {
         viewController.canStartPictureInPictureAutomaticallyFromInline = true
         viewController.beginAppearanceTransition(true, animated: false)
 
+        let audioSession = AVAudioSession.sharedInstance()
+        try? audioSession.setCategory(.playback, mode: .moviePlayback)
+
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in
             self.onFinish?()
         }
@@ -40,5 +43,7 @@ struct VideoPlayer: UIViewControllerRepresentable {
 
     static func dismantleUIViewController(_ uiViewController: AVPlayerViewController, coordinator: ()) {
         uiViewController.beginAppearanceTransition(false, animated: false)
+        let audioSession = AVAudioSession.sharedInstance()
+        try? audioSession.setCategory(.soloAmbient)
     }
 }
