@@ -26,6 +26,10 @@ struct BBCIPlayerVideoPlayer: View {
             // Stop showing video player once finished
             self.shouldPlay = false
         }
+        .onDisappear {
+            self.player.pause()
+            self.shouldPlay = false
+        }
     }
 }
 
