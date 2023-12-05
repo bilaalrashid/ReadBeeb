@@ -10,6 +10,7 @@ import SwiftUI
 struct TextContainer: View {
     let container: FDTextContainer
     var list: FDContentList?
+    /// If the item is part of the list, the index of the item in the list, zero-indexed
     var index: Int?
 
     @State private var internalDestination: FDLinkDestination?
@@ -19,7 +20,8 @@ struct TextContainer: View {
         HStack(alignment: .top) {
             if let list = self.list {
                 if let index = self.index, list.ordering == "ORDERED" {
-                    Text("\(index).")
+                    // The list is zero-index
+                    Text("\(index + 1).")
                 } else {
                     Circle()
                         .frame(width: 6, height: 6)
