@@ -285,33 +285,10 @@
 		3A44C5E62A9AA1E7001AB40F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				3A44C6092A9B73BA001AB40F /* CollectionHeader.swift */,
-				3A72BFD02AF3128F00AC0E39 /* StoryPromoCollection.swift */,
-				3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */,
-				3A72BFD22AF3158F00AC0E39 /* ProminentStoryPromoRow.swift */,
-				3A4F65D22ADDCAF7003673BF /* ChipList.swift */,
-				3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */,
-				3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */,
-				3A516D7E2AC0CFB300AF0BC9 /* Copyright.swift */,
-				3A4D56A52AE5663700AD9555 /* ThumbnailImageView.swift */,
-				3A9124FE2AAE289700EC0DCF /* ImageView.swift */,
-				3A516D672AB25D1400AF0BC9 /* MediaView.swift */,
-				3A9125002AAE82C800EC0DCF /* StoryWebView.swift */,
-				3A9125042AAFB9A700EC0DCF /* ContentList.swift */,
-				3A9125062AAFC39200EC0DCF /* Headline.swift */,
-				3A516D7A2AC0A2F500AF0BC9 /* BBCIPlayerVideoPlayer.swift */,
-				3A516D762AC0A27C00AF0BC9 /* VideoPlayer.swift */,
-				3A4F65CE2ADC9C8D003673BF /* DiscoveryItemView.swift */,
-				3A4F65DB2ADDE715003673BF /* DiscoveryView.swift */,
-				3A4F65C82ADC822B003673BF /* StoryView.swift */,
-				3A4F65CC2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift */,
+				3AA49AC32B1FD9E700451FCC /* Story */,
+				3AA49AC22B1FD9DE00451FCC /* Discovery */,
+				3AA49AC12B1FD9BD00451FCC /* Reusable */,
 				3A7C63882AE344ED00BB114A /* SafariView.swift */,
-				3A2274AE2AE5769E0041F77B /* Carousel.swift */,
-				3A2274B52AE5A5180041F77B /* VideoPortraitStory.swift */,
-				3A2274B92AE5CCCC0041F77B /* VideoPortraitPromo.swift */,
-				3A2274BB2AE5D9A30041F77B /* RemoteImage.swift */,
-				3A72BFCC2AF305A900AC0E39 /* TextCarousel.swift */,
-				3A5F8B0D2AF6FE0200E1CF93 /* PlainNavigationLink.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -470,6 +447,53 @@
 				3AA49AAB2AF8298500451FCC /* Postcode.swift */,
 			);
 			path = Postcodes;
+			sourceTree = "<group>";
+		};
+		3AA49AC12B1FD9BD00451FCC /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				3A516D7E2AC0CFB300AF0BC9 /* Copyright.swift */,
+				3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */,
+				3A72BFD22AF3158F00AC0E39 /* ProminentStoryPromoRow.swift */,
+				3A2274BB2AE5D9A30041F77B /* RemoteImage.swift */,
+				3A4D56A52AE5663700AD9555 /* ThumbnailImageView.swift */,
+				3A9124FE2AAE289700EC0DCF /* ImageView.swift */,
+				3A516D7A2AC0A2F500AF0BC9 /* BBCIPlayerVideoPlayer.swift */,
+				3A516D762AC0A27C00AF0BC9 /* VideoPlayer.swift */,
+				3A4F65CC2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift */,
+				3A5F8B0D2AF6FE0200E1CF93 /* PlainNavigationLink.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		3AA49AC22B1FD9DE00451FCC /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				3A4F65DB2ADDE715003673BF /* DiscoveryView.swift */,
+				3A4F65CE2ADC9C8D003673BF /* DiscoveryItemView.swift */,
+				3A44C6092A9B73BA001AB40F /* CollectionHeader.swift */,
+				3A72BFD02AF3128F00AC0E39 /* StoryPromoCollection.swift */,
+				3A4F65D22ADDCAF7003673BF /* ChipList.swift */,
+				3A2274AE2AE5769E0041F77B /* Carousel.swift */,
+				3A2274B52AE5A5180041F77B /* VideoPortraitStory.swift */,
+				3A2274B92AE5CCCC0041F77B /* VideoPortraitPromo.swift */,
+			);
+			path = Discovery;
+			sourceTree = "<group>";
+		};
+		3AA49AC32B1FD9E700451FCC /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				3A4F65C82ADC822B003673BF /* StoryView.swift */,
+				3A516D672AB25D1400AF0BC9 /* MediaView.swift */,
+				3A9125062AAFC39200EC0DCF /* Headline.swift */,
+				3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */,
+				3A9125042AAFB9A700EC0DCF /* ContentList.swift */,
+				3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */,
+				3A72BFCC2AF305A900AC0E39 /* TextCarousel.swift */,
+				3A9125002AAE82C800EC0DCF /* StoryWebView.swift */,
+			);
+			path = Story;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
