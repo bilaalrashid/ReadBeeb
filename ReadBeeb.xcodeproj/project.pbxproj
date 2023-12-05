@@ -288,7 +288,6 @@
 				3AA49AC32B1FD9E700451FCC /* Story */,
 				3AA49AC22B1FD9DE00451FCC /* Discovery */,
 				3AA49AC12B1FD9BD00451FCC /* Reusable */,
-				3A7C63882AE344ED00BB114A /* SafariView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -462,6 +461,7 @@
 				3A516D762AC0A27C00AF0BC9 /* VideoPlayer.swift */,
 				3A4F65CC2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift */,
 				3A5F8B0D2AF6FE0200E1CF93 /* PlainNavigationLink.swift */,
+				3A7C63882AE344ED00BB114A /* SafariView.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
