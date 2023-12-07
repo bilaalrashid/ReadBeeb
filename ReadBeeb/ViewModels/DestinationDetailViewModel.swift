@@ -24,7 +24,7 @@ extension DestinationDetailScreen {
         }
 
         var isApiUrl: Bool {
-            return BBCNews.isAPIUrl(url: self.destination.url)
+            return BbcNews.isAPIUrl(url: self.destination.url)
         }
 
         var isBBCSportUrl: Bool {
@@ -42,7 +42,7 @@ extension DestinationDetailScreen {
             do {
                 if self.isApiUrl {
                     self.networkRequest = .loading
-                    let result = try await BBCNews().fetchFDUrl(url: self.destination.url)
+                    let result = try await BbcNews().fetchFDUrl(url: self.destination.url)
                     self.data = result
                     self.networkRequest = .success
                 }
