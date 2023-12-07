@@ -13,7 +13,10 @@ import UIKit
 struct BBCIPlayerAPINetworkController {
     static let baseUri = "https://open.live.bbc.co.uk"
 
-    let session: Session = {
+    /// The session to perform network requests from
+    let session: Session
+
+    init() {
         let configuration = URLSessionConfiguration.af.default
         configuration.httpAdditionalHeaders = [
             // Pretend to be the BBC News app
@@ -21,8 +24,8 @@ struct BBCIPlayerAPINetworkController {
             // swiftlint:disable:next line_length force_https
             "User-Agent": "BBCNews/25339 (\(UIDevice.current.modelIdentifier); \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)) MediaSelectorClient/7.0.0 BBCHTTPClient/9.0.0"
         ]
-        return Session(configuration: configuration)
-    }()
+        self.session = Session(configuration: configuration)
+    }
 
     func fetchMediaConnections(for pid: String) async throws -> MediaSelectorResult {
         let url = BBCIPlayerAPINetworkController.baseUri + "/mediaselector/6/select/version/2.0/format/json/mediaset/mobile-phone-main/vpid/\(pid)/"
