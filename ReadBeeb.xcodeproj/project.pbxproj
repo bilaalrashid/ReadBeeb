@@ -107,6 +107,7 @@
 		3AA49AB92AF9988A00451FCC /* ImageDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AB82AF9988A00451FCC /* ImageDetailScreen.swift */; };
 		3AA49ABB2AFD95E700451FCC /* FDImage+Id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49ABA2AFD95E700451FCC /* FDImage+Id.swift */; };
 		3AA49ABD2B1253B900451FCC /* FDData+StoryPromos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49ABC2B1253B900451FCC /* FDData+StoryPromos.swift */; };
+		3AA49AC52B226DE400451FCC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49AC42B226DE400451FCC /* NetworkError.swift */; };
 		3AC017BE2AC9B8510010EBBE /* TopicSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */; };
 		3AC017C02AC9BDB30010EBBE /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */; };
 		3AC017C22AC9E4690010EBBE /* FDSimplePromoGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */; };
@@ -214,6 +215,7 @@
 		3AA49AB82AF9988A00451FCC /* ImageDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailScreen.swift; sourceTree = "<group>"; };
 		3AA49ABA2AFD95E700451FCC /* FDImage+Id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDImage+Id.swift"; sourceTree = "<group>"; };
 		3AA49ABC2B1253B900451FCC /* FDData+StoryPromos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDData+StoryPromos.swift"; sourceTree = "<group>"; };
+		3AA49AC42B226DE400451FCC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSelectionScreen.swift; sourceTree = "<group>"; };
 		3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		3AC017C12AC9E4690010EBBE /* FDSimplePromoGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSimplePromoGrid.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			children = (
 				3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */,
 				3A44C5F12A9B536A001AB40F /* BBCNewsAPINetworkController.swift */,
+				3AA49AC42B226DE400451FCC /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				3A4F65DC2ADDE715003673BF /* DiscoveryView.swift in Sources */,
 				3AA49ABB2AFD95E700451FCC /* FDImage+Id.swift in Sources */,
 				3A9124D72AAE0FAE00EC0DCF /* FDCollectionHeader.swift in Sources */,
+				3AA49AC52B226DE400451FCC /* NetworkError.swift in Sources */,
 				3A72BFCF2AF3115000AC0E39 /* FDCollection.swift in Sources */,
 				3A9124E92AAE10B200EC0DCF /* FDHeadline.swift in Sources */,
 				3A9124F52AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift in Sources */,
