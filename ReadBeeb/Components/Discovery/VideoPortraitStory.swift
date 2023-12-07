@@ -63,7 +63,7 @@ struct VideoPortraitStory: View {
         do {
             self.networkResult = .loading
             if let url = self.storyPromo.link.destinations.first?.url {
-                let detail = try await BBCNewsAPINetworkController.fetchFDUrl(url: url)
+                let detail = try await BBCNewsAPINetworkController().fetchFDUrl(url: url)
                 if case .videoPortraitStory(let videoPortraitStory) = detail.data.items.first {
                     await self.fetchMediaSelectorItems(media: videoPortraitStory.media)
                 }
@@ -80,7 +80,7 @@ struct VideoPortraitStory: View {
     private func fetchMediaSelectorItems(media: FDMedia) async {
         do {
             self.networkResult = .loading
-            let result = try await BBCIPlayerAPINetworkController.fetchMediaConnections(for: media.source.id)
+            let result = try await BBCIPlayerAPINetworkController().fetchMediaConnections(for: media.source.id)
             if !result.validMedia.isEmpty {
                 self.result = result
                 self.networkResult = .success

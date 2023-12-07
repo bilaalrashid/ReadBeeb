@@ -30,7 +30,7 @@ import OSLog
             self.networkRequest = .loading
 
             let postcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
-            let result = try await BBCNewsAPINetworkController.fetchDiscoveryPage(postcode: postcode)
+            let result = try await BBCNewsAPINetworkController().fetchDiscoveryPage(postcode: postcode)
 
             self.data = result
 
@@ -90,7 +90,7 @@ import OSLog
 
         for url in urls {
             do {
-                let result = try await BBCNewsAPINetworkController.fetchFDUrl(url: url)
+                let result = try await BBCNewsAPINetworkController().fetchFDUrl(url: url)
                 storyPromos.formUnion(result.data.storyPromos)
             } catch let error {
                 self.networkRequest = .error

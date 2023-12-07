@@ -82,7 +82,7 @@ struct MediaView: View {
     private func fetchMediaSelectorItems() async {
         do {
             self.networkResult = .loading
-            let result = try await BBCIPlayerAPINetworkController.fetchMediaConnections(for: self.media.source.id)
+            let result = try await BBCIPlayerAPINetworkController().fetchMediaConnections(for: self.media.source.id)
             if !result.validMedia.isEmpty {
                 self.result = result
                 self.networkResult = .success

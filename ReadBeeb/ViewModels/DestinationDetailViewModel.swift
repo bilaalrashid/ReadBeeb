@@ -42,7 +42,7 @@ extension DestinationDetailScreen {
             do {
                 if self.isApiUrl {
                     self.networkRequest = .loading
-                    let result = try await BBCNewsAPINetworkController.fetchFDUrl(url: self.destination.url)
+                    let result = try await BBCNewsAPINetworkController().fetchFDUrl(url: self.destination.url)
                     self.data = result
                     self.networkRequest = .success
                 }
