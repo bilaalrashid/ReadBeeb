@@ -30,7 +30,7 @@ import OSLog
             self.networkRequest = .loading
 
             let postcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
-            let result = try await BBCNewsAPINetworkController().fetchDiscoveryPage(postcode: postcode)
+            let result = try await BBCNewsAPINetworkController().fetchIndexDiscoveryPage(postcode: postcode)
 
             self.data = result
 
