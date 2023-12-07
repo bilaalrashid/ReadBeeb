@@ -29,7 +29,7 @@ extension MyNewsScreen {
                 self.networkRequest = .loading
 
                 let ids = selectedTopics.map { $0.id }
-                let topicResults = try await BBCNewsAPINetworkController().fetchTopicPages(for: ids)
+                let topicResults = try await BBCNews().fetchTopicPages(for: ids)
                 let storyPromos = self.storyPromos(for: topicResults)
                 self.storyPromos = storyPromos.sorted { ($0.updated ?? 0) > ($1.updated ?? 0) }
 

@@ -1,5 +1,5 @@
 //
-//  BBCNewsAPINetworkController.swift
+//  BBCNews.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 27/08/2023.
@@ -12,7 +12,7 @@ import UIKit
 /// A network controller for the BBC News private API, as used by the iOS app.
 ///
 /// This attempts to mimic the User-Agent of the iOS app.
-struct BBCNewsAPINetworkController {
+struct BBCNews {
     /// The base URL at which the API is hosted at.
     static let baseUrl = "https://news-app.api.bbc.co.uk"
 
@@ -29,7 +29,7 @@ struct BBCNewsAPINetworkController {
     /// The session to perform network requests from.
     let session: URLSession
 
-    /// Creates an instance of `BBCNewsAPINetworkController` for making network requests to the BBC News API.
+    /// Creates an instance of `BBCNews` for making network requests to the BBC News API.
     ///
     /// This initialises the User-Agent string, based upon the operating system and device that the request is performed from.
     ///
@@ -57,7 +57,7 @@ struct BBCNewsAPINetworkController {
     /// - Returns: The index discovery page.
     func fetchIndexDiscoveryPage(postcode: String? = nil) async throws -> FDResult {
         let url: String = {
-            var url = BBCNewsAPINetworkController.baseUrl + "/fd/abl?page=chrysalis_discovery&service=news&type=index&clientName=Chrysalis"
+            var url = BBCNews.baseUrl + "/fd/abl?page=chrysalis_discovery&service=news&type=index&clientName=Chrysalis"
             if let postcode = postcode {
                 url += "&clientLoc=" + postcode
             }
@@ -86,7 +86,7 @@ struct BBCNewsAPINetworkController {
     /// - Parameter topicId: The topic ID to fetch.
     /// - Returns: The fetched topic page.
     func fetchTopicPage(for topicId: String) async throws -> FDResult {
-        let url = BBCNewsAPINetworkController.baseUrl + "/fd/abl?clientName=Chrysalis&clientVersion=pre-5&page=\(topicId)&type=topic"
+        let url = BBCNews.baseUrl + "/fd/abl?clientName=Chrysalis&clientVersion=pre-5&page=\(topicId)&type=topic"
         return try await self.fetchFDUrl(url: url)
     }
 
