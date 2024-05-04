@@ -10,7 +10,7 @@ import Foundation
 extension Bundle {
     /// Decode a JSON file for a given type
     ///
-    /// - Note: This file will through fatalError() if the decoder is unable to decode the JSON to the given type.
+    /// - Note: This file will throw fatalError() if the decoder is unable to decode the JSON to the given type.
     ///         Files stored in the Bundle are static and hardcoded.
     ///         It is the responsibility of the developer to ensure that they conform to your desired schema before shipping to production.
     func decode<T: Decodable>(
