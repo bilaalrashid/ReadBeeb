@@ -44,8 +44,10 @@ struct Headline: View {
                     .buttonStyle(.plain)
                 }
 
-                Text(self.headline.lastUpdated.formattedTimestamp)
-                    .font(.callout)
+                if let published = headline.published {
+                    Text(published.formattedTimestamp)
+                        .font(.callout)
+                }
 
                 Text("\(self.headline.readTimeMinutes) min read")
                     .font(.callout)
@@ -68,6 +70,8 @@ struct Headline_Previews: PreviewProvider {
                 type: "Headline",
                 text: "Headline",
                 lastUpdated: 0,
+                firstPublished: 0,
+                lastPublished: 0,
                 byline: FDHeadlineByline(name: "Chris Mason", purpose: "BBC News"),
                 topic: FDTopic(text: "Politics", title: nil, link: nil),
                 languageCode: "en-GB",
