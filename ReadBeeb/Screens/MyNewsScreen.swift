@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import BbcNews
 import OSLog
 
 struct MyNewsScreen: View {

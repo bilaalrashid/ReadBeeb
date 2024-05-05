@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct Carousel: View {
     let item: FDCarousel

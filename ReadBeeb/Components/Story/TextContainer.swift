@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct TextContainer: View {
     let container: FDTextContainer

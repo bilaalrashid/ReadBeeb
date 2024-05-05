@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BbcNews
 
 extension FDData {
     var storyPromos: Set<FDStoryPromo> {

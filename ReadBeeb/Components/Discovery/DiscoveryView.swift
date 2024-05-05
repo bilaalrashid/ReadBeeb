@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct DiscoveryView: View {
     let data: FDResult

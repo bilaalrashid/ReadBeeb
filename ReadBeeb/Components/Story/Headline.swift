@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct Headline: View {
     let headline: FDHeadline

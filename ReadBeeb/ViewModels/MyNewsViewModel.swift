@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BbcNews
 import OSLog
 
 extension MyNewsScreen {

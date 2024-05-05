@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct ChipList: View {
     let item: FDChipList

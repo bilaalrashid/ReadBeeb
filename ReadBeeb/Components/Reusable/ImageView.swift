@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct ImageView: View {
     let image: FDImage

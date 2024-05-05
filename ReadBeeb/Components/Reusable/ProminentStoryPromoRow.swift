@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct ProminentStoryPromoRow: View {
     let story: FDStoryPromo

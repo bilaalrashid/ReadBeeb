@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BbcNews
 
 extension FDLinkDestination {
     var shareUrl: URL? {

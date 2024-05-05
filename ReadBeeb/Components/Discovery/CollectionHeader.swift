@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct CollectionHeader: View {
     let item: FDCollectionHeader

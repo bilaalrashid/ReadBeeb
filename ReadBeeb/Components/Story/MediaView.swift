@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 import OSLog
 
 struct MediaView: View {

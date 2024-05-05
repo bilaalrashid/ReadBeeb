@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import BbcNews
 
 struct VideoPortraitPromo: View {
     let storyPromo: FDStoryPromo

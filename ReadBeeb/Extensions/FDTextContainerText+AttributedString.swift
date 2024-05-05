@@ -5,8 +5,8 @@
 //  Created by Bilaal Rashid on 19/10/2023.
 //
 
-import Foundation
 import SwiftUI
+import BbcNews
 
 extension FDTextContainerText {
     /// Returns an `AttributedString` representing the `FDTextContainerText` instance

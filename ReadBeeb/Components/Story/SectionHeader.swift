@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct SectionHeader: View {
     let header: FDSectionHeader

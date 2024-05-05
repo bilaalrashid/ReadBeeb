@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct Copyright: View {
     let item: FDCopyright

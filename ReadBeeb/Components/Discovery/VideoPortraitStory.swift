@@ -7,6 +7,7 @@
 
 import SwiftUI
 import OSLog
+import BbcNews
 
 struct VideoPortraitStory: View {
     let storyPromo: FDStoryPromo

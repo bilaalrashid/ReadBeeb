@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BbcNews
 import OSLog
 
 @MainActor class GlobalViewModel: ObservableObject {

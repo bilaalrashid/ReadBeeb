@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BbcNews
 import OSLog
 
 extension DestinationDetailScreen {
@@ -24,7 +25,7 @@ extension DestinationDetailScreen {
         }
 
         var isApiUrl: Bool {
-            return BbcNews.isAPIUrl(url: self.destination.url)
+            return BbcNews.isApiUrl(url: self.destination.url)
         }
 
         var isBBCSportUrl: Bool {

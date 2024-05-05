@@ -7,6 +7,7 @@
 
 import SwiftUI
 import LazyPager
+import BbcNews
 
 struct ImageDetailScreen: View {
     let images: [FDImage]

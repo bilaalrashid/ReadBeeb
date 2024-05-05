@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 struct ContentList: View {
     let list: FDContentList

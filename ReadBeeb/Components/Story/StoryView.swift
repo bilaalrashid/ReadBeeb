@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 import Network
 import LazyPager
+import BbcNews
 
 struct StoryView: View {
     let data: FDResult

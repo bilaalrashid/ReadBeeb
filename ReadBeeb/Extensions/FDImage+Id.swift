@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import BbcNews
 
 extension FDImage: Identifiable {
-    var id: String {
+    public var id: String {
         return self.source.url
     }
 }
