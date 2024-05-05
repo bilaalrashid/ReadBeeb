@@ -14,18 +14,18 @@ extension FDData {
 
         for item in self.structuredItems {
             switch item.body {
-            case .billboard(let item):
-                storyPromos.formUnion(item.items)
-            case .hierarchicalCollection(let item):
-                storyPromos.formUnion(item.items)
-            case .simpleCollection(let item):
-                storyPromos.formUnion(item.items)
-            case .simplePromoGrid(let item):
-                storyPromos.formUnion(item.items)
-            case .carousel(let item):
-                storyPromos.formUnion(item.items)
-            case .storyPromo(let item):
-                storyPromos.insert(item)
+            case .billboard(let collection):
+                storyPromos.formUnion(collection.items)
+            case .hierarchicalCollection(let collection):
+                storyPromos.formUnion(collection.items)
+            case .simpleCollection(let collection):
+                storyPromos.formUnion(collection.items)
+            case .simplePromoGrid(let collection):
+                storyPromos.formUnion(collection.items)
+            case .carousel(let collection):
+                storyPromos.formUnion(collection.items)
+            case .storyPromo(let promo):
+                storyPromos.insert(promo)
             default:
                 break
             }
