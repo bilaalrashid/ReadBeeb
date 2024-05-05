@@ -290,23 +290,18 @@
 		3A44C5EB2A9AA213001AB40F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3ACDBF012BE7C4B300B624F9 /* BbcNews */,
 				3A44C6052A9B6449001AB40F /* Logger.swift */,
-				3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */,
+				3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */,
 				3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */,
 				3A7C63812AE33D0200BB114A /* Int+FormattedTimeInterval.swift */,
-				3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */,
-				3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */,
 				3A516D742AC09B5A00AF0BC9 /* MediaSelectorResult+ValidMedia.swift */,
-				3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */,
-				3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */,
 				3A4F65D92ADDE51F003673BF /* URL+ValueOf.swift */,
-				3A4F65DD2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift */,
 				3A7C63832AE3410300BB114A /* URL+IsBBC.swift */,
 				3A7C638A2AE3E4CE00BB114A /* URL+Identifiable.swift */,
 				3A2274B32AE580700041F77B /* URL+Init.swift */,
 				3A72BFD82AF66ECF00AC0E39 /* UIDevice+ModelIdentifier.swift */,
-				3AA49ABA2AFD95E700451FCC /* FDImage+Id.swift */,
-				3AA49ABC2B1253B900451FCC /* FDData+StoryPromos.swift */,
+				3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -413,6 +408,19 @@
 				3A9125002AAE82C800EC0DCF /* StoryWebView.swift */,
 			);
 			path = Story;
+			sourceTree = "<group>";
+		};
+		3ACDBF012BE7C4B300B624F9 /* BbcNews */ = {
+			isa = PBXGroup;
+			children = (
+				3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */,
+				3AA49ABC2B1253B900451FCC /* FDData+StoryPromos.swift */,
+				3AA49ABA2AFD95E700451FCC /* FDImage+Id.swift */,
+				3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */,
+				3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */,
+				3A4F65DD2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift */,
+			);
+			path = BbcNews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
