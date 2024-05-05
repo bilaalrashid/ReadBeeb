@@ -27,7 +27,6 @@
 		3A44C60A2A9B73BA001AB40F /* CollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C6092A9B73BA001AB40F /* CollectionHeader.swift */; };
 		3A44C6122AA53D8A001AB40F /* StoryPromoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */; };
 		3A4D56A62AE5663700AD9555 /* ThumbnailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D56A52AE5663700AD9555 /* ThumbnailImageView.swift */; };
-		3A4F65C72ADC7E72003673BF /* FDDestination+ShareUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */; };
 		3A4F65C92ADC822B003673BF /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65C82ADC822B003673BF /* StoryView.swift */; };
 		3A4F65CD2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65CC2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift */; };
 		3A4F65CF2ADC9C8D003673BF /* DiscoveryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65CE2ADC9C8D003673BF /* DiscoveryItemView.swift */; };
@@ -65,7 +64,6 @@
 		3A9124C92AA6872F00EC0DCF /* DestinationDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124C82AA6872F00EC0DCF /* DestinationDetailScreen.swift */; };
 		3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */; };
 		3A9124F52AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */; };
-		3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */; };
 		3A9124F92AAE20CD00EC0DCF /* TextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */; };
 		3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */; };
 		3A9124FD2AAE237B00EC0DCF /* View+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */; };
@@ -111,7 +109,6 @@
 		3A44C6092A9B73BA001AB40F /* CollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeader.swift; sourceTree = "<group>"; };
 		3A44C6112AA53D8A001AB40F /* StoryPromoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPromoRow.swift; sourceTree = "<group>"; };
 		3A4D56A52AE5663700AD9555 /* ThumbnailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageView.swift; sourceTree = "<group>"; };
-		3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDDestination+ShareUrl.swift"; sourceTree = "<group>"; };
 		3A4F65C82ADC822B003673BF /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		3A4F65CC2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestStatusOverlay.swift; sourceTree = "<group>"; };
 		3A4F65CE2ADC9C8D003673BF /* DiscoveryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryItemView.swift; sourceTree = "<group>"; };
@@ -148,7 +145,6 @@
 		3A9124C82AA6872F00EC0DCF /* DestinationDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailScreen.swift; sourceTree = "<group>"; };
 		3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDData+StructuredItems.swift"; sourceTree = "<group>"; };
 		3A9124F42AAE12EA00EC0DCF /* Int+FormattedTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+FormattedTimestamp.swift"; sourceTree = "<group>"; };
-		3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDImage+ImageUrl.swift"; sourceTree = "<group>"; };
 		3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainer.swift; sourceTree = "<group>"; };
 		3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
@@ -416,8 +412,6 @@
 				3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */,
 				3AA49ABC2B1253B900451FCC /* FDData+StoryPromos.swift */,
 				3AA49ABA2AFD95E700451FCC /* FDImage+Id.swift */,
-				3A9124F62AAE13DB00EC0DCF /* FDImage+ImageUrl.swift */,
-				3A4F65C62ADC7E72003673BF /* FDDestination+ShareUrl.swift */,
 				3A4F65DD2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift */,
 			);
 			path = BbcNews;
@@ -548,7 +542,6 @@
 				3AA49AB92AF9988A00451FCC /* ImageDetailScreen.swift in Sources */,
 				3A72BFDB2AF67A3500AC0E39 /* ImageCacheController.swift in Sources */,
 				3A9124FB2AAE221300EC0DCF /* SectionHeader.swift in Sources */,
-				3A4F65C72ADC7E72003673BF /* FDDestination+ShareUrl.swift in Sources */,
 				3AA49AAA2AF8296600451FCC /* PostcodeResult.swift in Sources */,
 				3A9124C92AA6872F00EC0DCF /* DestinationDetailScreen.swift in Sources */,
 				3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */,
@@ -563,7 +556,6 @@
 				3A75FA3A2AC87DCF00393014 /* TopicResult.swift in Sources */,
 				3A44C6002A9B5BF2001AB40F /* VideoScreen.swift in Sources */,
 				3A4F65CF2ADC9C8D003673BF /* DiscoveryItemView.swift in Sources */,
-				3A9124F72AAE13DB00EC0DCF /* FDImage+ImageUrl.swift in Sources */,
 				3A5F8B0E2AF6FE0200E1CF93 /* PlainNavigationLink.swift in Sources */,
 				3A72BFD92AF66ECF00AC0E39 /* UIDevice+ModelIdentifier.swift in Sources */,
 				3A516D752AC09B5A00AF0BC9 /* MediaSelectorResult+ValidMedia.swift in Sources */,
