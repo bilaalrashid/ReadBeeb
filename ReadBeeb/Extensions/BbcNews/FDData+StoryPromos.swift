@@ -15,15 +15,15 @@ extension FDData {
         for item in self.structuredItems {
             switch item.body {
             case .billboard(let collection):
-                storyPromos.formUnion(collection.items)
+                storyPromos.formUnion(collection.storyPromos)
             case .hierarchicalCollection(let collection):
-                storyPromos.formUnion(collection.items)
+                storyPromos.formUnion(collection.storyPromos)
             case .simpleCollection(let collection):
-                storyPromos.formUnion(collection.items)
+                storyPromos.formUnion(collection.storyPromos)
             case .simplePromoGrid(let collection):
-                storyPromos.formUnion(collection.items)
+                storyPromos.formUnion(collection.storyPromos)
             case .carousel(let collection):
-                storyPromos.formUnion(collection.items)
+                storyPromos.formUnion(collection.storyPromos)
             case .storyPromo(let promo):
                 storyPromos.insert(promo)
             default:

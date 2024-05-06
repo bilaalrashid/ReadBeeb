@@ -27,7 +27,7 @@ struct MyNewsScreen: View {
             }
 
             if !self.viewModel.storyPromos.isEmpty {
-                Copyright(item: FDCopyright(type: "Copyright", lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
+                Copyright(item: FDCopyright(lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
                     .listRowSeparator(.hidden)
             }
         }

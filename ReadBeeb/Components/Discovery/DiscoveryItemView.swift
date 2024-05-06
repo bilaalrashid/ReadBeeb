@@ -39,5 +39,5 @@ struct DiscoveryItemView: View {
 }
 
 #Preview {
-    DiscoveryItemView(item: .copyright(FDCopyright(type: "Copyright", lastUpdated: 0)), index: 0)
+    DiscoveryItemView(item: .copyright(FDCopyright(lastUpdated: 0)), index: 0)
 }

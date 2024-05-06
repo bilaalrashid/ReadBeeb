@@ -27,5 +27,5 @@ struct Copyright: View {
 }
 
 #Preview {
-    Copyright(item: FDCopyright(type: "Copyright", lastUpdated: 0))
+    Copyright(item: FDCopyright(lastUpdated: 0))
 }

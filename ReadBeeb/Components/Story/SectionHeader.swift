@@ -19,6 +19,6 @@ struct SectionHeader: View {
 
 struct SectionHeader_Previews: PreviewProvider {
     static var previews: some View {
-        SectionHeader(header: FDSectionHeader(type: "SectionHeader", text: "Header"))
+        SectionHeader(header: FDSectionHeader(text: "Header"))
     }
 }

@@ -83,7 +83,7 @@
 		3AA49ABD2B1253B900451FCC /* FDData+StoryPromos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA49ABC2B1253B900451FCC /* FDData+StoryPromos.swift */; };
 		3AC017BE2AC9B8510010EBBE /* TopicSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */; };
 		3AC017C02AC9BDB30010EBBE /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */; };
-		3ACDBF002BE7C16F00B624F9 /* BbcNews in Frameworks */ = {isa = PBXBuildFile; productRef = 3ACDBEFF2BE7C16F00B624F9 /* BbcNews */; };
+		3ACDBF042BE97F5A00B624F9 /* BbcNews in Frameworks */ = {isa = PBXBuildFile; productRef = 3ACDBF032BE97F5A00B624F9 /* BbcNews */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,7 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ACDBF002BE7C16F00B624F9 /* BbcNews in Frameworks */,
+				3ACDBF042BE97F5A00B624F9 /* BbcNews in Frameworks */,
 				3AA49AB72AF997D500451FCC /* LazyPager in Frameworks */,
 				3A2274B22AE57F440041F77B /* Kingfisher in Frameworks */,
 				3A44C5EE2A9AAD03001AB40F /* Alamofire in Frameworks */,
@@ -439,7 +439,7 @@
 				3A7C63862AE3427700BB114A /* TLDExtract */,
 				3A2274B12AE57F440041F77B /* Kingfisher */,
 				3AA49AB62AF997D500451FCC /* LazyPager */,
-				3ACDBEFF2BE7C16F00B624F9 /* BbcNews */,
+				3ACDBF032BE97F5A00B624F9 /* BbcNews */,
 			);
 			productName = ReadBeeb;
 			productReference = 3A44C5D32A9A9F86001AB40F /* ReadBeeb.app */;
@@ -474,7 +474,7 @@
 				3A7C63852AE3427700BB114A /* XCRemoteSwiftPackageReference "TLDExtractSwift" */,
 				3A2274B02AE57F440041F77B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				3AA49AB52AF997D500451FCC /* XCRemoteSwiftPackageReference "LazyPager" */,
-				3ACDBEFE2BE7C16F00B624F9 /* XCRemoteSwiftPackageReference "BbcNewsSwift" */,
+				3ACDBF022BE97F5A00B624F9 /* XCRemoteSwiftPackageReference "bbc-news-swift" */,
 			);
 			productRefGroup = 3A44C5D42A9A9F86001AB40F /* Products */;
 			projectDirPath = "";
@@ -852,9 +852,9 @@
 				minimumVersion = 1.0.5;
 			};
 		};
-		3ACDBEFE2BE7C16F00B624F9 /* XCRemoteSwiftPackageReference "BbcNewsSwift" */ = {
+		3ACDBF022BE97F5A00B624F9 /* XCRemoteSwiftPackageReference "bbc-news-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bilaalrashid/BbcNewsSwift";
+			repositoryURL = "https://github.com/bilaalrashid/bbc-news-swift";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -883,9 +883,9 @@
 			package = 3AA49AB52AF997D500451FCC /* XCRemoteSwiftPackageReference "LazyPager" */;
 			productName = LazyPager;
 		};
-		3ACDBEFF2BE7C16F00B624F9 /* BbcNews */ = {
+		3ACDBF032BE97F5A00B624F9 /* BbcNews */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3ACDBEFE2BE7C16F00B624F9 /* XCRemoteSwiftPackageReference "BbcNewsSwift" */;
+			package = 3ACDBF022BE97F5A00B624F9 /* XCRemoteSwiftPackageReference "bbc-news-swift" */;
 			productName = BbcNews;
 		};
 /* End XCSwiftPackageProductDependency section */

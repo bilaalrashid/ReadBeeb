@@ -25,6 +25,6 @@ struct CollectionHeader: View {
 
 struct CollectionHeaderItem_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionHeader(item: FDCollectionHeader(type: "CollectionHeader", text: "News from London", link: FDLink(destinations: [])))
+        CollectionHeader(item: FDCollectionHeader(text: "News from London", link: FDLink(destinations: [])))
     }
 }

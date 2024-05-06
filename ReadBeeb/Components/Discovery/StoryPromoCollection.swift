@@ -13,7 +13,7 @@ struct StoryPromoCollection: View {
     let collectionIndex: Int
 
     var body: some View {
-        ForEach(Array(self.collection.items.enumerated()), id: \.offset) { index, storyPromo in
+        ForEach(Array(self.collection.storyPromos.enumerated()), id: \.offset) { index, storyPromo in
             if let destination = storyPromo.link.destinations.first {
                 PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
                     if self.collectionIndex == 0 && index == 0 {

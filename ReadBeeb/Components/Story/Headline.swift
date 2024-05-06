@@ -68,7 +68,6 @@ struct Headline_Previews: PreviewProvider {
     static var previews: some View {
         Headline(
             headline: FDHeadline(
-                type: "Headline",
                 text: "Headline",
                 lastUpdated: 0,
                 firstPublished: 0,

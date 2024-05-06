@@ -94,7 +94,6 @@ struct TextContainer: View {
     VStack {
         TextContainer(
             container: FDTextContainer(
-                type: "textContainer",
                 containerType: "body",
                 text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [
                     FDTextContainerSpan(type: "emphasis", startIndex: 5, length: 10, attribute: "bold", link: nil),
@@ -107,24 +106,21 @@ struct TextContainer: View {
         )
         TextContainer(
             container: FDTextContainer(
-                type: "textContainer",
                 containerType: "body",
                 text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
             ),
-            list: FDContentList(type: "", ordering: "UNORDERED", listItems: [])
+            list: FDContentList(ordering: "UNORDERED", listItems: [])
         )
         TextContainer(
             container: FDTextContainer(
-                type: "textContainer",
                 containerType: "introduction",
                 text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
             ),
-            list: FDContentList(type: "", ordering: "ORDERED", listItems: []),
+            list: FDContentList(ordering: "ORDERED", listItems: []),
             index: 1
         )
         TextContainer(
             container: FDTextContainer(
-                type: "textContainer",
                 containerType: "crosshead",
                 text: FDTextContainerText(text: "A Title Here", spans: [])
             )
