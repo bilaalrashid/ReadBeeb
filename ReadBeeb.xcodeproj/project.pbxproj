@@ -84,6 +84,7 @@
 		3AC017BE2AC9B8510010EBBE /* TopicSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */; };
 		3AC017C02AC9BDB30010EBBE /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */; };
 		3ACDBF042BE97F5A00B624F9 /* BbcNews in Frameworks */ = {isa = PBXBuildFile; productRef = 3ACDBF032BE97F5A00B624F9 /* BbcNews */; };
+		3ACDBF062BE9810800B624F9 /* Byline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDBF052BE9810800B624F9 /* Byline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +165,7 @@
 		3AA49ABC2B1253B900451FCC /* FDData+StoryPromos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDData+StoryPromos.swift"; sourceTree = "<group>"; };
 		3AC017BD2AC9B8510010EBBE /* TopicSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSelectionScreen.swift; sourceTree = "<group>"; };
 		3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
+		3ACDBF052BE9810800B624F9 /* Byline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Byline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +399,7 @@
 				3A4F65C82ADC822B003673BF /* StoryView.swift */,
 				3A516D672AB25D1400AF0BC9 /* MediaView.swift */,
 				3A9125062AAFC39200EC0DCF /* Headline.swift */,
+				3ACDBF052BE9810800B624F9 /* Byline.swift */,
 				3A9124FA2AAE221300EC0DCF /* SectionHeader.swift */,
 				3A9125042AAFB9A700EC0DCF /* ContentList.swift */,
 				3A9124F82AAE20CD00EC0DCF /* TextContainer.swift */,
@@ -573,6 +576,7 @@
 				3A9125072AAFC39200EC0DCF /* Headline.swift in Sources */,
 				3A44C5FE2A9B5BE2001AB40F /* PopularScreen.swift in Sources */,
 				3A72BFCD2AF305A900AC0E39 /* TextCarousel.swift in Sources */,
+				3ACDBF062BE9810800B624F9 /* Byline.swift in Sources */,
 				3A4D56A62AE5663700AD9555 /* ThumbnailImageView.swift in Sources */,
 				3A72BFD32AF3158F00AC0E39 /* ProminentStoryPromoRow.swift in Sources */,
 				3A7C63842AE3410300BB114A /* URL+IsBBC.swift in Sources */,

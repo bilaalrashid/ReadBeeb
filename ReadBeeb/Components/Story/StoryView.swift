@@ -43,6 +43,8 @@ struct StoryView: View {
                         }
                 case .headline(let item):
                     Headline(headline: item)
+                case .byline(let item):
+                    Byline(byline: item)
                 case .textContainer(let item):
                     TextContainer(container: item)
                 case .sectionHeader(let item):
