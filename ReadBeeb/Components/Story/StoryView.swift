@@ -29,6 +29,18 @@ struct StoryView: View {
                                 $0
                             }
                         }
+                case .imageContainer(let item):
+                    ImageContainer(imageContainer: item)
+                        .modify {
+                            if index == 0 {
+                                $0.listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            } else {
+                                $0
+                            }
+                        }
+                        .onTapGesture {
+                            self.detailImageToShow = item.image
+                        }
                 case .image(let item):
                     ImageView(image: item)
                         .modify {
@@ -91,6 +103,8 @@ struct StoryView: View {
                 switch $0 {
                 case .media(let media):
                     return media.image
+                case .imageContainer(let container):
+                    return container.image
                 case .image(let image):
                     return image
                 default:
@@ -106,10 +120,14 @@ struct StoryView: View {
     private func mainImages(from data: FDResult) -> [FDImage] {
         return data.data.items
             .map {
-                if case .image(let image) = $0 {
+                switch $0 {
+                case .imageContainer(let container):
+                    return container.image
+                case .image(let image):
                     return image
+                default:
+                    return nil
                 }
-                return nil
             }
             .compactMap { $0 }
     }

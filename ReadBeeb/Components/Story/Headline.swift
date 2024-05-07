@@ -50,8 +50,10 @@ struct Headline: View {
                         .font(.callout)
                 }
 
-                Text("\(self.headline.readTimeMinutes) min read")
-                    .font(.callout)
+                if let readTimeMinutes = headline.readTimeMinutes {
+                    Text("\(readTimeMinutes) min read")
+                        .font(.callout)
+                }
 
                 Spacer()
             }
