@@ -10,12 +10,9 @@ import BbcNews
 import OSLog
 
 struct DestinationDetailScreen: View {
-    let destination: FDLinkDestination
-
     @StateObject private var viewModel: ViewModel
 
     init(destination: FDLinkDestination) {
-        self.destination = destination
         // Initialising a StateObject like this is officially supported and endorsed by the SwiftUI team at Apple
         // See https://stackoverflow.com/a/62636048/10370537
         self._viewModel = StateObject(wrappedValue: ViewModel(destination: destination))
@@ -25,7 +22,7 @@ struct DestinationDetailScreen: View {
         VStack(spacing: 0) {
             if self.viewModel.isApiUrl {
                 if let data = self.viewModel.data {
-                    switch URL(string: self.destination.url)?.valueOf("type") ?? "" {
+                    switch self.viewModel.destinationType ?? "" {
                     case "index", "topic":
                         DiscoveryView(data: data)
                     case "asset":
@@ -37,7 +34,7 @@ struct DestinationDetailScreen: View {
                     }
                 }
             } else {
-                if let url = URL(string: self.destination.url) {
+                if let url = URL(string: self.viewModel.destination.url) {
                     StoryWebView(url: url) {
                         // Assign any non-empty value to prevent the empty data overlay being displayed
                         self.viewModel.mockSuccessfulApiRequest()
@@ -45,14 +42,14 @@ struct DestinationDetailScreen: View {
                 }
             }
         }
-        .navigationTitle(self.destination.presentation.title ?? "")
+        .navigationTitle(self.viewModel.destination.presentation.title ?? "")
         .toolbarColorScheme(self.viewModel.isBBCSportUrl ? .light : .dark, for: .navigationBar)
         .toolbarBackground(self.viewModel.isBBCSportUrl ? Constants.sportColor : Constants.primaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                if let shareUrl = self.destination.shareUrl {
+                if let shareUrl = self.viewModel.destination.shareUrl {
                     ShareLink(item: shareUrl) {
                         Label("Share", systemImage: "square.and.arrow.up")
                     }

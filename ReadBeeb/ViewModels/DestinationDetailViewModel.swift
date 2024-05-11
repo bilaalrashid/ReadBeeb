@@ -16,8 +16,22 @@ extension DestinationDetailScreen {
         @Published private(set) var data: FDResult?
         @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
 
+        /// Creates a view model for DestinationDetailScreen.
+        ///
+        /// This attempts to rewrite any HTML URLs to ABL ones that return JSON responses.
+        ///
+        /// - Parameter destination: The destination to display in the view.
         init(destination: FDLinkDestination) {
-            self.destination = destination
+            if !BbcNews.isApiUrl(url: destination.url), let apiUrl = BbcNews.convertWebUrlToApi(url: destination.url) {
+                self.destination = FDLinkDestination(
+                    sourceFormat: "ABL",
+                    url: apiUrl,
+                    id: destination.id,
+                    presentation: destination.presentation
+                )
+            } else {
+                self.destination = destination
+            }
         }
 
         var isEmpty: Bool {
@@ -30,6 +44,15 @@ extension DestinationDetailScreen {
 
         var isBBCSportUrl: Bool {
             return self.isBBCSportUrl(url: self.destination.url)
+        }
+
+        /// The type of the destination to be displayed in the view.
+        var destinationType: String? {
+            if let url = URL(string: self.destination.url) {
+                return url.valueOf("type")
+            }
+
+            return nil
         }
 
         func fetchDataIfNotExists() async {
