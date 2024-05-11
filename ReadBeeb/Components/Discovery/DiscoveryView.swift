@@ -16,6 +16,9 @@ struct DiscoveryView: View {
     // Use AnyView to avoid specifying dummy generic type when there is no extra content
     @ViewBuilder var extraContent: () -> AnyView?
 
+    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    @State private var destination: FDLinkDestination?
+
     init(
         data: FDResult,
         sectionsToInclude: [String]? = nil,
@@ -46,10 +49,10 @@ struct DiscoveryView: View {
         List {
             ForEach(Array(self.filteredStructuredItems.enumerated()), id: \.offset) { index, item in
                 if let header = item.header {
-                    DiscoveryItemView(item: header, index: index)
+                    DiscoveryItemView(item: header, index: index, destination: self.$destination)
                 }
 
-                DiscoveryItemView(item: item.body, index: index)
+                DiscoveryItemView(item: item.body, index: index, destination: self.$destination)
             }
             .listRowSeparator(self.shouldHideSeparators ? .hidden : .automatic)
 
@@ -59,6 +62,9 @@ struct DiscoveryView: View {
                 .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
+        .navigationDestination(item: self.$destination) { destination in
+            DestinationDetailScreen(destination: destination)
+        }
     }
 }
 

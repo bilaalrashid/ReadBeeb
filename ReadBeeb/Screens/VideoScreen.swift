@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import BbcNews
 import OSLog
 
 struct VideoScreen: View {
     private let sectionsToInclude = ["Today's videos"]
 
     @EnvironmentObject var viewModel: GlobalViewModel
+
+    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    @State private var destination: FDLinkDestination?
 
     var body: some View {
         VStack {
@@ -21,13 +25,16 @@ struct VideoScreen: View {
                         ForEach(Array(self.viewModel.videoPromos.enumerated()), id: \.offset) { _, storyPromo in
                             if let destination = storyPromo.link.destinations.first {
                                 PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
-                                    StoryPromoRow(story: storyPromo)
+                                    StoryPromoRow(story: storyPromo, destination: $destination)
                                 }
                             }
                         }
                     )
                 }
             }
+        }
+        .navigationDestination(item: self.$destination) { destination in
+            DestinationDetailScreen(destination: destination)
         }
         .navigationTitle("Video")
         .toolbarColorScheme(.dark, for: .navigationBar)

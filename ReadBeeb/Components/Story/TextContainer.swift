@@ -14,7 +14,9 @@ struct TextContainer: View {
     /// If the item is part of the list, the index of the item in the list, zero-indexed
     var index: Int?
 
-    @State private var internalDestination: FDLinkDestination?
+    // A destination that the text container can link to e.g. another story.
+    @Binding var destination: FDLinkDestination?
+
     @State private var externalUrl: URL?
 
     var body: some View {
@@ -55,7 +57,7 @@ struct TextContainer: View {
 
             if schemesToHandle.contains(scheme) {
                 if url.isBBC, let destination = self.destination(for: url) {
-                    self.internalDestination = destination
+                    self.destination = destination
                 } else {
                     self.externalUrl = url
                 }
@@ -66,9 +68,6 @@ struct TextContainer: View {
                 return .systemAction
             }
         })
-        .navigationDestination(item: self.$internalDestination) { destination in
-            DestinationDetailScreen(destination: destination)
-        }
         .fullScreenCover(item: self.$externalUrl) { url in
             SafariView(url: url)
                 .ignoresSafeArea()
@@ -102,14 +101,15 @@ struct TextContainer: View {
                         FDLinkDestination(sourceFormat: "abl", url: "https://bilaal.co.uk", id: "", presentation: FDPresentation(type: "", title: nil, canShare: nil))
                     ]))
                 ])
-            )
+            ), destination: .constant(nil)
         )
         TextContainer(
             container: FDTextContainer(
                 containerType: "body",
                 text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
             ),
-            list: FDContentList(ordering: "UNORDERED", listItems: [])
+            list: FDContentList(ordering: "UNORDERED", listItems: []),
+            destination: .constant(nil)
         )
         TextContainer(
             container: FDTextContainer(
@@ -117,13 +117,15 @@ struct TextContainer: View {
                 text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
             ),
             list: FDContentList(ordering: "ORDERED", listItems: []),
-            index: 1
+            index: 1,
+            destination: .constant(nil)
         )
         TextContainer(
             container: FDTextContainer(
                 containerType: "crosshead",
                 text: FDTextContainerText(text: "A Title Here", spans: [])
-            )
+            ),
+            destination: .constant(nil)
         )
     }
 }

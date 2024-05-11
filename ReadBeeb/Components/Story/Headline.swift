@@ -11,7 +11,8 @@ import BbcNews
 struct Headline: View {
     let headline: FDHeadline
 
-    @State private var isLinkActive = false
+    // A destination that the headline can link to e.g. a topic discovery page.
+    @Binding var destination: FDLinkDestination?
 
     var body: some View {
         VStack(spacing: 16) {
@@ -36,7 +37,7 @@ struct Headline: View {
             HStack {
                 if let text = self.headline.topic?.text {
                     Button(action: {
-                        self.isLinkActive = true
+                        self.destination = self.headline.topic?.link?.destinations.first
                     }) {
                         Text(text)
                             .font(.callout)
@@ -58,11 +59,6 @@ struct Headline: View {
                 Spacer()
             }
         }
-        .navigationDestination(isPresented: self.$isLinkActive) {
-            if let destination = self.headline.topic?.link?.destinations.first {
-                DestinationDetailScreen(destination: destination)
-            }
-        }
     }
 }
 
@@ -78,7 +74,8 @@ struct Headline_Previews: PreviewProvider {
                 topic: FDTopic(text: "Politics", title: nil, link: nil),
                 languageCode: "en-GB",
                 readTimeMinutes: 2
-            )
+            ),
+            destination: .constant(nil)
         )
     }
 }

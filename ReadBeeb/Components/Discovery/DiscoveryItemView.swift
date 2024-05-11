@@ -12,19 +12,22 @@ struct DiscoveryItemView: View {
     let item: FDItem
     let index: Int
 
+    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    @Binding var destination: FDLinkDestination?
+
     var body: some View {
         switch item {
         case .collectionHeader(let item):
             CollectionHeader(item: item)
                 .listRowSeparator(.hidden)
         case .billboard(let collection):
-            StoryPromoCollection(collection: collection, collectionIndex: self.index)
+            StoryPromoCollection(collection: collection, collectionIndex: self.index, destination: self.$destination)
         case .hierarchicalCollection(let collection):
-            StoryPromoCollection(collection: collection, collectionIndex: self.index)
+            StoryPromoCollection(collection: collection, collectionIndex: self.index, destination: self.$destination)
         case .simpleCollection(let collection):
-            StoryPromoCollection(collection: collection, collectionIndex: self.index)
+            StoryPromoCollection(collection: collection, collectionIndex: self.index, destination: self.$destination)
         case .simplePromoGrid(let collection):
-            StoryPromoCollection(collection: collection, collectionIndex: self.index)
+            StoryPromoCollection(collection: collection, collectionIndex: self.index, destination: self.$destination)
         case .carousel(let item):
             Carousel(item: item)
         case .chipList(let item):
@@ -39,5 +42,5 @@ struct DiscoveryItemView: View {
 }
 
 #Preview {
-    DiscoveryItemView(item: .copyright(FDCopyright(lastUpdated: 0)), index: 0)
+    DiscoveryItemView(item: .copyright(FDCopyright(lastUpdated: 0)), index: 0, destination: .constant(nil))
 }

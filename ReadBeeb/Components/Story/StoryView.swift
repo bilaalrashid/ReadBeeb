@@ -14,6 +14,8 @@ import BbcNews
 struct StoryView: View {
     let data: FDResult
 
+    // A destination that the story can link to e.g. a discovery page or another story.
+    @State private var destination: FDLinkDestination?
     @State private var detailImageToShow: FDImage?
 
     var body: some View {
@@ -54,21 +56,21 @@ struct StoryView: View {
                             self.detailImageToShow = item
                         }
                 case .headline(let item):
-                    Headline(headline: item)
+                    Headline(headline: item, destination: self.$destination)
                 case .byline(let item):
                     Byline(byline: item)
                 case .textContainer(let item):
-                    TextContainer(container: item)
+                    TextContainer(container: item, destination: self.$destination)
                 case .sectionHeader(let item):
                     SectionHeader(header: item)
                 case .carousel(let item):
-                    TextCarousel(carousel: item)
+                    TextCarousel(carousel: item, destination: self.$destination)
                 case .contentList(let item):
-                    ContentList(list: item)
+                    ContentList(list: item, destination: self.$destination)
                 case .storyPromo(let storyPromo):
                     if let destination = storyPromo.link.destinations.first {
                         PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
-                            StoryPromoRow(story: storyPromo)
+                            StoryPromoRow(story: storyPromo, destination: self.$destination)
                         }
                     }
                 case .copyright(let item):
@@ -80,6 +82,9 @@ struct StoryView: View {
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
+        .navigationDestination(item: self.$destination) { destination in
+            DestinationDetailScreen(destination: destination)
+        }
         .onAppear {
             self.prefetchImages()
         }

@@ -11,12 +11,16 @@ import BbcNews
 struct ContentList: View {
     let list: FDContentList
 
+    // A destination that the text container can link to e.g. another story.
+    @Binding var destination: FDLinkDestination?
+
     var body: some View {
         ForEach(Array(self.list.listItems.enumerated()), id: \.offset) { index, item in
             TextContainer(
                 container: FDTextContainer(containerType: "", text: item),
                 list: self.list,
-                index: index
+                index: index,
+                destination: self.$destination
             )
         }
     }
@@ -24,6 +28,6 @@ struct ContentList: View {
 
 struct ContentList_Previews: PreviewProvider {
     static var previews: some View {
-        ContentList(list: FDContentList(ordering: "UNORDERED", listItems: []))
+        ContentList(list: FDContentList(ordering: "UNORDERED", listItems: []), destination: .constant(nil))
     }
 }

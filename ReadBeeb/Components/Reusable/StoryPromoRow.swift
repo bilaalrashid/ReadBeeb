@@ -11,7 +11,8 @@ import BbcNews
 struct StoryPromoRow: View {
     let story: FDStoryPromo
 
-    @State private var topicDestination: FDLinkDestination?
+    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    @Binding var destination: FDLinkDestination?
 
     var body: some View {
         HStack {
@@ -34,7 +35,7 @@ struct StoryPromoRow: View {
                 HStack(alignment: .center) {
                     if let topic = self.story.topic, let text = topic.text {
                         Button(action: {
-                            self.topicDestination = topic.link?.destinations.first
+                            self.destination = topic.link?.destinations.first
                         }) {
                             Text(text)
                                 .font(.caption)
@@ -66,9 +67,6 @@ struct StoryPromoRow: View {
                 }
             }
             .padding(.all, 4)
-        }
-        .navigationDestination(item: self.$topicDestination) { destination in
-            DestinationDetailScreen(destination: destination)
         }
     }
 }

@@ -14,6 +14,8 @@ struct MyNewsScreen: View {
     @Query var selectedTopics: [Topic]
     @StateObject private var viewModel = ViewModel()
 
+    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    @State private var destination: FDLinkDestination?
     @State private var isEditingTopics = false
 
     var body: some View {
@@ -21,7 +23,7 @@ struct MyNewsScreen: View {
             ForEach(Array(self.viewModel.storyPromos.enumerated()), id: \.offset) { _, storyPromo in
                 if let destination = storyPromo.link.destinations.first {
                     PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
-                        StoryPromoRow(story: storyPromo)
+                        StoryPromoRow(story: storyPromo, destination: self.$destination)
                     }
                 }
             }
@@ -30,6 +32,9 @@ struct MyNewsScreen: View {
                 Copyright(item: FDCopyright(lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
                     .listRowSeparator(.hidden)
             }
+        }
+        .navigationDestination(item: self.$destination) { destination in
+            DestinationDetailScreen(destination: destination)
         }
         .listStyle(.plain)
         .navigationTitle("My News")

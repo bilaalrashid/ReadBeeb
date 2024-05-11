@@ -11,13 +11,17 @@ import BbcNews
 struct TextCarousel: View {
     let carousel: FDCarousel
 
+    // A destination that the text container can link to e.g. another story.
+    @Binding var destination: FDLinkDestination?
+
     var body: some View {
         ForEach(Array(self.carousel.storyPromos.enumerated()), id: \.offset) { _, storyPromo in
             if let textContainer = self.textContainer(for: storyPromo) {
                 TextContainer(
                     container: textContainer,
                     // `TextContainer` doesn't use this property much, we just need to define it as an UNORDERED type to get bullets
-                    list: FDContentList(ordering: "UNORDERED", listItems: [])
+                    list: FDContentList(ordering: "UNORDERED", listItems: []),
+                    destination: self.$destination
                 )
             }
         }
