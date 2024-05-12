@@ -50,12 +50,13 @@ struct ProminentStoryPromoRow: View {
                 }
 
                 HStack(alignment: .center) {
-                    if let topic = self.story.topic, let text = topic.text {
+                    // Display order badge if provided, otherwise display the topic
+                    if let text = self.story.badges?.first(where: { $0.type == "ORDERED" })?.text ?? self.story.topic?.text {
                         Button(action: {
-                            self.destination = topic.link?.destinations.first
+                            self.destination = self.story.topic?.link?.destinations.first
                         }) {
                             Text(text)
-                                .font(.footnote)
+                                .font(.caption)
                                 .foregroundColor(.accentColor)
                                 .lineLimit(1)
                                 .truncationMode(.tail)
