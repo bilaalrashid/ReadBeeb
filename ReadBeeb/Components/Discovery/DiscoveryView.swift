@@ -49,10 +49,10 @@ struct DiscoveryView: View {
         List {
             ForEach(Array(self.filteredStructuredItems.enumerated()), id: \.offset) { index, item in
                 if let header = item.header {
-                    DiscoveryItemView(item: header, index: index, destination: self.$destination)
+                    DiscoveryItemView(item: header, index: index, hasHeader: false, destination: self.$destination)
                 }
 
-                DiscoveryItemView(item: item.body, index: index, destination: self.$destination)
+                DiscoveryItemView(item: item.body, index: index, hasHeader: item.header != nil, destination: self.$destination)
             }
             .listRowSeparator(self.shouldHideSeparators ? .hidden : .automatic)
 

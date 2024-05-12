@@ -10,6 +10,8 @@ import BbcNews
 
 struct ProminentStoryPromoRow: View {
     let story: FDStoryPromo
+    /// If the row has a header displayed above it.
+    let hasHeader: Bool
 
     /// A secondary destination that the story promo can link to e.g. a topic discovery page.
     @Binding var destination: FDLinkDestination?
@@ -81,7 +83,7 @@ struct ProminentStoryPromoRow: View {
                 }
             }
         }
-        .padding(.top, 8)
+        .padding(.top, self.hasHeader ? 0 : 8)
     }
 }
 
@@ -110,6 +112,7 @@ struct ProminentStoryPromoRow: View {
                 ),
                 uasToken: "urn:bbc:optimo:asset:cglv53402mko"
             ),
+            hasHeader: false,
             destination: .constant(nil)
         )
         ProminentStoryPromoRow(
@@ -135,6 +138,7 @@ struct ProminentStoryPromoRow: View {
                 ),
                 uasToken: "urn:bbc:optimo:asset:cglv53402mko"
             ),
+            hasHeader: false,
             destination: .constant(nil)
         )
         ProminentStoryPromoRow(
@@ -163,6 +167,7 @@ struct ProminentStoryPromoRow: View {
                 ],
                 uasToken: "urn:bbc:optimo:asset:cglv53402mko"
             ),
+            hasHeader: false,
             destination: .constant(nil)
         )
         ProminentStoryPromoRow(
@@ -191,6 +196,7 @@ struct ProminentStoryPromoRow: View {
                 ],
                 uasToken: "urn:bbc:optimo:asset:cglv53402mko"
             ),
+            hasHeader: false,
             destination: .constant(nil)
         )
         ProminentStoryPromoRow(
@@ -219,6 +225,7 @@ struct ProminentStoryPromoRow: View {
                 ],
                 uasToken: "urn:bbc:optimo:asset:cglv53402mko"
             ),
+            hasHeader: false,
             destination: .constant(nil)
         )
     }
