@@ -11,8 +11,7 @@ import OSLog
 
 extension DestinationDetailScreen {
     @MainActor class ViewModel: ObservableObject {
-        let destination: FDLinkDestination
-
+        @Published private(set) var destination: FDLinkDestination
         @Published private(set) var data: FDResult?
         @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
 
@@ -69,6 +68,12 @@ extension DestinationDetailScreen {
                     let result = try await BbcNews().fetchFDUrl(url: self.destination.url)
                     self.data = result
                     self.networkRequest = .success
+                }
+            } catch NetworkError.newDestination(let link) {
+                if let destination = link.destinations.first {
+                    Logger.network.info("Found new destination \(destination.url) from \(self.destination.url)")
+                    self.destination = destination
+                    await self.fetchData()
                 }
             } catch let error {
                 self.networkRequest = .error
