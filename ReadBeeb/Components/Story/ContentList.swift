@@ -11,7 +11,7 @@ import BbcNews
 struct ContentList: View {
     let list: FDContentList
 
-    // A destination that the text container can link to e.g. another story.
+    /// A destination that the text container can link to e.g. another story.
     @Binding var destination: FDLinkDestination?
 
     var body: some View {

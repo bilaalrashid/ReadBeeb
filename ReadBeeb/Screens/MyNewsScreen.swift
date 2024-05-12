@@ -14,7 +14,7 @@ struct MyNewsScreen: View {
     @Query var selectedTopics: [Topic]
     @StateObject private var viewModel = ViewModel()
 
-    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    /// A secondary destination that the story promo can link to e.g. a topic discovery page.
     @State private var destination: FDLinkDestination?
     @State private var isEditingTopics = false
 

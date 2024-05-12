@@ -12,7 +12,7 @@ struct StoryPromoCollection: View {
     let collection: FDCollection
     let collectionIndex: Int
 
-    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    /// A secondary destination that the story promo can link to e.g. a topic discovery page.
     @Binding var destination: FDLinkDestination?
 
     var body: some View {

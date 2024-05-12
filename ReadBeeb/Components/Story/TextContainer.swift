@@ -14,7 +14,7 @@ struct TextContainer: View {
     /// If the item is part of the list, the index of the item in the list, zero-indexed
     var index: Int?
 
-    // A destination that the text container can link to e.g. another story.
+    /// A destination that the text container can link to e.g. another story.
     @Binding var destination: FDLinkDestination?
 
     @State private var externalUrl: URL?

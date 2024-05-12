@@ -11,7 +11,7 @@ import BbcNews
 struct Headline: View {
     let headline: FDHeadline
 
-    // A destination that the headline can link to e.g. a topic discovery page.
+    /// A destination that the headline can link to e.g. a topic discovery page.
     @Binding var destination: FDLinkDestination?
 
     var body: some View {

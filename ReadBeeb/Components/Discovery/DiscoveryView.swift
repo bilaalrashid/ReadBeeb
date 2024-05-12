@@ -13,10 +13,10 @@ struct DiscoveryView: View {
     let sectionsToInclude: [String]?
     let sectionsToExclude: [String]?
     let shouldHideSeparators: Bool
-    // Use AnyView to avoid specifying dummy generic type when there is no extra content
+    /// Use AnyView to avoid specifying dummy generic type when there is no extra content
     @ViewBuilder var extraContent: () -> AnyView?
 
-    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    /// A secondary destination that the story promo can link to e.g. a topic discovery page.
     @State private var destination: FDLinkDestination?
 
     init(

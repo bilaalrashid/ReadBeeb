@@ -14,7 +14,7 @@ struct VideoScreen: View {
 
     @EnvironmentObject var viewModel: GlobalViewModel
 
-    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    /// A secondary destination that the story promo can link to e.g. a topic discovery page.
     @State private var destination: FDLinkDestination?
 
     var body: some View {

@@ -11,7 +11,7 @@ import BbcNews
 struct ProminentStoryPromoRow: View {
     let story: FDStoryPromo
 
-    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    /// A secondary destination that the story promo can link to e.g. a topic discovery page.
     @Binding var destination: FDLinkDestination?
 
     /// Returns the appropriate badge to be displayed in the row, if applicable.

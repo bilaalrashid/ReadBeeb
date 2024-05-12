@@ -12,7 +12,7 @@ struct DiscoveryItemView: View {
     let item: FDItem
     let index: Int
 
-    // A secondary destination that the story promo can link to e.g. a topic discovery page.
+    /// A secondary destination that the story promo can link to e.g. a topic discovery page.
     @Binding var destination: FDLinkDestination?
 
     var body: some View {
