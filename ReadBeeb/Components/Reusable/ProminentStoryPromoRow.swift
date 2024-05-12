@@ -49,13 +49,13 @@ struct ProminentStoryPromoRow: View {
                         .multilineTextAlignment(.leading)
                 }
 
-                HStack {
+                HStack(alignment: .center) {
                     if let topic = self.story.topic, let text = topic.text {
                         Button(action: {
                             self.destination = topic.link?.destinations.first
                         }) {
                             Text(text)
-                                .font(.caption)
+                                .font(.footnote)
                                 .foregroundColor(.accentColor)
                                 .lineLimit(1)
                                 .truncationMode(.tail)
@@ -67,13 +67,13 @@ struct ProminentStoryPromoRow: View {
 
                     if let badge = self.badgeForDisplay, let text = badge.text {
                         Text(text)
-                            .font(.caption.weight(.heavy))
+                            .font(.footnote.weight(.heavy))
                             .foregroundColor(badge.brand == "SPORT" ? Constants.sportColor : .accentColor)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                     } else if let lastUpdated = self.story.updated {
                         Text(lastUpdated.formattedTimestamp)
-                            .font(.caption)
+                            .font(.footnote)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                     }
