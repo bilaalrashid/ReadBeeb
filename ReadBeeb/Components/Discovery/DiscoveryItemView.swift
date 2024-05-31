@@ -64,5 +64,5 @@ struct DiscoveryItemView: View {
 }
 
 #Preview {
-    DiscoveryItemView(item: .copyright(FDCopyright(lastUpdated: 0)), index: 0, hasHeader: false, destination: .constant(nil))
+    DiscoveryItemView(item: .copyright(FDCopyright(lastUpdated: Date())), index: 0, hasHeader: false, destination: .constant(nil))
 }

@@ -72,10 +72,10 @@ struct NewsStoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
         DestinationDetailScreen(
             destination: FDLinkDestination(
-                sourceFormat: "ABL",
+                sourceFormat: .abl,
                 url: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset",
                 id: "/news/world-europe-66631182",
-                presentation: FDPresentation(type: "", title: nil, canShare: true)
+                presentation: FDPresentation(type: .singleRenderer, title: nil, canShare: true)
             )
         )
     }

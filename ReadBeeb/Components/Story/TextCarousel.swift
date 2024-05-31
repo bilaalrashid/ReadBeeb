@@ -20,7 +20,7 @@ struct TextCarousel: View {
                 TextContainer(
                     container: textContainer,
                     // `TextContainer` doesn't use this property much, we just need to define it as an UNORDERED type to get bullets
-                    list: FDContentList(ordering: "UNORDERED", listItems: []),
+                    list: FDContentList(ordering: .unordered, listItems: []),
                     destination: self.$destination
                 )
             }
@@ -31,9 +31,9 @@ struct TextCarousel: View {
         guard let text = storyPromo.text else { return nil }
 
         return FDTextContainer(
-            containerType: "body",
-            text: FDTextContainerText(text: text, spans: [
-                FDTextContainerSpan(type: "link", startIndex: 0, length: text.count, attribute: nil, link: storyPromo.link)
+            containerType: .body,
+            text: FDAttributedText(text: text, spans: [
+                FDAttributedTextSpan(type: .link, startIndex: 0, length: text.count, attribute: nil, link: storyPromo.link)
             ])
         )
     }

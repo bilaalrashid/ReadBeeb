@@ -23,7 +23,7 @@ extension DestinationDetailScreen {
         init(destination: FDLinkDestination) {
             if !BbcNews.isApiUrl(url: destination.url), let apiUrl = BbcNews.convertWebUrlToApi(url: destination.url) {
                 self.destination = FDLinkDestination(
-                    sourceFormat: "ABL",
+                    sourceFormat: .abl,
                     url: apiUrl,
                     id: destination.id,
                     presentation: destination.presentation
@@ -65,7 +65,7 @@ extension DestinationDetailScreen {
             do {
                 if self.isApiUrl {
                     self.networkRequest = .loading
-                    let result = try await BbcNews().fetchFDUrl(url: self.destination.url)
+                    let result = try await BbcNews().fetch(url: self.destination.url)
                     self.data = result
                     self.networkRequest = .success
                 }
@@ -84,7 +84,7 @@ extension DestinationDetailScreen {
         /// Mocks a successful API request by storing fake data and a successful result state
         func mockSuccessfulApiRequest() {
             self.data = FDResult(
-                data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []),
+                data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: Date(), shareUrl: nil), items: []),
                 contentType: ""
             )
             self.networkRequest = .success

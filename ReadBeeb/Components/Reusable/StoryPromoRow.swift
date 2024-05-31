@@ -16,11 +16,11 @@ struct StoryPromoRow: View {
 
     /// Returns the appropriate badge to be displayed in the row, if applicable.
     private var badgeForDisplay: FDBadge? {
-        if let badge = self.story.badges?.first(where: { $0.type == "BREAKING" }) {
+        if let badge = self.story.badges?.first(where: { $0.type == .breaking }) {
             return badge
         }
 
-        return self.story.badges?.first { $0.type == "LIVE" }
+        return self.story.badges?.first { $0.type == .live }
     }
 
     var body: some View {
@@ -43,7 +43,7 @@ struct StoryPromoRow: View {
 
                 HStack {
                     // Display order badge if provided, otherwise display the topic
-                    if let text = self.story.badges?.first(where: { $0.type == "ORDERED" })?.text ?? self.story.topic?.text {
+                    if let text = self.story.badges?.first(where: { $0.type == .ordered })?.text ?? self.story.topic?.text {
                         Button(action: {
                             self.destination = self.story.topic?.link?.destinations.first
                         }) {
@@ -61,7 +61,7 @@ struct StoryPromoRow: View {
                     if let badge = self.badgeForDisplay, let text = badge.text {
                         Text(text)
                             .font(.caption.weight(.heavy))
-                            .foregroundColor(badge.brand == "SPORT" ? Constants.sportColor : .accentColor)
+                            .foregroundColor(badge.brand == .sport ? Constants.sportColor : .accentColor)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                     } else if let lastUpdated = self.story.updated {
@@ -81,18 +81,18 @@ struct StoryPromoRow: View {
     List {
         StoryPromoRow(
             story: FDStoryPromo(
-                style: "SMALL_HORIZONTAL_PROMO_CARD",
+                style: .smallHorizontalPromoCard,
                 languageCode: "en-gb",
                 text: "Why you probably missed the Northern Lights on Saturday",
-                link: FDLink(destinations: []),
                 subtext: "The Northern Lights waned early on Saturday night, but picked up again much later.",
-                updated: 1715511413682,
+                link: FDLink(destinations: [], trackers: []),
+                updated: Date(),
                 topic: FDTopic(text: "UK"),
                 image: FDImage(
                     source: FDImageSource(
                         url: "https://ichef.bbci.co.uk/moira/img/android/v3/{width}/cpsprodpb/3dfc/live/fd4d6280-102b-11ef-b521-293a36493444.jpg",
                         sizingMethod: FDImageSizingMethod(
-                            type: "SPECIFIC_WIDTHS",
+                            type: .specificWidths,
                             widthToken: "{width}",
                             widths: [128, 1024, 2560]
                         ),
@@ -106,18 +106,18 @@ struct StoryPromoRow: View {
         )
         StoryPromoRow(
             story: FDStoryPromo(
-                style: "SMALL_HORIZONTAL_PROMO_CARD",
+                style: .smallHorizontalPromoCard,
                 languageCode: "en-gb",
                 text: "Why you probably missed the Northern Lights on Saturday",
-                link: FDLink(destinations: []),
                 subtext: "The Northern Lights waned early on Saturday night, but picked up again much later.",
-                updated: 1715511413682,
+                link: FDLink(destinations: [], trackers: []),
+                updated: Date(),
                 topic: FDTopic(text: "Entertainment & Arts"),
                 image: FDImage(
                     source: FDImageSource(
                         url: "https://ichef.bbci.co.uk/moira/img/android/v3/{width}/cpsprodpb/3dfc/live/fd4d6280-102b-11ef-b521-293a36493444.jpg",
                         sizingMethod: FDImageSizingMethod(
-                            type: "SPECIFIC_WIDTHS",
+                            type: .specificWidths,
                             widthToken: "{width}",
                             widths: [128, 1024, 2560]
                         ),
@@ -131,18 +131,18 @@ struct StoryPromoRow: View {
         )
         StoryPromoRow(
             story: FDStoryPromo(
-                style: "SMALL_HORIZONTAL_PROMO_CARD",
+                style: .smallHorizontalPromoCard,
                 languageCode: "en-gb",
                 text: "Why you probably missed the Northern Lights on Saturday",
-                link: FDLink(destinations: []),
                 subtext: "The Northern Lights waned early on Saturday night, but picked up again much later.",
-                updated: 1715511413682,
+                link: FDLink(destinations: [], trackers: []),
+                updated: Date(),
                 topic: FDTopic(text: "Entertainment & Arts"),
                 image: FDImage(
                     source: FDImageSource(
                         url: "https://ichef.bbci.co.uk/moira/img/android/v3/{width}/cpsprodpb/3dfc/live/fd4d6280-102b-11ef-b521-293a36493444.jpg",
                         sizingMethod: FDImageSizingMethod(
-                            type: "SPECIFIC_WIDTHS",
+                            type: .specificWidths,
                             widthToken: "{width}",
                             widths: [128, 1024, 2560]
                         ),
@@ -151,7 +151,7 @@ struct StoryPromoRow: View {
                     metadata: nil
                 ),
                 badges: [
-                    FDBadge(type: "BREAKING", brand: "NEWS", text: "BREAKING")
+                    FDBadge(type: .breaking, brand: .news, text: "BREAKING")
                 ],
                 uasToken: "urn:bbc:optimo:asset:cglv53402mko"
             ),
@@ -159,18 +159,18 @@ struct StoryPromoRow: View {
         )
         StoryPromoRow(
             story: FDStoryPromo(
-                style: "SMALL_HORIZONTAL_PROMO_CARD",
+                style: .smallHorizontalPromoCard,
                 languageCode: "en-gb",
                 text: "Why you probably missed the Northern Lights on Saturday",
-                link: FDLink(destinations: []),
                 subtext: "The Northern Lights waned early on Saturday night, but picked up again much later.",
-                updated: 1715511413682,
+                link: FDLink(destinations: [], trackers: []),
+                updated: Date(),
                 topic: FDTopic(text: "Entertainment & Arts"),
                 image: FDImage(
                     source: FDImageSource(
                         url: "https://ichef.bbci.co.uk/moira/img/android/v3/{width}/cpsprodpb/3dfc/live/fd4d6280-102b-11ef-b521-293a36493444.jpg",
                         sizingMethod: FDImageSizingMethod(
-                            type: "SPECIFIC_WIDTHS",
+                            type: .specificWidths,
                             widthToken: "{width}",
                             widths: [128, 1024, 2560]
                         ),
@@ -179,7 +179,7 @@ struct StoryPromoRow: View {
                     metadata: nil
                 ),
                 badges: [
-                    FDBadge(type: "LIVE", brand: "NEWS", text: "LIVE")
+                    FDBadge(type: .live, brand: .news, text: "LIVE")
                 ],
                 uasToken: "urn:bbc:optimo:asset:cglv53402mko"
             ),
@@ -187,18 +187,18 @@ struct StoryPromoRow: View {
         )
         StoryPromoRow(
             story: FDStoryPromo(
-                style: "SMALL_HORIZONTAL_PROMO_CARD",
+                style: .smallHorizontalPromoCard,
                 languageCode: "en-gb",
                 text: "Why you probably missed the Northern Lights on Saturday",
-                link: FDLink(destinations: []),
                 subtext: "The Northern Lights waned early on Saturday night, but picked up again much later.",
-                updated: 1715511413682,
+                link: FDLink(destinations: [], trackers: []),
+                updated: Date(),
                 topic: FDTopic(text: "Entertainment & Arts"),
                 image: FDImage(
                     source: FDImageSource(
                         url: "https://ichef.bbci.co.uk/moira/img/android/v3/{width}/cpsprodpb/3dfc/live/fd4d6280-102b-11ef-b521-293a36493444.jpg",
                         sizingMethod: FDImageSizingMethod(
-                            type: "SPECIFIC_WIDTHS",
+                            type: .specificWidths,
                             widthToken: "{width}",
                             widths: [128, 1024, 2560]
                         ),
@@ -207,7 +207,7 @@ struct StoryPromoRow: View {
                     metadata: nil
                 ),
                 badges: [
-                    FDBadge(type: "LIVE", brand: "SPORT", text: "LIVE")
+                    FDBadge(type: .live, brand: .sport, text: "LIVE")
                 ],
                 uasToken: "urn:bbc:optimo:asset:cglv53402mko"
             ),

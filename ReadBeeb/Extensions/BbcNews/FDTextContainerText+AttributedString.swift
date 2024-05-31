@@ -8,7 +8,7 @@
 import SwiftUI
 import BbcNews
 
-extension FDTextContainerText {
+extension FDAttributedText {
     /// Returns an `AttributedString` representing the `FDTextContainerText` instance
     var attributedString: AttributedString {
         let attributedString = NSMutableAttributedString(string: self.text)
@@ -17,9 +17,9 @@ extension FDTextContainerText {
             let range = NSRange(location: span.startIndex, length: span.length)
 
             switch span.type {
-            case "link":
+            case .link:
                 self.applyLinkAttributes(for: attributedString, span: span, range: range)
-            case "emphasis":
+            case .emphasis:
                 self.applyEmphasisAttributes(for: attributedString, span: span, range: range)
             default:
                 break
@@ -29,7 +29,7 @@ extension FDTextContainerText {
         return AttributedString(attributedString)
     }
 
-    private func applyLinkAttributes(for attributedString: NSMutableAttributedString, span: FDTextContainerSpan, range: NSRange) {
+    private func applyLinkAttributes(for attributedString: NSMutableAttributedString, span: FDAttributedTextSpan, range: NSRange) {
         if let url = span.link?.destinations.first?.url {
             let linkAttributes: [NSAttributedString.Key: Any] = [
                 .link: url,
@@ -39,7 +39,7 @@ extension FDTextContainerText {
         }
     }
 
-    private func applyEmphasisAttributes(for attributedString: NSMutableAttributedString, span: FDTextContainerSpan, range: NSRange) {
+    private func applyEmphasisAttributes(for attributedString: NSMutableAttributedString, span: FDAttributedTextSpan, range: NSRange) {
         let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
         let italicFont = UIFont.italicSystemFont(ofSize: UIFont.labelFontSize)
         let combinedFontDescriptor = UIFont.preferredFont(forTextStyle: .body).fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic])
@@ -53,9 +53,9 @@ extension FDTextContainerText {
             attributedString.addAttribute(.font, value: combinedFont, range: range)
         } else {
             switch span.attribute {
-            case "bold":
+            case .bold:
                 attributedString.addAttribute(.font, value: boldFont, range: range)
-            case "italic":
+            case .italic:
                 attributedString.addAttribute(.font, value: italicFont, range: range)
             default:
                 break

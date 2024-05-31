@@ -39,7 +39,7 @@ struct VideoPortraitPromo: View {
                     VStack {
                         Spacer()
 
-                        if let badge = self.storyPromo.badges?.first(where: { $0.type == "VIDEO" }) {
+                        if let badge = self.storyPromo.badges?.first(where: { $0.type == .video }) {
                             HStack {
                                 Image(systemName: "play.fill")
                                     .resizable()

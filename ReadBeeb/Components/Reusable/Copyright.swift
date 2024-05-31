@@ -12,8 +12,8 @@ struct Copyright: View {
     let item: FDCopyright
 
     private var year: Int? {
-        let date = Date(timeIntervalSince1970: TimeInterval(item.lastUpdated) / 1000)
-        return Calendar.autoupdatingCurrent.dateComponents([.year], from: date).year
+        let components = Calendar.autoupdatingCurrent.dateComponents([.year], from: self.item.lastUpdated)
+        return components.year
     }
 
     var body: some View {
@@ -27,5 +27,5 @@ struct Copyright: View {
 }
 
 #Preview {
-    Copyright(item: FDCopyright(lastUpdated: 0))
+    Copyright(item: FDCopyright(lastUpdated: Date()))
 }

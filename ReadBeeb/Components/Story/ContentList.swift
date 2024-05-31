@@ -17,7 +17,7 @@ struct ContentList: View {
     var body: some View {
         ForEach(Array(self.list.listItems.enumerated()), id: \.offset) { index, item in
             TextContainer(
-                container: FDTextContainer(containerType: "", text: item),
+                container: FDTextContainer(containerType: .body, text: item),
                 list: self.list,
                 index: index,
                 destination: self.$destination
@@ -28,6 +28,6 @@ struct ContentList: View {
 
 struct ContentList_Previews: PreviewProvider {
     static var previews: some View {
-        ContentList(list: FDContentList(ordering: "UNORDERED", listItems: []), destination: .constant(nil))
+        ContentList(list: FDContentList(ordering: .unordered, listItems: []), destination: .constant(nil))
     }
 }

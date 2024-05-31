@@ -58,7 +58,7 @@ struct DiscoveryView: View {
 
             self.extraContent()
 
-            Copyright(item: FDCopyright(lastUpdated: Int(Date().timeIntervalSince1970) * 1000))
+            Copyright(item: FDCopyright(lastUpdated: Date()))
                 .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
@@ -71,7 +71,7 @@ struct DiscoveryView: View {
 #Preview {
     DiscoveryView(
         data: FDResult(
-            data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: 0, shareUrl: nil), items: []),
+            data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: Date(), shareUrl: nil), items: []),
             contentType: ""
         ),
         sectionsToInclude: nil,

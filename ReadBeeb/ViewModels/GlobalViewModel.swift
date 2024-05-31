@@ -64,11 +64,11 @@ import OSLog
         }
 
         let videoPromos = Array(storyPromos).filter { storyPromo in
-            return storyPromo.link.destinations.first { $0.presentation.type == "VERTICAL_VIDEO" } == nil
-            && storyPromo.badges?.first { $0.type == "VIDEO" } != nil
+            return storyPromo.link.destinations.first { $0.presentation.type == .verticalVideo } == nil
+            && storyPromo.badges?.first { $0.type == .video } != nil
         }
 
-        self.videoPromos = videoPromos.sorted { ($0.updated ?? 0) > ($1.updated ?? 0) }
+        self.videoPromos = videoPromos.sorted { ($0.updated ?? Date()) > ($1.updated ?? Date()) }
 
         if includeLinked {
             self.isExtraVideosLoaded = true
@@ -91,7 +91,7 @@ import OSLog
 
         for url in urls {
             do {
-                let result = try await BbcNews().fetchFDUrl(url: url)
+                let result = try await BbcNews().fetch(url: url)
                 storyPromos.formUnion(result.data.storyPromos)
             } catch let error {
                 self.networkRequest = .error

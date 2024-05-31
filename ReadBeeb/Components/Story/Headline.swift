@@ -67,9 +67,9 @@ struct Headline_Previews: PreviewProvider {
         Headline(
             headline: FDHeadline(
                 text: "Headline",
-                lastUpdated: 0,
-                firstPublished: 0,
-                lastPublished: 0,
+                lastUpdated: Date(),
+                firstPublished: Date(),
+                lastPublished: Date(),
                 byline: FDHeadlineByline(name: "Chris Mason", purpose: "BBC News"),
                 topic: FDTopic(text: "Politics", title: nil, link: nil),
                 languageCode: "en-GB",

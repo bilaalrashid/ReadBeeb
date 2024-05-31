@@ -64,7 +64,7 @@ struct VideoPortraitStory: View {
         do {
             self.networkResult = .loading
             if let url = self.storyPromo.link.destinations.first?.url {
-                let detail = try await BbcNews().fetchFDUrl(url: url)
+                let detail = try await BbcNews().fetch(url: url)
                 if case .videoPortraitStory(let videoPortraitStory) = detail.data.items.first {
                     await self.fetchMediaSelectorItems(media: videoPortraitStory.media)
                 }

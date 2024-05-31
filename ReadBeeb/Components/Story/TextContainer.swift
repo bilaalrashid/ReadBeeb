@@ -22,7 +22,7 @@ struct TextContainer: View {
     var body: some View {
         HStack(alignment: .top) {
             if let list = self.list {
-                if let index = self.index, list.ordering == "ORDERED" {
+                if let index = self.index, list.ordering == .ordered {
                     // The list is zero-index
                     Text("\(index + 1).")
                 } else {
@@ -40,11 +40,9 @@ struct TextContainer: View {
         .lineSpacing(4)
         .modify {
             switch self.container.containerType {
-            case "body":
-                $0.font(.body)
-            case "introduction":
+            case .introduction:
                 $0.font(.headline)
-            case "crosshead":
+            case .crosshead:
                 $0.font(.title3.bold())
             default:
                 $0.font(.body)
@@ -93,37 +91,47 @@ struct TextContainer: View {
     VStack {
         TextContainer(
             container: FDTextContainer(
-                containerType: "body",
-                text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [
-                    FDTextContainerSpan(type: "emphasis", startIndex: 5, length: 10, attribute: "bold", link: nil),
-                    FDTextContainerSpan(type: "emphasis", startIndex: 5, length: 15, attribute: "italic", link: nil),
-                    FDTextContainerSpan(type: "link", startIndex: 5, length: 20, attribute: nil, link: FDLink(destinations: [
-                        FDLinkDestination(sourceFormat: "abl", url: "https://bilaal.co.uk", id: "", presentation: FDPresentation(type: "", title: nil, canShare: nil))
-                    ]))
-                ])
+                containerType: .body,
+                text: FDAttributedText(
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.",
+                    spans: [
+                        FDAttributedTextSpan(type: .emphasis, startIndex: 5, length: 10, attribute: .bold, link: nil),
+                        FDAttributedTextSpan(type: .emphasis, startIndex: 5, length: 15, attribute: .italic, link: nil),
+                        FDAttributedTextSpan(type: .link, startIndex: 5, length: 20, attribute: nil, link: FDLink(
+                            destinations: [
+                                FDLinkDestination(
+                                    sourceFormat: .abl,
+                                    url: "https://bilaal.co.uk",
+                                    id: "",
+                                    presentation: FDPresentation(type: .singleRenderer, title: nil, canShare: nil))
+                            ],
+                            trackers: []
+                        ))
+                    ]
+                )
             ), destination: .constant(nil)
         )
         TextContainer(
             container: FDTextContainer(
-                containerType: "body",
-                text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
+                containerType: .body,
+                text: FDAttributedText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
             ),
-            list: FDContentList(ordering: "UNORDERED", listItems: []),
+            list: FDContentList(ordering: .unordered, listItems: []),
             destination: .constant(nil)
         )
         TextContainer(
             container: FDTextContainer(
-                containerType: "introduction",
-                text: FDTextContainerText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
+                containerType: .introduction,
+                text: FDAttributedText(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque imperdiet gravida. Nunc quis erat id ipsum egestas mollis. Etiam eleifend sit amet ipsum sit amet sollicitudin. Morbi ut venenatis ligula.", spans: [])
             ),
-            list: FDContentList(ordering: "ORDERED", listItems: []),
+            list: FDContentList(ordering: .ordered, listItems: []),
             index: 1,
             destination: .constant(nil)
         )
         TextContainer(
             container: FDTextContainer(
-                containerType: "crosshead",
-                text: FDTextContainerText(text: "A Title Here", spans: [])
+                containerType: .crosshead,
+                text: FDAttributedText(text: "A Title Here", spans: [])
             ),
             destination: .constant(nil)
         )
