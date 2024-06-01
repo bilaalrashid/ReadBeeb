@@ -59,7 +59,7 @@ struct MediaView: View {
                                 Button(action: {
                                     self.shouldPlay = true
                                 }) {
-                                    Image(systemName: "play.fill")
+                                    Image(systemName: self.media.source.type == .audio ? "speaker.wave.1.fill" : "play.fill")
                                         .resizable()
                                         .scaledToFit()
                                         .foregroundStyle(.white)

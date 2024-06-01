@@ -27,7 +27,7 @@ struct ThumbnailImageView: View {
                 )
             }
 
-            if let badge = self.badges?.first(where: { $0.type == .video }) {
+            if let badge = self.badges?.first(where: { [.video, .audio].contains($0.type) }) {
                 ZStack {
                     Rectangle()
                         .foregroundColor(.clear)
@@ -35,7 +35,7 @@ struct ThumbnailImageView: View {
                     VStack {
                         Spacer()
                         HStack {
-                            Image(systemName: "play.fill")
+                            Image(systemName: badge.type == .audio ? "speaker.wave.1.fill" : "play.fill")
                                 .resizable()
                                 .scaledToFit()
                                 .modify {
