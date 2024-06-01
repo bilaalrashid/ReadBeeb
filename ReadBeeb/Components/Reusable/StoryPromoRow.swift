@@ -23,10 +23,15 @@ struct StoryPromoRow: View {
         return self.story.badges?.first { $0.type == .live }
     }
 
+    /// The aspect ratio of the image.
+    private var imageAspectRatio: Double {
+        return self.story.image?.source.aspectRatio ?? Constants.defaultImageAspectRatio
+    }
+
     var body: some View {
         HStack {
             ThumbnailImageView(image: self.story.image, badges: self.story.badges, prominent: false)
-                .frame(width: 75 * 1.77777, height: 75)
+                .frame(width: 134, aspectRatio: self.imageAspectRatio)
 
             VStack {
                 if let title = self.story.text {

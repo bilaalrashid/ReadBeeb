@@ -25,10 +25,15 @@ struct ProminentStoryPromoRow: View {
         return self.story.badges?.first { $0.type == .live }
     }
 
+    /// The aspect ratio of the image.
+    private var imageAspectRatio: Double {
+        return self.story.image?.source.aspectRatio ?? Constants.defaultImageAspectRatio
+    }
+
     var body: some View {
         VStack(spacing: 12) {
             ThumbnailImageView(image: self.story.image, badges: self.story.badges, prominent: true)
-                .frame(width: UIScreen.main.bounds.width - 36, height: (UIScreen.main.bounds.width - 36) / 1.7777)
+                .frame(width: UIScreen.main.bounds.width - 36, aspectRatio: self.imageAspectRatio)
 
             VStack(spacing: 12) {
                 if let title = self.story.text {

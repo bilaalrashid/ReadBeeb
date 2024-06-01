@@ -12,6 +12,11 @@ struct ImageView: View {
     let image: FDImage
     var imageOnly = false
 
+    /// The aspect ratio of the image.
+    private var aspectRatio: Double {
+        return self.image.source.aspectRatio ?? Constants.defaultImageAspectRatio
+    }
+
     var body: some View {
         VStack {
             ZStack {
@@ -19,10 +24,7 @@ struct ImageView: View {
                     url: URL(string: self.image.largestImageUrl),
                     lowDataUrl: URL(string: self.image.largestImageUrl(upTo: 1024))
                 )
-                    .frame(
-                        width: UIScreen.main.bounds.size.width,
-                        height: UIScreen.main.bounds.size.width / (self.image.source.aspectRatio ?? 1.77777777)
-                    )
+                .frame(width: UIScreen.main.bounds.size.width, aspectRatio: self.aspectRatio)
 
                 VStack {
                     Spacer()
@@ -38,10 +40,7 @@ struct ImageView: View {
                     }
                 }
             }
-            .frame(
-                width: UIScreen.main.bounds.size.width,
-                height: UIScreen.main.bounds.size.width / (self.image.source.aspectRatio ?? 1.77777777)
-            )
+            .frame(width: UIScreen.main.bounds.size.width, aspectRatio: self.aspectRatio)
 
             if let caption = self.image.metadata?.caption, !self.imageOnly {
                 Text(caption)

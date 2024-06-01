@@ -86,6 +86,7 @@
 		3ACDBF042BE97F5A00B624F9 /* BbcNews in Frameworks */ = {isa = PBXBuildFile; productRef = 3ACDBF032BE97F5A00B624F9 /* BbcNews */; };
 		3ACDBF062BE9810800B624F9 /* Byline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDBF052BE9810800B624F9 /* Byline.swift */; };
 		3ACDBF082BEACD3D00B624F9 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDBF072BEACD3D00B624F9 /* ImageContainer.swift */; };
+		3AF483BD2C0A95FB00D237FE /* View+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF483BC2C0A95FB00D237FE /* View+Frame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +169,7 @@
 		3AC017BF2AC9BDB30010EBBE /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		3ACDBF052BE9810800B624F9 /* Byline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Byline.swift; sourceTree = "<group>"; };
 		3ACDBF072BEACD3D00B624F9 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
+		3AF483BC2C0A95FB00D237FE /* View+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Frame.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +303,7 @@
 				3A7C638A2AE3E4CE00BB114A /* URL+Identifiable.swift */,
 				3A2274B32AE580700041F77B /* URL+Init.swift */,
 				3A72BFD82AF66ECF00AC0E39 /* UIDevice+ModelIdentifier.swift */,
+				3AF483BC2C0A95FB00D237FE /* View+Frame.swift */,
 				3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */,
 			);
 			path = Extensions;
@@ -579,6 +582,7 @@
 				3A9124F92AAE20CD00EC0DCF /* TextContainer.swift in Sources */,
 				3A9125072AAFC39200EC0DCF /* Headline.swift in Sources */,
 				3A44C5FE2A9B5BE2001AB40F /* PopularScreen.swift in Sources */,
+				3AF483BD2C0A95FB00D237FE /* View+Frame.swift in Sources */,
 				3A72BFCD2AF305A900AC0E39 /* TextCarousel.swift in Sources */,
 				3ACDBF062BE9810800B624F9 /* Byline.swift in Sources */,
 				3A4D56A62AE5663700AD9555 /* ThumbnailImageView.swift in Sources */,

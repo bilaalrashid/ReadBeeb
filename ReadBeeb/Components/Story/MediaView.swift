@@ -29,7 +29,7 @@ struct MediaView: View {
                         Spacer()
                     }
                     .background(Color(UIColor.systemGray6))
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.77777)
+                    .frame(width: UIScreen.main.bounds.width, aspectRatio: self.media.source.aspectRatio)
                 case .loading, .notStarted:
                     VStack {
                         Spacer()
@@ -38,12 +38,12 @@ struct MediaView: View {
                         Spacer()
                     }
                     .background(Color(UIColor.systemGray6))
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.77777)
+                    .frame(width: UIScreen.main.bounds.width, aspectRatio: self.media.source.aspectRatio)
                 case .success:
                     // It is safe to access [0] on both properties, as their size is checked elsewhere
                     if let result = self.result {
                         BBCIPlayerVideoPlayer(url: result.validMedia[0].validConnection[0].hrefSecure, shouldPlay: self.$shouldPlay)
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.77777)
+                            .frame(width: UIScreen.main.bounds.width, aspectRatio: self.media.source.aspectRatio)
                     }
                 }
             } else {

@@ -23,4 +23,7 @@ enum Constants {
     static let sportColor = Color(red: 255 / 255, green: 210 / 255, blue: 48 / 255)
 
     static let maximumImageCacheAge: StorageExpiration = .days(1)
+
+    /// The default aspect ratio to use for an image.
+    static let defaultImageAspectRatio = 1.77777777
 }
