@@ -79,6 +79,21 @@ struct StoryPromoRow: View {
             }
             .padding(.all, 4)
         }
+        .contextMenu {
+            if let shareUrl = self.story.link.destinations.first?.shareUrl {
+                ShareLink(item: shareUrl)
+            }
+
+            #if DEBUG
+            if let apiUrl = self.story.link.destinations.first?.url {
+                Button(action: {
+                    UIPasteboard.general.string = apiUrl.absoluteString
+                }) {
+                    Label("Copy API URL", systemImage: "link")
+                }
+            }
+            #endif
+        }
     }
 }
 
