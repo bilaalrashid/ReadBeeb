@@ -57,6 +57,12 @@ struct DiscoveryItemView: View {
         case .copyright(let item):
             Copyright(item: item)
                 .listRowSeparator(.hidden)
+        #if DEBUG
+        case .unknown:
+            Text("UNKNOWN value of FDItem decoded")
+                .frame(maxWidth: .infinity)
+                .background(.red)
+        #endif
         default:
             EmptyView()
         }
