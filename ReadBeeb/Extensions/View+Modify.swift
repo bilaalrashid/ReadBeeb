@@ -11,7 +11,7 @@ extension View {
     /// Allows additional logic to view modifier.
     ///
     /// Example usage:
-    /// ```
+    /// ```swift
     /// struct ContentView: View {
     ///    var body: some View {
     ///        Text("Hello, world!")

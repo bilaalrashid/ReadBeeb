@@ -17,16 +17,20 @@ extension View {
     /// height of 200, and an aspect ratio of 1.5, giving a resulting width of
     /// 300.
     ///
-    ///     Rectangle()
-    ///         .fill(Color.purple)
-    ///         .frame(height: 200, aspectRatio: 1.5)
+    /// ```swift
+    /// Rectangle()
+    ///     .fill(Color.purple)
+    ///     .frame(height: 200, aspectRatio: 1.5)
+    /// ```
     ///
     /// The `alignment` parameter specifies this view's alignment within the
     /// frame.
     ///
-    ///     Text("Hello world!")
-    ///         .frame(height: 200, aspectRatio: 1.5, alignment: .topLeading)
-    ///         .border(Color.gray)
+    /// ```swift
+    /// Text("Hello world!")
+    ///     .frame(height: 200, aspectRatio: 1.5, alignment: .topLeading)
+    ///     .border(Color.gray)
+    /// ```
     ///
     /// In the example above, the text is positioned at the top, leading corner
     /// of the frame. If the text is taller than the frame, its bounds may
@@ -55,16 +59,20 @@ extension View {
     /// height of 200, and an aspect ratio of 1.5, giving a resulting width of
     /// 300.
     ///
-    ///     Rectangle()
-    ///         .fill(Color.purple)
-    ///         .frame(height: 200, aspectRatio: 1.5)
+    /// ```swift
+    /// Rectangle()
+    ///     .fill(Color.purple)
+    ///     .frame(height: 200, aspectRatio: 1.5)
+    /// ```
     ///
     /// The `alignment` parameter specifies this view's alignment within the
     /// frame.
     ///
-    ///     Text("Hello world!")
-    ///         .frame(height: 200, aspectRatio: 1.5, alignment: .topLeading)
-    ///         .border(Color.gray)
+    /// ```swift
+    /// Text("Hello world!")
+    ///     .frame(height: 200, aspectRatio: 1.5, alignment: .topLeading)
+    ///     .border(Color.gray)
+    /// ```
     ///
     /// In the example above, the text is positioned at the top, leading corner
     /// of the frame. If the text is taller than the frame, its bounds may
