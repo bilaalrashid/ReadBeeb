@@ -17,13 +17,13 @@ struct ThumbnailImageView: View {
         ZStack {
             if self.prominent {
                 RemoteImage(
-                    url: URL(string: self.image?.largestImageUrl),
-                    lowDataUrl: URL(string: self.image?.largestImageUrl(upTo: 400))
+                    url: self.image?.largestImageUrl,
+                    lowDataUrl: self.image?.largestImageUrl(upTo: 400)
                 )
             } else {
                 RemoteImage(
-                    url: URL(string: self.image?.largestImageUrl(upTo: 400)),
-                    lowDataUrl: URL(string: self.image?.largestImageUrl(upTo: 200))
+                    url: self.image?.largestImageUrl(upTo: 400),
+                    lowDataUrl: self.image?.largestImageUrl(upTo: 200)
                 )
             }
 

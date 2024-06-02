@@ -124,8 +124,9 @@ struct StoryView: View {
             }
             .compactMap { $0 }
 
-        let urls = images.map { monitor.currentPath.isConstrained ? $0.largestImageUrl(upTo: 400) : $0.largestImageUrl }
-        return urls.map { URL(string: $0) }.compactMap { $0 }
+        return images
+            .map { monitor.currentPath.isConstrained ? $0.largestImageUrl(upTo: 400) : $0.largestImageUrl }
+            .compactMap { $0 }
     }
 
     private func mainImages(from data: FDResult) -> [FDImage] {

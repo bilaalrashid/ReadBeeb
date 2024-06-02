@@ -47,11 +47,7 @@ extension DestinationDetailScreen {
 
         /// The type of the destination to be displayed in the view.
         var destinationType: String? {
-            if let url = URL(string: self.destination.url) {
-                return url.valueOf("type")
-            }
-
-            return nil
+            return self.destination.url.valueOf("type")
         }
 
         func fetchDataIfNotExists() async {
@@ -90,8 +86,8 @@ extension DestinationDetailScreen {
             self.networkRequest = .success
         }
 
-        private func isBBCSportUrl(url: String) -> Bool {
-            return url.contains("https://www.bbc.co.uk/sport/")
+        private func isBBCSportUrl(url: URL) -> Bool {
+            return url.absoluteString.contains("https://www.bbc.co.uk/sport/")
         }
     }
 }

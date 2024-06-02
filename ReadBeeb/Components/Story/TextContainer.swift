@@ -81,7 +81,7 @@ struct TextContainer: View {
         }
 
         return destinations.first {
-            $0.url == url.absoluteString
+            $0.url == url
         }
     }
 }
@@ -101,7 +101,8 @@ struct TextContainer: View {
                             destinations: [
                                 FDLinkDestination(
                                     sourceFormat: .abl,
-                                    url: "https://bilaal.co.uk",
+                                    // swiftlint:disable:next force_unwrapping
+                                    url: URL(string: "https://bilaal.co.uk")!,
                                     id: "",
                                     presentation: FDPresentation(type: .singleRenderer, title: nil, canShare: nil))
                             ],

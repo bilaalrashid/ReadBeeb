@@ -14,14 +14,14 @@ struct VideoPortraitPromo: View {
 
     var body: some View {
         ZStack {
-            KFImage(URL(string: self.storyPromo.image?.largestImageUrl))
+            KFImage(self.storyPromo.image?.largestImageUrl)
                 .placeholder {
                     Rectangle()
                         .fill(Color.gray.opacity(0.1))
                 }
                 .resizable()
                 .modify {
-                    if let url = URL(string: self.storyPromo.image?.largestImageUrl(upTo: 1024)) {
+                    if let url = self.storyPromo.image?.largestImageUrl(upTo: 1024) {
                         $0.lowDataModeSource(.network(url))
                     } else {
                         $0

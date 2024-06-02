@@ -34,11 +34,9 @@ struct DestinationDetailScreen: View {
                     }
                 }
             } else {
-                if let url = URL(string: self.viewModel.destination.url) {
-                    StoryWebView(url: url) {
-                        // Assign any non-empty value to prevent the empty data overlay being displayed
-                        self.viewModel.mockSuccessfulApiRequest()
-                    }
+                StoryWebView(url: self.viewModel.destination.url) {
+                    // Assign any non-empty value to prevent the empty data overlay being displayed
+                    self.viewModel.mockSuccessfulApiRequest()
                 }
             }
         }
@@ -73,7 +71,8 @@ struct NewsStoryDetailView_Previews: PreviewProvider {
         DestinationDetailScreen(
             destination: FDLinkDestination(
                 sourceFormat: .abl,
-                url: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset",
+                // swiftlint:disable:next force_unwrapping
+                url: URL(string: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset")!,
                 id: "/news/world-europe-66631182",
                 presentation: FDPresentation(type: .singleRenderer, title: nil, canShare: true)
             )
