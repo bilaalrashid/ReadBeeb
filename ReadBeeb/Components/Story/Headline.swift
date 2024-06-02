@@ -17,7 +17,7 @@ struct Headline: View {
     var body: some View {
         VStack(spacing: 16) {
             Text(self.headline.text)
-                .font(.title2.weight(.semibold))
+                .font(.system(size: 24, weight: .semibold))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
 
