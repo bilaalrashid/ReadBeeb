@@ -9,7 +9,7 @@ import SwiftUI
 import BbcNews
 
 struct DiscoveryView: View {
-    let data: FDResult
+    let data: FDData
     let sectionsToInclude: [String]?
     let sectionsToExclude: [String]?
     let shouldHideSeparators: Bool
@@ -20,7 +20,7 @@ struct DiscoveryView: View {
     @State private var destination: FDLinkDestination?
 
     init(
-        data: FDResult,
+        data: FDData,
         sectionsToInclude: [String]? = nil,
         sectionsToExclude: [String]? = nil,
         shouldHideSeparators: Bool = false,
@@ -35,14 +35,14 @@ struct DiscoveryView: View {
 
     var filteredStructuredItems: [FDStructuredDataItem] {
         if let sectionsToInclude = self.sectionsToInclude {
-            return self.data.data.structuredItems.including(headers: sectionsToInclude)
+            return self.data.structuredItems.including(headers: sectionsToInclude)
         }
 
         if let sectionsToExclude = self.sectionsToExclude {
-            return self.data.data.structuredItems.excluding(headers: sectionsToExclude)
+            return self.data.structuredItems.excluding(headers: sectionsToExclude)
         }
 
-        return self.data.data.structuredItems
+        return self.data.structuredItems
     }
 
     var body: some View {
@@ -70,10 +70,7 @@ struct DiscoveryView: View {
 
 #Preview {
     DiscoveryView(
-        data: FDResult(
-            data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: Date(), shareUrl: nil), items: []),
-            contentType: ""
-        ),
+        data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: Date(), shareUrl: nil), items: []),
         sectionsToInclude: nil,
         sectionsToExclude: nil
     ) {

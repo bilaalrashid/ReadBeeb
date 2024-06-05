@@ -12,7 +12,8 @@ import LazyPager
 import BbcNews
 
 struct StoryView: View {
-    let data: FDResult
+    /// The data representing the story.
+    let data: FDData
 
     /// A destination that the story can link to e.g. a discovery page or another story.
     @State private var destination: FDLinkDestination?

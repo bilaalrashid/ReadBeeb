@@ -10,13 +10,13 @@ import BbcNews
 import OSLog
 
 @MainActor class GlobalViewModel: ObservableObject {
-    @Published private(set) var data: FDResult?
+    @Published private(set) var result: FDResult?
     @Published private(set) var videoPromos = [FDStoryPromo]()
     @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
     private var isExtraVideosLoaded = false
 
     var isEmpty: Bool {
-        return self.data?.data.structuredItems.isEmpty ?? true
+        return self.result?.data.structuredItems.isEmpty ?? true
     }
 
     func fetchDataIfNotExists() async {
@@ -33,7 +33,7 @@ import OSLog
             let postcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
             let result = try await BbcNews().fetchIndexDiscoveryPage(postcode: postcode)
 
-            self.data = result
+            self.result = result
 
             // Don't include linked here, this will be too long to load for all pages
             await self.fetchAllVideos(includeLinked: false)
@@ -52,14 +52,14 @@ import OSLog
     }
 
     func fetchAllVideos(includeLinked: Bool = true) async {
-        guard let data = self.data else { return }
+        guard let result = self.result else { return }
 
         var storyPromos = Set<FDStoryPromo>()
 
-        storyPromos.formUnion(data.data.storyPromos)
+        storyPromos.formUnion(result.data.storyPromos)
 
         if includeLinked {
-            let linkedStoryPromos = await self.fetchLinkedStoryPromos(for: data)
+            let linkedStoryPromos = await self.fetchLinkedStoryPromos(for: result)
             storyPromos.formUnion(linkedStoryPromos)
         }
 
@@ -75,8 +75,8 @@ import OSLog
         }
     }
 
-    private func fetchLinkedStoryPromos(for data: FDResult) async -> Set<FDStoryPromo> {
-        let headers = data.data.structuredItems.compactMap { $0.header }
+    private func fetchLinkedStoryPromos(for result: FDResult) async -> Set<FDStoryPromo> {
+        let headers = result.data.structuredItems.compactMap { $0.header }
 
         let urls = headers.compactMap {
             switch $0 {

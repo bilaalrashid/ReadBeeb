@@ -24,13 +24,13 @@ struct DestinationDetailScreen: View {
                 if let data = self.viewModel.data {
                     switch self.viewModel.destinationType ?? "" {
                     case "index", "topic":
-                        DiscoveryView(data: data)
+                        DiscoveryView(data: data.data)
                     case "asset":
-                        StoryView(data: data)
+                        StoryView(data: data.data)
                     case "verticalvideo":
                         EmptyView()
                     default:
-                        StoryView(data: data)
+                        StoryView(data: data.data)
                     }
                 }
             } else {

@@ -19,8 +19,8 @@ struct VideoScreen: View {
 
     var body: some View {
         VStack {
-            if let data = self.viewModel.data {
-                DiscoveryView(data: data, sectionsToInclude: self.sectionsToInclude, shouldHideSeparators: true) {
+            if let result = self.viewModel.result {
+                DiscoveryView(data: result.data, sectionsToInclude: self.sectionsToInclude, shouldHideSeparators: true) {
                     AnyView(
                         ForEach(Array(self.viewModel.videoPromos.enumerated()), id: \.offset) { _, storyPromo in
                             if let destination = storyPromo.link.destinations.first {
