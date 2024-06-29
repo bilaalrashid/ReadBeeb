@@ -25,7 +25,7 @@ import OSLog
 
     /// If the results from the API are empty.
     var isEmpty: Bool {
-        return self.data?.structuredItems.isEmpty ?? true
+        return self.data?.itemGroups.isEmpty ?? true
     }
 
     /// Fetch the main data for the view model, if it hasn't been fetched before.
@@ -95,7 +95,7 @@ import OSLog
     /// - Parameter data: The API data that defines the linked discovery pages to fetch.
     /// - Returns: All story promos found.
     private func fetchLinkedStoryPromos(for data: FDData) async -> Set<FDStoryPromo> {
-        let headers = data.structuredItems.compactMap { $0.header }
+        let headers = data.itemGroups.compactMap { $0.header }
 
         let urls = headers.compactMap {
             switch $0 {

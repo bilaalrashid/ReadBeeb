@@ -35,16 +35,16 @@ struct DiscoveryView: View {
         self.extraContent = extraContent
     }
 
-    var filteredStructuredItems: [FDStructuredDataItem] {
+    var filteredStructuredItems: [FDItemGroup] {
         if let sectionsToInclude = self.sectionsToInclude {
-            return self.data.structuredItems.including(headers: sectionsToInclude)
+            return self.data.itemGroups.including(headers: sectionsToInclude)
         }
 
         if let sectionsToExclude = self.sectionsToExclude {
-            return self.data.structuredItems.excluding(headers: sectionsToExclude)
+            return self.data.itemGroups.excluding(headers: sectionsToExclude)
         }
 
-        return self.data.structuredItems
+        return self.data.itemGroups
     }
 
     var body: some View {

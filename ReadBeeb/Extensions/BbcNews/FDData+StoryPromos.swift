@@ -13,7 +13,7 @@ extension FDData {
     var storyPromos: Set<FDStoryPromo> {
         var storyPromos = Set<FDStoryPromo>()
 
-        for item in self.structuredItems {
+        for item in self.itemGroups {
             switch item.body {
             case .billboard(let collection):
                 storyPromos.formUnion(collection.storyPromos)
