@@ -8,8 +8,12 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a image and related caption.
 struct ImageView: View {
+    /// The image to display.
     let image: FDImage
+
+    /// If the caption should be hidden.
     var imageOnly = false
 
     /// The aspect ratio of the image.

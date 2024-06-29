@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// A result of topics retrieved from the config JSON file.
 final class TopicResult: Codable {
+    /// A list of topics.
     var topics: [Topic] = []
 }

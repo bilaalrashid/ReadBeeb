@@ -9,6 +9,9 @@ import Foundation
 import BbcNews
 
 extension FDData {
+    /// The list of ordered items to be displayed to the user, grouped with their headers.
+    ///
+    /// This will ignore any header that is not followed by a body.
     var structuredItems: [FDStructuredDataItem] {
         var structuredItems = [FDStructuredDataItem]()
         var currentHeader: FDItem?
@@ -34,7 +37,8 @@ struct FDStructuredDataItem {
 }
 
 extension Array<FDStructuredDataItem> {
-    /// Filters out any sections to exclude any that do not match the specified headers
+    /// Filters out any sections to exclude any that do not match the specified headers.
+    ///
     /// - Parameter includableHeaders: The headers of sections that will not be filtered out
     /// - Returns: The filtered items
     /// - Note: `"Copyright"`is treated as a special-case section header
@@ -50,7 +54,8 @@ extension Array<FDStructuredDataItem> {
         }
     }
 
-    /// Filters out any sections to exclude any that match the specified headers
+    /// Filters out any sections to exclude any that match the specified headers.
+    ///
     /// - Parameter excludableHeaders: The headers of sections to filter out
     /// - Returns: The filtered items
     /// - Note: `"Copyright"`is treated as a special-case section header

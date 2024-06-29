@@ -10,9 +10,15 @@ import BbcNews
 import OSLog
 
 extension DestinationDetailScreen {
+    /// The view model for the destination detail screen.
     @MainActor class ViewModel: ObservableObject {
+        /// The destination that the detail screen displays.
         @Published private(set) var destination: FDLinkDestination
+
+        /// The result of the network request.
         @Published private(set) var data: FDResult?
+
+        /// The status of the network request.
         @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
 
         /// Creates a view model for DestinationDetailScreen.
@@ -33,14 +39,17 @@ extension DestinationDetailScreen {
             }
         }
 
+        /// If the results from the API are empty.
         var isEmpty: Bool {
             return self.data == nil
         }
 
+        /// If the destination URL is served by the BBC News API.
         var isApiUrl: Bool {
             return BbcNews.isApiUrl(url: self.destination.url)
         }
 
+        /// If the destination URL is served by the BBC Sport brand.
         var isBBCSportUrl: Bool {
             return self.isBBCSportUrl(url: self.destination.url)
         }
@@ -50,6 +59,7 @@ extension DestinationDetailScreen {
             return self.destination.url.valueOf("type")
         }
 
+        /// Fetch the contents of the destination URL from the API, if it haven't already been fetched.
         func fetchDataIfNotExists() async {
             // We don't want to start another network request if there is already one ongoing
             if self.networkRequest != .loading && self.isEmpty {
@@ -57,6 +67,7 @@ extension DestinationDetailScreen {
             }
         }
 
+        /// Fetch the contents of the destination URL from the API.
         func fetchData() async {
             do {
                 if self.isApiUrl {
@@ -77,7 +88,7 @@ extension DestinationDetailScreen {
             }
         }
 
-        /// Mocks a successful API request by storing fake data and a successful result state
+        /// Mocks a successful API request by storing fake data and a successful result state.
         func mockSuccessfulApiRequest() {
             self.data = FDResult(
                 data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: Date(), shareUrl: nil), items: []),
@@ -86,6 +97,10 @@ extension DestinationDetailScreen {
             self.networkRequest = .success
         }
 
+        /// Calculates if a URL is served by the BBC Sport brand.
+        ///
+        /// - Parameter url: The URL to test.
+        /// - Returns: If the URL is served by the BBC Sport brand.
         private func isBBCSportUrl(url: URL) -> Bool {
             return url.absoluteString.contains("https://www.bbc.co.uk/sport/")
         }

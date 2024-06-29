@@ -9,9 +9,12 @@ import SwiftUI
 import AVKit
 import OSLog
 
+/// A view that displays a video player.
 struct BBCIPlayerVideoPlayer: View {
+    /// The video player being played.
     private let player: AVPlayer
 
+    /// Has the user requested that the media item should be played.
     @Binding var shouldPlay: Bool
 
     init(url: String, shouldPlay: Binding<Bool>) {
@@ -21,8 +24,8 @@ struct BBCIPlayerVideoPlayer: View {
     }
 
     var body: some View {
-        // Use a custom wrapper over AVVideoPlayer as the SwiftUI VideoPlayer doesn't include a full screen toggle
-        VideoPlayer(player: player) {
+        // Use a custom wrapper over `AVVideoPlayer` as the SwiftUI `VideoPlayer` doesn't include a full screen toggle
+        VideoPlayer(player: self.player) {
             // Stop showing video player once finished
             self.shouldPlay = false
         }

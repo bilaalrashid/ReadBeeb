@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3A2274AF2AE5769E0041F77B /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274AE2AE5769E0041F77B /* Carousel.swift */; };
 		3A2274B22AE57F440041F77B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3A2274B12AE57F440041F77B /* Kingfisher */; };
-		3A2274B42AE580700041F77B /* URL+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274B32AE580700041F77B /* URL+Init.swift */; };
 		3A2274B62AE5A5180041F77B /* VideoPortraitStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274B52AE5A5180041F77B /* VideoPortraitStory.swift */; };
 		3A2274BA2AE5CCCC0041F77B /* VideoPortraitPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274B92AE5CCCC0041F77B /* VideoPortraitPromo.swift */; };
 		3A2274BC2AE5D9A30041F77B /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274BB2AE5D9A30041F77B /* RemoteImage.swift */; };
@@ -91,7 +90,6 @@
 
 /* Begin PBXFileReference section */
 		3A2274AE2AE5769E0041F77B /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
-		3A2274B32AE580700041F77B /* URL+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Init.swift"; sourceTree = "<group>"; };
 		3A2274B52AE5A5180041F77B /* VideoPortraitStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPortraitStory.swift; sourceTree = "<group>"; };
 		3A2274B92AE5CCCC0041F77B /* VideoPortraitPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPortraitPromo.swift; sourceTree = "<group>"; };
 		3A2274BB2AE5D9A30041F77B /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 				3A4F65D92ADDE51F003673BF /* URL+ValueOf.swift */,
 				3A7C63832AE3410300BB114A /* URL+IsBBC.swift */,
 				3A7C638A2AE3E4CE00BB114A /* URL+Identifiable.swift */,
-				3A2274B32AE580700041F77B /* URL+Init.swift */,
 				3A72BFD82AF66ECF00AC0E39 /* UIDevice+ModelIdentifier.swift */,
 				3AF483BC2C0A95FB00D237FE /* View+Frame.swift */,
 				3A9124FC2AAE237B00EC0DCF /* View+Modify.swift */,
@@ -563,7 +560,6 @@
 				3A4F65C92ADC822B003673BF /* StoryView.swift in Sources */,
 				3A44C60A2A9B73BA001AB40F /* CollectionHeader.swift in Sources */,
 				3AA49AAC2AF8298500451FCC /* Postcode.swift in Sources */,
-				3A2274B42AE580700041F77B /* URL+Init.swift in Sources */,
 				3A2274BA2AE5CCCC0041F77B /* VideoPortraitPromo.swift in Sources */,
 				3A44C5FA2A9B5AA7001AB40F /* TopStoriesScreen.swift in Sources */,
 				3A5F8B082AF6A71200E1CF93 /* MyNewsViewModel.swift in Sources */,

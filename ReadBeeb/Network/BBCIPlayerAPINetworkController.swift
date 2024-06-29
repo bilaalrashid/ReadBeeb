@@ -10,7 +10,9 @@ import Alamofire
 import OSLog
 import UIKit
 
+/// A network controller to fetch media items.
 struct BBCIPlayerAPINetworkController {
+    /// The base URI for the BBC
     static let baseUri = "https://open.live.bbc.co.uk"
 
     /// The session to perform network requests from
@@ -27,6 +29,10 @@ struct BBCIPlayerAPINetworkController {
         self.session = Session(configuration: configuration)
     }
 
+    /// Returns a list of media selectors for a given media PID.
+    ///
+    /// - Parameter pid: The ID of the media item.
+    /// - Returns: A list of media selectors for the media item.
     func fetchMediaConnections(for pid: String) async throws -> MediaSelectorResult {
         let url = BBCIPlayerAPINetworkController.baseUri + "/mediaselector/6/select/version/2.0/format/json/mediaset/mobile-phone-main/vpid/\(pid)/"
         Logger.network.debug("Requesting: \(url, privacy: .public)")

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// The root view of the system.
 struct ContentView: View {
     @StateObject private var viewModel = GlobalViewModel()
 

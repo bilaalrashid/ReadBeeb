@@ -8,7 +8,9 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays the section header of a story.
 struct SectionHeader: View {
+    /// The section header to display.
     let header: FDSectionHeader
 
     var body: some View {

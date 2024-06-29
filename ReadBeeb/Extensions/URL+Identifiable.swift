@@ -8,6 +8,7 @@
 import Foundation
 
 extension URL: Identifiable {
+    /// A wrapper around `absoluteString` to conform `URL` to identifiable.
     public var id: String {
         return self.absoluteString
     }

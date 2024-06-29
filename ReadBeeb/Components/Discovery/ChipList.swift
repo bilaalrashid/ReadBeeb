@@ -8,7 +8,9 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a chip list.
 struct ChipList: View {
+    /// The chip list to display.
     let item: FDChipList
 
     var body: some View {

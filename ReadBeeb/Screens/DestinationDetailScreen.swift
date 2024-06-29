@@ -9,12 +9,17 @@ import SwiftUI
 import BbcNews
 import OSLog
 
+/// The detail screen for a given destination.
 struct DestinationDetailScreen: View {
+    /// The view model representing the screen.
     @StateObject private var viewModel: ViewModel
-
+    
+    /// Creates a new detail screen for a destination.
+    ///
+    /// - Parameter destination: The destination to display in the screen.
     init(destination: FDLinkDestination) {
-        // Initialising a StateObject like this is officially supported and endorsed by the SwiftUI team at Apple
-        // See https://stackoverflow.com/a/62636048/10370537
+        // Initialising a StateObject like this is officially supported and endorsed by the SwiftUI team at Apple. See:
+        // https://stackoverflow.com/a/62636048/10370537
         self._viewModel = StateObject(wrappedValue: ViewModel(destination: destination))
     }
 

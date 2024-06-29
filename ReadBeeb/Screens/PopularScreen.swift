@@ -8,9 +8,12 @@
 import SwiftUI
 import OSLog
 
+/// The screen displaying the most popular story promos and topics.
 struct PopularScreen: View {
+    /// The sections from the API's main feed to display in the screen.
     private let sectionsToInclude = ["Most Read", "Topics in the news"]
 
+    /// The global view model representing the system.
     @EnvironmentObject var viewModel: GlobalViewModel
 
     var body: some View {

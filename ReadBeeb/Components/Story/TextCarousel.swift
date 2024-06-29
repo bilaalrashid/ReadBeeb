@@ -8,7 +8,11 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a carousel of text paragraphs.
+///
+/// This is currently implemented as an unordered, bullet list.
 struct TextCarousel: View {
+    /// The carousel to display.
     let carousel: FDCarousel
 
     /// A destination that the text container can link to e.g. another story.
@@ -27,6 +31,7 @@ struct TextCarousel: View {
         }
     }
 
+    /// Converts a `FDStoryPromo` to a `FDTextContainer`.
     private func textContainer(for storyPromo: FDStoryPromo) -> FDTextContainer? {
         guard let text = storyPromo.text else { return nil }
 

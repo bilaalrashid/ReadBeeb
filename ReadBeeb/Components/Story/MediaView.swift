@@ -9,11 +9,18 @@ import SwiftUI
 import BbcNews
 import OSLog
 
+/// A view that displays an interactive, playable media item.
 struct MediaView: View {
+    /// The media item to be played.
     let media: FDMedia
 
+    /// Has the user requested that the media item should be played.
     @State private var shouldPlay = false
+
+    /// A list of media selectors that can be used to play the media item from.
     @State private var result: MediaSelectorResult?
+
+    /// The state of the network request fetching the media selectors.
     @State private var networkResult = NetworkRequestStatus.notStarted
 
     var body: some View {
@@ -80,6 +87,7 @@ struct MediaView: View {
         }
     }
 
+    /// Performs a network request to fetch a list of media selectors for this media item.
     private func fetchMediaSelectorItems() async {
         do {
             self.networkResult = .loading

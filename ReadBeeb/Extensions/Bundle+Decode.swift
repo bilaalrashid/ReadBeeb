@@ -8,7 +8,7 @@
 import Foundation
 
 extension Bundle {
-    /// Decode a JSON file for a given type
+    /// Decode a JSON file for a given type.
     ///
     /// - Note: This file will throw fatalError() if the decoder is unable to decode the JSON to the given type.
     ///         Files stored in the Bundle are static and hardcoded.

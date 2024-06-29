@@ -8,9 +8,15 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a thumbnail image for a story promo.
 struct ThumbnailImageView: View {
+    /// The image to display.
     let image: FDImage?
+
+    /// A list of badges to display over the thumbnail image.
     let badges: [FDBadge]?
+
+    /// If the thumbnail is being displayed in a prominent story promo row.
     let prominent: Bool
 
     var body: some View {

@@ -8,8 +8,12 @@
 import SwiftUI
 import WebKit
 
+/// A view that wraps `WKWebView` using `UIViewRepresentable`.
 struct StoryWebView: UIViewRepresentable {
+    /// The URL to display in the web view.
     let url: URL
+
+    /// The callback executed when the URL has finished loading in the web view.
     let didFinishLoading: () -> Void
 
     func makeCoordinator() -> Coordinator {

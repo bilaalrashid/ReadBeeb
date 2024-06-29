@@ -8,6 +8,7 @@
 import Foundation
 
 extension Date {
+    /// A human-readable string describing the date.
     var formattedTimestamp: String {
         let lastWeek = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
 

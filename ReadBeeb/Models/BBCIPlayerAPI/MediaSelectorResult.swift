@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// A result from the API returning a list of selectors for a media item.
 struct MediaSelectorResult: Codable, Equatable, Hashable {
+    /// The list of media items.
     let media: [MediaSelectorItem]
 }

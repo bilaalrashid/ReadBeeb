@@ -9,19 +9,27 @@ import Foundation
 import SwiftUI
 import Kingfisher
 
+/// Global constants for the system.
 enum Constants {
+    /// Identifiers for UserDefault options.
     enum UserDefaultIdentifiers {
+        /// The currently selected postcode area.
         static let postcodeIdentifier = "uk.co.bilaal.ReadBeeb.storage.postcode"
     }
 
+    /// The bundle identifier of the app.
     static let bundleIdentifier = Bundle.main.bundleIdentifier ?? "uk.co.bilaal.ReadBeeb"
 
+    /// The primary theme color of the system.
     static let primaryColor = Constants.newsColor
 
+    /// The color representing the BBC News brand.
     static let newsColor = Color(red: 184 / 255, green: 0, blue: 0)
 
+    /// The color representing the BBC Sports brand.
     static let sportColor = Color(red: 255 / 255, green: 210 / 255, blue: 48 / 255)
 
+    /// The maximum age of an image in the image cache.
     static let maximumImageCacheAge: StorageExpiration = .days(1)
 
     /// The default aspect ratio to use for an image.

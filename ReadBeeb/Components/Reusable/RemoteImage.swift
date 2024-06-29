@@ -8,8 +8,12 @@
 import SwiftUI
 import Kingfisher
 
+/// A view that displays an image stored on a remote server.
 struct RemoteImage: View {
+    /// The URL of the image to display.
     let url: URL?
+
+    /// A URL of an alternative image to use when the client device is in low data mode.
     let lowDataUrl: URL?
 
     var body: some View {

@@ -8,8 +8,10 @@
 import SwiftUI
 import SwiftData
 
+/// The ReedBeeb app.
 @main
 struct ReadBeebApp: App {
+    /// Creates a new ReedBeeb app.
     init() {
         ImageCacheController().setMaximumCacheSize()
     }

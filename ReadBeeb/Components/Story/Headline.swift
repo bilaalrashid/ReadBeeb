@@ -8,6 +8,10 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a headline for a story.
+///
+/// A `Headline` contains the story title, topic, published date and estimated read time. Older versions of the BBC News API also include
+/// the byline in the headline. This is now stored in the `Byline` sibling view.
 struct Headline: View {
     let headline: FDHeadline
 

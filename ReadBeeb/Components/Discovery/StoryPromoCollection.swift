@@ -8,9 +8,14 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a collection of story promos.
 struct StoryPromoCollection: View {
+    /// The collection to display.
     let collection: FDCollection
+
+    /// The index of the collection in the page of items.
     let collectionIndex: Int
+
     /// If the collection has a header displayed above it.
     let hasHeader: Bool
 

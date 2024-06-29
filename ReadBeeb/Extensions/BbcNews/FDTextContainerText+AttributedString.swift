@@ -9,7 +9,7 @@ import SwiftUI
 import BbcNews
 
 extension FDAttributedText {
-    /// Returns an `AttributedString` representing the `FDTextContainerText` instance
+    /// Returns an `AttributedString` representing the `FDTextContainerText` instance.
     var attributedString: AttributedString {
         let attributedString = NSMutableAttributedString(string: self.text)
 
@@ -29,6 +29,12 @@ extension FDAttributedText {
         return AttributedString(attributedString)
     }
 
+    /// Add annotations to an `AttributedString` for link attributes.
+    ///
+    /// - Parameters:
+    ///   - attributedString: The `AttributedString` to add the attributes to.
+    ///   - span: The details of the attribute that should be applied.
+    ///   - range: The range over which the attribute applies for.
     private func applyLinkAttributes(for attributedString: NSMutableAttributedString, span: FDAttributedTextSpan, range: NSRange) {
         if let url = span.link?.destinations.first?.url {
             let linkAttributes: [NSAttributedString.Key: Any] = [
@@ -39,6 +45,12 @@ extension FDAttributedText {
         }
     }
 
+    /// Add annotations to an `AttributedString` for emphasis attributes, such as bold or italic.
+    ///
+    /// - Parameters:
+    ///   - attributedString: The `AttributedString` to add the attributes to.
+    ///   - span: The details of the attribute that should be applied.
+    ///   - range: The range over which the attribute applies for.
     private func applyEmphasisAttributes(for attributedString: NSMutableAttributedString, span: FDAttributedTextSpan, range: NSRange) {
         let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
         let italicFont = UIFont.italicSystemFont(ofSize: UIFont.labelFontSize)

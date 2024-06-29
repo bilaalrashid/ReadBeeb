@@ -8,20 +8,32 @@
 import SwiftUI
 import SwiftData
 
+/// The screen where the user can selection topics to follow in the My News screen.
 struct TopicSelectionScreen: View {
+    /// The SwiftData model context that will be used for queries and other model operations within this environment.
     @Environment(\.modelContext) var modelContext
+
+    /// An action that dismisses the current presentation.
     @Environment(\.dismiss) var dismiss
 
+    /// The currently selected topics.
     @Query var selectedTopics: [Topic]
 
+    /// The search query for topics.
     @State private var searchText = ""
+
+    /// If the search experience is currently active.
     @State private var isSearchActive = false
 
+    /// All the possible topics to select.
     let allTopics: [Topic] = {
         let result = Bundle.main.decode(TopicResult.self, from: "Topics.json")
         return result.topics
     }()
 
+    /// The filtered topics from the user's search query.
+    ///
+    /// If the search query is empty, then all topics are returned.
     var filteredTopics: [Topic] {
         if self.searchText.isEmpty {
             return self.allTopics
@@ -88,15 +100,29 @@ struct TopicSelectionScreen: View {
             }
         }
     }
-
+    
+    /// Returns a topic if it is included in the user's selection.
+    ///
+    /// - Parameter topic: The topic to check.
+    /// - Returns: The topic, if it is included in the user's selection.
     private func selectedTopic(for topic: Topic) -> Topic? {
         return self.selectedTopics.first { $0.id == topic.id }
     }
-
+    
+    /// Checks if a given topic is in the user's selection.
+    ///
+    /// - Parameter topic: The topic to check.
+    /// - Returns: If the topic is in the user's selection.
     private func isTopicSelected(topic: Topic) -> Bool {
         return self.selectedTopic(for: topic) != nil
     }
-
+    
+    /// Toggles selection for a given topic.
+    ///
+    /// If the topic is currently selected, it will be removed from the selection. If it isn't, then the topic will be added to the
+    /// selection.
+    ///
+    /// - Parameter topic: The topic to toggle the selection for.
     private func toggleTopicSelection(topic: Topic) {
         if let existingTopic = self.selectedTopic(for: topic) {
             self.modelContext.delete(existingTopic)

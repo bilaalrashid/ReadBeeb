@@ -9,12 +9,12 @@ import Foundation
 import SwiftUI
 import AVKit
 
-/// A wrapper around `AVPlayerViewController` for SwiftUI
+/// A wrapper around `AVPlayerViewController` for SwiftUI.
 struct VideoPlayer: UIViewControllerRepresentable {
-    /// The AVPlayer to play in the view controller
+    /// The AVPlayer to play in the view controller.
     let player: AVPlayer
 
-    /// The callback to call when the video is finished
+    /// The callback to call when the video is finished.
     let onFinish: (() -> Void)?
 
     func makeUIViewController(context: Context) -> AVPlayerViewController {

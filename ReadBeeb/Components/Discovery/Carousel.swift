@@ -8,7 +8,9 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a carousel of story promos.
 struct Carousel: View {
+    /// The carousel of story promos to display.
     let item: FDCarousel
 
     var body: some View {

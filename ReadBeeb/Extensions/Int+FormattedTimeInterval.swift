@@ -8,6 +8,7 @@
 import Foundation
 
 extension Int {
+    /// Converts millseconds to a formatted string describing the time interval.
     var formattedTimeInterval: String? {
         let interval = TimeInterval(self) / 1000
 

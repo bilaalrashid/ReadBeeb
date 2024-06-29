@@ -7,17 +7,27 @@
 
 import SwiftUI
 
+/// The screen that controls the user-modifiable preferences.
 struct SettingsScreen: View {
+    /// All possible postcode areas that can be selected.
     let postcodes: [String] = {
         let result = Bundle.main.decode(PostcodeResult.self, from: "Postcodes.json")
         return result.postcodes.map { $0.postcode }
     }()
 
+    /// An action that dismisses the current presentation.
     @Environment(\.dismiss) var dismiss
+
+    /// The view model representing the screen.
     @EnvironmentObject var viewModel: GlobalViewModel
+
+    /// The postcode entered by the user.
     @State private var rawPostcode = ""
+
+    /// The size of the system cache in bytes.
     @State private var cacheSize = 0
 
+    /// The system cache size, formatted as a human-readable string.
     var formattedCacheSize: String {
         ByteCountFormatter.string(fromByteCount: Int64(self.cacheSize), countStyle: .file)
     }
@@ -78,21 +88,25 @@ struct SettingsScreen: View {
         }
     }
 
+    /// Fetches the size of the system cache.
     private func calculateCacheSize() {
         Task {
             self.cacheSize = (try? await ImageCacheController().getCacheSize()) ?? 0
         }
     }
 
+    /// Clears the system cache.
     private func clearCache() {
         self.cacheSize = 0
         ImageCacheController().clearCache()
     }
 
+    /// Fetches the currently stored postcode.
     private func loadPostcode() {
         self.rawPostcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier) ?? ""
     }
 
+    /// Saves the inputted postcode to the user-modifiable preferences.
     private func savePostcode() {
         let validated = self.rawPostcode.trimmingCharacters(in: .whitespacesAndNewlines).prefix(7)
         var toMatch = ""

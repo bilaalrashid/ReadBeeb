@@ -8,11 +8,15 @@
 import SwiftUI
 import OSLog
 
+/// The screen displaying story promos for the most relevant stories.
 struct TopStoriesScreen: View {
+    /// The sections from the API's main feed to exclude from display in the screen.
     private let sectionsToExclude = ["Watch & Listen", "Most Read", "Topics in the news", "Today's videos", "Copyright"]
 
+    /// The global view model representing the system.
     @EnvironmentObject var viewModel: GlobalViewModel
 
+    /// If the screen is modally displaying the settings screen.
     @State private var isShowingSettings = false
 
     var body: some View {

@@ -8,9 +8,12 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a BBC copyright disclaimer.
 struct Copyright: View {
+    /// The details of the copyright disclaimer to display.
     let item: FDCopyright
 
+    /// The year to display in the copyright disclaimer.
     private var year: Int? {
         let components = Calendar.autoupdatingCurrent.dateComponents([.year], from: self.item.lastUpdated)
         return components.year

@@ -8,16 +8,28 @@
 import Foundation
 import SwiftData
 
+/// A topic that a user can choose to subscribe to.
 @Model
 final class Topic: Codable {
     enum CodingKeys: CodingKey {
         case id, headline, subhead
     }
 
+    /// The ID of the topic.
     @Attribute(.unique) var id: String
+
+    /// The primary name of the topic.
     var headline: String
+
+    /// A secondary description for the topic.
     var subhead: String?
 
+    /// Creates a new topic.
+    ///
+    /// - Parameters:
+    ///   - id: The ID of the topic.
+    ///   - headline: The primary name of the topic.
+    ///   - subhead: A secondary description for the topic.
     init(id: String, headline: String, subhead: String? = nil) {
         self.id = id
         self.headline = headline

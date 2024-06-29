@@ -9,7 +9,9 @@ import SwiftUI
 import Kingfisher
 import BbcNews
 
+/// A view that displays a story promo for a portrait video story.
 struct VideoPortraitPromo: View {
+    /// The story promo to display.
     let storyPromo: FDStoryPromo
 
     var body: some View {

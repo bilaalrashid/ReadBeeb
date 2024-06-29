@@ -8,7 +8,9 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays the contents of a discovery page.
 struct DiscoveryView: View {
+    /// The data representing the discovery page.
     let data: FDData
     let sectionsToInclude: [String]?
     let sectionsToExclude: [String]?

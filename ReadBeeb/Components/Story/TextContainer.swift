@@ -8,15 +8,21 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a paragraph of text in a story.
 struct TextContainer: View {
+    /// The paragraph of text to be displayed.
     let container: FDTextContainer
+
+    /// The line of a list that is represented by the paragraph.
     var list: FDContentList?
+
     /// If the item is part of the list, the index of the item in the list, zero-indexed
     var index: Int?
 
     /// A destination that the text container can link to e.g. another story.
     @Binding var destination: FDLinkDestination?
 
+    /// An external URL being shown to the user in a detail view.
     @State private var externalUrl: URL?
 
     var body: some View {
@@ -72,6 +78,10 @@ struct TextContainer: View {
         }
     }
 
+    /// Returns the `FDLinkDestination` for a given URL in the text paragraph.
+    ///
+    /// - Parameter url: The URL to get the destination for.
+    /// - Returns: The `FDLinkDestination` that corresponds to the URL, if one exists.
     private func destination(for url: URL) -> FDLinkDestination? {
         var destinations = [FDLinkDestination]()
         self.container.text.spans.forEach {

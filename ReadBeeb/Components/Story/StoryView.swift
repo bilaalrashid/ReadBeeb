@@ -11,17 +11,20 @@ import Network
 import LazyPager
 import BbcNews
 
+/// A view that displays the whole contents of a story page.
 struct StoryView: View {
-    /// The data representing the story.
+    /// The data representing the story page.
     let data: FDData
 
     /// A destination that the story can link to e.g. a discovery page or another story.
     @State private var destination: FDLinkDestination?
+
+    /// An image being shown to the user in a detail view.
     @State private var detailImageToShow: FDImage?
 
     var body: some View {
         List {
-            ForEach(Array(self.data.data.items.enumerated()), id: \.offset) { index, item in
+            ForEach(Array(self.data.items.enumerated()), id: \.offset) { index, item in
                 switch item {
                 case .media(let item):
                     MediaView(media: item)
@@ -101,16 +104,23 @@ struct StoryView: View {
         }
     }
 
+    /// Prefetch all images contained in the story and store the results in the cache.
     private func prefetchImages() {
         let urls = self.imageUrls(from: self.data)
         let prefetcher = ImagePrefetcher(urls: urls)
         prefetcher.start()
     }
 
-    private func imageUrls(from data: FDResult) -> [URL] {
+    /// Returns the URLs of all images to display in a story, including media cover posters.
+    ///
+    /// Smaller image URLs are returned if the device is running low data mode.
+    ///
+    /// - Parameter data: The contents of the story.
+    /// - Returns: The image URLs in the story.
+    private func imageUrls(from data: FDData) -> [URL] {
         let monitor = NWPathMonitor()
 
-        let images: [FDImage] = data.data.items
+        let images: [FDImage] = data.items
             .map {
                 switch $0 {
                 case .media(let media):
@@ -125,13 +135,18 @@ struct StoryView: View {
             }
             .compactMap { $0 }
 
+        // Return smaller images when in low data mode
         return images
             .map { monitor.currentPath.isConstrained ? $0.largestImageUrl(upTo: 400) : $0.largestImageUrl }
             .compactMap { $0 }
     }
 
-    private func mainImages(from data: FDResult) -> [FDImage] {
-        return data.data.items
+    /// Returns all images to display in a story, excluding media cover posters.
+    ///
+    /// - Parameter data: The contents of the story.
+    /// - Returns: The images in the story.
+    private func mainImages(from data: FDData) -> [FDImage] {
+        return data.items
             .map {
                 switch $0 {
                 case .imageContainer(let container):

@@ -10,14 +10,22 @@ import BbcNews
 import OSLog
 
 extension MyNewsScreen {
+    /// The view model for the My News screen.
     @MainActor class ViewModel: ObservableObject {
+        /// The story promos to display in the view.
         @Published private(set) var storyPromos = [FDStoryPromo]()
+
+        /// The status of the network request.
         @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
 
+        /// If the results from the API are empty.
         var isEmpty: Bool {
             return self.storyPromos.isEmpty
         }
 
+        /// Fetch all story promos for specified topics, if the data hasn't already been fetched.
+        ///
+        /// - Parameter selectedTopics: The topics to fetch the story promos for.
         func fetchDataIfNotExists(selectedTopics: [Topic]) async {
             // We don't want to start another network request if there is already one ongoing
             if self.networkRequest != .loading && self.isEmpty {
@@ -25,6 +33,9 @@ extension MyNewsScreen {
             }
         }
 
+        /// Fetch all story promos from the API for specified topics.
+        ///
+        /// - Parameter selectedTopics: The topics to fetch the story promos for.
         func fetchData(selectedTopics: [Topic]) async {
             do {
                 self.networkRequest = .loading
@@ -41,6 +52,10 @@ extension MyNewsScreen {
             }
         }
 
+        /// Gets all story promos from a set of topic discovery page contents.
+        ///
+        /// - Parameter topicResults: The contents of the topic discovery pages.
+        /// - Returns: A unique list of all story promos found.
         private func storyPromos(for topicResults: [FDResult]) -> [FDStoryPromo] {
             var storyPromos = Set<FDStoryPromo>()
 

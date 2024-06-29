@@ -8,7 +8,9 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a content list in a story.
 struct ContentList: View {
+    /// The content list to display.
     let list: FDContentList
 
     /// A destination that the text container can link to e.g. another story.

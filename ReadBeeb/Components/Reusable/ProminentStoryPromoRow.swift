@@ -8,8 +8,11 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a regular horizontal row for story promo.
 struct ProminentStoryPromoRow: View {
+    /// The story promo to display.
     let story: FDStoryPromo
+
     /// If the row has a header displayed above it.
     let hasHeader: Bool
 

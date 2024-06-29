@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// A UK postcode area.
 struct Postcode: Codable {
+    /// The postcode area.
     let postcode: String
 }

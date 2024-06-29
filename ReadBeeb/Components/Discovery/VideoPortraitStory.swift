@@ -9,11 +9,18 @@ import SwiftUI
 import OSLog
 import BbcNews
 
+/// A view that displays a story that consists of a portrait video.
 struct VideoPortraitStory: View {
+    /// The story to display.
     let storyPromo: FDStoryPromo
 
+    /// Has the user requested that the media item should be played.
     @State private var shouldPlay = false
+
+    /// A list of media selectors that can be used to play the media item from.
     @State private var result: MediaSelectorResult?
+
+    /// The state of the network request fetching the media selectors.
     @State private var networkResult = NetworkRequestStatus.notStarted
 
     var body: some View {
@@ -60,6 +67,7 @@ struct VideoPortraitStory: View {
         }
     }
 
+    /// Performs a network request to fetch the media item for the story promo.
     private func fetchDetailView() async {
         do {
             self.networkResult = .loading
@@ -78,6 +86,7 @@ struct VideoPortraitStory: View {
         }
     }
 
+    /// Performs a network request to fetch a list of media selectors for the media item.
     private func fetchMediaSelectorItems(media: FDMedia) async {
         do {
             self.networkResult = .loading

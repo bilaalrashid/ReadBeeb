@@ -9,14 +9,28 @@ import SwiftUI
 import LazyPager
 import BbcNews
 
+/// The detail screen that displays images for viewing.
 struct ImageDetailScreen: View {
+    /// The images to display.
     let images: [FDImage]
 
+    /// An action that dismisses the current presentation.
     @Environment(\.dismiss) var dismiss
+
+    /// The opacity of the screen.
     @State private var opacity: CGFloat = 1
+
+    /// The index of the image to be displayed in full.
     @State private var index: Int
+
+    /// If the controls should be displayed to the user.
     @State private var isShowingControls = true
 
+    /// Creates a new detail screen for displaying images.
+    ///
+    /// - Parameters:
+    ///   - images: The images to display.
+    ///   - initialIndex: The index of the first image to display.
     init(images: [FDImage], index initialIndex: Int) {
         self.images = images
         self._index = State(initialValue: initialIndex)

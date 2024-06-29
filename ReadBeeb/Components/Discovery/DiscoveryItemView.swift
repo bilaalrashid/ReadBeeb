@@ -8,9 +8,14 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a individual item in a discovery page.
 struct DiscoveryItemView: View {
+    /// The item in the page to display.
     let item: FDItem
+
+    /// The index of the item in the page.
     let index: Int
+
     /// If the item has a header displayed above it.
     let hasHeader: Bool
 

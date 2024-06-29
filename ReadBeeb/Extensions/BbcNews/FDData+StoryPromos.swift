@@ -9,6 +9,7 @@ import Foundation
 import BbcNews
 
 extension FDData {
+    /// All unique story promos contained in the result.
     var storyPromos: Set<FDStoryPromo> {
         var storyPromos = Set<FDStoryPromo>()
 

@@ -9,6 +9,7 @@ import Foundation
 import TLDExtract
 
 extension URL {
+    /// If the URL is on a domain owned by the BBC.
     var isBBC: Bool {
         let bbcDomains = ["bbc.co.uk", "bbci.co.uk", "bbc.com"]
 

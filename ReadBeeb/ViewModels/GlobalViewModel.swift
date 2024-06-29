@@ -9,16 +9,26 @@ import Foundation
 import BbcNews
 import OSLog
 
+/// The global view model for the system.
 @MainActor class GlobalViewModel: ObservableObject {
+    /// The result of the main network request to the API.
     @Published private(set) var result: FDResult?
+
+    /// A list of story promos that link to video-only stories.
     @Published private(set) var videoPromos = [FDStoryPromo]()
+
+    /// The status of the main network request.
     @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
+
+    /// If videos, in addition to the main network request, have been fetched from the API.
     private var isExtraVideosLoaded = false
 
+    /// If the results from the API are empty.
     var isEmpty: Bool {
         return self.result?.data.structuredItems.isEmpty ?? true
     }
 
+    /// Fetch the main data for the view model, if it hasn't been fetched before.
     func fetchDataIfNotExists() async {
         // We don't want to start another network request if there is already one ongoing
         if self.networkRequest != .loading && self.isEmpty {
@@ -26,6 +36,7 @@ import OSLog
         }
     }
 
+    /// Fetch the main data for the view model from the API.
     func fetchData() async {
         do {
             self.networkRequest = .loading
@@ -45,12 +56,16 @@ import OSLog
         }
     }
 
+    /// Fetch all videos for this view model, if they haven't been fetched before.
     func fetchAllVideosIfNotExists() async {
         if !self.isExtraVideosLoaded {
             await self.fetchAllVideos()
         }
     }
 
+    /// Fetch all videos for this view model.
+    ///
+    /// - Parameter includeLinked: If videos should be fetched from linked discovery pages.
     func fetchAllVideos(includeLinked: Bool = true) async {
         guard let result = self.result else { return }
 
@@ -75,6 +90,10 @@ import OSLog
         }
     }
 
+    /// Fetch all story promos from linked discovery pages.
+    ///
+    /// - Parameter result: The API result to find the linked discovery pages from.
+    /// - Returns: All story promos found.
     private func fetchLinkedStoryPromos(for result: FDResult) async -> Set<FDStoryPromo> {
         let headers = result.data.structuredItems.compactMap { $0.header }
 

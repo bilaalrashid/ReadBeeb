@@ -10,12 +10,18 @@ import SwiftData
 import BbcNews
 import OSLog
 
+/// The screen displaying a feed of story promos from topics that the user can subscribe to.
 struct MyNewsScreen: View {
+    /// The currently selected topics.
     @Query var selectedTopics: [Topic]
+
+    /// The view model representing the screen.
     @StateObject private var viewModel = ViewModel()
 
     /// A secondary destination that the story promo can link to e.g. a topic discovery page.
     @State private var destination: FDLinkDestination?
+
+    /// If the user is currently editing the topic selection.
     @State private var isEditingTopics = false
 
     var body: some View {

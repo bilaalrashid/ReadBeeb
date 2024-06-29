@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+/// A view that displays an overlay to indicate the current state of a network request.
 struct NetworkRequestStatusOverlay: View {
+    /// The state of the network request.
     let networkRequest: NetworkRequestStatus
+
+    /// If the network request returned an empty result.
     let isEmpty: Bool
 
     var body: some View {

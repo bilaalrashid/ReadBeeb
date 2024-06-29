@@ -8,7 +8,9 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a header for a story promo collection.
 struct CollectionHeader: View {
+    /// The collect header to display.
     let item: FDCollectionHeader
 
     var body: some View {

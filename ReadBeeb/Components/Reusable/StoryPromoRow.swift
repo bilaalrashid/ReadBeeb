@@ -8,7 +8,9 @@
 import SwiftUI
 import BbcNews
 
+/// A view that displays a regular horizontal row for story promo.
 struct StoryPromoRow: View {
+    /// The story promo to display.
     let story: FDStoryPromo
 
     /// A secondary destination that the story promo can link to e.g. a topic discovery page.

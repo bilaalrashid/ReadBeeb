@@ -8,7 +8,8 @@
 import Foundation
 
 extension URL {
-    /// Returns the value of the query parameter in the URL, if it exists
+    /// Returns the value of the query parameter in the URL, if it exists.
+    ///
     /// - Parameter queryParameterName: The query parameter to get the value for
     /// - Returns: The value of the specified query parameter
     func valueOf(_ queryParameterName: String) -> String? {

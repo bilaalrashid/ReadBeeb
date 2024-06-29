@@ -7,9 +7,12 @@
 
 import SwiftUI
 
-/// A `NavigationLink` with the detail disclosure hidden
+/// A `NavigationLink` with the detail disclosure hidden.
 struct PlainNavigationLink<Destination: View, Label: View>: View {
+    /// A view for the navigation link to present.
     let destination: Destination
+
+    /// A view builder to produce a label describing the destination to present.
     let label: Label
 
     init(destination: Destination, @ViewBuilder _ label: () -> Label) {
