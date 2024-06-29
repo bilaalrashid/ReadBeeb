@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RootView.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 26/08/2023.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-/// The root view of the system.
-struct ContentView: View {
+/// The root view of the system for an individual window.
+struct RootView: View {
     @StateObject private var viewModel = GlobalViewModel()
 
     var body: some View {
@@ -51,6 +51,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RootView()
     }
 }

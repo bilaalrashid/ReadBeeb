@@ -18,7 +18,7 @@ struct ReadBeebApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
                 .accentColor(Constants.primaryColor)
         }
         .modelContainer(for: Topic.self)

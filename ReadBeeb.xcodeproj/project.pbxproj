@@ -13,7 +13,7 @@
 		3A2274BA2AE5CCCC0041F77B /* VideoPortraitPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274B92AE5CCCC0041F77B /* VideoPortraitPromo.swift */; };
 		3A2274BC2AE5D9A30041F77B /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2274BB2AE5D9A30041F77B /* RemoteImage.swift */; };
 		3A44C5D72A9A9F86001AB40F /* ReadBeebApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C5D62A9A9F86001AB40F /* ReadBeebApp.swift */; };
-		3A44C5D92A9A9F86001AB40F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C5D82A9A9F86001AB40F /* ContentView.swift */; };
+		3A44C5D92A9A9F86001AB40F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A44C5D82A9A9F86001AB40F /* RootView.swift */; };
 		3A44C5DB2A9A9F87001AB40F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A44C5DA2A9A9F87001AB40F /* Assets.xcassets */; };
 		3A44C5DF2A9A9F87001AB40F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A44C5DE2A9A9F87001AB40F /* Preview Assets.xcassets */; };
 		3A44C5EE2A9AAD03001AB40F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3A44C5ED2A9AAD03001AB40F /* Alamofire */; };
@@ -95,7 +95,7 @@
 		3A2274BB2AE5D9A30041F77B /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		3A44C5D32A9A9F86001AB40F /* ReadBeeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadBeeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A44C5D62A9A9F86001AB40F /* ReadBeebApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBeebApp.swift; sourceTree = "<group>"; };
-		3A44C5D82A9A9F86001AB40F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3A44C5D82A9A9F86001AB40F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3A44C5DA2A9A9F87001AB40F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A44C5DC2A9A9F87001AB40F /* ReadBeeb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadBeeb.entitlements; sourceTree = "<group>"; };
 		3A44C5DE2A9A9F87001AB40F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 				3A44C5EB2A9AA213001AB40F /* Extensions */,
 				3A75FA312AC87C0000393014 /* Files */,
 				3A44C5D62A9A9F86001AB40F /* ReadBeebApp.swift */,
-				3A44C5D82A9A9F86001AB40F /* ContentView.swift */,
+				3A44C5D82A9A9F86001AB40F /* RootView.swift */,
 				3A44C6032A9B63D8001AB40F /* Constants.swift */,
 				3A44C5DA2A9A9F87001AB40F /* Assets.xcassets */,
 				3A44C5DC2A9A9F87001AB40F /* ReadBeeb.entitlements */,
@@ -530,7 +530,7 @@
 				3A2274BC2AE5D9A30041F77B /* RemoteImage.swift in Sources */,
 				3A516D772AC0A27C00AF0BC9 /* VideoPlayer.swift in Sources */,
 				3A44C6122AA53D8A001AB40F /* StoryPromoRow.swift in Sources */,
-				3A44C5D92A9A9F86001AB40F /* ContentView.swift in Sources */,
+				3A44C5D92A9A9F86001AB40F /* RootView.swift in Sources */,
 				3A5F8B0A2AF6ABD200E1CF93 /* DestinationDetailViewModel.swift in Sources */,
 				3A9124FD2AAE237B00EC0DCF /* View+Modify.swift in Sources */,
 				3A9124FF2AAE289700EC0DCF /* ImageView.swift in Sources */,
