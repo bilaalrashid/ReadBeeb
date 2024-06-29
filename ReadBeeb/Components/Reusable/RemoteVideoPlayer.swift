@@ -1,5 +1,5 @@
 //
-//  BBCIPlayerVideoPlayer.swift
+//  RemoteVideoPlayer.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 24/09/2023.
@@ -9,8 +9,8 @@ import SwiftUI
 import AVKit
 import OSLog
 
-/// A view that displays a video player.
-struct BBCIPlayerVideoPlayer: View {
+/// A view that providers a video player for a video located remotely on a network.
+struct RemoteVideoPlayer: View {
     /// The video player being played.
     private let player: AVPlayer
 
@@ -37,5 +37,5 @@ struct BBCIPlayerVideoPlayer: View {
 }
 
 #Preview {
-    BBCIPlayerVideoPlayer(url: "", shouldPlay: Binding.constant(true))
+    RemoteVideoPlayer(url: "", shouldPlay: Binding.constant(true))
 }

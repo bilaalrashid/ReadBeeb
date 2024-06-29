@@ -54,7 +54,7 @@ struct VideoPortraitStory: View {
                 case .success:
                     // It is safe to access [0] on both properties, as their size is checked elsewhere
                     if let result = self.result {
-                        BBCIPlayerVideoPlayer(url: result.validMedia[0].validConnection[0].hrefSecure, shouldPlay: self.$shouldPlay)
+                        RemoteVideoPlayer(url: result.validMedia[0].validConnection[0].hrefSecure, shouldPlay: self.$shouldPlay)
                     }
                 }
             }
