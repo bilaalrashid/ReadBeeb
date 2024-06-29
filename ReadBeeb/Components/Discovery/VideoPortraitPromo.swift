@@ -47,7 +47,7 @@ struct VideoPortraitPromo: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 16, height: 16)
-                                if let duration = badge.duration?.formattedTimeInterval {
+                                if let duration = badge.duration?.durationFormattedString {
                                     Text(duration)
                                         .font(.callout)
                                 }

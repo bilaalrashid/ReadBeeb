@@ -1,5 +1,5 @@
 //
-//  Date+FormattedTimestamp.swift
+//  Date+FormattedString.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 10/09/2023.
@@ -9,7 +9,7 @@ import Foundation
 
 extension Date {
     /// A human-readable string describing the date.
-    var formattedTimestamp: String {
+    var formattingString: String {
         let lastWeek = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
 
         if self < lastWeek {

@@ -1,5 +1,5 @@
 //
-//  Int+FormattedTimeInterval.swift
+//  Int+DurationFormattedString.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 20/10/2023.
@@ -8,8 +8,8 @@
 import Foundation
 
 extension Int {
-    /// Converts millseconds to a formatted string describing the time interval.
-    var formattedTimeInterval: String? {
+    /// Converts milliseconds to a formatted string describing the time interval.
+    var durationFormattedString: String? {
         let interval = TimeInterval(self) / 1000
 
         if interval < 60 {

@@ -51,7 +51,7 @@ struct ThumbnailImageView: View {
                                         $0.frame(width: 14, height: 14)
                                     }
                                 }
-                            if let duration = badge.duration?.formattedTimeInterval {
+                            if let duration = badge.duration?.durationFormattedString {
                                 Text(duration)
                                     .modify {
                                         if self.prominent {
