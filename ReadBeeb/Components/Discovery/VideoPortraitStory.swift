@@ -62,42 +62,58 @@ struct VideoPortraitStory: View {
         .padding(.bottom)
         .onAppear {
             Task {
-                await self.fetchDetailView()
+                if let media = await self.fetchDetailView() {
+                    await self.fetchMediaSelectorItems(media: media)
+                }
             }
         }
     }
 
     /// Performs a network request to fetch the media item for the story promo.
-    private func fetchDetailView() async {
+    ///
+    /// - Returns: The media item linked to by the story promo.
+    private func fetchDetailView() async -> FDMedia? {
+        guard let url = self.storyPromo.link.destinations.first?.url else {
+            self.networkResult = .error
+            Logger.network.error("No URL to fetch details for")
+
+            return nil
+        }
+
         do {
-            self.networkResult = .loading
-            if let url = self.storyPromo.link.destinations.first?.url {
-                let detail = try await BbcNews().fetch(url: url)
-                if case .videoPortraitStory(let videoPortraitStory) = detail.data.items.first {
-                    await self.fetchMediaSelectorItems(media: videoPortraitStory.media)
-                }
-            } else {
-                self.networkResult = .error
-                Logger.network.error("No URL to fetch details for")
+            let detail = try await BbcNews().fetch(url: url)
+
+            if case .videoPortraitStory(let videoPortraitStory) = detail.data.items.first {
+                self.networkResult = .success
+                return videoPortraitStory.media
             }
+
+            self.networkResult = .error
+            Logger.network.error("No video portrait story found in API result")
         } catch let error {
             self.networkResult = .error
             Logger.network.error("Unable to fetch BBC iPlayer media options - \(error.localizedDescription)")
         }
+
+        return nil
     }
 
     /// Performs a network request to fetch a list of media selectors for the media item.
     private func fetchMediaSelectorItems(media: FDMedia) async {
+        self.networkResult = .loading
+
         do {
-            self.networkResult = .loading
             let result = try await BBCIPlayerAPINetworkController().fetchMediaConnections(for: media.source.id)
-            if !result.validMedia.isEmpty {
-                self.result = result
-                self.networkResult = .success
-            } else {
+
+            guard result.validMedia.isEmpty else {
                 self.networkResult = .error
                 Logger.network.error("No valid media streams form BBC iPlayer API")
+
+                return
             }
+
+            self.result = result
+            self.networkResult = .success
         } catch let error {
             self.networkResult = .error
             Logger.network.error("Unable to fetch BBC iPlayer media options - \(error.localizedDescription)")
