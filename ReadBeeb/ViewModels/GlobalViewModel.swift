@@ -11,8 +11,8 @@ import OSLog
 
 /// The global view model for the system.
 @MainActor class GlobalViewModel: ObservableObject {
-    /// The result of the main network request to the API.
-    @Published private(set) var result: FDResult?
+    /// The data from the main network request of the API.
+    @Published private(set) var data: FDData?
 
     /// A list of story promos that link to video-only stories.
     @Published private(set) var videoPromos = [FDStoryPromo]()
@@ -25,7 +25,7 @@ import OSLog
 
     /// If the results from the API are empty.
     var isEmpty: Bool {
-        return self.result?.data.structuredItems.isEmpty ?? true
+        return self.data?.structuredItems.isEmpty ?? true
     }
 
     /// Fetch the main data for the view model, if it hasn't been fetched before.
@@ -44,7 +44,7 @@ import OSLog
             let postcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
             let result = try await BbcNews().fetchIndexDiscoveryPage(postcode: postcode)
 
-            self.result = result
+            self.data = result.data
 
             // Don't include linked here, this will be too long to load for all pages
             await self.fetchAllVideos(includeLinked: false)
@@ -67,14 +67,14 @@ import OSLog
     ///
     /// - Parameter includeLinked: If videos should be fetched from linked discovery pages.
     func fetchAllVideos(includeLinked: Bool = true) async {
-        guard let result = self.result else { return }
+        guard let data = self.data else { return }
 
         var storyPromos = Set<FDStoryPromo>()
 
-        storyPromos.formUnion(result.data.storyPromos)
+        storyPromos.formUnion(data.storyPromos)
 
         if includeLinked {
-            let linkedStoryPromos = await self.fetchLinkedStoryPromos(for: result)
+            let linkedStoryPromos = await self.fetchLinkedStoryPromos(for: data)
             storyPromos.formUnion(linkedStoryPromos)
         }
 
@@ -92,10 +92,10 @@ import OSLog
 
     /// Fetch all story promos from linked discovery pages.
     ///
-    /// - Parameter result: The API result to find the linked discovery pages from.
+    /// - Parameter data: The API data that defines the linked discovery pages to fetch.
     /// - Returns: All story promos found.
-    private func fetchLinkedStoryPromos(for result: FDResult) async -> Set<FDStoryPromo> {
-        let headers = result.data.structuredItems.compactMap { $0.header }
+    private func fetchLinkedStoryPromos(for data: FDData) async -> Set<FDStoryPromo> {
+        let headers = data.structuredItems.compactMap { $0.header }
 
         let urls = headers.compactMap {
             switch $0 {

@@ -13,7 +13,7 @@ import OSLog
 struct DestinationDetailScreen: View {
     /// The view model representing the screen.
     @StateObject private var viewModel: ViewModel
-    
+
     /// Creates a new detail screen for a destination.
     ///
     /// - Parameter destination: The destination to display in the screen.
@@ -29,13 +29,13 @@ struct DestinationDetailScreen: View {
                 if let data = self.viewModel.data {
                     switch self.viewModel.destinationType ?? "" {
                     case "index", "topic":
-                        DiscoveryView(data: data.data)
+                        DiscoveryView(data: data)
                     case "asset":
-                        StoryView(data: data.data)
+                        StoryView(data: data)
                     case "verticalvideo":
                         EmptyView()
                     default:
-                        StoryView(data: data.data)
+                        StoryView(data: data)
                     }
                 }
             } else {

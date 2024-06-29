@@ -15,8 +15,8 @@ extension DestinationDetailScreen {
         /// The destination that the detail screen displays.
         @Published private(set) var destination: FDLinkDestination
 
-        /// The result of the network request.
-        @Published private(set) var data: FDResult?
+        /// The data from the network request.
+        @Published private(set) var data: FDData?
 
         /// The status of the network request.
         @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
@@ -73,7 +73,7 @@ extension DestinationDetailScreen {
                 if self.isApiUrl {
                     self.networkRequest = .loading
                     let result = try await BbcNews().fetch(url: self.destination.url)
-                    self.data = result
+                    self.data = result.data
                     self.networkRequest = .success
                 }
             } catch NetworkError.newDestination(let link) {
@@ -90,10 +90,7 @@ extension DestinationDetailScreen {
 
         /// Mocks a successful API request by storing fake data and a successful result state.
         func mockSuccessfulApiRequest() {
-            self.data = FDResult(
-                data: FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: Date(), shareUrl: nil), items: []),
-                contentType: ""
-            )
+            self.data = FDData(metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: Date(), shareUrl: nil), items: [])
             self.networkRequest = .success
         }
 

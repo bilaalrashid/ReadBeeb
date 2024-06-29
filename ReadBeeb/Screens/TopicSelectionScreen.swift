@@ -100,7 +100,7 @@ struct TopicSelectionScreen: View {
             }
         }
     }
-    
+
     /// Returns a topic if it is included in the user's selection.
     ///
     /// - Parameter topic: The topic to check.
@@ -108,7 +108,7 @@ struct TopicSelectionScreen: View {
     private func selectedTopic(for topic: Topic) -> Topic? {
         return self.selectedTopics.first { $0.id == topic.id }
     }
-    
+
     /// Checks if a given topic is in the user's selection.
     ///
     /// - Parameter topic: The topic to check.
@@ -116,7 +116,7 @@ struct TopicSelectionScreen: View {
     private func isTopicSelected(topic: Topic) -> Bool {
         return self.selectedTopic(for: topic) != nil
     }
-    
+
     /// Toggles selection for a given topic.
     ///
     /// If the topic is currently selected, it will be removed from the selection. If it isn't, then the topic will be added to the
