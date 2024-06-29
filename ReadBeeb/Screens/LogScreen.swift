@@ -36,7 +36,7 @@ struct LogScreen: View {
             ShareLink(item: self.viewModel.messagesString)
                 .foregroundColor(Constants.primaryColor)
         }
-        .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
+        .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.logRequest, isEmpty: self.viewModel.isEmpty))
         .onAppear {
             Task {
                 self.viewModel.fetchData()

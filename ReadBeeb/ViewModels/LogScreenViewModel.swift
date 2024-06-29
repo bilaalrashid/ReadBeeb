@@ -15,7 +15,7 @@ extension LogScreen {
         @Published private(set) var logMessages = [OSLogEntryLog]()
 
         /// The status of the request to fetch the log messages.
-        @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
+        @Published private(set) var logRequest = NetworkRequestStatus.notStarted
 
         /// If there aren't any log messages.
         var isEmpty: Bool {
@@ -39,7 +39,7 @@ extension LogScreen {
         /// Fetch log messages from the log store, if they haven't already been fetched.
         func fetchDataIfNotExists() {
             // We don't want to start another network request if there is already one ongoing
-            if self.networkRequest != .loading && self.isEmpty {
+            if self.logRequest != .loading && self.isEmpty {
                 self.fetchData()
             }
         }
@@ -47,12 +47,12 @@ extension LogScreen {
         /// Fetch log messages from the log store.
         func fetchData() {
             do {
-                self.networkRequest = .loading
+                self.logRequest = .loading
                 let result = try Logger.getAllLogEntries()
                 self.logMessages = result
-                self.networkRequest = .success
+                self.logRequest = .success
             } catch let error {
-                self.networkRequest = .error
+                self.logRequest = .error
                 Logger.network.error("Unable to fetch logs - \(error.localizedDescription)")
             }
         }
