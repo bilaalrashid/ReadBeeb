@@ -26,14 +26,11 @@ extension LogScreen {
         ///
         /// Each log message is included on a separate line.
         var messagesString: String {
-            var string = ""
-
-            self.logMessages.forEach { entry in
-                let message = "[\(entry.level.rawValue)] \(entry.date): \(entry.subsystem) [\(entry.category)]: \(entry.composedMessage)"
-                string += message + "\n"
+            let formatted = self.logMessages.map { entry in
+                "[\(entry.level.rawValue)] \(entry.date): \(entry.subsystem) [\(entry.category)]: \(entry.composedMessage)"
             }
 
-            return string
+            return formatted.joined(separator: "\n")
         }
 
         /// Fetch log messages from the log store, if they haven't already been fetched.
