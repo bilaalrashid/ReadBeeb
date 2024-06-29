@@ -51,7 +51,7 @@ struct TopicSelectionScreen: View {
             Section(header: Text("")) {
                 ForEach(self.isSearchActive ? self.filteredTopics : self.selectedTopics, id: \.id) { topic in
                     HStack {
-                        if self.isTopicSelected(topic: topic) {
+                        if self.selectedTopic(for: topic) != nil {
                             Image(systemName: "checkmark.square.fill")
                             // Color.accentColor is not working here
                                 .foregroundStyle(Constants.primaryColor)
@@ -107,14 +107,6 @@ struct TopicSelectionScreen: View {
     /// - Returns: The topic, if it is included in the user's selection.
     private func selectedTopic(for topic: Topic) -> Topic? {
         return self.selectedTopics.first { $0.id == topic.id }
-    }
-
-    /// Checks if a given topic is in the user's selection.
-    ///
-    /// - Parameter topic: The topic to check.
-    /// - Returns: If the topic is in the user's selection.
-    private func isTopicSelected(topic: Topic) -> Bool {
-        return self.selectedTopic(for: topic) != nil
     }
 
     /// Toggles selection for a given topic.
