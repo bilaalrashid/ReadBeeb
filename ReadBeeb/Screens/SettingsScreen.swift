@@ -9,28 +9,17 @@ import SwiftUI
 
 /// The screen that controls the user-modifiable preferences.
 struct SettingsScreen: View {
-    /// All possible postcode areas that can be selected.
-    let postcodes: [String] = {
-        let result = Bundle.main.decode(PostcodeResult.self, from: "Postcodes.json")
-        return result.postcodes.map { $0.postcode }
-    }()
-
     /// An action that dismisses the current presentation.
     @Environment(\.dismiss) var dismiss
 
     /// The view model representing the screen.
-    @EnvironmentObject var viewModel: GlobalViewModel
+    @EnvironmentObject var globalViewModel: GlobalViewModel
+
+    /// The view model representing the screen.
+    @StateObject private var viewModel = ViewModel()
 
     /// The postcode entered by the user.
     @State private var rawPostcode = ""
-
-    /// The size of the system cache in bytes.
-    @State private var cacheSize = 0
-
-    /// The system cache size, formatted as a human-readable string.
-    var formattedCacheSize: String {
-        ByteCountFormatter.string(fromByteCount: Int64(self.cacheSize), countStyle: .file)
-    }
 
     var body: some View {
         List {
@@ -47,10 +36,10 @@ struct SettingsScreen: View {
             }
 
             Section(
-                footer: Text("Currently using \(self.formattedCacheSize).")
+                footer: Text("Currently using \(self.viewModel.formattedCacheSize).")
             ) {
                 Button("Clear Cache") {
-                    self.clearCache()
+                    self.viewModel.clearCache()
                 }
                 .foregroundColor(.red)
             }
@@ -80,59 +69,24 @@ struct SettingsScreen: View {
             }
         }
         .onAppear {
-            self.calculateCacheSize()
-            self.loadPostcode()
+            self.fetchPostcode()
+
+            Task {
+                await self.viewModel.fetchCacheSize()
+            }
         }
         .onDisappear {
-            self.savePostcode()
-        }
-    }
+            self.viewModel.savePostcode(rawPostcode: self.rawPostcode)
 
-    /// Fetches the size of the system cache.
-    private func calculateCacheSize() {
-        Task {
-            self.cacheSize = (try? await ImageCacheController().getCacheSize()) ?? 0
+            Task {
+                await self.globalViewModel.fetchData()
+            }
         }
-    }
-
-    /// Clears the system cache.
-    private func clearCache() {
-        self.cacheSize = 0
-        ImageCacheController().clearCache()
     }
 
     /// Fetches the currently stored postcode.
-    private func loadPostcode() {
-        self.rawPostcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier) ?? ""
-    }
-
-    /// Saves the inputted postcode to the user-modifiable preferences.
-    private func savePostcode() {
-        let validated = self.rawPostcode.trimmingCharacters(in: .whitespacesAndNewlines).prefix(7)
-        var toMatch = ""
-        if validated.count == 6 || validated.count == 7 {
-            toMatch = String(validated.prefix(validated.count - 3))
-        } else {
-            toMatch = String(validated)
-        }
-
-        // Don't write to disk and refresh the view model if there is no change
-        let previousValue = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier) ?? ""
-        guard toMatch != previousValue else { return }
-
-        let match = self.postcodes.first {
-            $0.localizedCaseInsensitiveContains(toMatch)
-        }
-
-        if let match = match {
-            UserDefaults.standard.setValue(match, forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
-        } else if toMatch.isEmpty {
-            UserDefaults.standard.setValue(nil, forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
-        }
-
-        Task {
-            await self.viewModel.fetchData()
-        }
+    private func fetchPostcode() {
+        self.rawPostcode = self.viewModel.getPostcode() ?? ""
     }
 }
 
