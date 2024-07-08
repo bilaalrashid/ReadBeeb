@@ -54,24 +54,30 @@ extension FDAttributedText {
     private func applyEmphasisAttributes(for attributedString: NSMutableAttributedString, span: FDAttributedTextSpan, range: NSRange) {
         let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
         let italicFont = UIFont.italicSystemFont(ofSize: UIFont.labelFontSize)
-        let combinedFontDescriptor = UIFont.preferredFont(forTextStyle: .body).fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic])
-        let combinedFont = UIFont(descriptor: combinedFontDescriptor!, size: UIFont.labelFontSize)
 
         // BUG: If there are multiple attributes defined for the .font key over the same range, we have to show
         //      both, otherwise one will overwrite the other. This has a side-effect of overwriting all of the
         //      ranges to be the same. This is likely to be an extremely rare edge case in production, likely only
         //      occurring due to a formatting mistake (which this would fix), so this edge-case is permissible
         if attributedString.attribute(.font, at: range.location, effectiveRange: nil) != nil {
-            attributedString.addAttribute(.font, value: combinedFont, range: range)
-        } else {
-            switch span.attribute {
-            case .bold:
-                attributedString.addAttribute(.font, value: boldFont, range: range)
-            case .italic:
-                attributedString.addAttribute(.font, value: italicFont, range: range)
-            default:
-                break
+            let bodyStyle = UIFont.preferredFont(forTextStyle: .body)
+
+            if let combinedFontDescriptor = bodyStyle.fontDescriptor.withSymbolicTraits([.traitBold, .traitItalic]) {
+                let combinedFont = UIFont(descriptor: combinedFontDescriptor, size: UIFont.labelFontSize)
+
+                attributedString.addAttribute(.font, value: combinedFont, range: range)
             }
+
+            return
+        }
+
+        switch span.attribute {
+        case .bold:
+            attributedString.addAttribute(.font, value: boldFont, range: range)
+        case .italic:
+            attributedString.addAttribute(.font, value: italicFont, range: range)
+        default:
+            break
         }
     }
 }
