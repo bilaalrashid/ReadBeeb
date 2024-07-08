@@ -37,7 +37,7 @@
 		3A4F65DC2ADDE715003673BF /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65DB2ADDE715003673BF /* DiscoveryView.swift */; };
 		3A4F65DE2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F65DD2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift */; };
 		3A516D682AB25D1400AF0BC9 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D672AB25D1400AF0BC9 /* MediaView.swift */; };
-		3A516D6B2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */; };
+		3A516D6B2AB269AC00AF0BC9 /* BbcMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6A2AB269AC00AF0BC9 /* BbcMedia.swift */; };
 		3A516D6D2AB26AA000AF0BC9 /* MediaSelectorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */; };
 		3A516D6F2AB26BCC00AF0BC9 /* MediaSelectorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D6E2AB26BCC00AF0BC9 /* MediaSelectorItem.swift */; };
 		3A516D712AB26BE000AF0BC9 /* MediaSelectorConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A516D702AB26BE000AF0BC9 /* MediaSelectorConnection.swift */; };
@@ -123,7 +123,7 @@
 		3A4F65DB2ADDE715003673BF /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		3A4F65DD2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDTextContainerText+AttributedString.swift"; sourceTree = "<group>"; };
 		3A516D672AB25D1400AF0BC9 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
-		3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBCIPlayerAPINetworkController.swift; sourceTree = "<group>"; };
+		3A516D6A2AB269AC00AF0BC9 /* BbcMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbcMedia.swift; sourceTree = "<group>"; };
 		3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectorResult.swift; sourceTree = "<group>"; };
 		3A516D6E2AB26BCC00AF0BC9 /* MediaSelectorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectorItem.swift; sourceTree = "<group>"; };
 		3A516D702AB26BE000AF0BC9 /* MediaSelectorConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectorConnection.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 			children = (
 				3AA49AA82AF8295A00451FCC /* Postcodes */,
 				3A75FA342AC87D1600393014 /* Topics */,
-				3A516D692AB2695700AF0BC9 /* BBCIPlayerAPI */,
+				3A516D692AB2695700AF0BC9 /* BbcMedia */,
 				3A1285132C30B90700B1097D /* FDItemGroup.swift */,
 				3A516D722ABF1AA200AF0BC9 /* NetworkRequestStatus.swift */,
 			);
@@ -287,7 +287,7 @@
 		3A44C5EA2A9AA20B001AB40F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				3A516D6A2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift */,
+				3A516D6A2AB269AC00AF0BC9 /* BbcMedia.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -311,14 +311,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3A516D692AB2695700AF0BC9 /* BBCIPlayerAPI */ = {
+		3A516D692AB2695700AF0BC9 /* BbcMedia */ = {
 			isa = PBXGroup;
 			children = (
 				3A516D6C2AB26AA000AF0BC9 /* MediaSelectorResult.swift */,
 				3A516D6E2AB26BCC00AF0BC9 /* MediaSelectorItem.swift */,
 				3A516D702AB26BE000AF0BC9 /* MediaSelectorConnection.swift */,
 			);
-			path = BBCIPlayerAPI;
+			path = BbcMedia;
 			sourceTree = "<group>";
 		};
 		3A5F8B042AF69C0C00E1CF93 /* ViewModels */ = {
@@ -533,7 +533,7 @@
 				3AA49AB42AF8614000451FCC /* LogScreenViewModel.swift in Sources */,
 				3A516D7F2AC0CFB300AF0BC9 /* Copyright.swift in Sources */,
 				3A44C6062A9B6449001AB40F /* Logger.swift in Sources */,
-				3A516D6B2AB269AC00AF0BC9 /* BBCIPlayerAPINetworkController.swift in Sources */,
+				3A516D6B2AB269AC00AF0BC9 /* BbcMedia.swift in Sources */,
 				3AC017BE2AC9B8510010EBBE /* TopicSelectionScreen.swift in Sources */,
 				3A4F65CD2ADC8BF5003673BF /* NetworkRequestStatusOverlay.swift in Sources */,
 				3A2274BC2AE5D9A30041F77B /* RemoteImage.swift in Sources */,

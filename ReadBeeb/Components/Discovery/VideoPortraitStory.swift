@@ -103,7 +103,7 @@ struct VideoPortraitStory: View {
         self.networkResult = .loading
 
         do {
-            let result = try await BBCIPlayerAPINetworkController().fetchMediaConnections(for: media.source.id)
+            let result = try await BbcMedia().fetchMediaConnections(for: media.source.id)
 
             guard result.validMedia.isEmpty else {
                 self.networkResult = .error

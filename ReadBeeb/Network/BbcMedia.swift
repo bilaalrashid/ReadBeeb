@@ -1,5 +1,5 @@
 //
-//  BBCIPlayerAPINetworkController.swift
+//  BbcMedia.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 13/09/2023.
@@ -11,7 +11,7 @@ import OSLog
 import UIKit
 
 /// A network controller to fetch media items.
-struct BBCIPlayerAPINetworkController {
+struct BbcMedia {
     /// The base URI for the BBC
     static let baseUri = "https://open.live.bbc.co.uk"
 
@@ -34,7 +34,7 @@ struct BBCIPlayerAPINetworkController {
     /// - Parameter pid: The ID of the media item.
     /// - Returns: A list of media selectors for the media item.
     func fetchMediaConnections(for pid: String) async throws -> MediaSelectorResult {
-        let url = BBCIPlayerAPINetworkController.baseUri + "/mediaselector/6/select/version/2.0/format/json/mediaset/mobile-phone-main/vpid/\(pid)/"
+        let url = BbcMedia.baseUri + "/mediaselector/6/select/version/2.0/format/json/mediaset/mobile-phone-main/vpid/\(pid)/"
         Logger.network.debug("Requesting: \(url, privacy: .public)")
         let request = self.session.request(url).validate().serializingDecodable(MediaSelectorResult.self)
         return try await request.value
