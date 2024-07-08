@@ -1,15 +1,6 @@
 {
-  "originHash" : "bce4f920086c90004b7604154c130a0779fa4d1df516dca294b8e389cd589f7d",
+  "originHash" : "53b5b56e8aa4239a31247dd44c89cdcb260a67a57b30678736e29e190c9a059b",
   "pins" : [
-    {
-      "identity" : "alamofire",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire.git",
-      "state" : {
-        "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
-        "version" : "5.9.1"
-      }
-    },
     {
       "identity" : "bbc-news-swift",
       "kind" : "remoteSourceControl",
