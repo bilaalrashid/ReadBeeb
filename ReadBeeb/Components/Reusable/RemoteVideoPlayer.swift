@@ -16,7 +16,12 @@ struct RemoteVideoPlayer: View {
 
     /// Has the user requested that the media item should be played.
     @Binding var shouldPlay: Bool
-
+    
+    /// Creates a new view to play a remote video.
+    ///
+    /// - Parameters:
+    ///   - url: The URL that the video is located at.
+    ///   - shouldPlay: If the video should be playing.
     init(url: URL, shouldPlay: Binding<Bool>) {
         self.player = AVPlayer(url: url)
         self.player.play()
