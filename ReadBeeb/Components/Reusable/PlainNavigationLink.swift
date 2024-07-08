@@ -15,6 +15,11 @@ struct PlainNavigationLink<Destination: View, Label: View>: View {
     /// A view builder to produce a label describing the destination to present.
     let label: Label
 
+    /// Creates a new navigation link with a hidden detail disclosure.
+    ///
+    /// - Parameters:
+    ///   - destination: The view for the navigation link to present.
+    ///   - _: The view builder to produce a label describing the destination to present.
     init(destination: Destination, @ViewBuilder _ label: () -> Label) {
         self.destination = destination
         self.label = label()

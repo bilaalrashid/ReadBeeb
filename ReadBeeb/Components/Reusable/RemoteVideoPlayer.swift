@@ -16,7 +16,7 @@ struct RemoteVideoPlayer: View {
 
     /// Has the user requested that the media item should be played.
     @Binding var shouldPlay: Bool
-    
+
     /// Creates a new view to play a remote video.
     ///
     /// - Parameters:
