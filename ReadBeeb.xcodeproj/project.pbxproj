@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A064C1A2C3C887B00AB6694 /* FDStoryPromo+IsLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A064C192C3C887500AB6694 /* FDStoryPromo+IsLive.swift */; };
 		3A1285142C30B90C00B1097D /* FDItemGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1285132C30B90700B1097D /* FDItemGroup.swift */; };
 		3A1285162C30C5A800B1097D /* TopicSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1285152C30C5A000B1097D /* TopicSelectionViewModel.swift */; };
 		3A1285182C317CD900B1097D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1285172C317CD200B1097D /* SettingsViewModel.swift */; };
@@ -91,6 +92,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A064C192C3C887500AB6694 /* FDStoryPromo+IsLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDStoryPromo+IsLive.swift"; sourceTree = "<group>"; };
 		3A1285132C30B90700B1097D /* FDItemGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDItemGroup.swift; sourceTree = "<group>"; };
 		3A1285152C30C5A000B1097D /* TopicSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSelectionViewModel.swift; sourceTree = "<group>"; };
 		3A1285172C317CD200B1097D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 		3ACDBF012BE7C4B300B624F9 /* BbcNews */ = {
 			isa = PBXGroup;
 			children = (
+				3A064C192C3C887500AB6694 /* FDStoryPromo+IsLive.swift */,
 				3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */,
 				3AA49ABC2B1253B900451FCC /* FDData+StoryPromos.swift */,
 				3AA49ABA2AFD95E700451FCC /* FDImage+Id.swift */,
@@ -599,6 +602,7 @@
 				3A44C5FC2A9B5BD0001AB40F /* MyNewsScreen.swift in Sources */,
 				3AA49AB22AF85E9200451FCC /* LogScreen.swift in Sources */,
 				3A4F65DE2AE1E3D9003673BF /* FDTextContainerText+AttributedString.swift in Sources */,
+				3A064C1A2C3C887B00AB6694 /* FDStoryPromo+IsLive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

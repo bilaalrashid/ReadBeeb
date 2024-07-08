@@ -43,7 +43,10 @@ extension MyNewsScreen {
                 let ids = selectedTopics.map { $0.id }
                 let topicResults = try await BbcNews().fetchTopicDiscoveryPages(for: ids)
                 let storyPromos = self.storyPromos(for: topicResults)
-                self.storyPromos = storyPromos.sorted { ($0.updated ?? Date()) > ($1.updated ?? Date()) }
+
+                self.storyPromos = storyPromos
+                    .filter { $0.updated != nil || $0.isLive }
+                    .sorted { ($0.updated ?? .now) > ($1.updated ?? .now) }
 
                 self.networkRequest = .success
             } catch let error {
