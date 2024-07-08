@@ -34,5 +34,5 @@ struct MediaSelectorItem: Codable, Equatable, Hashable {
     let encoding: String
 
     /// The date that the connection for the media item expires.
-    let expires: String
+    let expires: Date
 }

@@ -53,8 +53,8 @@ struct VideoPortraitStory: View {
                     .background(Color(UIColor.systemGray6))
                 case .success:
                     // It is safe to access [0] on both properties, as their size is checked elsewhere
-                    if let result = self.result {
-                        RemoteVideoPlayer(url: result.validMedia[0].validConnection[0].hrefSecure, shouldPlay: self.$shouldPlay)
+                    if let result = self.result, let url = result.validMedia[0].validConnection[0].hrefSecure {
+                        RemoteVideoPlayer(url: url, shouldPlay: self.$shouldPlay)
                     }
                 }
             }

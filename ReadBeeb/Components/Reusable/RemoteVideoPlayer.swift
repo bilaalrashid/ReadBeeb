@@ -17,8 +17,8 @@ struct RemoteVideoPlayer: View {
     /// Has the user requested that the media item should be played.
     @Binding var shouldPlay: Bool
 
-    init(url: String, shouldPlay: Binding<Bool>) {
-        self.player = AVPlayer(url: URL(string: url)!)
+    init(url: URL, shouldPlay: Binding<Bool>) {
+        self.player = AVPlayer(url: url)
         self.player.play()
         self._shouldPlay = shouldPlay
     }
@@ -37,5 +37,6 @@ struct RemoteVideoPlayer: View {
 }
 
 #Preview {
-    RemoteVideoPlayer(url: "", shouldPlay: Binding.constant(true))
+    // swiftlint:disable:next force_unwrapping
+    RemoteVideoPlayer(url: URL(string: "https://example.com")!, shouldPlay: Binding.constant(true))
 }

@@ -114,7 +114,7 @@ struct BbcMedia {
         }
 
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .millisecondsSince1970
+        decoder.dateDecodingStrategy = .deferredToDate
 
         return try decoder.decode(T.self, from: data)
     }

@@ -19,16 +19,16 @@ struct MediaSelectorConnection: Codable, Equatable, Hashable {
     let dpw: String
 
     /// The network protocol used for fetching the media item.
-    let `protocol`: String
+    let protocolName: String
 
     /// The network hosting provider of the connection method.
     let supplier: String
 
     /// The time at which the connection method for the media item is no longer valid for.
-    let authExpires: String
+    let authExpires: Date
 
     /// The link at which the contents of the media item is accessible at.
-    let href: String
+    let href: URL
 
     /// The format in which the contents of the media item is delivered in.
     let transferFormat: String
@@ -37,8 +37,17 @@ struct MediaSelectorConnection: Codable, Equatable, Hashable {
     /// If the protocol is not supported, the insecure version is returned
     ///
     /// - Note: Currently only supports upgrading to HTTP to HTTPS
-    var hrefSecure: String {
+    var hrefSecure: URL? {
+        var components = URLComponents(url: self.href, resolvingAgainstBaseURL: true)
+
+        let scheme = components?.scheme
         // swiftlint:disable:next force_https
-        return self.href.replacingOccurrences(of: "http://", with: "https://")
+        components?.scheme = scheme?.replacingOccurrences(of: "http", with: "https")
+
+        return components?.url
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case priority, authExpiresOffset, dpw, protocolName = "protocol", supplier, authExpires, href, transferFormat
     }
 }
