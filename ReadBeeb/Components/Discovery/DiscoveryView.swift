@@ -12,15 +12,36 @@ import BbcNews
 struct DiscoveryView: View {
     /// The data representing the discovery page.
     let data: FDData
+
+    /// The sections from the API's main feed to include in the view.
+    ///
+    /// This takes priority over `sectionsToExclude`
     let sectionsToInclude: [String]?
+
+    /// The sections from the API's main feed to exclude from the view.
+    ///
+    /// This has a lower priority than `sectionsToExclude`.
     let sectionsToExclude: [String]?
+
+    /// If the row separator should be hidden.
     let shouldHideSeparators: Bool
-    /// Use AnyView to avoid specifying dummy generic type when there is no extra content
+
+    /// Extra content to be displayed after the main feeds and before the copyright disclaimer.
+    ///
+    /// `AnyView` is used to avoid specifying dummy generic type when there is no extra content.
     @ViewBuilder var extraContent: () -> AnyView?
 
     /// A secondary destination that the story promo can link to e.g. a topic discovery page.
     @State private var destination: FDLinkDestination?
 
+    /// Creates a new view that displays the contents of a discovery page.
+    ///
+    /// - Parameters:
+    ///   - data: The data representing the discovery page.
+    ///   - sectionsToInclude: The sections from the API's main feed to include in the view.
+    ///   - sectionsToExclude: The sections from the API's main feed to exclude from the view.
+    ///   - shouldHideSeparators: If the row separator should be hidden.
+    ///   - extraContent: Extra content to be displayed after the main feeds and before the copyright disclaimer.
     init(
         data: FDData,
         sectionsToInclude: [String]? = nil,
@@ -35,7 +56,10 @@ struct DiscoveryView: View {
         self.extraContent = extraContent
     }
 
-    var filteredStructuredItems: [FDItemGroup] {
+    /// The item groups from the API, including or excluding any specified sections.
+    ///
+    /// Allowlisted include sections take priority over excluded sections.
+    private var filteredItemGroups: [FDItemGroup] {
         if let sectionsToInclude = self.sectionsToInclude {
             return self.data.itemGroups.including(headers: sectionsToInclude)
         }
@@ -49,12 +73,12 @@ struct DiscoveryView: View {
 
     var body: some View {
         List {
-            ForEach(Array(self.filteredStructuredItems.enumerated()), id: \.offset) { index, item in
-                if let header = item.header {
+            ForEach(Array(self.filteredItemGroups.enumerated()), id: \.offset) { index, group in
+                if let header = group.header {
                     DiscoveryItemView(item: header, index: index, hasHeader: false, destination: self.$destination)
                 }
 
-                DiscoveryItemView(item: item.body, index: index, hasHeader: item.header != nil, destination: self.$destination)
+                DiscoveryItemView(item: group.body, index: index, hasHeader: group.header != nil, destination: self.$destination)
             }
             .listRowSeparator(self.shouldHideSeparators ? .hidden : .automatic)
 
