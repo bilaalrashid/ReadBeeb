@@ -92,7 +92,7 @@ struct VideoPortraitStory: View {
             Logger.network.error("No video portrait story found in API result")
         } catch let error {
             self.networkResult = .error
-            Logger.network.error("Unable to fetch BBC iPlayer media options - \(error.localizedDescription)")
+            Logger.network.error("Unable to fetch BBC Media media options - \(error.localizedDescription)")
         }
 
         return nil
@@ -105,9 +105,9 @@ struct VideoPortraitStory: View {
         do {
             let result = try await BbcMedia().fetchMediaConnections(for: media.source.id)
 
-            guard result.validMedia.isEmpty else {
+            guard !result.validMedia.isEmpty else {
                 self.networkResult = .error
-                Logger.network.error("No valid media streams form BBC iPlayer API")
+                Logger.network.error("No valid media streams from BBC Media API")
 
                 return
             }
@@ -116,7 +116,7 @@ struct VideoPortraitStory: View {
             self.networkResult = .success
         } catch let error {
             self.networkResult = .error
-            Logger.network.error("Unable to fetch BBC iPlayer media options - \(error.localizedDescription)")
+            Logger.network.error("Unable to fetch BBC Media options - \(error.localizedDescription)")
         }
     }
 }

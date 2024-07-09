@@ -97,11 +97,11 @@ struct MediaView: View {
                 self.networkResult = .success
             } else {
                 self.networkResult = .error
-                Logger.network.error("No valid media streams form BBC iPlayer API")
+                Logger.network.error("No valid media streams form BBC Media API")
             }
         } catch let error {
             self.networkResult = .error
-            Logger.network.error("Unable to fetch BBC iPlayer media options - \(error.localizedDescription)")
+            Logger.network.error("Unable to fetch BBC Media media options - \(error.localizedDescription)")
         }
     }
 }

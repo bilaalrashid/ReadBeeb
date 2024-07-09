@@ -57,7 +57,7 @@ struct BbcMedia {
     }
 
     /// The hostname at which the API host hosted at.
-    static let hostname = "https://open.live.bbc.co.uk"
+    static let hostname = "open.live.bbc.co.uk"
 
     /// The session to perform network requests from
     let session: URLSession
@@ -113,7 +113,7 @@ struct BbcMedia {
         }
 
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .deferredToDate
+        decoder.dateDecodingStrategy = .iso8601
 
         return try decoder.decode(T.self, from: data)
     }
