@@ -27,6 +27,12 @@ struct BbcMedia {
         /// This is any response code outside of the 2xx range.
         case unsuccessfulStatusCode(url: URL, code: Int)
 
+        /// A response was returned that was unable to be decoded into a type.
+        case undecodableResponse(url: URL, type: Decodable.Type, underlyingError: DecodingError)
+
+        /// A generic error encountered when performing a networking operation.
+        case generic(underlyingError: Error)
+
         /// A human-readable description describing the error.
         public var description: String {
             switch self {
@@ -38,6 +44,26 @@ struct BbcMedia {
                 return "The response of the HTTP request to \(url) was invalid"
             case .unsuccessfulStatusCode(let url, let code):
                 return "\(url) returned an unsuccessful HTTP response code (\(code))"
+            case .undecodableResponse(let url, let type, let underlyingError):
+                // Manually rewrite the error description to be more useful when unwrapped
+                var description = ""
+
+                switch underlyingError {
+                case .dataCorrupted(let context):
+                    description = "Data corrupted when decoding: \(context)"
+                case .keyNotFound(let key, let context):
+                    description = "Key \(key) not found for coding path '\(context.codingPath)': \(context.debugDescription)"
+                case .valueNotFound(let value, let context):
+                    description = "Value \(value) not found for coding path '\(context.codingPath)': \(context.debugDescription)"
+                case .typeMismatch(let type, let context):
+                    description = "Type \(type) mismatch for coding path '\(context.codingPath)': \(context.debugDescription)"
+                @unknown default:
+                    description = "Decoding error: \(underlyingError.localizedDescription)"
+                }
+
+                return "\(url) returned a response that was not decodable to \(type): \(description)"
+            case .generic(let underlyingError):
+                return underlyingError.localizedDescription.description
             }
         }
 
@@ -52,6 +78,10 @@ struct BbcMedia {
                 return NSLocalizedString(self.description, comment: "Invalid HTTP response")
             case .unsuccessfulStatusCode:
                 return NSLocalizedString(self.description, comment: "Unsuccessful HTTP request")
+            case .undecodableResponse:
+                return NSLocalizedString(self.description, comment: "Unable to decode response")
+            case .generic(let underlyingError):
+                return underlyingError.localizedDescription
             }
         }
     }
@@ -62,6 +92,7 @@ struct BbcMedia {
     /// The session to perform network requests from
     let session: URLSession
 
+    /// Creates a new network controller for fetching media items.
     init() {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = [
@@ -73,48 +104,86 @@ struct BbcMedia {
         self.session = URLSession(configuration: configuration)
     }
 
+    /// Returns a list of media selectors for a given media PID, throwing an error if one occurs.
+    ///
+    /// - Parameter pid: The ID of the media item.
+    /// - Returns: A list of media selectors for the media item.
+    func fetchMediaConnectionsThrowing(for pid: String) async throws -> MediaSelectorResult {
+        let result = await self.fetchMediaConnections(for: pid)
+
+        switch result {
+        case .success(let response):
+            return response
+        case .failure(let error):
+            throw error
+        }
+    }
+
     /// Returns a list of media selectors for a given media PID.
     ///
     /// - Parameter pid: The ID of the media item.
     /// - Returns: A list of media selectors for the media item.
-    func fetchMediaConnections(for pid: String) async throws -> MediaSelectorResult {
+    func fetchMediaConnections(for pid: String) async -> Result<MediaSelectorResult, NetworkError> {
         var components = URLComponents()
         components.scheme = "https"
         components.host = BbcMedia.hostname
         components.path = "/mediaselector/6/select/version/2.0/format/json/mediaset/mobile-phone-main/vpid/\(pid)"
 
         if let url = components.url {
-            return try await self.fetch(url: url)
+            return await self.fetch(url: url)
         }
 
-        throw NetworkError.noUrl
+        return .failure(NetworkError.noUrl)
+    }
+
+    /// Performs a HTTP GET request to a provided URL, throwing an error if one occurs.
+    ///
+    /// - Parameter url: The URL to fetch.
+    /// - Returns: The fetched result.
+    public func fetchThrowing<T: Decodable>(url: URL) async throws -> T {
+        let result: Result<T, NetworkError> = await self.fetch(url: url)
+
+        switch result {
+        case .success(let response):
+            return response
+        case .failure(let error):
+            throw error
+        }
     }
 
     /// Performs a HTTP GET request to a provided URL.
     ///
     /// - Parameter url: The URL to fetch.
     /// - Returns: The fetched result.
-    public func fetch<T: Decodable>(url: URL) async throws -> T {
+    public func fetch<T: Decodable>(url: URL) async -> Result<T, NetworkError> {
         #if canImport(OSLog)
         Logger.network.debug("Requesting: \(url, privacy: .public)")
         #endif
 
-        let (data, response) = try await self.session.data(from: url)
+        do {
+            let (data, response) = try await self.session.data(from: url)
 
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw NetworkError.invalidResponse(url: url)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                return .failure(NetworkError.invalidResponse(url: url))
+            }
+
+            // Redirects should already be resolved, so if we receive a 3xx here, we have encountered a problem and we can't meaningfully
+            // decode the result to something without re-requesting, which ought to be handled by the caller.
+            let success = 200..<300
+            guard success.contains(httpResponse.statusCode) else {
+                return .failure(NetworkError.unsuccessfulStatusCode(url: url, code: httpResponse.statusCode))
+            }
+
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+
+            do {
+                return .success(try decoder.decode(T.self, from: data))
+            } catch let error as DecodingError {
+                return .failure(NetworkError.undecodableResponse(url: url, type: T.self, underlyingError: error))
+            }
+        } catch let error {
+            return .failure(NetworkError.generic(underlyingError: error))
         }
-
-        // Redirects should already be resolved, so if we receive a 3xx here, we have encountered a problem and we can't meaningfully
-        // decode the result to something without re-requesting, which ought to be handled by the caller.
-        let success = 200..<300
-        guard success.contains(httpResponse.statusCode) else {
-            throw NetworkError.unsuccessfulStatusCode(url: url, code: httpResponse.statusCode)
-        }
-
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-
-        return try decoder.decode(T.self, from: data)
     }
 }
