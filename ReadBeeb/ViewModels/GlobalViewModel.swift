@@ -38,21 +38,22 @@ import OSLog
 
     /// Fetch the main data for the view model from the API.
     func fetchData() async {
-        do {
-            self.networkRequest = .loading
+        self.networkRequest = .loading
 
-            let postcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
-            let result = try await BbcNews().fetchIndexDiscoveryPage(postcode: postcode)
+        let postcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
+        let result = await BbcNews().fetchIndexDiscoveryPage(postcode: postcode)
 
+        switch result {
+        case .success(let result):
             self.data = result.data
 
             // Don't include linked here, this will be too long to load for all pages
             await self.fetchAllVideos(includeLinked: false)
 
             self.networkRequest = .success
-        } catch let error {
+        case .failure(let error):
             self.networkRequest = .error
-            Logger.network.error("Unable to fetch BBC News API Home tab - \(error.localizedDescription)")
+            Logger.network.error("Unable to fetch home page: \(error.localizedDescription)")
         }
     }
 
@@ -109,12 +110,14 @@ import OSLog
         var storyPromos = Set<FDStoryPromo>()
 
         for url in urls {
-            do {
-                let result = try await BbcNews().fetch(url: url)
+            let result = await BbcNews().fetch(url: url)
+
+            switch result {
+            case .success(let result):
                 storyPromos.formUnion(result.data.storyPromos)
-            } catch let error {
+            case .failure(let error):
                 self.networkRequest = .error
-                Logger.network.error("Unable to fetch \(url) - \(error.localizedDescription)")
+                Logger.network.error("Unable to fetch linked story promo: \(error.localizedDescription)")
             }
         }
 

@@ -37,11 +37,14 @@ extension MyNewsScreen {
         ///
         /// - Parameter selectedTopics: The topics to fetch the story promos for.
         func fetchData(selectedTopics: [Topic]) async {
-            do {
-                self.networkRequest = .loading
+            self.networkRequest = .loading
 
-                let ids = selectedTopics.map { $0.id }
-                let topicResults = try await BbcNews().fetchTopicDiscoveryPages(for: ids)
+            let ids = selectedTopics.map { $0.id }
+
+            let result = await BbcNews().fetchTopicDiscoveryPages(for: ids)
+
+            switch result {
+            case .success(let topicResults):
                 let storyPromos = self.storyPromos(for: topicResults)
 
                 self.storyPromos = storyPromos
@@ -49,9 +52,9 @@ extension MyNewsScreen {
                     .sorted { ($0.updated ?? .now) > ($1.updated ?? .now) }
 
                 self.networkRequest = .success
-            } catch let error {
+            case .failure(let error):
                 self.networkRequest = .error
-                Logger.network.error("Unable to fetch topics for My News tab - \(error.localizedDescription)")
+                Logger.network.error("Unable to fetch my news topics: \(error.localizedDescription)")
             }
         }
 

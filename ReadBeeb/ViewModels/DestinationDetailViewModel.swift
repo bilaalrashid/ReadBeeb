@@ -69,22 +69,36 @@ extension DestinationDetailScreen {
 
         /// Fetch the contents of the destination URL from the API.
         func fetchData() async {
-            do {
-                if self.isApiUrl {
-                    self.networkRequest = .loading
-                    let result = try await BbcNews().fetch(url: self.destination.url)
-                    self.data = result.data
-                    self.networkRequest = .success
-                }
-            } catch NetworkError.newDestination(let link) {
-                if let destination = link.destinations.first {
+            // Only fetch data if the destination URL is for the API
+            guard self.isApiUrl else { return }
+
+            self.networkRequest = .loading
+
+            let result = await BbcNews().fetch(url: self.destination.url)
+
+            switch result {
+            case .success(let result):
+                self.data = result.data
+                self.networkRequest = .success
+            case .failure(let error):
+                if case .newDestination(_, let link) = error {
+                    guard let destination = link.destinations.first else {
+                        self.networkRequest = .error
+                        Logger.network.error("No destination found inside new destination response: \(error.localizedDescription)")
+
+                        return
+                    }
+
                     Logger.network.info("Found new destination \(destination.url) from \(self.destination.url)")
+
                     self.destination = destination
                     await self.fetchData()
+
+                    return
                 }
-            } catch let error {
+
                 self.networkRequest = .error
-                Logger.network.error("Unable to fetch news article \(self.destination.url) - \(error.localizedDescription)")
+                Logger.network.error("Unable to fetch destination: \(error.localizedDescription)")
             }
         }
 

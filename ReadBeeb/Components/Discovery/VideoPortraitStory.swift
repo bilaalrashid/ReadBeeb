@@ -80,19 +80,20 @@ struct VideoPortraitStory: View {
             return nil
         }
 
-        do {
-            let detail = try await BbcNews().fetch(url: url)
+        let result = await BbcNews().fetch(url: url)
 
+        switch result {
+        case .success(let detail):
             if case .videoPortraitStory(let videoPortraitStory) = detail.data.items.first {
                 self.networkResult = .success
                 return videoPortraitStory.media
             }
 
             self.networkResult = .error
-            Logger.network.error("No video portrait story found in API result")
-        } catch let error {
+            Logger.network.error("No video portrait story found in result from \(url)")
+        case .failure(let error):
             self.networkResult = .error
-            Logger.network.error("Unable to fetch BBC Media media options - \(error.localizedDescription)")
+            Logger.network.error("Unable to fetch detail view for video portrait story: \(error.localizedDescription)")
         }
 
         return nil
