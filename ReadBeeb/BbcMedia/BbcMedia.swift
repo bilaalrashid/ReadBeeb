@@ -109,14 +109,7 @@ struct BbcMedia {
     /// - Parameter pid: The ID of the media item.
     /// - Returns: A list of media selectors for the media item.
     func fetchMediaConnectionsThrowing(for pid: String) async throws -> MediaSelectorResult {
-        let result = await self.fetchMediaConnections(for: pid)
-
-        switch result {
-        case .success(let response):
-            return response
-        case .failure(let error):
-            throw error
-        }
+        return try await self.fetchMediaConnections(for: pid).get()
     }
 
     /// Returns a list of media selectors for a given media PID.
@@ -141,14 +134,7 @@ struct BbcMedia {
     /// - Parameter url: The URL to fetch.
     /// - Returns: The fetched result.
     public func fetchThrowing<T: Decodable>(url: URL) async throws -> T {
-        let result: Result<T, NetworkError> = await self.fetch(url: url)
-
-        switch result {
-        case .success(let response):
-            return response
-        case .failure(let error):
-            throw error
-        }
+        return try await self.fetch(url: url).get()
     }
 
     /// Performs a HTTP GET request to a provided URL.
