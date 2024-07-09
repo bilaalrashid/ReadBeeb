@@ -20,12 +20,12 @@ struct BbcMedia {
         case invalidUrl(url: String)
 
         /// A corrupt response was returned by the server.
-        case invalidResponse
+        case invalidResponse(url: URL)
 
         /// A non-success HTTP response code was received by the caller.
         ///
         /// This is any response code outside of the 2xx range.
-        case unsuccessfulStatusCode(code: Int)
+        case unsuccessfulStatusCode(url: URL, code: Int)
 
         /// A human-readable description describing the error.
         public var description: String {
@@ -34,10 +34,10 @@ struct BbcMedia {
                 return "There was no URL to request"
             case .invalidUrl(let url):
                 return "\(url) is not a valid URL"
-            case .invalidResponse:
-                return "The response to the HTTP request was invalid"
-            case .unsuccessfulStatusCode(let code):
-                return "The HTTP response gave an unsuccessful response code (\(code))"
+            case .invalidResponse(let url):
+                return "The response of the HTTP request to \(url) was invalid"
+            case .unsuccessfulStatusCode(let url, let code):
+                return "\(url) returned an unsuccessful HTTP response code (\(code))"
             }
         }
 
@@ -102,14 +102,14 @@ struct BbcMedia {
         let (data, response) = try await self.session.data(from: url)
 
         guard let httpResponse = response as? HTTPURLResponse else {
-            throw NetworkError.invalidResponse
+            throw NetworkError.invalidResponse(url: url)
         }
 
         // Redirects should already be resolved, so if we receive a 3xx here, we have encountered a problem and we can't meaningfully
         // decode the result to something without re-requesting, which ought to be handled by the caller.
         let success = 200..<300
         guard success.contains(httpResponse.statusCode) else {
-            throw NetworkError.unsuccessfulStatusCode(code: httpResponse.statusCode)
+            throw NetworkError.unsuccessfulStatusCode(url: url, code: httpResponse.statusCode)
         }
 
         let decoder = JSONDecoder()
