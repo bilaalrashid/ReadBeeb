@@ -89,19 +89,24 @@ struct MediaView: View {
 
     /// Performs a network request to fetch a list of media selectors for this media item.
     private func fetchMediaSelectorItems() async {
-        do {
-            self.networkResult = .loading
-            let result = try await BbcMedia().fetchMediaConnectionsThrowing(for: self.media.source.id)
-            if !result.validMedia.isEmpty {
-                self.result = result
-                self.networkResult = .success
-            } else {
+        self.networkResult = .loading
+
+        let result = await BbcMedia().fetchMediaConnections(for: self.media.source.id)
+
+        switch result {
+        case .success(let mediaSelectorResult):
+            guard !mediaSelectorResult.validMedia.isEmpty else {
                 self.networkResult = .error
-                Logger.network.error("No valid media streams form BBC Media API")
+                Logger.network.error("No valid media streams for media view: media \(media.source.id, privacy: .public)")
+
+                return
             }
-        } catch let error {
+
+            self.result = mediaSelectorResult
+            self.networkResult = .success
+        case .failure(let error):
             self.networkResult = .error
-            Logger.network.error("Unable to fetch BBC Media media options - \(error.localizedDescription)")
+            Logger.network.error("Unable to fetch media view media selector items: \(error.localizedDescription)")
         }
     }
 }

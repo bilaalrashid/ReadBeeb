@@ -102,21 +102,22 @@ struct VideoPortraitStory: View {
     private func fetchMediaSelectorItems(media: FDMedia) async {
         self.networkResult = .loading
 
-        do {
-            let result = try await BbcMedia().fetchMediaConnectionsThrowing(for: media.source.id)
+        let result = await BbcMedia().fetchMediaConnections(for: media.source.id)
 
-            guard !result.validMedia.isEmpty else {
+        switch result {
+        case .success(let mediaSelectorResult):
+            guard !mediaSelectorResult.validMedia.isEmpty else {
                 self.networkResult = .error
-                Logger.network.error("No valid media streams from BBC Media API")
+                Logger.network.error("No valid media streams for video portrait story: media \(media.source.id, privacy: .public)")
 
                 return
             }
 
-            self.result = result
+            self.result = mediaSelectorResult
             self.networkResult = .success
-        } catch let error {
+        case .failure(let error):
             self.networkResult = .error
-            Logger.network.error("Unable to fetch BBC Media options - \(error.localizedDescription)")
+            Logger.network.error("Unable to fetch video portrait story media selector items: \(error.localizedDescription)")
         }
     }
 }
