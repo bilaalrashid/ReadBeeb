@@ -177,10 +177,17 @@ struct BbcMedia {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
 
-            do {
-                return .success(try decoder.decode(T.self, from: data))
-            } catch let error as DecodingError {
-                return .failure(NetworkError.undecodableResponse(url: url, type: T.self, underlyingError: error))
+            let decodingResult = decoder.decodeWithoutThrowing(T.self, from: data)
+
+            switch decodingResult {
+            case .success(let decoded):
+                return .success(decoded)
+            case .failure(let error):
+                if let error = error as? DecodingError {
+                    return .failure(NetworkError.undecodableResponse(url: url, type: T.self, underlyingError: error))
+                }
+
+                return .failure(NetworkError.generic(underlyingError: error))
             }
         } catch let error {
             return .failure(NetworkError.generic(underlyingError: error))
