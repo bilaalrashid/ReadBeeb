@@ -64,6 +64,7 @@
 		3A7C63872AE3427700BB114A /* TLDExtract in Frameworks */ = {isa = PBXBuildFile; productRef = 3A7C63862AE3427700BB114A /* TLDExtract */; };
 		3A7C63892AE344ED00BB114A /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C63882AE344ED00BB114A /* SafariView.swift */; };
 		3A7C638B2AE3E4CE00BB114A /* URL+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C638A2AE3E4CE00BB114A /* URL+Identifiable.swift */; };
+		3A8D52A72C505A81003A0D2F /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D52A62C505A81003A0D2F /* URLTests.swift */; };
 		3A9124C92AA6872F00EC0DCF /* DestinationDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124C82AA6872F00EC0DCF /* DestinationDetailScreen.swift */; };
 		3A9124CD2AAD3CF700EC0DCF /* FDData+StructuredItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */; };
 		3A9124F52AAE12EA00EC0DCF /* Date+FormattedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9124F42AAE12EA00EC0DCF /* Date+FormattedString.swift */; };
@@ -91,6 +92,16 @@
 		3ACDBF082BEACD3D00B624F9 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDBF072BEACD3D00B624F9 /* ImageContainer.swift */; };
 		3AF483BD2C0A95FB00D237FE /* View+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF483BC2C0A95FB00D237FE /* View+Frame.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A8D52A02C505A08003A0D2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A44C5CB2A9A9F86001AB40F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A44C5D22A9A9F86001AB40F;
+			remoteInfo = ReadBeeb;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3A064C192C3C887500AB6694 /* FDStoryPromo+IsLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDStoryPromo+IsLive.swift"; sourceTree = "<group>"; };
@@ -151,6 +162,8 @@
 		3A7C63832AE3410300BB114A /* URL+IsBbc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+IsBbc.swift"; sourceTree = "<group>"; };
 		3A7C63882AE344ED00BB114A /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		3A7C638A2AE3E4CE00BB114A /* URL+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Identifiable.swift"; sourceTree = "<group>"; };
+		3A8D529C2C505A08003A0D2F /* ReadBeebTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReadBeebTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A8D52A62C505A81003A0D2F /* URLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLTests.swift; sourceTree = "<group>"; };
 		3A9124C82AA6872F00EC0DCF /* DestinationDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailScreen.swift; sourceTree = "<group>"; };
 		3A9124CC2AAD3CF700EC0DCF /* FDData+StructuredItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FDData+StructuredItems.swift"; sourceTree = "<group>"; };
 		3A9124F42AAE12EA00EC0DCF /* Date+FormattedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+FormattedString.swift"; sourceTree = "<group>"; };
@@ -190,6 +203,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3A8D52992C505A08003A0D2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -207,6 +227,7 @@
 				3AA49AA32AF7065800451FCC /* .swiftlint.yml */,
 				3A44C5E52A9AA076001AB40F /* README.md */,
 				3A44C5D52A9A9F86001AB40F /* ReadBeeb */,
+				3A8D529D2C505A08003A0D2F /* ReadBeebTests */,
 				3A44C5D42A9A9F86001AB40F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -215,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				3A44C5D32A9A9F86001AB40F /* ReadBeeb.app */,
+				3A8D529C2C505A08003A0D2F /* ReadBeebTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,6 +377,22 @@
 			path = Topics;
 			sourceTree = "<group>";
 		};
+		3A8D529D2C505A08003A0D2F /* ReadBeebTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A8D52A52C505A26003A0D2F /* Extensions */,
+			);
+			path = ReadBeebTests;
+			sourceTree = "<group>";
+		};
+		3A8D52A52C505A26003A0D2F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3A8D52A62C505A81003A0D2F /* URLTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3AA49AA82AF8295A00451FCC /* Postcodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +491,24 @@
 			productReference = 3A44C5D32A9A9F86001AB40F /* ReadBeeb.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3A8D529B2C505A08003A0D2F /* ReadBeebTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A8D52A42C505A08003A0D2F /* Build configuration list for PBXNativeTarget "ReadBeebTests" */;
+			buildPhases = (
+				3A8D52982C505A08003A0D2F /* Sources */,
+				3A8D52992C505A08003A0D2F /* Frameworks */,
+				3A8D529A2C505A08003A0D2F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A8D52A12C505A08003A0D2F /* PBXTargetDependency */,
+			);
+			name = ReadBeebTests;
+			productName = ReadBeebTests;
+			productReference = 3A8D529C2C505A08003A0D2F /* ReadBeebTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -460,11 +516,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					3A44C5D22A9A9F86001AB40F = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					3A8D529B2C505A08003A0D2F = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 3A44C5D22A9A9F86001AB40F;
 					};
 				};
 			};
@@ -488,6 +548,7 @@
 			projectRoot = "";
 			targets = (
 				3A44C5D22A9A9F86001AB40F /* ReadBeeb */,
+				3A8D529B2C505A08003A0D2F /* ReadBeebTests */,
 			);
 		};
 /* End PBXProject section */
@@ -501,6 +562,13 @@
 				3A75FA332AC87C0F00393014 /* Topics.json in Resources */,
 				3AA49AA72AF8291D00451FCC /* Postcodes.json in Resources */,
 				3A44C5DB2A9A9F87001AB40F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A8D529A2C505A08003A0D2F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +678,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3A8D52982C505A08003A0D2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8D52A72C505A81003A0D2F /* URLTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A8D52A12C505A08003A0D2F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A44C5D22A9A9F86001AB40F /* ReadBeeb */;
+			targetProxy = 3A8D52A02C505A08003A0D2F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3A44C5E02A9A9F87001AB40F /* Debug */ = {
@@ -812,6 +896,55 @@
 			};
 			name = Release;
 		};
+		3A8D52A22C505A08003A0D2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9A9X3S8Q4P;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.bilaal.ReadBeebTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReadBeeb.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ReadBeeb";
+			};
+			name = Debug;
+		};
+		3A8D52A32C505A08003A0D2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9A9X3S8Q4P;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.bilaal.ReadBeebTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReadBeeb.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ReadBeeb";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -829,6 +962,15 @@
 			buildConfigurations = (
 				3A44C5E32A9A9F87001AB40F /* Debug */,
 				3A44C5E42A9A9F87001AB40F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A8D52A42C505A08003A0D2F /* Build configuration list for PBXNativeTarget "ReadBeebTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A8D52A22C505A08003A0D2F /* Debug */,
+				3A8D52A32C505A08003A0D2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
