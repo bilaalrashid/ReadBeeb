@@ -60,7 +60,7 @@ struct TextContainer: View {
             guard let scheme = url.scheme else { return .systemAction }
 
             if schemesToHandle.contains(scheme) {
-                if url.isBBC, let destination = self.destination(for: url) {
+                if url.isBbc, let destination = self.destination(for: url) {
                     self.destination = destination
                 } else {
                     self.externalUrl = url

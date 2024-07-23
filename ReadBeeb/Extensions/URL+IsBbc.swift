@@ -1,5 +1,5 @@
 //
-//  URL+IsBBC.swift
+//  URL+IsBbc.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 21/10/2023.
@@ -10,7 +10,7 @@ import TLDExtract
 
 extension URL {
     /// If the URL is on a domain owned by the BBC.
-    var isBBC: Bool {
+    var isBbc: Bool {
         let bbcDomains = ["bbc.co.uk", "bbci.co.uk", "bbc.com"]
 
         let extractor = TLDExtract()
