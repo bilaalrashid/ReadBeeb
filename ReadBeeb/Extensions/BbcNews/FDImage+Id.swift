@@ -8,7 +8,7 @@
 import Foundation
 import BbcNews
 
-extension FDImage: @retroactive Identifiable {
+extension FDImage: Identifiable {
     /// A wrapper around `source.url` to conform `FDImage` to identifiable.
     public var id: String {
         return self.source.url
