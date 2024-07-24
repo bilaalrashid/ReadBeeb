@@ -9,17 +9,17 @@ import Foundation
 
 extension Int {
     /// Converts milliseconds to a formatted string describing the time interval.
-    var durationFormattedString: String? {
+    var formattedMillisecondsDuration: String? {
         let interval = TimeInterval(self) / 1000
 
         if interval < 60 {
             return "\(Int(interval))s"
-        } else {
-            let formatter = DateComponentsFormatter()
-            formatter.allowedUnits = [.hour, .minute, .second]
-            formatter.unitsStyle = .positional
-
-            return formatter.string(from: interval)
         }
+
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+
+        return formatter.string(from: interval)
     }
 }
