@@ -72,7 +72,7 @@ struct StoryPromoRow: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                     } else if let lastUpdated = self.story.updated {
-                        Text(lastUpdated.formattingString)
+                        Text(lastUpdated.formattedString)
                             .font(.caption)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)

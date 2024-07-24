@@ -83,7 +83,7 @@ struct ProminentStoryPromoRow: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                     } else if let lastUpdated = self.story.updated {
-                        Text(lastUpdated.formattingString)
+                        Text(lastUpdated.formattedString)
                             .font(.footnote)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)

@@ -51,7 +51,7 @@ struct Headline: View {
                 }
 
                 if let published = headline.published {
-                    Text(published.formattingString)
+                    Text(published.formattedString)
                         .font(.callout)
                 }
 
