@@ -1,5 +1,5 @@
 //
-//  FDTextContainerText+AttributedString.swift
+//  FDAttributedText+AttributedString.swift
 //  ReadBeeb
 //
 //  Created by Bilaal Rashid on 19/10/2023.
