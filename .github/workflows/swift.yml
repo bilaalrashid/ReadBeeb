@@ -42,5 +42,5 @@ jobs:
         run: gem install xcpretty
 
       - name: Test project
-        run: xcodebuild -project /Users/runner/work/ReadBeeb/ReadBeeb.xcodeproj -scheme ReadBeeb -destination 'platform=iOS Simulator,OS=${{ matrix.ios }},name=${{ matrix.iphone }}' clean build test | xcpretty && exit ${PIPESTATUS[0]} 
+        run: xcodebuild -project ReadBeeb.xcodeproj -scheme ReadBeeb -destination 'platform=iOS Simulator,OS=${{ matrix.ios }},name=${{ matrix.iphone }}' clean build test | xcpretty && exit ${PIPESTATUS[0]} 
 
