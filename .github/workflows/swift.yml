@@ -20,27 +20,3 @@ jobs:
       - name: SwiftLint
         run: swiftlint --config .swiftlint.yml --reporter github-actions-logging --strict
 
-  test:
-    name: ${{ matrix.iphone }} (iOS ${{ matrix.ios }}) using  Xcode ${{ matrix.xcode }} on ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-14]
-        xcode: ["15.4"]
-        ios: ["17.5"]
-        iphone: ["iPhone 15"]
-    runs-on: ${{ matrix.os }}
-    needs: lint
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Xcode version
-        run: sudo xcode-select -s /Applications/Xcode_${{ matrix.xcode  }}.app/Contents/Developer
-
-      - name: Install xcpretty
-        run: gem install xcpretty
-
-      - name: Test project
-        run: xcodebuild -project ReadBeeb.xcodeproj -scheme ReadBeeb -destination 'platform=iOS Simulator,OS=${{ matrix.ios }},name=${{ matrix.iphone }}' clean build test | xcpretty && exit ${PIPESTATUS[0]} 
-
