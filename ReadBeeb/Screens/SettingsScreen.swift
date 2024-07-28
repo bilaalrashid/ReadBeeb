@@ -23,12 +23,12 @@ struct SettingsScreen: View {
     @State private var rawPostcode = ""
 
     @AppStorage(Constants.UserDefaultIdentifiers.service)
-    private var language = Service.english.rawValue
+    private var service = Service.english.rawValue
 
     var body: some View {
         List {
             Section {
-                Picker("International Service", selection: self.$language) {
+                Picker("International Service", selection: self.$service) {
                     ForEach(Service.allCases, id: \.rawValue) { service in
                         Text(service.displayName).tag(service.rawValue)
                     }
