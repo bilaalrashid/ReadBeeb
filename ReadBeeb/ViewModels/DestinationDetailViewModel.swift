@@ -74,7 +74,10 @@ extension DestinationDetailScreen {
 
             self.networkRequest = .loading
 
-            let result = await BbcNews().fetch(url: self.destination.url)
+            let service = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.service)
+            let api = BbcNews(service: Service(rawValue: service ?? "") ?? .english)
+
+            let result = await api.fetch(url: self.destination.url)
 
             switch result {
             case .success(let result):

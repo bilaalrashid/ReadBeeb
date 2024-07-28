@@ -13,6 +13,9 @@ import Kingfisher
 enum Constants {
     /// Identifiers for UserDefault options.
     enum UserDefaultIdentifiers {
+        /// The currently selected international service.
+        static let service = "uk.co.bilaal.ReadBeeb.storage.service"
+
         /// The currently selected postcode area.
         static let postcodeIdentifier = "uk.co.bilaal.ReadBeeb.storage.postcode"
     }

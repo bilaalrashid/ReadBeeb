@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BbcNews
 
 /// The screen that controls the user-modifiable preferences.
 struct SettingsScreen: View {
@@ -21,8 +22,19 @@ struct SettingsScreen: View {
     /// The postcode entered by the user.
     @State private var rawPostcode = ""
 
+    @AppStorage(Constants.UserDefaultIdentifiers.service)
+    private var language = Service.english.rawValue
+
     var body: some View {
         List {
+            Section {
+                Picker("International Service", selection: self.$language) {
+                    ForEach(Service.allCases, id: \.rawValue) { service in
+                        Text(service.displayName).tag(service.rawValue)
+                    }
+                }
+            }
+
             Section(
                 footer: Text("Optional. Personalise news results based on your local area.")
             ) {
