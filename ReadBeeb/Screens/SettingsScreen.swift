@@ -22,6 +22,7 @@ struct SettingsScreen: View {
     /// The postcode entered by the user.
     @State private var rawPostcode = ""
 
+    /// The international service that results are being fetched for.
     @AppStorage(Constants.UserDefaultIdentifiers.service)
     private var service = Service.english.rawValue
 
