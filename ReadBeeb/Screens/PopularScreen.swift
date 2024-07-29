@@ -11,7 +11,14 @@ import OSLog
 /// The screen displaying the most popular story promos and topics.
 struct PopularScreen: View {
     /// The sections from the API's main feed to display in the screen.
-    private let sectionsToInclude = ["Most Read", "Topics in the news"]
+    private let sectionsToInclude = [
+        "Most Read",
+        "Topics in the news",
+        "الأكثر قراءة",                       // Arabic: "Most Read"
+        "सबसे अधिक पढ़ी गईं",                    // Hindi: "Most Read"
+        "Más leídas",                        // Mundo: "Most Read"
+        "Самое популярное"                   // Russian: "Most Popular"
+    ]
 
     /// The global view model representing the system.
     @EnvironmentObject var viewModel: GlobalViewModel

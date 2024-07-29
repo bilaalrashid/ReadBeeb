@@ -11,7 +11,30 @@ import OSLog
 /// The screen displaying story promos for the most relevant stories.
 struct TopStoriesScreen: View {
     /// The sections from the API's main feed to exclude from display in the screen.
-    private let sectionsToExclude = ["Watch & Listen", "Most Read", "Topics in the news", "Today's videos", "Copyright"]
+    private let sectionsToExclude = [
+        "Watch & Listen",
+        "Most Read",
+        "Topics in the news",
+        "Today's videos",
+        "Copyright",
+        "برامجنا",                           // Arabic: "Our Programs"
+        "فيديو",                             // Arabic: "Video"
+        "الأكثر قراءة",                       // Arabic: "Most Read"
+        "مواقعنا على وسائل التواصل الاجتماعي", // Arabic: "Our Social Media Sites"
+        "Gwylio a Gwrando",                  // Cymru: "Watch and Listen"
+        "Dysgu Cymraeg",                     // Cymru: "Learn Welsh"
+        "Hefyd ar y we",                     // Cymru: "Also on the web"
+        "मल्टीमीडिया",                           // Hindi: "Multimedia"
+        "पॉडकास्ट",                             // Hindi: "Podcast"
+        "सबसे अधिक पढ़ी गईं",                    // Hindi: "Most Read"
+        "Video y audio",                     // Mundo: "Video and audio"
+        "Más leídas",                        // Mundo: "Most Read"
+        "En redes sociales",                 // Mundo: "On social networks"
+        "Подкасты",                          // Russian: "Podcasts"
+        "Самое популярное",                  // Russian: "Most Popular"
+        "Мы в соцсетях",                     // Russian: "We are in social networks"
+        "Полезные ссылки"                   // Russian: "Useful links"
+    ]
 
     /// The global view model representing the system.
     @EnvironmentObject var viewModel: GlobalViewModel

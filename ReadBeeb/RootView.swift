@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import BbcNews
 
 /// The root view of the system for an individual window.
 struct RootView: View {
     @StateObject private var viewModel = GlobalViewModel()
+
+    @AppStorage(Constants.UserDefaultIdentifiers.service)
+    private var service = Service.english.rawValue
 
     var body: some View {
         TabView {
@@ -29,12 +33,14 @@ struct RootView: View {
                 Label("My News", systemImage: "person.crop.square")
             }
 
-            NavigationStack {
-                PopularScreen()
-            }
-            .navigationViewStyle(.stack)
-            .tabItem {
-                Label("Popular", systemImage: "chart.line.uptrend.xyaxis")
+            if self.service != Service.cymru.rawValue {
+                NavigationStack {
+                    PopularScreen()
+                }
+                .navigationViewStyle(.stack)
+                .tabItem {
+                    Label("Popular", systemImage: "chart.line.uptrend.xyaxis")
+                }
             }
 
             NavigationStack {

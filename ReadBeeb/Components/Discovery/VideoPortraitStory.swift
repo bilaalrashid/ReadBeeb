@@ -80,7 +80,10 @@ struct VideoPortraitStory: View {
             return nil
         }
 
-        let result = await BbcNews().fetch(url: url)
+        let service = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.service)
+        let api = BbcNews(service: Service(rawValue: service ?? "") ?? .english)
+
+        let result = await api.fetch(url: url)
 
         switch result {
         case .success(let detail):
