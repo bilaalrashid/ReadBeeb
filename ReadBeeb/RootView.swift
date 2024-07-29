@@ -10,8 +10,10 @@ import BbcNews
 
 /// The root view of the system for an individual window.
 struct RootView: View {
+    /// The global view model representing the system.
     @StateObject private var viewModel = GlobalViewModel()
 
+    /// The international service that results are being fetched for.
     @AppStorage(Constants.UserDefaultIdentifiers.service)
     private var service = Service.english.rawValue
 
