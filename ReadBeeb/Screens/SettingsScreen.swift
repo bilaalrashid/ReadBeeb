@@ -35,15 +35,17 @@ struct SettingsScreen: View {
                 }
             }
 
-            Section(
-                footer: Text("Optional. Personalise news results based on your local area.")
-            ) {
-                HStack {
-                    Text("Postcode Area")
-                    Spacer()
-                    TextField("e.g. W1A", text: self.$rawPostcode)
-                        .multilineTextAlignment(.trailing)
-                        .autocorrectionDisabled(true)
+            if self.service == Service.english.rawValue {
+                Section(
+                    footer: Text("Optional. Personalise news results based on your local area.")
+                ) {
+                    HStack {
+                        Text("Postcode Area")
+                        Spacer()
+                        TextField("e.g. W1A", text: self.$rawPostcode)
+                            .multilineTextAlignment(.trailing)
+                            .autocorrectionDisabled(true)
+                    }
                 }
             }
 
