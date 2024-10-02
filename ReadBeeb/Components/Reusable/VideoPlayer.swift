@@ -27,7 +27,9 @@ struct VideoPlayer: UIViewControllerRepresentable {
         try? audioSession.setCategory(.playback, mode: .moviePlayback)
 
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in
-            self.onFinish?()
+            Task { @MainActor in
+                self.onFinish?()
+            }
         }
 
         return viewController
@@ -37,7 +39,9 @@ struct VideoPlayer: UIViewControllerRepresentable {
         uiViewController.player = self.player
 
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in
-            self.onFinish?()
+            Task { @MainActor in
+                self.onFinish?()
+            }
         }
     }
 

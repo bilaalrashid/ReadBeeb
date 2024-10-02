@@ -93,7 +93,7 @@ struct BbcMedia {
     let session: URLSession
 
     /// Creates a new network controller for fetching media items.
-    init() {
+    @MainActor init() {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = [
             // Pretend to be the BBC News app
