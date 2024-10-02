@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import BbcNews
+@preconcurrency import BbcNews
 import OSLog
 
 extension MyNewsScreen {

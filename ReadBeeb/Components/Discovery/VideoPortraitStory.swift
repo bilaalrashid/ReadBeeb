@@ -7,7 +7,7 @@
 
 import SwiftUI
 import OSLog
-import BbcNews
+@preconcurrency import BbcNews
 
 /// A view that displays a story that consists of a portrait video.
 struct VideoPortraitStory: View {
