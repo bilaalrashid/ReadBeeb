@@ -55,7 +55,6 @@ struct TextContainer: View {
             }
         }
         .environment(\.openURL, OpenURLAction { url in
-            // swiftlint:disable:next force_https
             let schemesToHandle = ["http", "https"]
             guard let scheme = url.scheme else { return .systemAction }
 
