@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import Kingfisher
+@preconcurrency import Kingfisher
 
 /// Global constants for the system.
 enum Constants {
