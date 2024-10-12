@@ -41,7 +41,6 @@ struct MediaSelectorConnection: Codable, Equatable, Hashable {
         var components = URLComponents(url: self.href, resolvingAgainstBaseURL: true)
 
         let scheme = components?.scheme
-        // swiftlint:disable:next force_https
         components?.scheme = scheme?.replacingOccurrences(of: "http", with: "https")
 
         return components?.url

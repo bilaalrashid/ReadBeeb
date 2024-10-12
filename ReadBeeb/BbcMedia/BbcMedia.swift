@@ -98,7 +98,7 @@ struct BbcMedia {
         configuration.httpAdditionalHeaders = [
             // Pretend to be the BBC News app
             // Example: BBCNews/25339 (iPhone15,2; iOS 16.6) MediaSelectorClient/7.0.0 BBCHTTPClient/9.0.0
-            // swiftlint:disable:next line_length force_https
+            // swiftlint:disable:next line_length
             "User-Agent": "BBCNews/25339 (\(UIDevice.current.modelIdentifier); \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)) MediaSelectorClient/7.0.0 BBCHTTPClient/9.0.0"
         ]
         self.session = URLSession(configuration: configuration)
