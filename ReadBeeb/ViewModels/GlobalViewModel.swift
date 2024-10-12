@@ -8,6 +8,7 @@
 import Foundation
 import BbcNews
 import OSLog
+import UIKit
 
 /// The global view model for the system.
 @MainActor class GlobalViewModel: ObservableObject {
@@ -42,7 +43,12 @@ import OSLog
 
         let postcode = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.postcodeIdentifier)
         let service = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.service)
-        let api = BbcNews(service: Service(rawValue: service ?? "") ?? .english)
+        let api = BbcNews(
+            modelIdentifier: UIDevice.current.modelIdentifier,
+            systemName: UIDevice.current.systemName,
+            systemVersion: UIDevice.current.systemVersion,
+            service: Service(rawValue: service ?? "") ?? .english
+        )
 
         let result = await api.fetchIndexDiscoveryPage(postcode: postcode)
 
@@ -113,7 +119,12 @@ import OSLog
         var storyPromos = Set<FDStoryPromo>()
 
         let service = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.service)
-        let api = BbcNews(service: Service(rawValue: service ?? "") ?? .english)
+        let api = BbcNews(
+            modelIdentifier: UIDevice.current.modelIdentifier,
+            systemName: UIDevice.current.systemName,
+            systemVersion: UIDevice.current.systemVersion,
+            service: Service(rawValue: service ?? "") ?? .english
+        )
 
         for url in urls {
             let result = await api.fetch(url: url)

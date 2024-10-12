@@ -9,7 +9,7 @@ import OSLog
 
 extension Logger {
     /// The subsystem of the logger.
-    private static var subsystem = Constants.bundleIdentifier
+    private static let subsystem = Constants.bundleIdentifier
 
     /// Logging related to networking
     static let network = Logger(subsystem: Logger.subsystem, category: "network")

@@ -81,7 +81,12 @@ struct VideoPortraitStory: View {
         }
 
         let service = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.service)
-        let api = BbcNews(service: Service(rawValue: service ?? "") ?? .english)
+        let api = BbcNews(
+            modelIdentifier: UIDevice.current.modelIdentifier,
+            systemName: UIDevice.current.systemName,
+            systemVersion: UIDevice.current.systemVersion,
+            service: Service(rawValue: service ?? "") ?? .english
+        )
 
         let result = await api.fetch(url: url)
 
