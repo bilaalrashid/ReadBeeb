@@ -6,8 +6,9 @@
 //
 
 import Foundation
-@preconcurrency import BbcNews
+import BbcNews
 import OSLog
+import UIKit
 
 extension MyNewsScreen {
     /// The view model for the My News screen.
@@ -42,7 +43,12 @@ extension MyNewsScreen {
             let ids = selectedTopics.map { $0.id }
 
             let service = UserDefaults.standard.string(forKey: Constants.UserDefaultIdentifiers.service)
-            let api = BbcNews(service: Service(rawValue: service ?? "") ?? .english)
+            let api = BbcNews(
+                modelIdentifier: UIDevice.current.modelIdentifier,
+                systemName: UIDevice.current.systemName,
+                systemVersion: UIDevice.current.systemVersion,
+                service: Service(rawValue: service ?? "") ?? .english
+            )
 
             let result = await api.fetchTopicDiscoveryPages(for: ids)
 
