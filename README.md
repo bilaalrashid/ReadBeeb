@@ -6,9 +6,9 @@
 
 # ReadBeeb
 
-![GitHub releases](https://img.shields.io/github/v/release/bilaalrashid/ReedBeeb)
-![License](https://img.shields.io/github/license/bilaalrashid/ReedBeeb)
-![Tests](https://github.com/bilaalrashid/ReedBeeb/actions/workflows/swift.yml/badge.svg)
+![GitHub releases](https://img.shields.io/github/v/release/bilaalrashid/ReadBeeb)
+![License](https://img.shields.io/github/license/bilaalrashid/ReadBeeb)
+![Tests](https://github.com/bilaalrashid/ReadBeeb/actions/workflows/swift.yml/badge.svg)
 
 A better BBC News client for iOS.
 
