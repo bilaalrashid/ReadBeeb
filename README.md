@@ -17,11 +17,11 @@ This project is for educational and research purposes only.
 ## Features
 
 <p align="center">
-  <img src="assets/top-stories.png" alt="Top Stories" width="180" />
-  <img src="assets/personal-feed.png" alt="Personal Feed" width="180" />
-  <img src="assets/trending.png" alt="Trending" width="180" />
-  <img src="assets/videos.png" alt="Videos" width="180" />
-  <img src="assets/dark-mode.png" alt="Dark Mode" width="180" />
+  <img src="assets/top-stories.png" alt="Top Stories" width="160" />
+  <img src="assets/personal-feed.png" alt="Personal Feed" width="160" />
+  <img src="assets/trending.png" alt="Trending" width="160" />
+  <img src="assets/videos.png" alt="Videos" width="160" />
+  <img src="assets/dark-mode.png" alt="Dark Mode" width="160" />
 </p>
 
 - Dedicated videos tab
