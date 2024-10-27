@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/114c1533-a0fe-4c00-9eea-bccce21b5d14" alt="ReedBeeb Logo" width="300">
+  <img src="assets/logo.png" alt="ReedBeeb Logo" width="300">
   <br>
   A better client for BBC News.
 </p>
@@ -15,6 +15,14 @@ A better BBC News client for iOS.
 This project is for educational and research purposes only.
 
 ## Features
+
+<p align="center">
+  <img src="assets/top-stories.png" alt="Top Stories" width="180" />
+  <img src="assets/personal-feed.png" alt="Personal Feed" width="180" />
+  <img src="assets/trending.png" alt="Trending" width="180" />
+  <img src="assets/videos.png" alt="Videos" width="180" />
+  <img src="assets/dark-mode.png" alt="Dark Mode" width="180" />
+</p>
 
 - Dedicated videos tab
 - Supports all BBC News international services: English, Cymru, Arabic, Hindi, Mundo and Russian
@@ -44,7 +52,7 @@ Full contributing guidelines can be found in [CONTRIBUTING.md](CONTRIBUTING.md).
 ## Release
 
 1. Update the list of installed topics:
-```bash
+```
 make topics API_KEY=<BBC News OAuth2 Token>
 ```
 2. Bump the version and build number in [project.pbxproj](ReadBeeb.xcodeproj/project.pbxproj/)
