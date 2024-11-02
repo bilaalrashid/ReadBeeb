@@ -52,8 +52,6 @@ struct ProminentStoryPromoRow: View {
                 if let subtext = self.story.subtext {
                     Text(subtext)
                         .font(.callout)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.9)
                         .truncationMode(.tail)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
