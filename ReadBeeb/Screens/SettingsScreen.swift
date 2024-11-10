@@ -26,6 +26,21 @@ struct SettingsScreen: View {
     @AppStorage(Constants.UserDefaultIdentifiers.service)
     private var service = Service.english.rawValue
 
+    /// The text displayed as a footer
+    var footerText: String {
+        let credit = "A Bilaal Rashid project"
+
+        guard let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else {
+            return credit
+        }
+
+        guard let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
+            return credit
+        }
+
+        return "Version \(version) (\(build))\n\(credit)"
+    }
+
     var body: some View {
         List {
             Section {
@@ -60,7 +75,7 @@ struct SettingsScreen: View {
             }
 
             Section(
-                footer: NavigationLink("A Bilaal Rashid project") {
+                footer: NavigationLink(self.footerText) {
                     LogScreen()
                 }
                     .buttonStyle(.plain)
