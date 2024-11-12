@@ -98,6 +98,9 @@ if [[ "$branch" != "master" && "$branch" != "main" ]]; then
     exit 1
 fi
 
+# Make sure we are up to date with remote
+git pull
+
 # Increment the build number
 agvtool bump
 new_build=$(agvtool vers -terse)
