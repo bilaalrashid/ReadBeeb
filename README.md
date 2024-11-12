@@ -36,6 +36,9 @@ This project is for educational and research purposes only.
 
 ## Development
 
+This repository contains the ReadBeeb-specific logic and GUI code.
+Logic related to the BBC News API should be contributed to [bbc-news-swift](https://github.com/bilaalrashid/bbc-news-swift).
+
 Prerequisites:
 - [SwiftLint](https://github.com/realm/SwiftLint)
 - [Swift Package Manager](https://www.swift.org/documentation/package-manager/)
@@ -49,11 +52,24 @@ open ReadBeeb/ReadBeeb.xcodeproj
 
 Full contributing guidelines can be found in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Release
+## Tools
 
-1. Update the list of installed topics:
+To update the list of installed topics:
 ```
 make topics API_KEY=<BBC News OAuth2 Token>
 ```
-2. Bump the version and build number in [project.pbxproj](ReadBeeb.xcodeproj/project.pbxproj/)
-3. Creating a matching tag and release once merged into `main`
+
+## Release
+
+On the `main` branch:
+1. Bump the version and build number, and tag the project
+```
+make release # Defaults to patch
+make release-<major|minor|patch>
+make release-version VERSION=<version>
+```
+2. Push to the remote
+```
+git push --tags
+```
+3. Create a corresponding [release](https://github.com/bilaalrashid/ReadBeeb/releases/new) on GitHub
