@@ -70,6 +70,6 @@ make release-version VERSION=<version>
 ```
 2. Push to the remote
 ```
-git push --tags
+git push --follow-tags
 ```
 3. Create a corresponding [release](https://github.com/bilaalrashid/ReadBeeb/releases/new) on GitHub
