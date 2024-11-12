@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+# version-bump
+# Bumps the version number of an Xcode project and increments the build number.
+#
+# Usage: ./version-bump --xcode-project <path> [--bump-type <major|minor|patch>] [--version <version>]
+
+### Functions
+
+function semver_major_bump {
+    local version="$1"
+    echo "$version"| awk -F. -v OFS=. '{$1++; $2=$3=0; print}'
+}
+
+function semver_minor_bump {
+    local version="$1"
+    echo "$version"| awk -F. -v OFS=. '{$2++; $3=0; print}'
+}
+
+function semver_patch_bump {
+    local version="$1"
+    echo "$version"| awk -F. -v OFS=. '{$3++; print}'
+}
+
+function get_current_version {
+    grep -Po "MARKETING_VERSION = \K([0-9]+\.[0-9]+(?:\.[0-9]+)?)" "$xcode_project" | awk -F. '{printf "%d.%d.%d\n", $1, ($2?$2:0), ($3?$3:0)}' | head -n1
+}
+
+function bump_version {
+    local xcode_project="$1"
+    local version="$2"
+    perl -pi -e "s/\bMARKETING_VERSION = [0-9]+(\.[0-9])+;$/MARKETING_VERSION = $version;/g" "$xcode_project"
+}
+
+### Main
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --xcode-project)
+            xcode_project="$2"
+            shift 2
+            ;;
+        --version)
+            version="$2"
+            shift 2
+            ;;
+        --bump-type)
+            bump_type="$2"
+            shift 2
+            ;;
+        *)
+            echo "Error: Invalid option"
+            exit 1
+            ;;
+    esac
+done
+
+if [ -z "$xcode_project" ]; then
+    echo "error: Please specify the path to the Xcode project file using --xcode-project."
+    exit 1
+fi
+
+if [ -z "$bump_type" ] && [ -z "$version" ]; then
+    echo "error: Please specify either a bump type or version string using --bump-type or --version."
+    exit 1
+fi
+
+if [ -z "$version" ]; then
+    case "$bump_type" in
+    major)
+        version=$(semver_major_bump "$(get_current_version)")
+        ;;
+    minor)
+        version=$(semver_minor_bump "$(get_current_version)")
+        ;;
+    patch)
+        version=$(semver_patch_bump "$(get_current_version)")
+        ;;
+    *)
+        echo "Error: Invalid option passed to --bump-type"
+        exit 1
+      ;;
+    esac
+
+    echo "No version specified, bumping to $version"
+fi
+
+# Make sure working directory is clean.
+if output=$(git status --porcelain) && [ -n "$output" ]; then
+    printf "error: Please commit any uncommitted files before proceeding:\n%s\n" "$output"
+    exit 1
+fi
+
+# Make sure we are on primary branch
+branch=$(git rev-parse --abbrev-ref HEAD)
+if [[ "$branch" != "master" && "$branch" != "main" ]]; then
+    echo "error: Please switch to the main or master branch before proceeding."
+    exit 1
+fi
+
+# Increment the build number
+agvtool bump
+new_build=$(agvtool vers -terse)
+
+# Update the version number
+bump_version "$xcode_project" "$version"
+new_version=$(get_current_version)
+
+# Commit
+git add .
+git commit -m "Bump to v$new_version($new_build)"
+
+# Tag
+git tag -a "v$new_version" -m "Bump to v$new_version($new_build)"
