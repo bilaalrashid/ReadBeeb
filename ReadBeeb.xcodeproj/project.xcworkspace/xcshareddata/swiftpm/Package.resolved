@@ -7,7 +7,7 @@
       "location" : "https://github.com/bilaalrashid/bbc-news-swift",
       "state" : {
         "branch" : "main",
-        "revision" : "9e6b9dfb2763eab0253176f5a2d889a09bce06d6"
+        "revision" : "fbdfd0f13fe2fea84b47ab99fea20f3ac4c3b55f"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gh123man/LazyPager",
       "state" : {
-        "revision" : "8de04797aa3c3bada70bb7bcecf040cf36ca3b56",
-        "version" : "1.1.0"
+        "revision" : "3601245191ffb0aa237ca408d7b4dd03b4d9d7eb",
+        "version" : "1.1.7"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/MarcoEidinger/TLDExtractSwift",
       "state" : {
-        "revision" : "181c2e43e10b284719802b5be6a612ac48a0720e",
-        "version" : "2.3.12"
+        "revision" : "5daf72e6f8b69609872f7f4563ff3e036940b25d",
+        "version" : "2.3.15"
       }
     }
   ],
