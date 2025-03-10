@@ -16,6 +16,7 @@ struct TopStoriesScreen: View {
         "Most Read",
         "Topics in the news",
         "Today's videos",
+        "The video playlist",
         "Copyright",
         "برامجنا",                           // Arabic: "Our Programs"
         "فيديو",                             // Arabic: "Video"

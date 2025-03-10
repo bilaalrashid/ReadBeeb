@@ -12,7 +12,7 @@ import OSLog
 /// The screen that displays story promos for video-only stories.
 struct VideoScreen: View {
     /// The sections from the API's main feed to display in the screen.
-    private let sectionsToInclude = ["Today's videos"]
+    private let sectionsToInclude = ["Today's videos", "The video playlist"]
 
     /// The global view model representing the system.
     @EnvironmentObject var viewModel: GlobalViewModel
