@@ -25,7 +25,12 @@ struct DestinationDetailScreen: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            if self.viewModel.isApiUrl {
+            if self.viewModel.destination.presentation.type == .web {
+                StoryWebView(url: self.viewModel.destination.url) {
+                    // Assign any non-empty value to prevent the empty data overlay being displayed
+                    self.viewModel.mockSuccessfulApiRequest()
+                }
+            } else {
                 if let data = self.viewModel.data {
                     switch self.viewModel.destinationType ?? "" {
                     case "index", "topic":
@@ -37,11 +42,6 @@ struct DestinationDetailScreen: View {
                     default:
                         StoryView(data: data)
                     }
-                }
-            } else {
-                StoryWebView(url: self.viewModel.destination.url) {
-                    // Assign any non-empty value to prevent the empty data overlay being displayed
-                    self.viewModel.mockSuccessfulApiRequest()
                 }
             }
         }

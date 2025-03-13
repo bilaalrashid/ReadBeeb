@@ -22,32 +22,52 @@ extension DestinationDetailScreen {
         /// The status of the network request.
         @Published private(set) var networkRequest = NetworkRequestStatus.notStarted
 
+        /// Attempts to convert a web based destination to one which points to a native destination that can be accessed by the API. If
+        /// the destination cannot be converted, it returns the original destination.
+        private static func convertDestinationToApiIfNeeded(destination: FDLinkDestination) -> FDLinkDestination {
+            // We can't rely on `self.destination.sourceFormat` here, so we must use the presentation type.
+            guard destination.presentation.type == .web else {
+                return destination
+            }
+
+            Logger.network.info("Attempting to rewrite WEB destination \(destination.url)")
+
+            // Live webpages cannot be rewritten and we will get a 404 that we can't handle if we attempt to do so.
+            if destination.url.absoluteString.contains("https://www.bbc.co.uk/news/live/") {
+                Logger.network.info("WEB destination is a live webpage, we can't rewrite this \(destination.url)")
+
+                return destination
+            }
+
+            guard let convertedUrl = BbcNews.convertWebUrlToApi(url: destination.url) else {
+                return destination
+            }
+
+            Logger.network.info("Rewritten WEB destination to \(convertedUrl)")
+
+            let presentation = FDPresentation(
+                type: .singleRenderer,
+                title: destination.presentation.title,
+                canShare: destination.presentation.canShare,
+                contentSource: destination.presentation.contentSource,
+                renderLinks: destination.presentation.renderLinks
+            )
+
+            return FDLinkDestination(sourceFormat: .abl, url: convertedUrl, id: destination.id, presentation: presentation)
+        }
+
         /// Creates a view model for DestinationDetailScreen.
         ///
         /// This attempts to rewrite any HTML URLs to ABL ones that return JSON responses.
         ///
         /// - Parameter destination: The destination to display in the view.
         init(destination: FDLinkDestination) {
-            if !BbcNews.isApiUrl(url: destination.url), let apiUrl = BbcNews.convertWebUrlToApi(url: destination.url) {
-                self.destination = FDLinkDestination(
-                    sourceFormat: .abl,
-                    url: apiUrl,
-                    id: destination.id,
-                    presentation: destination.presentation
-                )
-            } else {
-                self.destination = destination
-            }
+            self.destination = DestinationDetailScreen.ViewModel.convertDestinationToApiIfNeeded(destination: destination)
         }
 
         /// If the results from the API are empty.
         var isEmpty: Bool {
             return self.data == nil
-        }
-
-        /// If the destination URL is served by the BBC News API.
-        var isApiUrl: Bool {
-            return BbcNews.isApiUrl(url: self.destination.url)
         }
 
         /// If the destination URL is served by the BBC Sport brand.
@@ -58,6 +78,11 @@ extension DestinationDetailScreen {
         /// The type of the destination to be displayed in the view.
         var destinationType: String? {
             return self.destination.url.valueOf("type")
+        }
+
+        /// If the destination URL is served by the BBC News API.
+        private var isApiUrl: Bool {
+            return BbcNews.isApiUrl(url: self.destination.url)
         }
 
         /// Fetch the contents of the destination URL from the API, if it haven't already been fetched.
