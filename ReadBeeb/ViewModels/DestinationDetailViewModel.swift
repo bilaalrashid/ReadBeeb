@@ -77,7 +77,14 @@ extension DestinationDetailScreen {
 
         /// The type of the destination to be displayed in the view.
         var destinationType: String? {
-            return self.destination.url.valueOf("type")
+            switch self.destination.url.lastPathComponent {
+            case "app-topic-api":
+                return "topic"
+            case "app-article-api":
+                return "asset"
+            default:
+                return self.destination.url.valueOf("type")
+            }
         }
 
         /// If the destination URL is served by the BBC News API.
