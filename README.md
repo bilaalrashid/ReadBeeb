@@ -62,14 +62,9 @@ make topics API_KEY=<BBC News OAuth2 Token>
 ## Release
 
 On the `main` branch:
-1. Bump the version and build number, and tag the project
+1. Bump the version and build number, tag the project and push:
 ```
-make release # Defaults to patch
-make release-<major|minor|patch>
-make release-version VERSION=<version>
+make release VERSION=<version> PUSH=<true|false>
+make release BUMP=<major|minor|patch> PUSH=<true|false>
 ```
-2. Push to the remote
-```
-git push --follow-tags
-```
-3. Create a corresponding [release](https://github.com/bilaalrashid/ReadBeeb/releases/new) on GitHub
+2. Create a corresponding [release](https://github.com/bilaalrashid/ReadBeeb/releases/new) on GitHub
