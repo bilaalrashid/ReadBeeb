@@ -4,16 +4,10 @@ BUMP=patch
 PUSH=true
 
 release-version:
-	bin/version-bump --xcode-project $(XCODE_PROJECT) --version $(VERSION)
-	ifeq ($(PUSH), true)
-		git push --follow-tags
-	endif
+	bin/version-bump --xcode-project $(XCODE_PROJECT) --push $(PUSH) --version $(VERSION)
 
 release:
-	bin/version-bump --xcode-project $(XCODE_PROJECT) --bump-type $(BUMP)
-	ifeq ($(PUSH), true)
-		git push --follow-tags
-	endif
+	bin/version-bump --xcode-project $(XCODE_PROJECT) --push $(PUSH) --bump-type $(BUMP)
 
 topics:
 	bin/fetch-topics $(API_KEY) > $(TOPICS_FILE)

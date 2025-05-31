@@ -48,6 +48,10 @@ while [ $# -gt 0 ]; do
             bump_type="$2"
             shift 2
             ;;
+        --push)
+            push="$2"
+            shift 2
+            ;;
         *)
             echo "Error: Invalid option"
             exit 1
@@ -115,3 +119,10 @@ git commit -m "Bump to v$new_version($new_build)"
 
 # Tag
 git tag -a "v$new_version" -m "Bump to v$new_version($new_build)"
+
+if [ "$push" == "true" ]; then
+    # Push code and tags at the same time
+    git push --follow-tags
+else
+    echo "Skipping push. Use [--push true] to push changes."
+fi
