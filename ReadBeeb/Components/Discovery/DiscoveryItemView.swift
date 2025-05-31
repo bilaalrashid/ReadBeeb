@@ -59,9 +59,10 @@ struct DiscoveryItemView: View {
             Carousel(item: item)
         case .chipList(let item):
             ChipList(item: item)
-        case .copyright(let item):
-            Copyright(item: item)
-                .listRowSeparator(.hidden)
+        case .copyright:
+            // Some API endpoints miss the copyright disclaimer. Instead we hardcode a disclaimer at the bottom of each page, so this can
+            // be ignored here instead.
+            EmptyView()
         #if DEBUG
         case .unknown:
             Text("UNKNOWN value of FDItem decoded")
