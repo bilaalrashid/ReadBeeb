@@ -5,6 +5,9 @@ PUSH=true
 
 release-version:
 	bin/version-bump --xcode-project $(XCODE_PROJECT) --version $(VERSION)
+	ifeq ($(PUSH), true)
+		git push --follow-tags
+	endif
 
 release:
 	bin/version-bump --xcode-project $(XCODE_PROJECT) --bump-type $(BUMP)
