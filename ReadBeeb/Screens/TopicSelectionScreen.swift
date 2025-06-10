@@ -72,9 +72,6 @@ struct TopicSelectionScreen: View {
         .searchable(text: self.$searchText, isPresented: self.$isSearchActive, placement: .navigationBarDrawer(displayMode: .always))
         .listStyle(.insetGrouped)
         .navigationTitle("My Topics")
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .toolbar {
             Button(action: {
                 self.dismiss()

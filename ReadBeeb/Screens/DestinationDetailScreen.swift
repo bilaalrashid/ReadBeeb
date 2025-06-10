@@ -46,9 +46,6 @@ struct DestinationDetailScreen: View {
             }
         }
         .navigationTitle(self.viewModel.destination.presentation.title ?? "")
-        .toolbarColorScheme(self.viewModel.isBBCSportUrl ? .light : .dark, for: .navigationBar)
-        .toolbarBackground(self.viewModel.isBBCSportUrl ? Constants.sportColor : Constants.primaryColor, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

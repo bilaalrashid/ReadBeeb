@@ -85,9 +85,6 @@ struct SettingsScreen: View {
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Profile")
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .toolbar {
             Button(action: {
                 self.dismiss()

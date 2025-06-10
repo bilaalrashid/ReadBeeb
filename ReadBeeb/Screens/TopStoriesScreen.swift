@@ -50,9 +50,6 @@ struct TopStoriesScreen: View {
             }
         }
         .navigationTitle("Top Stories")
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button(action: {

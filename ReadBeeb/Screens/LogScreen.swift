@@ -29,9 +29,6 @@ struct LogScreen: View {
         }
         .listStyle(.plain)
         .navigationTitle("Logs")
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .toolbar {
             ShareLink(item: self.viewModel.messagesString)
                 .foregroundColor(Constants.primaryColor)
