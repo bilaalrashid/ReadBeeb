@@ -37,44 +37,39 @@ struct ImageDetailScreen: View {
     }
 
     var body: some View {
-        LazyPager(data: self.images, page: self.$index) { image in
-            ImageView(image: image, imageOnly: true)
-        }
-        .zoomable(min: 1, max: 5)
-        .onDismiss(backgroundOpacity: self.$opacity) {
-            self.dismiss()
-        }
-        .onTap {
-            self.isShowingControls.toggle()
+        NavigationStack {
+            LazyPager(data: self.images, page: self.$index) { image in
+                ImageView(image: image, imageOnly: true)
+            }
+            .zoomable(min: 1, max: 5)
+            .onDismiss(backgroundOpacity: self.$opacity) {
+                self.dismiss()
+            }
+            .onTap {
+                self.isShowingControls.toggle()
+            }
+            .background(.black)
+            .background(ClearFullScreenBackground())
+            .opacity(self.opacity)
+            .ignoresSafeArea()
+            .toolbar {
+                if self.isShowingControls {
+                    if #available(iOS 26.0, *) {
+                        Button(role: .close) {
+                            self.dismiss()
+                        }
+                    } else {
+                        Button("Done") {
+                            self.dismiss()
+                        }
+                        .buttonStyle(.bordered)
+                        .font(.headline)
+                    }
+                }
+            }
         }
         .background(.black)
         .background(ClearFullScreenBackground())
         .opacity(self.opacity)
-        .ignoresSafeArea()
-        .overlay(
-            VStack {
-                if self.isShowingControls {
-                    HStack {
-                        Spacer()
-                        Button("Done") {
-                            self.dismiss()
-                        }
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                    }
-                    .background(
-                        Rectangle()
-                            .fill(.black)
-                            .opacity(0.4)
-                            .background(Material.thinMaterial)
-                            .environment(\.colorScheme, .dark)
-                            .edgesIgnoringSafeArea(.top)
-                    )
-                    .opacity(self.opacity)
-                }
-                Spacer()
-            }
-        )
     }
 }
