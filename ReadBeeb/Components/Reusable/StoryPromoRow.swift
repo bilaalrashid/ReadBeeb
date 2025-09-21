@@ -35,7 +35,7 @@ struct StoryPromoRow: View {
             ThumbnailImageView(image: self.story.image, badges: self.story.badges, prominent: false)
                 .frame(width: 134, aspectRatio: self.imageAspectRatio)
 
-            VStack {
+            VStack(spacing: 12) {
                 if let title = self.story.text {
                     Text(title)
                         .font(.headline)
@@ -45,8 +45,6 @@ struct StoryPromoRow: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
                 }
-
-                Spacer(minLength: 1)
 
                 HStack {
                     // Display order badge if provided, otherwise display the topic
