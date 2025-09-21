@@ -30,6 +30,13 @@ struct DestinationDetailScreen: View {
                     // Assign any non-empty value to prevent the empty data overlay being displayed
                     self.viewModel.mockSuccessfulApiRequest()
                 }
+                .modify {
+                    if #available(iOS 26, *) {
+                        $0.ignoresSafeArea()
+                    } else {
+                        $0
+                    }
+                }
             } else {
                 if let data = self.viewModel.data {
                     switch self.viewModel.destinationType ?? "" {
