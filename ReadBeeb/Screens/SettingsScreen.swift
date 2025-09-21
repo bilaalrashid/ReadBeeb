@@ -86,13 +86,17 @@ struct SettingsScreen: View {
         .listStyle(.insetGrouped)
         .navigationTitle("Profile")
         .toolbar {
-            Button(action: {
-                self.dismiss()
-            }) {
-                Text("Done")
-                    .font(.headline)
-                    // System tint color overrides the toolbar color scheme, so the color needs explicitly defining
-                    .foregroundStyle(.white)
+            if #available(iOS 26.0, *) {
+                Button(role: .close) {
+                    self.dismiss()
+                }
+            } else {
+                Button(action: {
+                    self.dismiss()
+                }) {
+                    Text("Done")
+                        .font(.headline)
+                }
             }
         }
         .onAppear {

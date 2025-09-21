@@ -73,13 +73,17 @@ struct TopicSelectionScreen: View {
         .listStyle(.insetGrouped)
         .navigationTitle("My Topics")
         .toolbar {
-            Button(action: {
-                self.dismiss()
-            }) {
-                Text("Done")
-                    .font(.headline)
-                    // System tint color overrides the toolbar color scheme, so the color needs explicitly defining
-                    .foregroundStyle(.white)
+            if #available(iOS 26.0, *) {
+                Button(role: .close) {
+                    self.dismiss()
+                }
+            } else {
+                Button(action: {
+                    self.dismiss()
+                }) {
+                    Text("Done")
+                        .font(.headline)
+                }
             }
         }
     }
