@@ -69,7 +69,7 @@ struct TopicSelectionScreen: View {
                 }
             }
         }
-        .searchable(text: self.$searchText, isPresented: self.$isSearchActive, placement: .navigationBarDrawer(displayMode: .always))
+        .searchable(text: self.$searchText, isPresented: self.$isSearchActive)
         .listStyle(.insetGrouped)
         .navigationTitle("My Topics")
         .toolbar {
