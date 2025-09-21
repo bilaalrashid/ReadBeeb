@@ -73,6 +73,7 @@ struct TopStoriesScreen: View {
                 SettingsScreen()
                     .navigationBarTitleDisplayMode(.inline)
             }
+            .presentationDetents([.medium, .large])
         }
     }
 }
