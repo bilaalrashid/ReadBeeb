@@ -68,10 +68,12 @@ struct SettingsScreen: View {
             Section(
                 footer: Text("Currently using \(self.viewModel.formattedCacheSize).")
             ) {
-                Button("Clear Cache") {
+                Button(action: {
                     self.viewModel.clearCache()
+                }) {
+                    Label("Clear Cache", systemImage: "trash")
+                        .foregroundColor(.red)
                 }
-                .foregroundColor(.red)
             }
 
             Section(
