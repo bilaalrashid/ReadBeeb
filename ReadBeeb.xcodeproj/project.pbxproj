@@ -94,6 +94,7 @@
 		3ACDBF062BE9810800B624F9 /* Byline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDBF052BE9810800B624F9 /* Byline.swift */; };
 		3ACDBF082BEACD3D00B624F9 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDBF072BEACD3D00B624F9 /* ImageContainer.swift */; };
 		3AF483BD2C0A95FB00D237FE /* View+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF483BC2C0A95FB00D237FE /* View+Frame.swift */; };
+		3AF93E5C2E80A9C6004705A1 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 3AF93E5B2E80A9C6004705A1 /* AppIcon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +196,7 @@
 		3ACDBF052BE9810800B624F9 /* Byline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Byline.swift; sourceTree = "<group>"; };
 		3ACDBF072BEACD3D00B624F9 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
 		3AF483BC2C0A95FB00D237FE /* View+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Frame.swift"; sourceTree = "<group>"; };
+		3AF93E5B2E80A9C6004705A1 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 				3A44C5D82A9A9F86001AB40F /* RootView.swift */,
 				3A44C6032A9B63D8001AB40F /* Constants.swift */,
 				3A44C5DA2A9A9F87001AB40F /* Assets.xcassets */,
+				3AF93E5B2E80A9C6004705A1 /* AppIcon.icon */,
 				3A44C5DC2A9A9F87001AB40F /* ReadBeeb.entitlements */,
 				3A44C5DD2A9A9F87001AB40F /* Preview Content */,
 			);
@@ -567,6 +570,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF93E5C2E80A9C6004705A1 /* AppIcon.icon in Resources */,
 				3A44C5DF2A9A9F87001AB40F /* Preview Assets.xcassets in Resources */,
 				3A75FA332AC87C0F00393014 /* Topics.json in Resources */,
 				3AA49AA72AF8291D00451FCC /* Postcodes.json in Resources */,
