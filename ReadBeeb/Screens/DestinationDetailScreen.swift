@@ -30,6 +30,13 @@ struct DestinationDetailScreen: View {
                     // Assign any non-empty value to prevent the empty data overlay being displayed
                     self.viewModel.mockSuccessfulApiRequest()
                 }
+                .modify {
+                    if #available(iOS 26, *) {
+                        $0.ignoresSafeArea()
+                    } else {
+                        $0
+                    }
+                }
             } else {
                 if let data = self.viewModel.data {
                     switch self.viewModel.destinationType ?? "" {
@@ -46,9 +53,6 @@ struct DestinationDetailScreen: View {
             }
         }
         .navigationTitle(self.viewModel.destination.presentation.title ?? "")
-        .toolbarColorScheme(self.viewModel.isBBCSportUrl ? .light : .dark, for: .navigationBar)
-        .toolbarBackground(self.viewModel.isBBCSportUrl ? Constants.sportColor : Constants.primaryColor, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

@@ -30,9 +30,6 @@ struct PopularScreen: View {
             }
         }
         .navigationTitle("Popular")
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .overlay(NetworkRequestStatusOverlay(networkRequest: self.viewModel.networkRequest, isEmpty: self.viewModel.isEmpty))
         .refreshable {
             await self.viewModel.fetchData()

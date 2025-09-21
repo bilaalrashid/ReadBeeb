@@ -68,10 +68,12 @@ struct SettingsScreen: View {
             Section(
                 footer: Text("Currently using \(self.viewModel.formattedCacheSize).")
             ) {
-                Button("Clear Cache") {
+                Button(action: {
                     self.viewModel.clearCache()
+                }) {
+                    Label("Clear Cache", systemImage: "trash")
+                        .foregroundColor(.red)
                 }
-                .foregroundColor(.red)
             }
 
             Section(
@@ -85,17 +87,18 @@ struct SettingsScreen: View {
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Profile")
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Constants.primaryColor, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .toolbar {
-            Button(action: {
-                self.dismiss()
-            }) {
-                Text("Done")
-                    .font(.headline)
-                    // System tint color overrides the toolbar color scheme, so the color needs explicitly defining
-                    .foregroundStyle(.white)
+            if #available(iOS 26.0, *) {
+                Button(role: .close) {
+                    self.dismiss()
+                }
+            } else {
+                Button(action: {
+                    self.dismiss()
+                }) {
+                    Text("Done")
+                        .font(.headline)
+                }
             }
         }
         .onAppear {
