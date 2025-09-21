@@ -21,10 +21,13 @@ struct Byline: View {
                         .font(.callout.bold())
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
-                    Text(contributor.role)
-                        .font(.callout)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .multilineTextAlignment(.leading)
+
+                    if !contributor.role.isEmpty {
+                        Text(contributor.role)
+                            .font(.callout)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .multilineTextAlignment(.leading)
+                    }
                 }
             }
         }
