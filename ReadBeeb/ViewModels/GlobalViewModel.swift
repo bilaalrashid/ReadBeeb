@@ -127,7 +127,14 @@ import UIKit
         )
 
         for url in urls {
-            let result = await api.fetch(url: url)
+            // Collection headers can link outside the news API, for example an iPlayer category rail.
+            // Those pages return HTML, which cannot be decoded as `FDResult`.
+            guard let apiUrl = self.apiUrl(from: url) else {
+                Logger.network.info("Skipping linked page that is not a BBC News API URL: \(url)")
+                continue
+            }
+
+            let result = await api.fetch(url: apiUrl)
 
             switch result {
             case .success(let result):
@@ -139,5 +146,17 @@ import UIKit
         }
 
         return storyPromos
+    }
+
+    /// Returns a BBC News API URL for a collection header, rewriting news webpages when possible.
+    ///
+    /// - Parameter url: The destination URL from a collection header.
+    /// - Returns: An API URL to fetch, or `nil` when the destination is not a news page.
+    private func apiUrl(from url: URL) -> URL? {
+        if BbcNews.isApiUrl(url: url) {
+            return url
+        }
+
+        return BbcNews.convertWebUrlToApi(url: url)
     }
 }

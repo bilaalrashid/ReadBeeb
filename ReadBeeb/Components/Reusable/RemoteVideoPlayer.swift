@@ -42,6 +42,5 @@ struct RemoteVideoPlayer: View {
 }
 
 #Preview {
-    // swiftlint:disable:next force_unwrapping
     RemoteVideoPlayer(url: URL(string: "https://example.com")!, shouldPlay: Binding.constant(true))
 }
