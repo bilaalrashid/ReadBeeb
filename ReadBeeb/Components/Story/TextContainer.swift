@@ -110,7 +110,6 @@ struct TextContainer: View {
                             destinations: [
                                 FDLinkDestination(
                                     sourceFormat: .abl,
-                                    // swiftlint:disable:next force_unwrapping
                                     url: URL(string: "https://bilaal.co.uk")!,
                                     id: "",
                                     presentation: FDPresentation(type: .singleRenderer, title: nil, canShare: nil))

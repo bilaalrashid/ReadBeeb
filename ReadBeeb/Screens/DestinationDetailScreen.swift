@@ -80,7 +80,6 @@ struct NewsStoryDetailView_Previews: PreviewProvider {
         DestinationDetailScreen(
             destination: FDLinkDestination(
                 sourceFormat: .abl,
-                // swiftlint:disable:next force_unwrapping
                 url: URL(string: "https://news-app.api.bbc.co.uk/fd/abl?clientName=Chrysalis&page=world-europe-66631182&service=news&type=asset")!,
                 id: "/news/world-europe-66631182",
                 presentation: FDPresentation(type: .singleRenderer, title: nil, canShare: true)
