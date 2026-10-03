@@ -18,7 +18,6 @@ struct TopStoriesScreen: View {
         "Today's videos",
         "The video playlist",
         "Newsletters",
-        "BBC News on iPlayer and Sounds",
         "Copyright",
         "برامجنا",                           // Arabic: "Our Programs"
         "فيديو",                             // Arabic: "Video"

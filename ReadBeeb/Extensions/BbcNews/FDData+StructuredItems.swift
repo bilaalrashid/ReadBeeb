@@ -65,4 +65,11 @@ extension Array<FDItemGroup> {
             return !excludableHeaders.contains(collectionHeader.text)
         }
     }
+
+    /// Filters out collection groups whose remaining promos all link to non-news BBC services.
+    ///
+    /// - Returns: The groups that still have content to display
+    func excludingHiddenPromoGroups() -> [FDItemGroup] {
+        return self.filter(\.hasVisiblePromos)
+    }
 }

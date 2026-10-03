@@ -57,6 +57,7 @@ extension MyNewsScreen {
                 let storyPromos = self.storyPromos(for: topicResults)
 
                 self.storyPromos = storyPromos
+                    .filter(\.isNewsService)
                     .filter { $0.updated != nil || $0.isLive }
                     .sorted { ($0.updated ?? .now) > ($1.updated ?? .now) }
 

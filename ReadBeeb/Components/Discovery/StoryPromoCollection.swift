@@ -23,7 +23,7 @@ struct StoryPromoCollection: View {
     @Binding var destination: FDLinkDestination?
 
     var body: some View {
-        ForEach(Array(self.collection.storyPromos.enumerated()), id: \.offset) { index, storyPromo in
+        ForEach(Array(self.visibleStoryPromos.enumerated()), id: \.offset) { index, storyPromo in
             if let destination = storyPromo.link.destinations.first {
                 PlainNavigationLink(destination: DestinationDetailScreen(destination: destination)) {
                     if self.collectionIndex == 0 && index == 0 {
@@ -34,5 +34,10 @@ struct StoryPromoCollection: View {
                 }
             }
         }
+    }
+
+    /// Story promos in the collection that link to news, rather than other BBC services.
+    private var visibleStoryPromos: [FDStoryPromo] {
+        self.collection.storyPromos.filter(\.isNewsService)
     }
 }

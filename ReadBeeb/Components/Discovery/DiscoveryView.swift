@@ -58,17 +58,18 @@ struct DiscoveryView: View {
 
     /// The item groups from the API, including or excluding any specified sections.
     ///
-    /// Allowlisted include sections take priority over excluded sections.
+    /// Allowlisted include sections take priority over excluded sections. Groups whose remaining promos all link to
+    /// non-news BBC services are omitted.
     private var filteredItemGroups: [FDItemGroup] {
+        var groups = self.data.itemGroups
+
         if let sectionsToInclude = self.sectionsToInclude {
-            return self.data.itemGroups.including(headers: sectionsToInclude)
+            groups = self.data.itemGroups.including(headers: sectionsToInclude)
+        } else if let sectionsToExclude = self.sectionsToExclude {
+            groups = self.data.itemGroups.excluding(headers: sectionsToExclude)
         }
 
-        if let sectionsToExclude = self.sectionsToExclude {
-            return self.data.itemGroups.excluding(headers: sectionsToExclude)
-        }
-
-        return self.data.itemGroups
+        return groups.excludingHiddenPromoGroups()
     }
 
     var body: some View {
