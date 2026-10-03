@@ -17,6 +17,8 @@ struct TopStoriesScreen: View {
         "Topics in the news",
         "Today's videos",
         "The video playlist",
+        "Newsletters",
+        "BBC News on iPlayer and Sounds",
         "Copyright",
         "برامجنا",                           // Arabic: "Our Programs"
         "فيديو",                             // Arabic: "Video"
@@ -34,7 +36,7 @@ struct TopStoriesScreen: View {
         "Подкасты",                          // Russian: "Podcasts"
         "Самое популярное",                  // Russian: "Most Popular"
         "Мы в соцсетях",                     // Russian: "We are in social networks"
-        "Полезные ссылки"                   // Russian: "Useful links"
+        "Полезные ссылки"                    // Russian: "Useful links"
     ]
 
     /// The global view model representing the system.
