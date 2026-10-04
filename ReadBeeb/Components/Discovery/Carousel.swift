@@ -17,7 +17,7 @@ struct Carousel: View {
         ScrollView(.horizontal) {
             // Don't use LazyHStack, the layout doesn't render properly if lazy loaded
             HStack(spacing: 16) {
-                ForEach(Array(self.item.storyPromos.enumerated()), id: \.offset) { _, storyPromo in
+                ForEach(Array(self.visibleStoryPromos.enumerated()), id: \.offset) { _, storyPromo in
                     VideoPortraitStory(storyPromo: storyPromo)
                 }
             }
@@ -25,5 +25,10 @@ struct Carousel: View {
         }
         .scrollTargetBehavior(.viewAligned)
         .scrollIndicators(.never)
+    }
+
+    /// Story promos in the carousel that link to news, rather than other BBC services.
+    private var visibleStoryPromos: [FDStoryPromo] {
+        self.item.storyPromos.filter(\.isNewsService)
     }
 }

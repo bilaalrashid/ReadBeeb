@@ -89,7 +89,8 @@ import UIKit
         }
 
         let videoPromos = Array(storyPromos).filter { storyPromo in
-            return storyPromo.link.destinations.first { $0.presentation.type == .verticalVideo } == nil
+            return storyPromo.isNewsService
+            && storyPromo.link.destinations.first { $0.presentation.type == .verticalVideo } == nil
             && storyPromo.badges?.first { $0.type == .video } != nil
         }
 

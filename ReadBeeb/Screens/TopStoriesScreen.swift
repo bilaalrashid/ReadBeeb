@@ -15,8 +15,7 @@ struct TopStoriesScreen: View {
         "Watch & Listen",
         "Most Read",
         "Topics in the news",
-        "Today's videos",
-        "The video playlist",
+        "Newsletters",
         "Copyright",
         "برامجنا",                           // Arabic: "Our Programs"
         "فيديو",                             // Arabic: "Video"
@@ -34,7 +33,7 @@ struct TopStoriesScreen: View {
         "Подкасты",                          // Russian: "Podcasts"
         "Самое популярное",                  // Russian: "Most Popular"
         "Мы в соцсетях",                     // Russian: "We are in social networks"
-        "Полезные ссылки"                   // Russian: "Useful links"
+        "Полезные ссылки"                    // Russian: "Useful links"
     ]
 
     /// The global view model representing the system.
@@ -46,7 +45,7 @@ struct TopStoriesScreen: View {
     var body: some View {
         VStack {
             if let data = self.viewModel.data {
-                DiscoveryView(data: data, sectionsToExclude: self.sectionsToExclude)
+                DiscoveryView(data: data, sectionsToExclude: self.sectionsToExclude, videoCarousels: .exclude)
             }
         }
         .navigationTitle("Top Stories")
