@@ -16,6 +16,26 @@ struct FDItemGroup {
     /// The main body item in a group.
     var body: FDItem
 
+    /// The collection header text, if the header is a collection header.
+    var headerText: String? {
+        guard case .collectionHeader(let collectionHeader) = self.header else {
+            return nil
+        }
+
+        return collectionHeader.text
+    }
+
+    /// If the group is a carousel of news videos.
+    var isVideoCarousel: Bool {
+        guard case .carousel(let carousel) = self.body else {
+            return false
+        }
+
+        return carousel.storyPromos.contains { storyPromo in
+            storyPromo.isNewsService && storyPromo.badges?.contains { $0.type == .video } == true
+        }
+    }
+
     /// If the group still has content after hiding promos that link to non-news BBC services.
     ///
     /// Groups that are not collections of story promos, such as chip lists and copyright, remain visible.

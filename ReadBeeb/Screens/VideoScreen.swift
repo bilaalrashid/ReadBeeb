@@ -11,8 +11,10 @@ import OSLog
 
 /// The screen that displays story promos for video-only stories.
 struct VideoScreen: View {
-    /// The sections from the API's main feed to display in the screen.
-    private let sectionsToInclude = ["Today's videos", "The video playlist"]
+    /// The collection headers to show first among video carousels.
+    private let playlistHeaders = [
+        "The video playlist"
+    ]
 
     /// The global view model representing the system.
     @EnvironmentObject var viewModel: GlobalViewModel
@@ -23,7 +25,7 @@ struct VideoScreen: View {
     var body: some View {
         VStack {
             if let data = self.viewModel.data {
-                DiscoveryView(data: data, sectionsToInclude: self.sectionsToInclude, shouldHideSeparators: true) {
+                DiscoveryView(data: data, videoCarousels: .only, pinnedHeaders: self.playlistHeaders, shouldHideSeparators: true) {
                     AnyView(
                         ForEach(Array(self.viewModel.videoPromos.enumerated()), id: \.offset) { _, storyPromo in
                             if let destination = storyPromo.link.destinations.first {

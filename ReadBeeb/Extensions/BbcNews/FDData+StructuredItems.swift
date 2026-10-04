@@ -8,6 +8,18 @@
 import Foundation
 import BbcNews
 
+/// How carousel groups that contain news videos are selected for a discovery screen.
+enum VideoCarouselSelection {
+    /// Keep only carousel groups that contain news videos.
+    case only
+
+    /// Omit carousel groups that contain news videos.
+    case exclude
+
+    /// Leave video carousels subject to the header include and exclude lists.
+    case any
+}
+
 extension FDData {
     /// The list of ordered items to be displayed to the user, grouped with their headers.
     ///
@@ -32,6 +44,50 @@ extension FDData {
 }
 
 extension Array<FDItemGroup> {
+    /// Filters groups for a discovery screen.
+    ///
+    /// Header include takes priority over header exclude. Video-carousel selection then runs. Matching headers are
+    /// moved to the front when a pin list is given. Groups whose remaining promos all link to non-news BBC services
+    /// are omitted.
+    ///
+    /// - Parameters:
+    ///   - includableHeaders: The headers of sections that will not be filtered out
+    ///   - excludableHeaders: The headers of sections to filter out, used when there is no include list
+    ///   - videoCarousels: How carousel groups that contain news videos are selected
+    ///   - pinnedHeaders: The collection header texts to move to the front, in this order
+    /// - Returns: The filtered groups
+    func filtered(
+        including includableHeaders: [String]? = nil,
+        excluding excludableHeaders: [String]? = nil,
+        videoCarousels: VideoCarouselSelection = .any,
+        pinnedHeaders: [String]? = nil
+    ) -> [FDItemGroup] {
+        var groups: [FDItemGroup]
+
+        if let includableHeaders {
+            groups = self.including(headers: includableHeaders)
+        } else if let excludableHeaders {
+            groups = self.excluding(headers: excludableHeaders)
+        } else {
+            groups = self
+        }
+
+        switch videoCarousels {
+        case .only:
+            groups = groups.includingVideoCarousels()
+        case .exclude:
+            groups = groups.excludingVideoCarousels()
+        case .any:
+            break
+        }
+
+        if let pinnedHeaders {
+            groups = groups.pinningFirst(headers: pinnedHeaders)
+        }
+
+        return groups.excludingHiddenPromoGroups()
+    }
+
     /// Filters out any sections to exclude any that do not match the specified headers.
     ///
     /// - Parameter includableHeaders: The headers of sections that will not be filtered out
@@ -43,9 +99,8 @@ extension Array<FDItemGroup> {
                 return includableHeaders.contains("Copyright")
             }
 
-            guard let header = $0.header else { return false }
-            guard case .collectionHeader(let collectionHeader) = header else { return false }
-            return includableHeaders.contains(collectionHeader.text)
+            guard let headerText = $0.headerText else { return false }
+            return includableHeaders.contains(headerText)
         }
     }
 
@@ -60,10 +115,41 @@ extension Array<FDItemGroup> {
                 return !excludableHeaders.contains("Copyright")
             }
 
-            guard let header = $0.header else { return true }
-            guard case .collectionHeader(let collectionHeader) = header else { return true }
-            return !excludableHeaders.contains(collectionHeader.text)
+            guard let headerText = $0.headerText else { return true }
+            return !excludableHeaders.contains(headerText)
         }
+    }
+
+    /// Filters to carousel groups that contain news videos.
+    ///
+    /// - Returns: The video carousel groups
+    func includingVideoCarousels() -> [FDItemGroup] {
+        return self.filter(\.isVideoCarousel)
+    }
+
+    /// Filters out carousel groups that contain news videos.
+    ///
+    /// - Returns: The groups that are not news video carousels
+    func excludingVideoCarousels() -> [FDItemGroup] {
+        return self.filter { !$0.isVideoCarousel }
+    }
+
+    /// Moves groups whose collection header matches any of `headers` to the front.
+    ///
+    /// Matching groups follow the order of `headers`. Other groups keep their original order.
+    ///
+    /// - Parameter headers: The collection header texts to pin, in the order they should appear
+    /// - Returns: The groups with matching headers first
+    func pinningFirst(headers: [String]) -> [FDItemGroup] {
+        var pinned = [FDItemGroup]()
+        var remaining = Array(self)
+
+        for header in headers {
+            pinned.append(contentsOf: remaining.filter { $0.headerText == header })
+            remaining.removeAll { $0.headerText == header }
+        }
+
+        return pinned + remaining
     }
 
     /// Filters out collection groups whose remaining promos all link to non-news BBC services.

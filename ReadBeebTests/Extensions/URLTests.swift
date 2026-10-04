@@ -48,29 +48,184 @@ final class URLTests: XCTestCase {
 final class FDItemGroupTests: XCTestCase {
     func testStoryPromoIsNewsService() throws {
         XCTAssertFalse(
-            self.storyPromo(url: "https://www.bbc.co.uk/iplayer/live/bbcnews").isNewsService,
+            try self.storyPromo(url: "https://www.bbc.co.uk/iplayer/live/bbcnews").isNewsService,
             "iPlayer destination is not a news service"
         )
         XCTAssertFalse(
-            self.storyPromo(url: "https://www.bbc.co.uk/sounds/play/p0hwl9vc").isNewsService,
+            try self.storyPromo(url: "https://www.bbc.co.uk/sounds/play/p0hwl9vc").isNewsService,
             "Sounds destination is not a news service"
         )
         XCTAssertFalse(
-            self.storyPromo(
+            try self.storyPromo(
                 url: "https://news-app.api.bbc.co.uk/fd/abl?page=example",
                 id: "https://www.bbc.co.uk/iplayer/episode/l0056z0q"
             ).isNewsService,
             "iPlayer destination ID is not a news service"
         )
         XCTAssertTrue(
-            self.storyPromo(url: "https://www.bbc.co.uk/news/uk-12345678").isNewsService,
+            try self.storyPromo(url: "https://www.bbc.co.uk/news/uk-12345678").isNewsService,
             "News article destination is a news service"
         )
     }
 
+    func testIsVideoCarousel() throws {
+        let newsVideo = try self.storyPromo(
+            url: "https://www.bbc.co.uk/news/videos/c20417qxrglo",
+            badges: [FDBadge(type: .video, brand: .news, duration: 54_000)]
+        )
+        let iPlayerVideo = try self.storyPromo(
+            url: "https://www.bbc.co.uk/iplayer/episode/l0056z0q",
+            badges: [FDBadge(type: .video, brand: .defaultBrand, duration: 6_983_000)]
+        )
+        let newsArticle = try self.storyPromo(url: "https://www.bbc.co.uk/news/uk-12345678")
+        let newsAudio = try self.storyPromo(
+            url: "https://www.bbc.co.uk/news/uk-12345678",
+            badges: [FDBadge(type: .audio, brand: .news, duration: 54_000)]
+        )
+        let newsLive = try self.storyPromo(
+            url: "https://www.bbc.co.uk/news/live/world-12345678",
+            badges: [FDBadge(type: .live, brand: .news)]
+        )
+
+        XCTAssertTrue(
+            self.carouselGroup(promos: [newsVideo]).isVideoCarousel,
+            "Carousel of news videos is a video carousel"
+        )
+        XCTAssertTrue(
+            self.carouselGroup(promos: [newsVideo, iPlayerVideo]).isVideoCarousel,
+            "Carousel with a news video is a video carousel"
+        )
+        XCTAssertFalse(
+            self.carouselGroup(promos: [iPlayerVideo]).isVideoCarousel,
+            "Carousel whose only videos link to a non-news BBC service is not a video carousel"
+        )
+        XCTAssertFalse(
+            self.carouselGroup(promos: [newsArticle]).isVideoCarousel,
+            "Carousel without video badges is not a video carousel"
+        )
+        XCTAssertFalse(
+            self.carouselGroup(promos: [newsAudio]).isVideoCarousel,
+            "Carousel of news audio is not a video carousel"
+        )
+        XCTAssertFalse(
+            self.carouselGroup(promos: [newsLive]).isVideoCarousel,
+            "Carousel of live news is not a video carousel"
+        )
+        XCTAssertFalse(
+            FDItemGroup(header: nil, body: .simpleCollection(FDSimpleCollection(storyPromos: [newsVideo]))).isVideoCarousel,
+            "Non-carousel collection of videos is not a video carousel"
+        )
+    }
+
+    func testIncludingVideoCarouselsKeepsFeedOrder() throws {
+        let newsVideo = try self.storyPromo(
+            url: "https://www.bbc.co.uk/news/videos/c20417qxrglo",
+            badges: [FDBadge(type: .video, brand: .news, duration: 54_000)]
+        )
+        let todaysVideos = self.carouselGroup(promos: [newsVideo], header: "Today's videos")
+        let playlist = self.carouselGroup(promos: [newsVideo], header: "The video playlist")
+        let news = FDItemGroup(
+            header: .collectionHeader(FDCollectionHeader(text: "UK", link: nil)),
+            body: .simpleCollection(FDSimpleCollection(storyPromos: [newsVideo]))
+        )
+
+        XCTAssertEqual(
+            [todaysVideos, news, playlist].includingVideoCarousels().map(\.headerText),
+            ["Today's videos", "The video playlist"],
+            "Video carousels keep their original order and a non-carousel is dropped"
+        )
+    }
+
+    func testPinningFirstPutsMatchingHeadersFirst() throws {
+        let newsVideo = try self.storyPromo(
+            url: "https://www.bbc.co.uk/news/videos/c20417qxrglo",
+            badges: [FDBadge(type: .video, brand: .news, duration: 54_000)]
+        )
+        let todaysVideos = self.carouselGroup(promos: [newsVideo], header: "Today's videos")
+        let moreVideos = self.carouselGroup(promos: [newsVideo], header: "More videos")
+        let playlist = self.carouselGroup(promos: [newsVideo], header: "The video playlist")
+
+        XCTAssertEqual(
+            [todaysVideos, moreVideos, playlist].pinningFirst(headers: ["The video playlist"]).map(\.headerText),
+            ["The video playlist", "Today's videos", "More videos"],
+            "The matching header is moved to the front"
+        )
+        XCTAssertEqual(
+            [todaysVideos, moreVideos, playlist]
+                .pinningFirst(headers: ["The video playlist", "Today's videos"])
+                .map(\.headerText),
+            ["The video playlist", "Today's videos", "More videos"],
+            "Pinned headers keep the order of the pin list"
+        )
+    }
+
+    func testFilteredExcludesHeadersThenVideoCarousels() throws {
+        let newsVideo = try self.storyPromo(
+            url: "https://www.bbc.co.uk/news/videos/c20417qxrglo",
+            badges: [FDBadge(type: .video, brand: .news, duration: 54_000)]
+        )
+        let newsArticle = try self.storyPromo(url: "https://www.bbc.co.uk/news/uk-12345678")
+        let ukSection = FDItemGroup(
+            header: .collectionHeader(FDCollectionHeader(text: "UK", link: nil)),
+            body: .simpleCollection(FDSimpleCollection(storyPromos: [newsArticle]))
+        )
+        let mostRead = FDItemGroup(
+            header: .collectionHeader(FDCollectionHeader(text: "Most Read", link: nil)),
+            body: .simpleCollection(FDSimpleCollection(storyPromos: [newsArticle]))
+        )
+        let todaysVideos = self.carouselGroup(promos: [newsVideo], header: "Today's videos")
+
+        XCTAssertEqual(
+            [ukSection, mostRead, todaysVideos].filtered(excluding: ["Most Read"], videoCarousels: .exclude).map(\.headerText),
+            ["UK"],
+            "Named sections and video carousels whose headers are not on the denylist are both dropped"
+        )
+    }
+
+    func testFilteredOnlyKeepsIncludedVideoCarousels() throws {
+        let newsVideo = try self.storyPromo(
+            url: "https://www.bbc.co.uk/news/videos/c20417qxrglo",
+            badges: [FDBadge(type: .video, brand: .news, duration: 54_000)]
+        )
+        let newsArticle = try self.storyPromo(url: "https://www.bbc.co.uk/news/uk-12345678")
+        let ukSection = FDItemGroup(
+            header: .collectionHeader(FDCollectionHeader(text: "UK", link: nil)),
+            body: .simpleCollection(FDSimpleCollection(storyPromos: [newsArticle]))
+        )
+        let todaysVideos = self.carouselGroup(promos: [newsVideo], header: "Today's videos")
+        let playlist = self.carouselGroup(promos: [newsVideo], header: "The video playlist")
+
+        XCTAssertEqual(
+            [ukSection, todaysVideos, playlist]
+                .filtered(including: ["Today's videos", "UK"], videoCarousels: .only)
+                .map(\.headerText),
+            ["Today's videos"],
+            "Video-only selection keeps only video carousels whose headers are on the include list"
+        )
+    }
+
+    func testFilteredDropsGroupsWithoutVisiblePromos() throws {
+        let iPlayerVideo = try self.storyPromo(url: "https://www.bbc.co.uk/iplayer/episode/l0056z0q")
+        let newsArticle = try self.storyPromo(url: "https://www.bbc.co.uk/news/uk-12345678")
+        let ukSection = FDItemGroup(
+            header: .collectionHeader(FDCollectionHeader(text: "UK", link: nil)),
+            body: .simpleCollection(FDSimpleCollection(storyPromos: [newsArticle]))
+        )
+        let watch = FDItemGroup(
+            header: .collectionHeader(FDCollectionHeader(text: "Watch", link: nil)),
+            body: .simpleCollection(FDSimpleCollection(storyPromos: [iPlayerVideo]))
+        )
+
+        XCTAssertEqual(
+            [ukSection, watch].filtered().map(\.headerText),
+            ["UK"],
+            "A group whose remaining promos all link to a non-news BBC service is dropped"
+        )
+    }
+
     func testHasVisiblePromos() throws {
-        let iPlayerVideo = self.storyPromo(url: "https://www.bbc.co.uk/iplayer/episode/l0056z0q")
-        let newsArticle = self.storyPromo(url: "https://www.bbc.co.uk/news/uk-12345678")
+        let iPlayerVideo = try self.storyPromo(url: "https://www.bbc.co.uk/iplayer/episode/l0056z0q")
+        let newsArticle = try self.storyPromo(url: "https://www.bbc.co.uk/news/uk-12345678")
         let iPlayerOnly = [iPlayerVideo]
 
         XCTAssertFalse(
@@ -115,12 +270,12 @@ final class FDItemGroupTests: XCTestCase {
     }
 
     func testDataStoryPromos() throws {
-        let billboardPromo = self.storyPromo(url: "https://www.bbc.co.uk/news/billboard")
-        let hierarchicalPromo = self.storyPromo(url: "https://www.bbc.co.uk/news/hierarchical")
-        let simplePromo = self.storyPromo(url: "https://www.bbc.co.uk/news/simple")
-        let gridPromo = self.storyPromo(url: "https://www.bbc.co.uk/news/grid")
-        let carouselPromo = self.storyPromo(url: "https://www.bbc.co.uk/news/carousel")
-        let lonePromo = self.storyPromo(url: "https://www.bbc.co.uk/news/lone")
+        let billboardPromo = try self.storyPromo(url: "https://www.bbc.co.uk/news/billboard")
+        let hierarchicalPromo = try self.storyPromo(url: "https://www.bbc.co.uk/news/hierarchical")
+        let simplePromo = try self.storyPromo(url: "https://www.bbc.co.uk/news/simple")
+        let gridPromo = try self.storyPromo(url: "https://www.bbc.co.uk/news/grid")
+        let carouselPromo = try self.storyPromo(url: "https://www.bbc.co.uk/news/carousel")
+        let lonePromo = try self.storyPromo(url: "https://www.bbc.co.uk/news/lone")
 
         let data = FDData(
             metadata: FDDataMetadata(name: "", allowAdvertising: false, lastUpdated: Date(), shareUrl: nil),
@@ -141,8 +296,15 @@ final class FDItemGroupTests: XCTestCase {
             "Every promo-bearing item contributes its promo"
         )
     }
+}
 
-    private func carousel(storyPromos: [FDStoryPromo]) -> FDCarousel {
+private extension FDItemGroupTests {
+    func carouselGroup(promos: [FDStoryPromo], header: String? = nil) -> FDItemGroup {
+        let collectionHeader: FDItem? = header.map { .collectionHeader(FDCollectionHeader(text: $0, link: nil)) }
+        return FDItemGroup(header: collectionHeader, body: .carousel(self.carousel(storyPromos: promos)))
+    }
+
+    func carousel(storyPromos: [FDStoryPromo]) -> FDCarousel {
         FDCarousel(
             storyPromos: storyPromos,
             aspectRatio: 1,
@@ -151,8 +313,8 @@ final class FDItemGroupTests: XCTestCase {
         )
     }
 
-    private func storyPromo(url: String, id: String? = nil, badges: [FDBadge]? = nil) -> FDStoryPromo {
-        let destinationUrl = URL(string: url)!
+    func storyPromo(url: String, id: String? = nil, badges: [FDBadge]? = nil) throws -> FDStoryPromo {
+        let destinationUrl = try XCTUnwrap(URL(string: url))
 
         return FDStoryPromo(
             style: .smallHorizontalPromoCard,

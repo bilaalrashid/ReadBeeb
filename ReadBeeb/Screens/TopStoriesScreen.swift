@@ -15,8 +15,6 @@ struct TopStoriesScreen: View {
         "Watch & Listen",
         "Most Read",
         "Topics in the news",
-        "Today's videos",
-        "The video playlist",
         "Newsletters",
         "Copyright",
         "برامجنا",                           // Arabic: "Our Programs"
@@ -47,7 +45,7 @@ struct TopStoriesScreen: View {
     var body: some View {
         VStack {
             if let data = self.viewModel.data {
-                DiscoveryView(data: data, sectionsToExclude: self.sectionsToExclude)
+                DiscoveryView(data: data, sectionsToExclude: self.sectionsToExclude, videoCarousels: .exclude)
             }
         }
         .navigationTitle("Top Stories")

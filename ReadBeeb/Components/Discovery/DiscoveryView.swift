@@ -20,8 +20,18 @@ struct DiscoveryView: View {
 
     /// The sections from the API's main feed to exclude from the view.
     ///
-    /// This has a lower priority than `sectionsToExclude`.
+    /// This has a lower priority than `sectionsToInclude`.
     let sectionsToExclude: [String]?
+
+    /// How carousel groups that contain news videos are selected.
+    ///
+    /// Applied after the header include and exclude lists.
+    let videoCarousels: VideoCarouselSelection
+
+    /// The collection headers to move to the front of the list, in this order.
+    ///
+    /// Applied after the header and video-carousel filters.
+    let pinnedHeaders: [String]?
 
     /// If the row separator should be hidden.
     let shouldHideSeparators: Bool
@@ -40,36 +50,40 @@ struct DiscoveryView: View {
     ///   - data: The data representing the discovery page.
     ///   - sectionsToInclude: The sections from the API's main feed to include in the view.
     ///   - sectionsToExclude: The sections from the API's main feed to exclude from the view.
+    ///   - videoCarousels: How carousel groups that contain news videos are selected.
+    ///   - pinnedHeaders: The collection headers to move to the front after the header and video-carousel filters.
     ///   - shouldHideSeparators: If the row separator should be hidden.
     ///   - extraContent: Extra content to be displayed after the main feeds and before the copyright disclaimer.
     init(
         data: FDData,
         sectionsToInclude: [String]? = nil,
         sectionsToExclude: [String]? = nil,
+        videoCarousels: VideoCarouselSelection = .any,
+        pinnedHeaders: [String]? = nil,
         shouldHideSeparators: Bool = false,
         extraContent: @escaping () -> AnyView? = { nil }
     ) {
         self.data = data
         self.sectionsToInclude = sectionsToInclude
         self.sectionsToExclude = sectionsToExclude
+        self.videoCarousels = videoCarousels
+        self.pinnedHeaders = pinnedHeaders
         self.shouldHideSeparators = shouldHideSeparators
         self.extraContent = extraContent
     }
 
     /// The item groups from the API, including or excluding any specified sections.
     ///
-    /// Allowlisted include sections take priority over excluded sections. Groups whose remaining promos all link to
-    /// non-news BBC services are omitted.
+    /// Header include takes priority over header exclude. Video-carousel selection then runs. Matching headers are
+    /// moved to the front when a pin list is given. Groups whose remaining promos all link to non-news BBC services
+    /// are omitted.
     private var filteredItemGroups: [FDItemGroup] {
-        var groups = self.data.itemGroups
-
-        if let sectionsToInclude = self.sectionsToInclude {
-            groups = self.data.itemGroups.including(headers: sectionsToInclude)
-        } else if let sectionsToExclude = self.sectionsToExclude {
-            groups = self.data.itemGroups.excluding(headers: sectionsToExclude)
-        }
-
-        return groups.excludingHiddenPromoGroups()
+        self.data.itemGroups.filtered(
+            including: self.sectionsToInclude,
+            excluding: self.sectionsToExclude,
+            videoCarousels: self.videoCarousels,
+            pinnedHeaders: self.pinnedHeaders
+        )
     }
 
     var body: some View {
