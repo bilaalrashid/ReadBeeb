@@ -42,6 +42,20 @@ struct TextContainer: View {
             Text(self.container.text.attributedString)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
+                .modify {
+                    // Text selection on iOS 27+ uses the classic system text highlight
+                    // UI for selecting text. Older versions use a long-press gesture
+                    // that only allows you to select the whole paragraph.
+                    //
+                    // XXX(bilaal): Each paragraph is a separate TextContainer() view
+                    // so text selection highlighting only works within a single
+                    // paragraph
+                    if #available(iOS 27, *) {
+                        $0.textSelection(.enabled)
+                    } else {
+                        $0
+                    }
+                }
         }
         .lineSpacing(4)
         .modify {
